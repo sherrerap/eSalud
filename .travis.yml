@@ -1,6 +1,7 @@
 language: java
+before_install:
+- chmod +x mvnw
 deploy:
   provider: heroku
   api_key: 
-    secure: "204b5735-52d7-41a7-b6ac-fa2a80bf0b82"
-  app: proyecto-iso
+    secure: %HEROKU
