@@ -1,0 +1,79 @@
+{
+  "id": "370ecf69-8ed9-472e-a924-3dad0b356f0a",
+  "version": "2.0",
+  "name": "proyectoiso",
+  "url": "http://localhost:4200",
+  "tests": [{
+    "id": "4b37f916-19ca-4ceb-be1b-ef777c82a25e",
+    "name": "Acceso Test",
+    "commands": [{
+      "id": "e22dbe36-6dfe-4d95-843e-33a725792028",
+      "comment": "",
+      "command": "open",
+      "target": "/auth/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a54d259a-d7cb-4456-b6ca-f1653d877219",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x840",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7042fb98-87b6-44ea-816e-7187601bc594",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(1) > input",
+      "targets": [
+        ["css=p:nth-child(1) > input", "css:finder"],
+        ["xpath=//input[@type='email']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "de087dd9-5923-4ef0-bcba-e5bd22d24744",
+      "comment": "",
+      "command": "type",
+      "target": "css=p:nth-child(1) > input",
+      "targets": [
+        ["css=p:nth-child(1) > input", "css:finder"],
+        ["xpath=//input[@type='email']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "fhagakidsbvn"
+    }, {
+      "id": "fe38569e-2a75-49aa-9289-cd26610ed943",
+      "comment": "",
+      "command": "type",
+      "target": "css=p:nth-child(2) > input",
+      "targets": [
+        ["css=p:nth-child(2) > input", "css:finder"],
+        ["xpath=//input[@type='password']", "xpath:attributes"],
+        ["xpath=//p[2]/input", "xpath:position"]
+      ],
+      "value": "iosrthgfsgjks"
+    }, {
+      "id": "6e75f98c-1e75-46e1-a5a1-45ce07d7d812",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(3) > input",
+      "targets": [
+        ["css=p:nth-child(3) > input", "css:finder"],
+        ["xpath=//input[@value='Acceder']", "xpath:attributes"],
+        ["xpath=//p[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "4fe13807-7ffd-4a85-a79e-fe5139a2d565",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["4b37f916-19ca-4ceb-be1b-ef777c82a25e"]
+  }],
+  "urls": ["http://localhost:4200/"],
+  "plugins": []
+}
