@@ -189,3 +189,26 @@ body {
 .register input[type="submit"]:focus {
   border-color: #05a;
 }
+
+.panel_superior{  background:  rgb(59, 180, 59);
+  height: 125px;
+  width: 100%;
+  border-color: black}
+.panel_lateral{ background: rgb(59, 180, 59);
+width:  15%;
+position: absolute;
+height: 600px;
+align-items: center;
+padding-left: 0px;
+margin-left: 0px;}
+.panel_lateral{ border-right:  1.5px solid black;
+border-left:   1.5px solid black;
+border-bottom: 1.5px solid black}
+.panel_central{
+width: 85%;
+height: 600px;;
+}
+.img{
+width:280;
+height:125;
+}
