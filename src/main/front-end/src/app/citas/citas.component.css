@@ -28,8 +28,8 @@
     ;
 }
 
-.img {
-    width: 280;
-    height: 125;
-    content: url(/src/main/front-end/src/assets/img/SESCAM.jpg);
+.SescamLogo{
+	width: 185px;
+	height: 185px;
 }
+
