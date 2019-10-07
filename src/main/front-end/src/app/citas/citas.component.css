@@ -1,12 +1,13 @@
+
 .panel_superior {
-    background: rgb(59, 180, 59);
+    background:#23C185;
     height: 125px;
     width: 100%;
     border-color: black
 }
 
 .panel_lateral {
-    background: rgb(59, 180, 59);
+    background: #23C185;
     width: 15%;
     position: absolute;
     height: 600px;
@@ -30,4 +31,5 @@
 .img {
     width: 280;
     height: 125;
+    content: url(/src/main/front-end/src/assets/img/SESCAM.jpg);
 }
