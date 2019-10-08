@@ -1,3 +1,5 @@
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
@@ -16253,255 +16255,248 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       /*#__PURE__*/
       function () {
         function Zone(parent, zoneSpec) {
+          _classCallCheck(this, Zone);
+
           this._parent = parent;
           this._name = zoneSpec ? zoneSpec.name || 'unnamed' : '<root>';
           this._properties = zoneSpec && zoneSpec.properties || {};
           this._zoneDelegate = new ZoneDelegate(this, this._parent && this._parent._zoneDelegate, zoneSpec);
         }
 
-        Zone.assertZonePatched = function assertZonePatched() {
-          if (global['Promise'] !== patches['ZoneAwarePromise']) {
-            throw new Error('Zone.js has detected that ZoneAwarePromise `(window|global).Promise` ' + 'has been overwritten.\n' + 'Most likely cause is that a Promise polyfill has been loaded ' + 'after Zone.js (Polyfilling Promise api is not necessary when zone.js is loaded. ' + 'If you must load one, do so before loading zone.js.)');
+        _createClass(Zone, [{
+          key: "get",
+          value: function get(key) {
+            var zone = this.getZoneWith(key);
+            if (zone) return zone._properties[key];
           }
-        };
+        }, {
+          key: "getZoneWith",
+          value: function getZoneWith(key) {
+            var current = this;
 
-        Zone.__load_patch = function __load_patch(name, fn) {
-          if (patches.hasOwnProperty(name)) {
-            if (checkDuplicate) {
-              throw Error('Already loaded patch: ' + name);
-            }
-          } else if (!global['__Zone_disable_' + name]) {
-            var perfName = 'Zone:' + name;
-            mark(perfName);
-            patches[name] = fn(global, Zone, _api);
-            performanceMeasure(perfName, perfName);
-          }
-        };
+            while (current) {
+              if (current._properties.hasOwnProperty(key)) {
+                return current;
+              }
 
-        var _proto = Zone.prototype;
-
-        _proto.get = function get(key) {
-          var zone = this.getZoneWith(key);
-          if (zone) return zone._properties[key];
-        };
-
-        _proto.getZoneWith = function getZoneWith(key) {
-          var current = this;
-
-          while (current) {
-            if (current._properties.hasOwnProperty(key)) {
-              return current;
+              current = current._parent;
             }
 
-            current = current._parent;
+            return null;
           }
-
-          return null;
-        };
-
-        _proto.fork = function fork(zoneSpec) {
-          if (!zoneSpec) throw new Error('ZoneSpec required!');
-          return this._zoneDelegate.fork(this, zoneSpec);
-        };
-
-        _proto.wrap = function wrap(callback, source) {
-          if (typeof callback !== 'function') {
-            throw new Error('Expecting function got: ' + callback);
+        }, {
+          key: "fork",
+          value: function fork(zoneSpec) {
+            if (!zoneSpec) throw new Error('ZoneSpec required!');
+            return this._zoneDelegate.fork(this, zoneSpec);
           }
+        }, {
+          key: "wrap",
+          value: function wrap(callback, source) {
+            if (typeof callback !== 'function') {
+              throw new Error('Expecting function got: ' + callback);
+            }
 
-          var _callback = this._zoneDelegate.intercept(this, callback, source);
+            var _callback = this._zoneDelegate.intercept(this, callback, source);
 
-          var zone = this;
-          return function () {
-            return zone.runGuarded(_callback, this, arguments, source);
-          };
-        };
-
-        _proto.run = function run(callback, applyThis, applyArgs, source) {
-          _currentZoneFrame = {
-            parent: _currentZoneFrame,
-            zone: this
-          };
-
-          try {
-            return this._zoneDelegate.invoke(this, callback, applyThis, applyArgs, source);
-          } finally {
-            _currentZoneFrame = _currentZoneFrame.parent;
+            var zone = this;
+            return function () {
+              return zone.runGuarded(_callback, this, arguments, source);
+            };
           }
-        };
+        }, {
+          key: "run",
+          value: function run(callback, applyThis, applyArgs, source) {
+            _currentZoneFrame = {
+              parent: _currentZoneFrame,
+              zone: this
+            };
 
-        _proto.runGuarded = function runGuarded(callback, applyThis, applyArgs, source) {
-          if (applyThis === void 0) {
-            applyThis = null;
-          }
-
-          _currentZoneFrame = {
-            parent: _currentZoneFrame,
-            zone: this
-          };
-
-          try {
             try {
               return this._zoneDelegate.invoke(this, callback, applyThis, applyArgs, source);
-            } catch (error) {
-              if (this._zoneDelegate.handleError(this, error)) {
-                throw error;
-              }
+            } finally {
+              _currentZoneFrame = _currentZoneFrame.parent;
             }
-          } finally {
-            _currentZoneFrame = _currentZoneFrame.parent;
           }
-        };
-
-        _proto.runTask = function runTask(task, applyThis, applyArgs) {
-          if (task.zone != this) {
-            throw new Error('A task can only be run in the zone of creation! (Creation: ' + (task.zone || NO_ZONE).name + '; Execution: ' + this.name + ')');
-          } // https://github.com/angular/zone.js/issues/778, sometimes eventTask
-          // will run in notScheduled(canceled) state, we should not try to
-          // run such kind of task but just return
-
-
-          if (task.state === notScheduled && (task.type === eventTask || task.type === macroTask)) {
-            return;
-          }
-
-          var reEntryGuard = task.state != running;
-          reEntryGuard && task._transitionTo(running, scheduled);
-          task.runCount++;
-          var previousTask = _currentTask;
-          _currentTask = task;
-          _currentZoneFrame = {
-            parent: _currentZoneFrame,
-            zone: this
-          };
-
-          try {
-            if (task.type == macroTask && task.data && !task.data.isPeriodic) {
-              task.cancelFn = undefined;
-            }
+        }, {
+          key: "runGuarded",
+          value: function runGuarded(callback) {
+            var applyThis = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+            var applyArgs = arguments.length > 2 ? arguments[2] : undefined;
+            var source = arguments.length > 3 ? arguments[3] : undefined;
+            _currentZoneFrame = {
+              parent: _currentZoneFrame,
+              zone: this
+            };
 
             try {
-              return this._zoneDelegate.invokeTask(this, task, applyThis, applyArgs);
-            } catch (error) {
-              if (this._zoneDelegate.handleError(this, error)) {
-                throw error;
+              try {
+                return this._zoneDelegate.invoke(this, callback, applyThis, applyArgs, source);
+              } catch (error) {
+                if (this._zoneDelegate.handleError(this, error)) {
+                  throw error;
+                }
               }
-            }
-          } finally {
-            // if the task's state is notScheduled or unknown, then it has already been cancelled
-            // we should not reset the state to scheduled
-            if (task.state !== notScheduled && task.state !== unknown) {
-              if (task.type == eventTask || task.data && task.data.isPeriodic) {
-                reEntryGuard && task._transitionTo(scheduled, running);
-              } else {
-                task.runCount = 0;
-
-                this._updateTaskCount(task, -1);
-
-                reEntryGuard && task._transitionTo(notScheduled, running, notScheduled);
-              }
-            }
-
-            _currentZoneFrame = _currentZoneFrame.parent;
-            _currentTask = previousTask;
-          }
-        };
-
-        _proto.scheduleTask = function scheduleTask(task) {
-          if (task.zone && task.zone !== this) {
-            // check if the task was rescheduled, the newZone
-            // should not be the children of the original zone
-            var newZone = this;
-
-            while (newZone) {
-              if (newZone === task.zone) {
-                throw Error("can not reschedule task to " + this.name + " which is descendants of the original zone " + task.zone.name);
-              }
-
-              newZone = newZone.parent;
+            } finally {
+              _currentZoneFrame = _currentZoneFrame.parent;
             }
           }
-
-          task._transitionTo(scheduling, notScheduled);
-
-          var zoneDelegates = [];
-          task._zoneDelegates = zoneDelegates;
-          task._zone = this;
-
-          try {
-            task = this._zoneDelegate.scheduleTask(this, task);
-          } catch (err) {
-            // should set task's state to unknown when scheduleTask throw error
-            // because the err may from reschedule, so the fromState maybe notScheduled
-            task._transitionTo(unknown, scheduling, notScheduled); // TODO: @JiaLiPassion, should we check the result from handleError?
+        }, {
+          key: "runTask",
+          value: function runTask(task, applyThis, applyArgs) {
+            if (task.zone != this) {
+              throw new Error('A task can only be run in the zone of creation! (Creation: ' + (task.zone || NO_ZONE).name + '; Execution: ' + this.name + ')');
+            } // https://github.com/angular/zone.js/issues/778, sometimes eventTask
+            // will run in notScheduled(canceled) state, we should not try to
+            // run such kind of task but just return
 
 
-            this._zoneDelegate.handleError(this, err);
+            if (task.state === notScheduled && (task.type === eventTask || task.type === macroTask)) {
+              return;
+            }
 
-            throw err;
+            var reEntryGuard = task.state != running;
+            reEntryGuard && task._transitionTo(running, scheduled);
+            task.runCount++;
+            var previousTask = _currentTask;
+            _currentTask = task;
+            _currentZoneFrame = {
+              parent: _currentZoneFrame,
+              zone: this
+            };
+
+            try {
+              if (task.type == macroTask && task.data && !task.data.isPeriodic) {
+                task.cancelFn = undefined;
+              }
+
+              try {
+                return this._zoneDelegate.invokeTask(this, task, applyThis, applyArgs);
+              } catch (error) {
+                if (this._zoneDelegate.handleError(this, error)) {
+                  throw error;
+                }
+              }
+            } finally {
+              // if the task's state is notScheduled or unknown, then it has already been cancelled
+              // we should not reset the state to scheduled
+              if (task.state !== notScheduled && task.state !== unknown) {
+                if (task.type == eventTask || task.data && task.data.isPeriodic) {
+                  reEntryGuard && task._transitionTo(scheduled, running);
+                } else {
+                  task.runCount = 0;
+
+                  this._updateTaskCount(task, -1);
+
+                  reEntryGuard && task._transitionTo(notScheduled, running, notScheduled);
+                }
+              }
+
+              _currentZoneFrame = _currentZoneFrame.parent;
+              _currentTask = previousTask;
+            }
           }
+        }, {
+          key: "scheduleTask",
+          value: function scheduleTask(task) {
+            if (task.zone && task.zone !== this) {
+              // check if the task was rescheduled, the newZone
+              // should not be the children of the original zone
+              var newZone = this;
 
-          if (task._zoneDelegates === zoneDelegates) {
-            // we have to check because internally the delegate can reschedule the task.
-            this._updateTaskCount(task, 1);
+              while (newZone) {
+                if (newZone === task.zone) {
+                  throw Error("can not reschedule task to ".concat(this.name, " which is descendants of the original zone ").concat(task.zone.name));
+                }
+
+                newZone = newZone.parent;
+              }
+            }
+
+            task._transitionTo(scheduling, notScheduled);
+
+            var zoneDelegates = [];
+            task._zoneDelegates = zoneDelegates;
+            task._zone = this;
+
+            try {
+              task = this._zoneDelegate.scheduleTask(this, task);
+            } catch (err) {
+              // should set task's state to unknown when scheduleTask throw error
+              // because the err may from reschedule, so the fromState maybe notScheduled
+              task._transitionTo(unknown, scheduling, notScheduled); // TODO: @JiaLiPassion, should we check the result from handleError?
+
+
+              this._zoneDelegate.handleError(this, err);
+
+              throw err;
+            }
+
+            if (task._zoneDelegates === zoneDelegates) {
+              // we have to check because internally the delegate can reschedule the task.
+              this._updateTaskCount(task, 1);
+            }
+
+            if (task.state == scheduling) {
+              task._transitionTo(scheduled, scheduling);
+            }
+
+            return task;
           }
-
-          if (task.state == scheduling) {
-            task._transitionTo(scheduled, scheduling);
+        }, {
+          key: "scheduleMicroTask",
+          value: function scheduleMicroTask(source, callback, data, customSchedule) {
+            return this.scheduleTask(new ZoneTask(microTask, source, callback, data, customSchedule, undefined));
           }
-
-          return task;
-        };
-
-        _proto.scheduleMicroTask = function scheduleMicroTask(source, callback, data, customSchedule) {
-          return this.scheduleTask(new ZoneTask(microTask, source, callback, data, customSchedule, undefined));
-        };
-
-        _proto.scheduleMacroTask = function scheduleMacroTask(source, callback, data, customSchedule, customCancel) {
-          return this.scheduleTask(new ZoneTask(macroTask, source, callback, data, customSchedule, customCancel));
-        };
-
-        _proto.scheduleEventTask = function scheduleEventTask(source, callback, data, customSchedule, customCancel) {
-          return this.scheduleTask(new ZoneTask(eventTask, source, callback, data, customSchedule, customCancel));
-        };
-
-        _proto.cancelTask = function cancelTask(task) {
-          if (task.zone != this) throw new Error('A task can only be cancelled in the zone of creation! (Creation: ' + (task.zone || NO_ZONE).name + '; Execution: ' + this.name + ')');
-
-          task._transitionTo(canceling, scheduled, running);
-
-          try {
-            this._zoneDelegate.cancelTask(this, task);
-          } catch (err) {
-            // if error occurs when cancelTask, transit the state to unknown
-            task._transitionTo(unknown, canceling);
-
-            this._zoneDelegate.handleError(this, err);
-
-            throw err;
+        }, {
+          key: "scheduleMacroTask",
+          value: function scheduleMacroTask(source, callback, data, customSchedule, customCancel) {
+            return this.scheduleTask(new ZoneTask(macroTask, source, callback, data, customSchedule, customCancel));
           }
-
-          this._updateTaskCount(task, -1);
-
-          task._transitionTo(notScheduled, canceling);
-
-          task.runCount = 0;
-          return task;
-        };
-
-        _proto._updateTaskCount = function _updateTaskCount(task, count) {
-          var zoneDelegates = task._zoneDelegates;
-
-          if (count == -1) {
-            task._zoneDelegates = null;
+        }, {
+          key: "scheduleEventTask",
+          value: function scheduleEventTask(source, callback, data, customSchedule, customCancel) {
+            return this.scheduleTask(new ZoneTask(eventTask, source, callback, data, customSchedule, customCancel));
           }
+        }, {
+          key: "cancelTask",
+          value: function cancelTask(task) {
+            if (task.zone != this) throw new Error('A task can only be cancelled in the zone of creation! (Creation: ' + (task.zone || NO_ZONE).name + '; Execution: ' + this.name + ')');
 
-          for (var i = 0; i < zoneDelegates.length; i++) {
-            zoneDelegates[i]._updateTaskCount(task.type, count);
+            task._transitionTo(canceling, scheduled, running);
+
+            try {
+              this._zoneDelegate.cancelTask(this, task);
+            } catch (err) {
+              // if error occurs when cancelTask, transit the state to unknown
+              task._transitionTo(unknown, canceling);
+
+              this._zoneDelegate.handleError(this, err);
+
+              throw err;
+            }
+
+            this._updateTaskCount(task, -1);
+
+            task._transitionTo(notScheduled, canceling);
+
+            task.runCount = 0;
+            return task;
           }
-        };
+        }, {
+          key: "_updateTaskCount",
+          value: function _updateTaskCount(task, count) {
+            var zoneDelegates = task._zoneDelegates;
 
-        _createClass(Zone, [{
+            if (count == -1) {
+              task._zoneDelegates = null;
+            }
+
+            for (var i = 0; i < zoneDelegates.length; i++) {
+              zoneDelegates[i]._updateTaskCount(task.type, count);
+            }
+          }
+        }, {
           key: "parent",
           get: function get() {
             return this._parent;
@@ -16512,6 +16507,27 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             return this._name;
           }
         }], [{
+          key: "assertZonePatched",
+          value: function assertZonePatched() {
+            if (global['Promise'] !== patches['ZoneAwarePromise']) {
+              throw new Error('Zone.js has detected that ZoneAwarePromise `(window|global).Promise` ' + 'has been overwritten.\n' + 'Most likely cause is that a Promise polyfill has been loaded ' + 'after Zone.js (Polyfilling Promise api is not necessary when zone.js is loaded. ' + 'If you must load one, do so before loading zone.js.)');
+            }
+          }
+        }, {
+          key: "__load_patch",
+          value: function __load_patch(name, fn) {
+            if (patches.hasOwnProperty(name)) {
+              if (checkDuplicate) {
+                throw Error('Already loaded patch: ' + name);
+              }
+            } else if (!global['__Zone_disable_' + name]) {
+              var perfName = 'Zone:' + name;
+              mark(perfName);
+              patches[name] = fn(global, Zone, _api);
+              performanceMeasure(perfName, perfName);
+            }
+          }
+        }, {
           key: "root",
           get: function get() {
             var zone = Zone.current;
@@ -16558,6 +16574,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       /*#__PURE__*/
       function () {
         function ZoneDelegate(zone, parentDelegate, zoneSpec) {
+          _classCallCheck(this, ZoneDelegate);
+
           this._taskCounts = {
             'microTask': 0,
             'macroTask': 0,
@@ -16621,96 +16639,105 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
         }
 
-        var _proto2 = ZoneDelegate.prototype;
+        _createClass(ZoneDelegate, [{
+          key: "fork",
+          value: function fork(targetZone, zoneSpec) {
+            return this._forkZS ? this._forkZS.onFork(this._forkDlgt, this.zone, targetZone, zoneSpec) : new Zone(targetZone, zoneSpec);
+          }
+        }, {
+          key: "intercept",
+          value: function intercept(targetZone, callback, source) {
+            return this._interceptZS ? this._interceptZS.onIntercept(this._interceptDlgt, this._interceptCurrZone, targetZone, callback, source) : callback;
+          }
+        }, {
+          key: "invoke",
+          value: function invoke(targetZone, callback, applyThis, applyArgs, source) {
+            return this._invokeZS ? this._invokeZS.onInvoke(this._invokeDlgt, this._invokeCurrZone, targetZone, callback, applyThis, applyArgs, source) : callback.apply(applyThis, applyArgs);
+          }
+        }, {
+          key: "handleError",
+          value: function handleError(targetZone, error) {
+            return this._handleErrorZS ? this._handleErrorZS.onHandleError(this._handleErrorDlgt, this._handleErrorCurrZone, targetZone, error) : true;
+          }
+        }, {
+          key: "scheduleTask",
+          value: function scheduleTask(targetZone, task) {
+            var returnTask = task;
 
-        _proto2.fork = function fork(targetZone, zoneSpec) {
-          return this._forkZS ? this._forkZS.onFork(this._forkDlgt, this.zone, targetZone, zoneSpec) : new Zone(targetZone, zoneSpec);
-        };
+            if (this._scheduleTaskZS) {
+              if (this._hasTaskZS) {
+                returnTask._zoneDelegates.push(this._hasTaskDlgtOwner);
+              }
 
-        _proto2.intercept = function intercept(targetZone, callback, source) {
-          return this._interceptZS ? this._interceptZS.onIntercept(this._interceptDlgt, this._interceptCurrZone, targetZone, callback, source) : callback;
-        };
-
-        _proto2.invoke = function invoke(targetZone, callback, applyThis, applyArgs, source) {
-          return this._invokeZS ? this._invokeZS.onInvoke(this._invokeDlgt, this._invokeCurrZone, targetZone, callback, applyThis, applyArgs, source) : callback.apply(applyThis, applyArgs);
-        };
-
-        _proto2.handleError = function handleError(targetZone, error) {
-          return this._handleErrorZS ? this._handleErrorZS.onHandleError(this._handleErrorDlgt, this._handleErrorCurrZone, targetZone, error) : true;
-        };
-
-        _proto2.scheduleTask = function scheduleTask(targetZone, task) {
-          var returnTask = task;
-
-          if (this._scheduleTaskZS) {
-            if (this._hasTaskZS) {
-              returnTask._zoneDelegates.push(this._hasTaskDlgtOwner);
-            }
-
-            returnTask = this._scheduleTaskZS.onScheduleTask(this._scheduleTaskDlgt, this._scheduleTaskCurrZone, targetZone, task);
-            if (!returnTask) returnTask = task;
-          } else {
-            if (task.scheduleFn) {
-              task.scheduleFn(task);
-            } else if (task.type == microTask) {
-              scheduleMicroTask(task);
+              returnTask = this._scheduleTaskZS.onScheduleTask(this._scheduleTaskDlgt, this._scheduleTaskCurrZone, targetZone, task);
+              if (!returnTask) returnTask = task;
             } else {
-              throw new Error('Task is missing scheduleFn.');
-            }
-          }
-
-          return returnTask;
-        };
-
-        _proto2.invokeTask = function invokeTask(targetZone, task, applyThis, applyArgs) {
-          return this._invokeTaskZS ? this._invokeTaskZS.onInvokeTask(this._invokeTaskDlgt, this._invokeTaskCurrZone, targetZone, task, applyThis, applyArgs) : task.callback.apply(applyThis, applyArgs);
-        };
-
-        _proto2.cancelTask = function cancelTask(targetZone, task) {
-          var value;
-
-          if (this._cancelTaskZS) {
-            value = this._cancelTaskZS.onCancelTask(this._cancelTaskDlgt, this._cancelTaskCurrZone, targetZone, task);
-          } else {
-            if (!task.cancelFn) {
-              throw Error('Task is not cancelable');
+              if (task.scheduleFn) {
+                task.scheduleFn(task);
+              } else if (task.type == microTask) {
+                scheduleMicroTask(task);
+              } else {
+                throw new Error('Task is missing scheduleFn.');
+              }
             }
 
-            value = task.cancelFn(task);
+            return returnTask;
           }
-
-          return value;
-        };
-
-        _proto2.hasTask = function hasTask(targetZone, isEmpty) {
-          // hasTask should not throw error so other ZoneDelegate
-          // can still trigger hasTask callback
-          try {
-            this._hasTaskZS && this._hasTaskZS.onHasTask(this._hasTaskDlgt, this._hasTaskCurrZone, targetZone, isEmpty);
-          } catch (err) {
-            this.handleError(targetZone, err);
+        }, {
+          key: "invokeTask",
+          value: function invokeTask(targetZone, task, applyThis, applyArgs) {
+            return this._invokeTaskZS ? this._invokeTaskZS.onInvokeTask(this._invokeTaskDlgt, this._invokeTaskCurrZone, targetZone, task, applyThis, applyArgs) : task.callback.apply(applyThis, applyArgs);
           }
-        };
+        }, {
+          key: "cancelTask",
+          value: function cancelTask(targetZone, task) {
+            var value;
 
-        _proto2._updateTaskCount = function _updateTaskCount(type, count) {
-          var counts = this._taskCounts;
-          var prev = counts[type];
-          var next = counts[type] = prev + count;
+            if (this._cancelTaskZS) {
+              value = this._cancelTaskZS.onCancelTask(this._cancelTaskDlgt, this._cancelTaskCurrZone, targetZone, task);
+            } else {
+              if (!task.cancelFn) {
+                throw Error('Task is not cancelable');
+              }
 
-          if (next < 0) {
-            throw new Error('More tasks executed then were scheduled.');
+              value = task.cancelFn(task);
+            }
+
+            return value;
           }
-
-          if (prev == 0 || next == 0) {
-            var isEmpty = {
-              microTask: counts['microTask'] > 0,
-              macroTask: counts['macroTask'] > 0,
-              eventTask: counts['eventTask'] > 0,
-              change: type
-            };
-            this.hasTask(this.zone, isEmpty);
+        }, {
+          key: "hasTask",
+          value: function hasTask(targetZone, isEmpty) {
+            // hasTask should not throw error so other ZoneDelegate
+            // can still trigger hasTask callback
+            try {
+              this._hasTaskZS && this._hasTaskZS.onHasTask(this._hasTaskDlgt, this._hasTaskCurrZone, targetZone, isEmpty);
+            } catch (err) {
+              this.handleError(targetZone, err);
+            }
           }
-        };
+        }, {
+          key: "_updateTaskCount",
+          value: function _updateTaskCount(type, count) {
+            var counts = this._taskCounts;
+            var prev = counts[type];
+            var next = counts[type] = prev + count;
+
+            if (next < 0) {
+              throw new Error('More tasks executed then were scheduled.');
+            }
+
+            if (prev == 0 || next == 0) {
+              var isEmpty = {
+                microTask: counts['microTask'] > 0,
+                macroTask: counts['macroTask'] > 0,
+                eventTask: counts['eventTask'] > 0,
+                change: type
+              };
+              this.hasTask(this.zone, isEmpty);
+            }
+          }
+        }]);
 
         return ZoneDelegate;
       }();
@@ -16719,6 +16746,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       /*#__PURE__*/
       function () {
         function ZoneTask(type, source, callback, options, scheduleFn, cancelFn) {
+          _classCallCheck(this, ZoneTask);
+
           this._zone = null;
           this.runCount = 0;
           this._zoneDelegates = null;
@@ -16740,64 +16769,47 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
         }
 
-        ZoneTask.invokeTask = function invokeTask(task, target, args) {
-          if (!task) {
-            task = this;
-          }
-
-          _numberOfNestedTaskFrames++;
-
-          try {
-            task.runCount++;
-            return task.zone.runTask(task, target, args);
-          } finally {
-            if (_numberOfNestedTaskFrames == 1) {
-              drainMicroTaskQueue();
-            }
-
-            _numberOfNestedTaskFrames--;
-          }
-        };
-
-        var _proto3 = ZoneTask.prototype;
-
-        _proto3.cancelScheduleRequest = function cancelScheduleRequest() {
-          this._transitionTo(notScheduled, scheduling);
-        };
-
-        _proto3._transitionTo = function _transitionTo(toState, fromState1, fromState2) {
-          if (this._state === fromState1 || this._state === fromState2) {
-            this._state = toState;
-
-            if (toState == notScheduled) {
-              this._zoneDelegates = null;
-            }
-          } else {
-            throw new Error(this.type + " '" + this.source + "': can not transition to '" + toState + "', expecting state '" + fromState1 + "'" + (fromState2 ? ' or \'' + fromState2 + '\'' : '') + ", was '" + this._state + "'.");
-          }
-        };
-
-        _proto3.toString = function toString() {
-          if (this.data && typeof this.data.handleId !== 'undefined') {
-            return this.data.handleId.toString();
-          } else {
-            return Object.prototype.toString.call(this);
-          }
-        } // add toJSON method to prevent cyclic error when
-        // call JSON.stringify(zoneTask)
-        ;
-
-        _proto3.toJSON = function toJSON() {
-          return {
-            type: this.type,
-            state: this.state,
-            source: this.source,
-            zone: this.zone.name,
-            runCount: this.runCount
-          };
-        };
-
         _createClass(ZoneTask, [{
+          key: "cancelScheduleRequest",
+          value: function cancelScheduleRequest() {
+            this._transitionTo(notScheduled, scheduling);
+          }
+        }, {
+          key: "_transitionTo",
+          value: function _transitionTo(toState, fromState1, fromState2) {
+            if (this._state === fromState1 || this._state === fromState2) {
+              this._state = toState;
+
+              if (toState == notScheduled) {
+                this._zoneDelegates = null;
+              }
+            } else {
+              throw new Error("".concat(this.type, " '").concat(this.source, "': can not transition to '").concat(toState, "', expecting state '").concat(fromState1, "'").concat(fromState2 ? ' or \'' + fromState2 + '\'' : '', ", was '").concat(this._state, "'."));
+            }
+          }
+        }, {
+          key: "toString",
+          value: function toString() {
+            if (this.data && typeof this.data.handleId !== 'undefined') {
+              return this.data.handleId.toString();
+            } else {
+              return Object.prototype.toString.call(this);
+            }
+          } // add toJSON method to prevent cyclic error when
+          // call JSON.stringify(zoneTask)
+
+        }, {
+          key: "toJSON",
+          value: function toJSON() {
+            return {
+              type: this.type,
+              state: this.state,
+              source: this.source,
+              zone: this.zone.name,
+              runCount: this.runCount
+            };
+          }
+        }, {
           key: "zone",
           get: function get() {
             return this._zone;
@@ -16806,6 +16818,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           key: "state",
           get: function get() {
             return this._state;
+          }
+        }], [{
+          key: "invokeTask",
+          value: function invokeTask(task, target, args) {
+            if (!task) {
+              task = this;
+            }
+
+            _numberOfNestedTaskFrames++;
+
+            try {
+              task.runCount++;
+              return task.zone.runTask(task, target, args);
+            } finally {
+              if (_numberOfNestedTaskFrames == 1) {
+                drainMicroTaskQueue();
+              }
+
+              _numberOfNestedTaskFrames--;
+            }
           }
         }]);
 
@@ -17281,6 +17313,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       /*#__PURE__*/
       function () {
         function ZoneAwarePromise(executor) {
+          _classCallCheck(this, ZoneAwarePromise);
+
           var promise = this;
 
           if (!(promise instanceof ZoneAwarePromise)) {
@@ -17297,156 +17331,175 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
         }
 
-        ZoneAwarePromise.toString = function toString() {
-          return ZONE_AWARE_PROMISE_TO_STRING;
-        };
-
-        ZoneAwarePromise.resolve = function resolve(value) {
-          return resolvePromise(new this(null), RESOLVED, value);
-        };
-
-        ZoneAwarePromise.reject = function reject(error) {
-          return resolvePromise(new this(null), REJECTED, error);
-        };
-
-        ZoneAwarePromise.race = function race(values) {
-          var resolve;
-          var reject;
-          var promise = new this(function (res, rej) {
-            resolve = res;
-            reject = rej;
-          });
-
-          function onResolve(value) {
-            resolve(value);
-          }
-
-          function onReject(error) {
-            reject(error);
-          }
-
-          for (var _iterator = values, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
-            var _ref;
-
-            if (_isArray) {
-              if (_i >= _iterator.length) break;
-              _ref = _iterator[_i++];
-            } else {
-              _i = _iterator.next();
-              if (_i.done) break;
-              _ref = _i.value;
-            }
-
-            var value = _ref;
-
-            if (!isThenable(value)) {
-              value = this.resolve(value);
-            }
-
-            value.then(onResolve, onReject);
-          }
-
-          return promise;
-        };
-
-        ZoneAwarePromise.all = function all(values) {
-          var _this = this;
-
-          var resolve;
-          var reject;
-          var promise = new this(function (res, rej) {
-            resolve = res;
-            reject = rej;
-          }); // Start at 2 to prevent prematurely resolving if .then is called immediately.
-
-          var unresolvedCount = 2;
-          var valueIndex = 0;
-          var resolvedValues = [];
-
-          var _loop2 = function _loop2() {
-            if (_isArray2) {
-              if (_i2 >= _iterator2.length) return "break";
-              _ref2 = _iterator2[_i2++];
-            } else {
-              _i2 = _iterator2.next();
-              if (_i2.done) return "break";
-              _ref2 = _i2.value;
-            }
-
-            var value = _ref2;
-
-            if (!isThenable(value)) {
-              value = _this.resolve(value);
-            }
-
-            var curValueIndex = valueIndex;
-            value.then(function (value) {
-              resolvedValues[curValueIndex] = value;
-              unresolvedCount--;
-
-              if (unresolvedCount === 0) {
-                resolve(resolvedValues);
-              }
-            }, reject);
-            unresolvedCount++;
-            valueIndex++;
-          };
-
-          for (var _iterator2 = values, _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();;) {
-            var _ref2;
-
-            var _ret = _loop2();
-
-            if (_ret === "break") break;
-          } // Make the unresolvedCount zero-based again.
-
-
-          unresolvedCount -= 2;
-
-          if (unresolvedCount === 0) {
-            resolve(resolvedValues);
-          }
-
-          return promise;
-        };
-
-        var _proto4 = ZoneAwarePromise.prototype;
-
-        _proto4.then = function then(onFulfilled, onRejected) {
-          var chainPromise = new this.constructor(null);
-          var zone = Zone.current;
-
-          if (this[symbolState] == UNRESOLVED) {
-            this[symbolValue].push(zone, chainPromise, onFulfilled, onRejected);
-          } else {
-            scheduleResolveOrReject(this, zone, chainPromise, onFulfilled, onRejected);
-          }
-
-          return chainPromise;
-        };
-
-        _proto4.catch = function _catch(onRejected) {
-          return this.then(null, onRejected);
-        };
-
-        _proto4.finally = function _finally(onFinally) {
-          var chainPromise = new this.constructor(null);
-          chainPromise[symbolFinally] = symbolFinally;
-          var zone = Zone.current;
-
-          if (this[symbolState] == UNRESOLVED) {
-            this[symbolValue].push(zone, chainPromise, onFinally, onFinally);
-          } else {
-            scheduleResolveOrReject(this, zone, chainPromise, onFinally, onFinally);
-          }
-
-          return chainPromise;
-        };
-
         _createClass(ZoneAwarePromise, [{
+          key: "then",
+          value: function then(onFulfilled, onRejected) {
+            var chainPromise = new this.constructor(null);
+            var zone = Zone.current;
+
+            if (this[symbolState] == UNRESOLVED) {
+              this[symbolValue].push(zone, chainPromise, onFulfilled, onRejected);
+            } else {
+              scheduleResolveOrReject(this, zone, chainPromise, onFulfilled, onRejected);
+            }
+
+            return chainPromise;
+          }
+        }, {
+          key: "catch",
+          value: function _catch(onRejected) {
+            return this.then(null, onRejected);
+          }
+        }, {
+          key: "finally",
+          value: function _finally(onFinally) {
+            var chainPromise = new this.constructor(null);
+            chainPromise[symbolFinally] = symbolFinally;
+            var zone = Zone.current;
+
+            if (this[symbolState] == UNRESOLVED) {
+              this[symbolValue].push(zone, chainPromise, onFinally, onFinally);
+            } else {
+              scheduleResolveOrReject(this, zone, chainPromise, onFinally, onFinally);
+            }
+
+            return chainPromise;
+          }
+        }, {
           key: Symbol.toStringTag,
           get: function get() {
             return 'Promise';
+          }
+        }], [{
+          key: "toString",
+          value: function toString() {
+            return ZONE_AWARE_PROMISE_TO_STRING;
+          }
+        }, {
+          key: "resolve",
+          value: function resolve(value) {
+            return resolvePromise(new this(null), RESOLVED, value);
+          }
+        }, {
+          key: "reject",
+          value: function reject(error) {
+            return resolvePromise(new this(null), REJECTED, error);
+          }
+        }, {
+          key: "race",
+          value: function race(values) {
+            var resolve;
+            var reject;
+            var promise = new this(function (res, rej) {
+              resolve = res;
+              reject = rej;
+            });
+
+            function onResolve(value) {
+              resolve(value);
+            }
+
+            function onReject(error) {
+              reject(error);
+            }
+
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+              for (var _iterator = values[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                var value = _step.value;
+
+                if (!isThenable(value)) {
+                  value = this.resolve(value);
+                }
+
+                value.then(onResolve, onReject);
+              }
+            } catch (err) {
+              _didIteratorError = true;
+              _iteratorError = err;
+            } finally {
+              try {
+                if (!_iteratorNormalCompletion && _iterator.return != null) {
+                  _iterator.return();
+                }
+              } finally {
+                if (_didIteratorError) {
+                  throw _iteratorError;
+                }
+              }
+            }
+
+            return promise;
+          }
+        }, {
+          key: "all",
+          value: function all(values) {
+            var _this = this;
+
+            var resolve;
+            var reject;
+            var promise = new this(function (res, rej) {
+              resolve = res;
+              reject = rej;
+            }); // Start at 2 to prevent prematurely resolving if .then is called immediately.
+
+            var unresolvedCount = 2;
+            var valueIndex = 0;
+            var resolvedValues = [];
+            var _iteratorNormalCompletion2 = true;
+            var _didIteratorError2 = false;
+            var _iteratorError2 = undefined;
+
+            try {
+              var _loop2 = function _loop2() {
+                var value = _step2.value;
+
+                if (!isThenable(value)) {
+                  value = _this.resolve(value);
+                }
+
+                var curValueIndex = valueIndex;
+                value.then(function (value) {
+                  resolvedValues[curValueIndex] = value;
+                  unresolvedCount--;
+
+                  if (unresolvedCount === 0) {
+                    resolve(resolvedValues);
+                  }
+                }, reject);
+                unresolvedCount++;
+                valueIndex++;
+              };
+
+              for (var _iterator2 = values[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                _loop2();
+              } // Make the unresolvedCount zero-based again.
+
+            } catch (err) {
+              _didIteratorError2 = true;
+              _iteratorError2 = err;
+            } finally {
+              try {
+                if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
+                  _iterator2.return();
+                }
+              } finally {
+                if (_didIteratorError2) {
+                  throw _iteratorError2;
+                }
+              }
+            }
+
+            unresolvedCount -= 2;
+
+            if (unresolvedCount === 0) {
+              resolve(resolvedValues);
+            }
+
+            return promise;
           }
         }]);
 
@@ -17680,9 +17733,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       };
 
       for (var i = 0; i < fnNames.length; i++) {
-        var _ret2 = _loop3(i);
+        var _ret = _loop3(i);
 
-        if (_ret2 === "continue") continue;
+        if (_ret === "continue") continue;
       }
     }
 
@@ -18472,15 +18525,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         var blackListedEvents = Zone[Zone.__symbol__('BLACK_LISTED_EVENTS')];
 
-        var makeAddListener = function makeAddListener(nativeListener, addSource, customScheduleFn, customCancelFn, returnTarget, prepend) {
-          if (returnTarget === void 0) {
-            returnTarget = false;
-          }
-
-          if (prepend === void 0) {
-            prepend = false;
-          }
-
+        var makeAddListener = function makeAddListener(nativeListener, addSource, customScheduleFn, customCancelFn) {
+          var returnTarget = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
+          var prepend = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : false;
           return function () {
             var target = this || _global;
             var eventName = arguments[0];
@@ -18563,8 +18610,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               isExisting = true;
 
               if (checkDuplicate) {
-                for (var _i3 = 0; _i3 < existingTasks.length; _i3++) {
-                  if (compare(existingTasks[_i3], delegate)) {
+                for (var _i = 0; _i < existingTasks.length; _i++) {
+                  if (compare(existingTasks[_i], delegate)) {
                     // same callback, same capture, same event name, just return
                     return;
                   }
@@ -18773,8 +18820,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               if (tasks) {
                 var removeTasks = tasks.slice();
 
-                for (var _i4 = 0; _i4 < removeTasks.length; _i4++) {
-                  var task = removeTasks[_i4];
+                for (var _i2 = 0; _i2 < removeTasks.length; _i2++) {
+                  var task = removeTasks[_i2];
                   var delegate = task.originalDelegate ? task.originalDelegate : task.callback;
                   this[REMOVE_EVENT_LISTENER].call(this, eventName, delegate, task.options);
                 }
@@ -18783,8 +18830,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               if (captureTasks) {
                 var _removeTasks = captureTasks.slice();
 
-                for (var _i5 = 0; _i5 < _removeTasks.length; _i5++) {
-                  var _task = _removeTasks[_i5];
+                for (var _i3 = 0; _i3 < _removeTasks.length; _i3++) {
+                  var _task = _removeTasks[_i3];
 
                   var _delegate2 = _task.originalDelegate ? _task.originalDelegate : _task.callback;
 
@@ -18880,7 +18927,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       target[method] = function (name, opts, options) {
         if (opts && opts.prototype) {
           callbacks.forEach(function (callback) {
-            var source = targetName + "." + method + "::" + callback;
+            var source = "".concat(targetName, ".").concat(method, "::") + callback;
             var prototype = opts.prototype;
 
             if (prototype.hasOwnProperty(callback)) {
@@ -19027,7 +19074,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               descJson = desc.toString();
             }
 
-            console.log("Attempting to configure '" + prop + "' with descriptor '" + descJson + "' on object '" + obj + "' and got error, giving up: " + error);
+            console.log("Attempting to configure '".concat(prop, "' with descriptor '").concat(descJson, "' on object '").concat(obj, "' and got error, giving up: ").concat(error));
           }
         } else {
           throw error;
@@ -20268,7 +20315,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   /***/
   function _(module, exports, __webpack_require__) {
     __webpack_require__(
-    /*! C:\Users\sergi\OneDrive\Documentos\GitHub\proyectoiso\src\main\front-end\node_modules\@angular-devkit\build-angular\src\angular-cli-files\models\es5-polyfills.js */
+    /*! D:\Eclipse Procesos\proyectoiso\src\main\front-end\node_modules\@angular-devkit\build-angular\src\angular-cli-files\models\es5-polyfills.js */
     "./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/es5-polyfills.js");
 
     __webpack_require__(
@@ -20276,15 +20323,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/zone.js/dist/zone-legacy.js");
 
     __webpack_require__(
-    /*! C:\Users\sergi\OneDrive\Documentos\GitHub\proyectoiso\src\main\front-end\node_modules\@angular-devkit\build-angular\src\angular-cli-files\models\jit-polyfills.js */
+    /*! D:\Eclipse Procesos\proyectoiso\src\main\front-end\node_modules\@angular-devkit\build-angular\src\angular-cli-files\models\jit-polyfills.js */
     "./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js");
 
     __webpack_require__(
-    /*! C:\Users\sergi\OneDrive\Documentos\GitHub\proyectoiso\src\main\front-end\node_modules\@angular-devkit\build-angular\src\angular-cli-files\models\es5-jit-polyfills.js */
+    /*! D:\Eclipse Procesos\proyectoiso\src\main\front-end\node_modules\@angular-devkit\build-angular\src\angular-cli-files\models\es5-jit-polyfills.js */
     "./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/es5-jit-polyfills.js");
 
     module.exports = __webpack_require__(
-    /*! C:\Users\sergi\OneDrive\Documentos\GitHub\proyectoiso\src\main\front-end\src\polyfills.ts */
+    /*! D:\Eclipse Procesos\proyectoiso\src\main\front-end\src\polyfills.ts */
     "./src/polyfills.ts");
     /***/
   }
