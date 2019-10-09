@@ -5,4 +5,4 @@ deploy:
   provider: heroku
   api_key: 
     secure: $HEROKU
-  app: proyecto-iso
+  app: esalud
