@@ -1,4 +1,4 @@
-package es.e3corp.proyecto.model;
+package es.e3corp.eSalud.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

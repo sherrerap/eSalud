@@ -1,6 +1,6 @@
-package es.e3corp.proyecto.repository;
+package es.e3corp.eSalud.repository;
 
-import es.e3corp.proyecto.model.*;
+import es.e3corp.eSalud.model.*;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
