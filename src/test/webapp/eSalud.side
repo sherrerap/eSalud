@@ -1,7 +1,7 @@
 {
   "id": "370ecf69-8ed9-472e-a924-3dad0b356f0a",
   "version": "2.0",
-  "name": "proyectoiso",
+  "name": "eSalud",
   "url": "http://localhost:4200/citas",
   "tests": [{
     "id": "4b37f916-19ca-4ceb-be1b-ef777c82a25e",

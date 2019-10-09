@@ -1,4 +1,4 @@
-package es.e3corp.proyecto;
+package es.e3corp.eSalud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

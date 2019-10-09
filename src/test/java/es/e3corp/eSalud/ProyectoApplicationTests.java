@@ -1,4 +1,4 @@
-package es.e3corp.proyecto;
+package es.e3corp.eSalud;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
