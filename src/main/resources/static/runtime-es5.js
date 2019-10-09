@@ -182,7 +182,7 @@
   function jsonpScriptSrc(chunkId) {
     /******/
     return __webpack_require__.p + "" + ({
-      "auth-auth-module": "auth-auth-module"
+      "components-auth-auth-module": "components-auth-auth-module"
     }[chunkId] || chunkId) +    "-es5.js";
     /******/
   }

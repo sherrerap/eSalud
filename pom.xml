@@ -11,10 +11,10 @@
 	</parent>
 
 	<groupId>es.e3corp</groupId>
-	<artifactId>proyecto-iso</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>eSalud</artifactId>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>proyecto</name>
+	<name>eSalud</name>
 	<description>Proyecto de ISO</description>
 
 	<properties>
@@ -62,7 +62,7 @@
 					<archive>
 						<manifest>
 							<!-- <addClasspath>true</addClasspath> -->
-							<mainClass>es.e3corp.proyecto.ProyectoApplication</mainClass>
+							<mainClass>es.e3corp.eSalud.ProyectoApplication</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

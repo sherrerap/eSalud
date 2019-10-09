@@ -16,7 +16,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /***/
   function $$_lazy_route_resourceLazyRecursive(module, exports, __webpack_require__) {
     var map = {
-      "./auth/auth.module": ["./src/app/auth/auth.module.ts", "auth-auth-module"]
+      "./components/auth/auth.module": ["./src/app/components/auth/auth.module.ts", "components-auth-auth-module"]
     };
 
     function webpackAsyncContext(req) {
@@ -60,47 +60,47 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<router-outlet></router-outlet>\n";
+    __webpack_exports__["default"] = "<router-outlet></router-outlet>\r\n";
     /***/
   },
 
   /***/
-  "./node_modules/raw-loader/dist/cjs.js!./src/app/citas/citas.component.html":
-  /*!**********************************************************************************!*\
-    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/citas/citas.component.html ***!
-    \**********************************************************************************/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/components/listado-citas/listado-citas.component.html":
+  /*!*************************************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/listado-citas/listado-citas.component.html ***!
+    \*************************************************************************************************************/
 
   /*! exports provided: default */
 
   /***/
-  function node_modulesRawLoaderDistCjsJsSrcAppCitasCitasComponentHtml(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesRawLoaderDistCjsJsSrcAppComponentsListadoCitasListadoCitasComponentHtml(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"citas\">\n\n    <head>\n        <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\" integrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\" />\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\" />\n    </head>\n\n    <body>\n        <div class=\"container-fluid\">\n            <div class=\"container-fluid\">\n                <div class=\"row panel_superior\" style=\"border:solid;\">\n                    <div class=\"col-sm-3\">\n                       <img src= \"/assets/img/SESCAM1.png\" class=\"SescamLogo\">\n                    </div>\n                    <div class=\"col-sm-9\">\n                        <table class=\"table-responsive\" style=\"padding-top:20px;\">\n                            <tr>\n                                <td><label style=\"font-size:20px;\" for=\"Name\">Tarjeta Sanitaria:</label></td>\n                                <td><label style=\"font-size:20px;\" for=\"Name\">PDS684893554987M</label></td>\n                            </tr>\n                            <tr>\n                                <td><label style=\"font-size:20px;\" for=\"Name\">Usuario:</label></td>\n                                <td><label style=\"font-size:20px;\" for=\"Name\">Josefina Delgado Olmo</label></td>\n                            </tr>\n                        </table>\n                    </div>\n                </div>\n            </div>\n            <div id=\"sidebar\">\n                <div class=\"toggle-btn\">\n\n                </div>\n            </div>\n            <div class=\"container col-4 panel_lateral\">\n                <button type=\"button\" class=\"btn-lg btn-block btn-secondary\">Solicitar cita</button>\n                <button type=\"button\" class=\"btn-lg btn-block btn-secondary\">Modificar cita</button>\n                <button type=\"button\" class=\"btn-lg btn-block btn-secondary\">Anular cita</button>\n            </div>\n        </div>\n        <div class=\"container-fluid col-8 panel_central\">\n            <div class=\"table-responsive\">\n                <td><label style=\"font-size:20px;\" for=\"Name\">Citas Pendientes:</label></td>\n                <table class=\"table table-bordered table-hover\">\n                    <thead>\n                        <tr>\n                            <th scope=\"col\">#</th>\n                            <th scope=\"col\">Cita</th>\n                            <th scope=\"col\">Dia</th>\n                            <th scope=\"col\">Hora</th>\n                            <th scope=\"col\">Centro</th>\n                        </tr>\n                    </thead>\n                    <tbody>\n                        <tr>\n                            <th scope=\"row\">1</th>\n                            <td>Revisión rutinaria</td>\n                            <td>16/10/2019</td>\n                            <td>12:50</td>\n                            <td>Hospital de puertollano</td>\n                        </tr>\n                        <tr>\n                            <th scope=\"row\">2</th>\n                            <td>Recogida de resultados</td>\n                            <td>24/12/2109</td>\n                            <td>20:50</td>\n                            <td>Hospital general de ciudad real</td>\n                        </tr>\n                        <tr>\n                            <th scope=\"row\">3</th>\n                            <td>Analisis de sangre</td>\n                            <td>20/11/2019</td>\n                            <td>13:10</td>\n                            <td>Hospital general de ciudad real</td>\n                        </tr>\n                    </tbody>\n                </table>\n            </div>\n\n        </div>\n        <script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\" integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\" crossorigin=\"anonymous\"></script>\n        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js\" integrity=\"sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1\" crossorigin=\"anonymous\"></script>\n        <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\" integrity=\"sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM\" crossorigin=\"anonymous\"></script>\n    </body>\n</div>";
+    __webpack_exports__["default"] = "<div class=\"container-fluid col-8 panel_central\">\r\n    <div class=\"table-responsive\">\r\n        <td><label style=\"font-size:20px;\" for=\"Name\">Citas Pendientes:</label></td>\r\n        <table class=\"table table-bordered table-hover\">\r\n            <thead>\r\n                <tr>\r\n                    <th scope=\"col\">#</th>\r\n                    <th scope=\"col\">Cita</th>\r\n                    <th scope=\"col\">Dia</th>\r\n                    <th scope=\"col\">Hora</th>\r\n                    <th scope=\"col\">Centro</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr>\r\n                    <th scope=\"row\">1</th>\r\n                    <td>Revisión rutinaria</td>\r\n                    <td>16/10/2019</td>\r\n                    <td>12:50</td>\r\n                    <td>Hospital de puertollano</td>\r\n                </tr>\r\n                <tr>\r\n                    <th scope=\"row\">2</th>\r\n                    <td>Recogida de resultados</td>\r\n                    <td>24/12/2109</td>\r\n                    <td>20:50</td>\r\n                    <td>Hospital general de ciudad real</td>\r\n                </tr>\r\n                <tr>\r\n                    <th scope=\"row\">3</th>\r\n                    <td>Analisis de sangre</td>\r\n                    <td>20/11/2019</td>\r\n                    <td>13:10</td>\r\n                    <td>Hospital general de ciudad real</td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>";
     /***/
   },
 
   /***/
-  "./node_modules/raw-loader/dist/cjs.js!./src/app/page-not-found/page-not-found.component.html":
-  /*!****************************************************************************************************!*\
-    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/page-not-found/page-not-found.component.html ***!
-    \****************************************************************************************************/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/components/sidenav/sidenav.component.html":
+  /*!*************************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/sidenav/sidenav.component.html ***!
+    \*************************************************************************************************/
 
   /*! exports provided: default */
 
   /***/
-  function node_modulesRawLoaderDistCjsJsSrcAppPageNotFoundPageNotFoundComponentHtml(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesRawLoaderDistCjsJsSrcAppComponentsSidenavSidenavComponentHtml(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<p>ERROR 404: Page not found.</p>\n";
+    __webpack_exports__["default"] = "<div class=\"example-container\" [class.example-is-mobile]=\"mobileQuery.matches\" *ngIf=\"shouldRun\">\r\n    <mat-toolbar color=\"primary\" class=\"example-toolbar\">\r\n      <button mat-icon-button (click)=\"snav.toggle()\" style=\"border: 0ch\">\r\n        <mat-icon>menu</mat-icon></button>  \r\n      <h1 class=\"example-app-name\">Aplicacion de citas</h1>\r\n\r\n    </mat-toolbar>\r\n    <mat-sidenav-container class=\"example-sidenav-container\"\r\n                           [style.marginTop.px]=\"mobileQuery.matches ? 56 : 0\" >\r\n      <mat-sidenav #snav [mode]=\"mobileQuery.matches ? 'over' : 'side'\"\r\n                   [fixedInViewport]=\"mobileQuery.matches\" \r\n                   fixedTopGap=\"56\"\r\n                   [opened]=\"true\">\r\n        <mat-nav-list>\r\n          <a mat-list-item routerLink=\"nav.route\" *ngFor=\"let nav of fillerNav\">\r\n              <mat-icon>{{nav.icon}}</mat-icon>\r\n            {{nav.name}}</a>\r\n        </mat-nav-list>\r\n      </mat-sidenav>\r\n  \r\n      <mat-sidenav-content>\r\n          <router-outlet></router-outlet>\r\n      </mat-sidenav-content>\r\n\r\n    </mat-sidenav-container>\r\n  </div>\r\n  \r\n  <div *ngIf=\"!shouldRun\">Please open on Stackblitz to see result</div>\r\n  ";
     /***/
   },
 
@@ -702,15 +702,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./page-not-found/page-not-found.component */
-    "./src/app/page-not-found/page-not-found.component.ts");
+    var _components_sidenav_sidenav_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./components/sidenav/sidenav.component */
+    "./src/app/components/sidenav/sidenav.component.ts");
     /* harmony import */
 
 
-    var _citas_citas_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! ./citas/citas.component */
-    "./src/app/citas/citas.component.ts");
+    var _components_listado_citas_listado_citas_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ./components/listado-citas/listado-citas.component */
+    "./src/app/components/listado-citas/listado-citas.component.ts");
 
     var routes = [{
       path: '',
@@ -718,13 +718,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       pathMatch: 'full'
     }, {
       path: 'auth',
-      loadChildren: './auth/auth.module#AuthModule'
+      loadChildren: './components/auth/auth.module#AuthModule'
     }, {
       path: 'citas',
-      component: _citas_citas_component__WEBPACK_IMPORTED_MODULE_4__["CitasComponent"]
-    }, {
-      path: '**',
-      component: _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_3__["PageNotFoundComponent"]
+      component: _components_sidenav_sidenav_component__WEBPACK_IMPORTED_MODULE_3__["SidenavComponent"],
+      children: [{
+        path: '',
+        component: _components_listado_citas_listado_citas_component__WEBPACK_IMPORTED_MODULE_4__["ListadoCitasComponent"]
+      }]
     }];
 
     var AppRoutingModule = function AppRoutingModule() {
@@ -732,9 +733,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-      imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes, {
-        useHash: true
-      })],
+      imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes)],
       exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
     })], AppRoutingModule);
     /***/
@@ -795,7 +794,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var AppComponent = function AppComponent() {
       _classCallCheck(this, AppComponent);
 
-      this.title = 'front-end';
+      this.title = 'pruebaBarra';
     };
 
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -850,79 +849,103 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./app.component */
-    "./src/app/app.component.ts");
-    /* harmony import */
-
-
-    var _app_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _app_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! ./app-routing.module */
     "./src/app/app-routing.module.ts");
     /* harmony import */
 
 
-    var _citas_citas_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-    /*! ./citas/citas.component */
-    "./src/app/citas/citas.component.ts");
+    var _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/material/sidenav */
+    "./node_modules/@angular/material/esm2015/sidenav.js");
     /* harmony import */
 
 
-    var _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-    /*! ./page-not-found/page-not-found.component */
-    "./src/app/page-not-found/page-not-found.component.ts");
+    var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @angular/platform-browser/animations */
+    "./node_modules/@angular/platform-browser/fesm2015/animations.js");
+    /* harmony import */
+
+
+    var _angular_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @angular/material */
+    "./node_modules/@angular/material/esm2015/material.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _app_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! ./app.component */
+    "./src/app/app.component.ts");
+    /* harmony import */
+
+
+    var _components_sidenav_sidenav_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! ./components/sidenav/sidenav.component */
+    "./src/app/components/sidenav/sidenav.component.ts");
+    /* harmony import */
+
+
+    var _components_listado_citas_listado_citas_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! ./components/listado-citas/listado-citas.component */
+    "./src/app/components/listado-citas/listado-citas.component.ts");
 
     var AppModule = function AppModule() {
       _classCallCheck(this, AppModule);
     };
 
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
-      declarations: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"], _citas_citas_component__WEBPACK_IMPORTED_MODULE_5__["CitasComponent"], _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_6__["PageNotFoundComponent"]],
-      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"]],
+      declarations: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"], _components_sidenav_sidenav_component__WEBPACK_IMPORTED_MODULE_9__["SidenavComponent"], _components_listado_citas_listado_citas_component__WEBPACK_IMPORTED_MODULE_10__["ListadoCitasComponent"]],
+      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__["BrowserAnimationsModule"], _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_4__["MatSidenavModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatListModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatIconModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatToolbarModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["ReactiveFormsModule"]],
       providers: [],
-      bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
+      bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
     })], AppModule);
     /***/
   },
 
   /***/
-  "./src/app/citas/citas.component.css":
-  /*!*******************************************!*\
-    !*** ./src/app/citas/citas.component.css ***!
-    \*******************************************/
+  "./src/app/components/listado-citas/listado-citas.component.css":
+  /*!**********************************************************************!*\
+    !*** ./src/app/components/listado-citas/listado-citas.component.css ***!
+    \**********************************************************************/
 
   /*! exports provided: default */
 
   /***/
-  function srcAppCitasCitasComponentCss(module, __webpack_exports__, __webpack_require__) {
+  function srcAppComponentsListadoCitasListadoCitasComponentCss(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "\n.panel_superior {\n    background:#23C185;\n    height: 125px;\n    width: 100%;\n    border-color: black\n}\n\n.panel_lateral {\n    background: #23C185;\n    width: 15%;\n    position: absolute;\n    height: 600px;\n    align-items: center;\n    padding-left: 0px;\n    margin-left: 0px;\n}\n\n.panel_lateral {\n    border-right: 1.5px solid black;\n    border-left: 1.5px solid black;\n    border-bottom: 1.5px solid black\n}\n\n.panel_central {\n    width: 85%;\n    height: 600px;\n    ;\n}\n\n.SescamLogo{\n\twidth: 205px;\n\theight: 185px;\n}\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY2l0YXMvY2l0YXMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0E7SUFDSSxrQkFBa0I7SUFDbEIsYUFBYTtJQUNiLFdBQVc7SUFDWDtBQUNKOztBQUVBO0lBQ0ksbUJBQW1CO0lBQ25CLFVBQVU7SUFDVixrQkFBa0I7SUFDbEIsYUFBYTtJQUNiLG1CQUFtQjtJQUNuQixpQkFBaUI7SUFDakIsZ0JBQWdCO0FBQ3BCOztBQUVBO0lBQ0ksK0JBQStCO0lBQy9CLDhCQUE4QjtJQUM5QjtBQUNKOztBQUVBO0lBQ0ksVUFBVTtJQUNWLGFBQWE7O0FBRWpCOztBQUVBO0NBQ0MsWUFBWTtDQUNaLGFBQWE7QUFDZCIsImZpbGUiOiJzcmMvYXBwL2NpdGFzL2NpdGFzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbi5wYW5lbF9zdXBlcmlvciB7XG4gICAgYmFja2dyb3VuZDojMjNDMTg1O1xuICAgIGhlaWdodDogMTI1cHg7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgYm9yZGVyLWNvbG9yOiBibGFja1xufVxuXG4ucGFuZWxfbGF0ZXJhbCB7XG4gICAgYmFja2dyb3VuZDogIzIzQzE4NTtcbiAgICB3aWR0aDogMTUlO1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICBoZWlnaHQ6IDYwMHB4O1xuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgcGFkZGluZy1sZWZ0OiAwcHg7XG4gICAgbWFyZ2luLWxlZnQ6IDBweDtcbn1cblxuLnBhbmVsX2xhdGVyYWwge1xuICAgIGJvcmRlci1yaWdodDogMS41cHggc29saWQgYmxhY2s7XG4gICAgYm9yZGVyLWxlZnQ6IDEuNXB4IHNvbGlkIGJsYWNrO1xuICAgIGJvcmRlci1ib3R0b206IDEuNXB4IHNvbGlkIGJsYWNrXG59XG5cbi5wYW5lbF9jZW50cmFsIHtcbiAgICB3aWR0aDogODUlO1xuICAgIGhlaWdodDogNjAwcHg7XG4gICAgO1xufVxuXG4uU2VzY2FtTG9nb3tcblx0d2lkdGg6IDIwNXB4O1xuXHRoZWlnaHQ6IDE4NXB4O1xufVxuXG4iXX0= */";
+    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbGlzdGFkby1jaXRhcy9saXN0YWRvLWNpdGFzLmNvbXBvbmVudC5jc3MifQ== */";
     /***/
   },
 
   /***/
-  "./src/app/citas/citas.component.ts":
-  /*!******************************************!*\
-    !*** ./src/app/citas/citas.component.ts ***!
-    \******************************************/
+  "./src/app/components/listado-citas/listado-citas.component.ts":
+  /*!*********************************************************************!*\
+    !*** ./src/app/components/listado-citas/listado-citas.component.ts ***!
+    \*********************************************************************/
 
-  /*! exports provided: CitasComponent */
+  /*! exports provided: ListadoCitasComponent */
 
   /***/
-  function srcAppCitasCitasComponentTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppComponentsListadoCitasListadoCitasComponentTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "CitasComponent", function () {
-      return CitasComponent;
+    __webpack_require__.d(__webpack_exports__, "ListadoCitasComponent", function () {
+      return ListadoCitasComponent;
     });
     /* harmony import */
 
@@ -937,71 +960,71 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! @angular/core */
     "./node_modules/@angular/core/fesm2015/core.js");
 
-    var CitasComponent =
+    var ListadoCitasComponent =
     /*#__PURE__*/
     function () {
-      function CitasComponent() {
-        _classCallCheck(this, CitasComponent);
+      function ListadoCitasComponent() {
+        _classCallCheck(this, ListadoCitasComponent);
       }
 
-      _createClass(CitasComponent, [{
+      _createClass(ListadoCitasComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {}
       }]);
 
-      return CitasComponent;
+      return ListadoCitasComponent;
     }();
 
-    CitasComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-      selector: 'app-citas',
+    ListadoCitasComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'app-listado-citas',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
-      /*! raw-loader!./citas.component.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/citas/citas.component.html")).default,
+      /*! raw-loader!./listado-citas.component.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/components/listado-citas/listado-citas.component.html")).default,
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
-      /*! ./citas.component.css */
-      "./src/app/citas/citas.component.css")).default]
-    })], CitasComponent);
+      /*! ./listado-citas.component.css */
+      "./src/app/components/listado-citas/listado-citas.component.css")).default]
+    })], ListadoCitasComponent);
     /***/
   },
 
   /***/
-  "./src/app/page-not-found/page-not-found.component.css":
-  /*!*************************************************************!*\
-    !*** ./src/app/page-not-found/page-not-found.component.css ***!
-    \*************************************************************/
+  "./src/app/components/sidenav/sidenav.component.css":
+  /*!**********************************************************!*\
+    !*** ./src/app/components/sidenav/sidenav.component.css ***!
+    \**********************************************************/
 
   /*! exports provided: default */
 
   /***/
-  function srcAppPageNotFoundPageNotFoundComponentCss(module, __webpack_exports__, __webpack_require__) {
+  function srcAppComponentsSidenavSidenavComponentCss(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2Utbm90LWZvdW5kL3BhZ2Utbm90LWZvdW5kLmNvbXBvbmVudC5jc3MifQ== */";
+    __webpack_exports__["default"] = ".example-container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    background: #23C185;\r\n  }\r\n .mat-toolbar.mat-primary{\r\n  background: #23C185;\r\n  color: #fff;\r\n }\r\n .example-is-mobile .example-toolbar {\r\n    position: fixed;\r\n    /* Make sure the toolbar will stay on top of the content as it scrolls past. */\r\n    z-index: 2;\r\n    width: 60%;\r\n  }\r\n .mat-icon{\r\n  position: relative;\r\n}\r\n h1.example-app-name {\r\n    margin-left: 8px;\r\n  }\r\n .example-sidenav-container {\r\n    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This\r\n       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */\r\n    flex: 1;\r\n\r\n  }\r\n .mat-sidenav{\r\n    background: rgb(241, 241, 241);\r\n  }\r\n .example-is-mobile .example-sidenav-container {\r\n    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the\r\n       `<body>` to be our scrolling element for mobile layouts. */\r\n    flex: 1 0 auto;\r\n\r\n  }\r\n\r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zaWRlbmF2L3NpZGVuYXYuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGFBQWE7SUFDYixzQkFBc0I7SUFDdEIsa0JBQWtCO0lBQ2xCLE1BQU07SUFDTixTQUFTO0lBQ1QsT0FBTztJQUNQLFFBQVE7SUFDUixtQkFBbUI7RUFDckI7Q0FDRDtFQUNDLG1CQUFtQjtFQUNuQixXQUFXO0NBQ1o7Q0FDQztJQUNFLGVBQWU7SUFDZiw4RUFBOEU7SUFDOUUsVUFBVTtJQUNWLFVBQVU7RUFDWjtDQUNGO0VBQ0Usa0JBQWtCO0FBQ3BCO0NBR0U7SUFDRSxnQkFBZ0I7RUFDbEI7Q0FFQTtJQUNFOzRGQUN3RjtJQUN4RixPQUFPOztFQUVUO0NBQ0E7SUFDRSw4QkFBOEI7RUFDaEM7Q0FFQTtJQUNFO2lFQUM2RDtJQUM3RCxjQUFjOztFQUVoQiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvc2lkZW5hdi9zaWRlbmF2LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhhbXBsZS1jb250YWluZXIge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICB0b3A6IDA7XHJcbiAgICBib3R0b206IDA7XHJcbiAgICBsZWZ0OiAwO1xyXG4gICAgcmlnaHQ6IDA7XHJcbiAgICBiYWNrZ3JvdW5kOiAjMjNDMTg1O1xyXG4gIH1cclxuIC5tYXQtdG9vbGJhci5tYXQtcHJpbWFyeXtcclxuICBiYWNrZ3JvdW5kOiAjMjNDMTg1O1xyXG4gIGNvbG9yOiAjZmZmO1xyXG4gfVxyXG4gIC5leGFtcGxlLWlzLW1vYmlsZSAuZXhhbXBsZS10b29sYmFyIHtcclxuICAgIHBvc2l0aW9uOiBmaXhlZDtcclxuICAgIC8qIE1ha2Ugc3VyZSB0aGUgdG9vbGJhciB3aWxsIHN0YXkgb24gdG9wIG9mIHRoZSBjb250ZW50IGFzIGl0IHNjcm9sbHMgcGFzdC4gKi9cclxuICAgIHotaW5kZXg6IDI7XHJcbiAgICB3aWR0aDogNjAlO1xyXG4gIH1cclxuLm1hdC1pY29ue1xyXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxufVxyXG5cclxuXHJcbiAgaDEuZXhhbXBsZS1hcHAtbmFtZSB7XHJcbiAgICBtYXJnaW4tbGVmdDogOHB4O1xyXG4gIH1cclxuIFxyXG4gIC5leGFtcGxlLXNpZGVuYXYtY29udGFpbmVyIHtcclxuICAgIC8qIFdoZW4gdGhlIHNpZGVuYXYgaXMgbm90IGZpeGVkLCBzdHJldGNoIHRoZSBzaWRlbmF2IGNvbnRhaW5lciB0byBmaWxsIHRoZSBhdmFpbGFibGUgc3BhY2UuIFRoaXNcclxuICAgICAgIGNhdXNlcyBgPG1hdC1zaWRlbmF2LWNvbnRlbnQ+YCB0byBhY3QgYXMgb3VyIHNjcm9sbGluZyBlbGVtZW50IGZvciBkZXNrdG9wIGxheW91dHMuICovXHJcbiAgICBmbGV4OiAxO1xyXG5cclxuICB9XHJcbiAgLm1hdC1zaWRlbmF2e1xyXG4gICAgYmFja2dyb3VuZDogcmdiKDI0MSwgMjQxLCAyNDEpO1xyXG4gIH1cclxuICBcclxuICAuZXhhbXBsZS1pcy1tb2JpbGUgLmV4YW1wbGUtc2lkZW5hdi1jb250YWluZXIge1xyXG4gICAgLyogV2hlbiB0aGUgc2lkZW5hdiBpcyBmaXhlZCwgZG9uJ3QgY29uc3RyYWluIHRoZSBoZWlnaHQgb2YgdGhlIHNpZGVuYXYgY29udGFpbmVyLiBUaGlzIGFsbG93cyB0aGVcclxuICAgICAgIGA8Ym9keT5gIHRvIGJlIG91ciBzY3JvbGxpbmcgZWxlbWVudCBmb3IgbW9iaWxlIGxheW91dHMuICovXHJcbiAgICBmbGV4OiAxIDAgYXV0bztcclxuXHJcbiAgfVxyXG5cclxuICAiXX0= */";
     /***/
   },
 
   /***/
-  "./src/app/page-not-found/page-not-found.component.ts":
-  /*!************************************************************!*\
-    !*** ./src/app/page-not-found/page-not-found.component.ts ***!
-    \************************************************************/
+  "./src/app/components/sidenav/sidenav.component.ts":
+  /*!*********************************************************!*\
+    !*** ./src/app/components/sidenav/sidenav.component.ts ***!
+    \*********************************************************/
 
-  /*! exports provided: PageNotFoundComponent */
+  /*! exports provided: SidenavComponent */
 
   /***/
-  function srcAppPageNotFoundPageNotFoundComponentTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppComponentsSidenavSidenavComponentTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "PageNotFoundComponent", function () {
-      return PageNotFoundComponent;
+    __webpack_require__.d(__webpack_exports__, "SidenavComponent", function () {
+      return SidenavComponent;
     });
     /* harmony import */
 
@@ -1015,31 +1038,81 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! @angular/core */
     "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
 
-    var PageNotFoundComponent =
+
+    var _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/cdk/layout */
+    "./node_modules/@angular/cdk/esm2015/layout.js");
+    /* harmony import */
+
+
+    var _listado_citas_listado_citas_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ../listado-citas/listado-citas.component */
+    "./src/app/components/listado-citas/listado-citas.component.ts");
+
+    var SidenavComponent =
     /*#__PURE__*/
     function () {
-      function PageNotFoundComponent() {
-        _classCallCheck(this, PageNotFoundComponent);
+      function SidenavComponent(changeDetectorRef, media) {
+        _classCallCheck(this, SidenavComponent);
+
+        this.fillerNav = [{
+          name: "Historial de citas",
+          icon: "assignment",
+          component: _listado_citas_listado_citas_component__WEBPACK_IMPORTED_MODULE_3__["ListadoCitasComponent"]
+        }, {
+          name: "Modificar cita",
+          icon: "autorenew"
+        }, {
+          name: "Cancelar cita",
+          icon: "delete_outline"
+        }];
+        this.fillerContent = Array.from({
+          length: 50
+        }, function () {
+          return "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco\n       laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in\n       voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat\n       cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+        });
+        this.shouldRun = true;
+        this.mobileQuery = media.matchMedia('(max-width: 600px)');
+
+        this._mobileQueryListener = function () {
+          return changeDetectorRef.detectChanges();
+        };
+
+        this.mobileQuery.addListener(this._mobileQueryListener);
       }
 
-      _createClass(PageNotFoundComponent, [{
+      _createClass(SidenavComponent, [{
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          this.mobileQuery.removeListener(this._mobileQueryListener);
+        }
+      }, {
         key: "ngOnInit",
         value: function ngOnInit() {}
       }]);
 
-      return PageNotFoundComponent;
+      return SidenavComponent;
     }();
 
-    PageNotFoundComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-      selector: 'app-page-not-found',
+    SidenavComponent.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]
+      }, {
+        type: _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_2__["MediaMatcher"]
+      }];
+    };
+
+    SidenavComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'app-sidenav',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
-      /*! raw-loader!./page-not-found.component.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/page-not-found/page-not-found.component.html")).default,
+      /*! raw-loader!./sidenav.component.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/components/sidenav/sidenav.component.html")).default,
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
-      /*! ./page-not-found.component.css */
-      "./src/app/page-not-found/page-not-found.component.css")).default]
-    })], PageNotFoundComponent);
+      /*! ./sidenav.component.css */
+      "./src/app/components/sidenav/sidenav.component.css")).default]
+    })], SidenavComponent);
     /***/
   },
 
@@ -1109,33 +1182,45 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    var hammerjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! hammerjs */
+    "./node_modules/hammerjs/hammer.js");
+    /* harmony import */
+
+
+    var hammerjs__WEBPACK_IMPORTED_MODULE_1___default =
+    /*#__PURE__*/
+    __webpack_require__.n(hammerjs__WEBPACK_IMPORTED_MODULE_1__);
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! @angular/core */
     "./node_modules/@angular/core/fesm2015/core.js");
     /* harmony import */
 
 
-    var _angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    var _angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! @angular/platform-browser-dynamic */
     "./node_modules/@angular/platform-browser-dynamic/fesm2015/platform-browser-dynamic.js");
     /* harmony import */
 
 
-    var _app_app_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _app_app_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! ./app/app.module */
     "./src/app/app.module.ts");
     /* harmony import */
 
 
-    var _environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! ./environments/environment */
     "./src/environments/environment.ts");
 
-    if (_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].production) {
-      Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["enableProdMode"])();
+    if (_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].production) {
+      Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["enableProdMode"])();
     }
 
-    Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformBrowserDynamic"])().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_3__["AppModule"]).catch(function (err) {
+    Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_3__["platformBrowserDynamic"])().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_4__["AppModule"]).catch(function (err) {
       return console.error(err);
     });
     /***/
@@ -1152,7 +1237,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! D:\Eclipse Procesos\proyectoiso\src\main\front-end\src\main.ts */
+    /*! C:\Users\sergi\OneDrive\Documentos\GitHub\eSalud\src\main\webapp\src\main.ts */
     "./src/main.ts");
     /***/
   }
