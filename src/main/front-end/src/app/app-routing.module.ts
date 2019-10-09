@@ -1,17 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { CitasComponent } from './citas/citas.component';
+import {SidenavComponent} from './components/sidenav/sidenav.component';
+import { ListadoCitasComponent } from './components/listado-citas/listado-citas.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
-    { path: 'auth', loadChildren: './auth/auth.module#AuthModule' },
-    { path: 'citas', component: CitasComponent },
-    { path: '**', component: PageNotFoundComponent }
+  
+  {path:'', redirectTo: '/auth/login', pathMatch: 'full'},
+  {path: 'auth', loadChildren: './components/auth/auth.module#AuthModule'},
+  {path: 'citas', component: SidenavComponent,
+  children: [
+    { path: '', component: ListadoCitasComponent}
+  ]
+}
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, {useHash:true})],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }
