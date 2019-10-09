@@ -1,9 +1,15 @@
 <div class="login">
-  <div class="login-triangle"></div>
-  <h2 class="login-header">Iniciar sesión</h2>
-  <form class="login-container">
-    <p><input type="email" placeholder="Email"></p>
-    <p><input type="password" placeholder="Contraseña"></p>
-    <p><input type="submit" value="Acceder" routerLink="/citas"></p>
-  </form>
+    <div class="login-triangle"></div>
+    <h2 class="login-header">Iniciar sesión</h2>
+    <form (submit)="loginUser($event)" class="login-container">
+        <p><input type="text" placeholder="DNI" id="dni"></p>
+        <p><input type="password" placeholder="Contraseña" id="password"></p>
+        <p><input type="submit" value="Acceder"></p>
+    </form>
 </div>
+
+<!-- <form (submit)="loginUser($event)">
+    <input type='text' placeholder="DNI" id="dni">
+    <input type="password" placeholder="Contraseña" id="password">
+    <input type="submit" value="Acceder">
+</form> -->
