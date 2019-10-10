@@ -11,5 +11,21 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
   }
+  registerUser(event){
+    event.preventDefault()
+    const target = event.target
+    const dni = target.querySelector('#dni').value
+    const password = target.querySelector('#password').value
+    const password2 = target.querySelector('#password').value
+    const nombre = target.querySelector('#nombre').value
+    const apellidos = target.querySelector('#apellidos').value
+    const tel = target.querySelector('#tel').value
+    const email = target.querySelector('#email').value
+
+
+    //this.Auth.getUserDetails(dni, password)
+    console.log(dni,password, password, nombre, apellidos,
+      tel, email)
+  }
 
 }

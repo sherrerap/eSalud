@@ -2,11 +2,16 @@
     <div class="register-triangle"></div>
     <h2 class="register-header">Registrarse</h2>
 
-    <form class="register-container">
-        <p><input type="email" placeholder="Email"></p>
-        <p><input type="password" placeholder="Contraseña"></p>
-        <p><input type="password2" placeholder="Repita su contraseña"></p>
-        <p><input type="submit" value="Acceder" routerLink="/citas"></p>
+    <form (submit)="registerUser($event)" class="register-container">
+        <p><input type="dni" id="dni" placeholder="DNI"></p>
+        <p><input type="password" id="password" placeholder="Contraseña"></p>
+        <p><input type="password" id="password2" placeholder="Repita su contraseña"></p>
+        <p><input type="nombre" id="nombre" placeholder="Nombre"></p>
+        <p><input type="apellidos" id="apellidos" placeholder="Apellidos"></p>
+        <p><input type="tel" id="tel" placeholder="Número de teléfono"></p>
+        <p><input type="email" id="email" placeholder="Correo electrónico"></p>
+        <p><input type="localidad" id="localidad" placeholder="Localidad"></p>
+        <p><input type="submit" value="Registrarse" routerLink="/auth/login"></p>
     </form>
 
 </div>

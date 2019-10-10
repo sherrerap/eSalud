@@ -9,7 +9,7 @@ const routes: Routes = [
   {path: 'auth', loadChildren: './components/auth/auth.module#AuthModule'},
   {path: 'citas', component: SidenavComponent,
   children: [
-    { path: '', component: ListadoCitasComponent}
+    {path: '', component: ListadoCitasComponent}
   ]
 }
 ];
