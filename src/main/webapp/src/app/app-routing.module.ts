@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {SidenavComponent} from './components/sidenav/sidenav.component';
+import {SidenavAdminComponent} from './components/sidenavAdmin/sidenavAdmin.component';
 import { ListadoCitasComponent } from './components/listado-citas/listado-citas.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 const routes: Routes = [
   
@@ -10,6 +12,11 @@ const routes: Routes = [
   {path: 'citas', component: SidenavComponent,
   children: [
     { path: '', component: ListadoCitasComponent}
+  ]
+},
+  {path: 'admin', component: SidenavAdminComponent,
+  children: [
+    { path: '', component: AdminComponent}
   ]
 }
 ];

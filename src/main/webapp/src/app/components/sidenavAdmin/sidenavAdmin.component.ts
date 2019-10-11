@@ -1,21 +1,20 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
-import { ListadoCitasComponent } from '../listado-citas/listado-citas.component';
-
+import { AdminComponent } from '../admin/admin.component';
 
 @Component({
-  selector: 'app-sidenav',
-  templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.css']
+  selector: 'app-sidenavAdmin',
+  templateUrl: './sidenavAdmin.component.html',
+  styleUrls: ['./sidenavAdmin.component.css']
 })
-export class SidenavComponent implements OnInit {
+export class SidenavAdminComponent implements OnInit {
 
   mobileQuery: MediaQueryList;
-
   fillerNav = [
-    {name: "Historial de citas" , icon:"assignment", component: ListadoCitasComponent},
-    {name: "Modificar cita", icon:"autorenew"},
-    {name: "Cancelar cita", icon:"delete_outline"}
+    {name: "Mostrar médicos" , icon:"assignment", component: AdminComponent},
+    {name: "Registrar médicos", icon:"autorenew"},
+    {name: "Modificar médicos", icon:"edit"},
+	{name: "Modificar paciente",icon:"edit"}
   ]
 
   fillerContent = Array.from({length: 50}, () =>

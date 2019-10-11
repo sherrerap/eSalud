@@ -9,14 +9,18 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component'; 
+import { SidenavAdminComponent } from './components/sidenavAdmin/sidenavAdmin.component'; 
 import { ListadoCitasComponent } from './components/listado-citas/listado-citas.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SidenavComponent,
-    ListadoCitasComponent
+	SidenavAdminComponent,
+    ListadoCitasComponent,
+	AdminComponent
   ],
   imports: [
     BrowserModule,
