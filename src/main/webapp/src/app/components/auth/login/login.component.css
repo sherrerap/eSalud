@@ -52,7 +52,7 @@
 /* Every row inside .login-container is defined with p tags */
 
 .login p {
-    padding: 12px;
+    padding: 6px;
 }
 
 .login input {
@@ -61,7 +61,7 @@
     width: 100%;
     border-width: 1px;
     border-style: solid;
-    padding: 16px;
+    padding: 32px;
     outline: 0;
     font-family: inherit;
     font-size: 0.95em;
@@ -87,6 +87,23 @@
     border-color: transparent;
     color: #fff;
     cursor: pointer;
+    padding: 24px;
+}
+
+.login input[type="submit2"] {
+    background: rgb(22, 114, 79);
+    border-color: transparent;
+    color: #fff;
+    cursor: pointer;
+    padding: 24px;
+}
+
+.login input[type="submit3"] {
+    background: rgb(128, 10, 10);
+    border-color: transparent;
+    color: #fff;
+    cursor: pointer;
+    padding: 24px;
 }
 
 .login input[type="submit"]:hover {
@@ -100,7 +117,7 @@
     border-color: rgb(6, 117, 75);
 }
 
-
+.form-control
 /* Comprobación en tiempo real de si el valor introducido podría ser correcto */
 
 .ng-valid {

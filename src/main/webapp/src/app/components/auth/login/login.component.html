@@ -1,18 +1,24 @@
-<div class="login" ng-controller="pantallaAcceso">
+<div *ngIf="error" class="alert alert-danger">{{error}}</div>
+<div class="login">
     <div class="login-triangle"></div>
     <h2 class="login-header">Iniciar sesión</h2>
-    <form id="formularioAcceso" (submit)="loginUser($event)" class="login-container">
-        <p><input type="dni" placeholder="DNI" id="dni" ng-model="accesoUsuario.dni"></p>
-        <!-- <div ng-show="!accesoUsuario.dni && formularioAcceso.$submitted" class="alert alert-warning">
-            El campo DNI no puede estar vacío.
-        </div> -->
-        <p><input type="password" placeholder="Contraseña" id="password" ng-model="accesoUsuario.password"></p>
-        <p><input type="submit" value="Acceder" ng-click="accederUsuario()"></p>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-container">
+        <p>
+            <input type="dni" placeholder="DNI" id="dni" formControlName="dni" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dni.errors }" />
+        </p>
+        <div *ngIf="submitted && f.dni.errors" class="invalid-feedback">
+            <div *ngIf="f.dni.errors.required">Debes introducir un DNI</div>
+        </div>
+        <p>
+            <input type="password" placeholder="Contraseña" id="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+        </p>
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Debes introducir una Contraseña</div>
+        </div>
+        <p><input type="submit" value="Acceder"></p>
+        <p><input type="submit2" value="Registrarse" routerLink="/auth/register" class="btn btn-link"></p>
+        <p><input type="submit3" value="Salir (test)" class="nav-item nav-link" (click)="logout()" class="btn btn-link"></p>
+
+
     </form>
 </div>
-
-<!-- <form (submit)="loginUser($event)">
-    <input type='text' placeholder="DNI" id="dni">
-    <input type="password" placeholder="Contraseña" id="password">
-    <input type="submit" value="Acceder">
-</form> -->
