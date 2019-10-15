@@ -67,7 +67,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 return error('El DNI "' + user.dni + '" ya está registrado')
             }
 
-            user.dni = users.length ? Math.max(...users.map(x => x.dni)) + 1 : 1;
+            user.dni = users.length ? Math.max(...users.map(x => x.dni as unknown as number)) + 1 : 1;
             users.push(user);
             localStorage.setItem('users', JSON.stringify(users));
 
@@ -82,7 +82,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         function deleteUser() {
             if (!isLoggedIn()) return unauthorized();
 
-            users = users.filter(x => x.dni !== idFromUrl());
+            users = users.filter(x => x.dni !== (idFromUrl() as unknown as string));
             localStorage.setItem('users', JSON.stringify(users));
             return ok();
         }
