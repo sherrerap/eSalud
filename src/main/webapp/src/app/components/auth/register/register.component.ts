@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { ErrorStateMatcher } from '@angular/material/core';
+
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit{
 
   constructor() { }
 
@@ -21,9 +23,7 @@ export class RegisterComponent implements OnInit {
     const apellidos = target.querySelector('#apellidos').value
     const tel = target.querySelector('#tel').value
     const email = target.querySelector('#email').value
-
-
-    //this.Auth.getUserDetails(dni, password)
+    //this.Auth.getUserDetails(dni,password, password, nombre, apellidos, tel, email)
     console.log(dni,password, password, nombre, apellidos,
       tel, email)
   }
