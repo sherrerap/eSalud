@@ -1,0 +1,35 @@
+
+.panel_superior {
+    background:#23C185;
+    height: 125px;
+    width: 100%;
+    border-color: black
+}
+
+.panel_lateral {
+    background: #23C185;
+    width: 15%;
+    position: absolute;
+    height: 600px;
+    align-items: center;
+    padding-left: 0px;
+    margin-left: 0px;
+}
+
+.panel_lateral {
+    border-right: 1.5px solid black;
+    border-left: 1.5px solid black;
+    border-bottom: 1.5px solid black
+}
+
+.panel_central {
+    width: 85%;
+    height: 600px;
+    ;
+}
+
+.SescamLogo{
+	width: 205px;
+	height: 185px;
+}
+

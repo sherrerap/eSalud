@@ -10,12 +10,13 @@ import { AdminComponent } from '../admin/admin.component';
 export class SidenavAdminComponent implements OnInit {
 
   mobileQuery: MediaQueryList;
-  fillerNav = [
+  /*fillerNav = [
     {name: "Mostrar médicos" , icon:"assignment", component: AdminComponent},
     {name: "Registrar médicos", icon:"autorenew"},
     {name: "Modificar médicos", icon:"edit"},
-	{name: "Modificar paciente",icon:"edit"}
-  ]
+	{name: "Modificar paciente",icon:"edit"},
+	
+  ]*/
 
   fillerContent = Array.from({length: 50}, () =>
       `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut

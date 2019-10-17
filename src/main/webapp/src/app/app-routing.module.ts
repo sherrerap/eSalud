@@ -4,6 +4,10 @@ import {SidenavComponent} from './components/sidenav/sidenav.component';
 import {SidenavAdminComponent} from './components/sidenavAdmin/sidenavAdmin.component';
 import { ListadoCitasComponent } from './components/listado-citas/listado-citas.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { ModificarMedicoComponent } from './components/admin-ModificarMedico/ModificarMedico.component';
+import { ModificarPacienteComponent } from './components/admin-ModificarPaciente/ModificarPaciente.component';
+import { MostrarMedicoComponent } from './components/admin-MostrarMedico/MostrarMedico.component';
+import { RegistrarMedicoComponent } from './components/admin-RegistrarMedico/RegistrarMedico.component';
 
 const routes: Routes = [
   
@@ -17,6 +21,26 @@ const routes: Routes = [
   {path: 'admin', component: SidenavAdminComponent,
   children: [
     { path: '', component: AdminComponent}
+  ]
+},
+  {path: 'admin-ModificarMedico', component: SidenavAdminComponent,
+  children: [
+    { path: '', component: ModificarMedicoComponent}
+  ]
+},
+  {path: 'admin-ModificarPaciente', component: SidenavAdminComponent,
+  children: [
+    { path: '', component: ModificarPacienteComponent}
+  ]
+},
+  {path: 'admin-MostrarMedico', component: SidenavAdminComponent,
+  children: [
+    { path: '', component: MostrarMedicoComponent}
+  ]
+},
+  {path: 'admin-RegistrarMedico', component: SidenavAdminComponent,
+  children: [
+    { path: '', component: RegistrarMedicoComponent}
   ]
 }
 ];
