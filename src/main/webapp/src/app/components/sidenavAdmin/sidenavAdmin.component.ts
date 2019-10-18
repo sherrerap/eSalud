@@ -1,6 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
-import { AdminComponent } from '../admin/admin.component';
 
 @Component({
   selector: 'app-sidenavAdmin',
@@ -10,13 +9,14 @@ import { AdminComponent } from '../admin/admin.component';
 export class SidenavAdminComponent implements OnInit {
 
   mobileQuery: MediaQueryList;
-  /*fillerNav = [
-    {name: "Mostrar médicos" , icon:"assignment", component: AdminComponent},
-    {name: "Registrar médicos", icon:"autorenew"},
-    {name: "Modificar médicos", icon:"edit"},
-	{name: "Modificar paciente",icon:"edit"},
+  
+fillerNav = [
+    {name: "Mostrar médicos" ,   route:"MostrarMedico",     icon:"list"},
+    {name: "Registrar médicos",  route:"RegistrarMedico",   icon:"autorenew"},
+    {name: "Modificar médicos",  route:"ModificarMedico",   icon:"edit"},
+	{name: "Modificar paciente", route:"ModificarPaciente", icon:"edit"},
 	
-  ]*/
+  ]
 
   fillerContent = Array.from({length: 50}, () =>
       `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut

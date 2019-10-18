@@ -23,26 +23,48 @@ const routes: Routes = [
     { path: '', component: AdminComponent}
   ]
 },
-  {path: 'admin-ModificarMedico', component: SidenavAdminComponent,
+/********************************************************************************** */
+  {path: 'admin/ModificarMedico', component: SidenavAdminComponent,
   children: [
     { path: '', component: ModificarMedicoComponent}
   ]
 },
-  {path: 'admin-ModificarPaciente', component: SidenavAdminComponent,
+{path: 'admin/ModificarMedico/ModificarMedico',redirectTo: 'admin/ModificarMedico'},
+{path: 'admin/ModificarMedico/MostrarMedico',redirectTo: 'admin/MostrarMedico'},
+{path: 'admin/ModificarMedico/ModificarPaciente',redirectTo: 'admin/ModificarPaciente'},
+{path: 'admin/ModificarMedico/RegistrarMedico',redirectTo: 'admin/RegistrarMedico'},
+
+/********************************************************************************** */
+  {path: 'admin/ModificarPaciente', component: SidenavAdminComponent,
   children: [
     { path: '', component: ModificarPacienteComponent}
   ]
 },
-  {path: 'admin-MostrarMedico', component: SidenavAdminComponent,
+{path: 'admin/ModificarPaciente/ModificarMedico',redirectTo: 'admin/ModificarMedico'},
+{path: 'admin/ModificarPaciente/MostrarMedico',redirectTo: 'admin/MostrarMedico'},
+{path: 'admin/ModificarPaciente/ModificarPaciente',redirectTo: 'admin/ModificarPaciente'},
+{path: 'admin/ModificarPaciente/RegistrarMedico',redirectTo: 'admin/RegistrarMedico'},
+/********************************************************************************** */
+  {path: 'admin/MostrarMedico', component: SidenavAdminComponent,
   children: [
     { path: '', component: MostrarMedicoComponent}
   ]
 },
-  {path: 'admin-RegistrarMedico', component: SidenavAdminComponent,
+{path: 'admin/MostrarMedico/ModificarMedico',redirectTo: 'admin/ModificarMedico'},
+{path: 'admin/MostrarMedico/MostrarMedico',redirectTo: 'admin/MostrarMedico'},
+{path: 'admin/MostrarMedico/ModificarPaciente',redirectTo: 'admin/ModificarPaciente'},
+{path: 'admin/MostrarMedico/RegistrarMedico',redirectTo: 'admin/RegistrarMedico'},
+/********************************************************************************** */
+  {path: 'admin/RegistrarMedico', component: SidenavAdminComponent,
   children: [
     { path: '', component: RegistrarMedicoComponent}
   ]
-}
+},
+{path: 'admin/RegistrarMedico/ModificarMedico',redirectTo: 'admin/ModificarMedico'},
+{path: 'admin/RegistrarMedico/MostrarMedico',redirectTo: 'admin/MostrarMedico'},
+{path: 'admin/RegistrarMedico/ModificarPaciente',redirectTo: 'admin/ModificarPaciente'},
+{path: 'admin/RegistrarMedico/RegistrarMedico',redirectTo: 'admin/RegistrarMedico'},
+/********************************************************************************** */
 ];
 
 @NgModule({

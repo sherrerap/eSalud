@@ -1,8 +1,8 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches" *ngIf="shouldRun">
     <mat-toolbar color="primary" class="example-toolbar">
-      <button mat-icon-button (click)="snav.toggle()" style="border: 0ch">
+      <button class="but1" mat-icon-button (click)="snav.toggle()" style="border: 0ch">
         <mat-icon>menu</mat-icon></button>  
-      <h1 class="example-app-name">Vista administrador</h1>
+      <h1 class="admin">Administrador</h1>
 
     </mat-toolbar>
 		 
@@ -14,22 +14,15 @@
                    fixedTopGap="56"
                    [opened]="true">
         <mat-nav-list>
-			<div class="btn-group-vertical ">
-					<button type="button" class="btn btn-light">Mostrar medicos</button>
-					<button type="button" class="btn btn-light" >Registrar médicos</button>
-					<button type="button" class="btn btn-light">Modificar médicos</button>
-					<button type="button" class="btn btn-light">Modificar pacientes</button>
-			
-			</div>
 	 		
-          <a mat-list-item routerLink="nav.route" *ngFor="let nav of fillerNav">
+          <a mat-list-item [routerLink]="nav.route" *ngFor="let nav of fillerNav">
               <mat-icon>{{nav.icon}}</mat-icon>
             {{nav.name}}</a>
         </mat-nav-list>
       </mat-sidenav>
   
       <mat-sidenav-content>
-         
+         <router-outlet></router-outlet>
       </mat-sidenav-content>
 
     </mat-sidenav-container>
