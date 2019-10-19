@@ -26,11 +26,12 @@ export class RegisterComponent implements OnInit {
 
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
-            firstName: ['', Validators.required],
-            lastName: ['', Validators.required],
-            username: ['', Validators.required],
-            password: ['', [Validators.required, Validators.minLength(6)]]
-        });
+            dni: ['', Validators.required],
+            password: ['', [Validators.required, Validators.minLength(6)]],
+            password2: ['', [Validators.required, Validators.minLength(6)]],
+            correo: ['', Validators.required],
+            localidad: ['', Validators.required]
+                });
     }
 
     // getter para acceder a los controles del form
