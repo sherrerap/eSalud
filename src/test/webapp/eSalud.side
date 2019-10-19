@@ -5,56 +5,23 @@
   "url": "http://localhost:4200/citas",
   "tests": [{
     "id": "4b37f916-19ca-4ceb-be1b-ef777c82a25e",
-    "name": "Acceso Test",
+    "name": "Acceso sin datos",
     "commands": [{
-      "id": "e22dbe36-6dfe-4d95-843e-33a725792028",
+      "id": "6c857750-ac6c-4f4a-876a-80bd4b328865",
       "comment": "",
       "command": "open",
-      "target": "/auth/login",
+      "target": "http://localhost:4200/auth/login?returnUrl=%2Fcitas",
       "targets": [],
       "value": ""
     }, {
-      "id": "a54d259a-d7cb-4456-b6ca-f1653d877219",
+      "id": "3aafeeb6-5b15-4c79-9d9d-f87230f0d1a0",
       "comment": "",
       "command": "setWindowSize",
       "target": "1552x840",
       "targets": [],
       "value": ""
     }, {
-      "id": "7042fb98-87b6-44ea-816e-7187601bc594",
-      "comment": "",
-      "command": "click",
-      "target": "css=p:nth-child(1) > input",
-      "targets": [
-        ["css=p:nth-child(1) > input", "css:finder"],
-        ["xpath=//input[@type='email']", "xpath:attributes"],
-        ["xpath=//input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "de087dd9-5923-4ef0-bcba-e5bd22d24744",
-      "comment": "",
-      "command": "type",
-      "target": "css=p:nth-child(1) > input",
-      "targets": [
-        ["css=p:nth-child(1) > input", "css:finder"],
-        ["xpath=//input[@type='email']", "xpath:attributes"],
-        ["xpath=//input", "xpath:position"]
-      ],
-      "value": "fhagakidsbvn"
-    }, {
-      "id": "fe38569e-2a75-49aa-9289-cd26610ed943",
-      "comment": "",
-      "command": "type",
-      "target": "css=p:nth-child(2) > input",
-      "targets": [
-        ["css=p:nth-child(2) > input", "css:finder"],
-        ["xpath=//input[@type='password']", "xpath:attributes"],
-        ["xpath=//p[2]/input", "xpath:position"]
-      ],
-      "value": "iosrthgfsgjks"
-    }, {
-      "id": "6e75f98c-1e75-46e1-a5a1-45ce07d7d812",
+      "id": "1e17c02d-98b6-45bb-8f06-82f06e2b69bf",
       "comment": "",
       "command": "click",
       "target": "css=p:nth-child(3) > input",
@@ -130,14 +97,579 @@
       ],
       "value": ""
     }]
+  }, {
+    "id": "b3be251a-db4f-458f-a90c-53c656f8c271",
+    "name": "Acceso con DNI",
+    "commands": [{
+      "id": "5c1ddf03-340d-4002-8248-37dd84e2996d",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:4200/auth/login?returnUrl=%2Fcitas",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d1421975-6fc2-4afc-92dd-92d33776438f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x840",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4a09a33c-bf82-4902-a214-a9ffb6afb281",
+      "comment": "",
+      "command": "click",
+      "target": "id=dni",
+      "targets": [
+        ["id=dni", "id"],
+        ["css=#dni", "css:finder"],
+        ["xpath=//input[@id='dni']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bedcdeb0-22a0-497a-9861-e1e118daee29",
+      "comment": "",
+      "command": "type",
+      "target": "id=dni",
+      "targets": [
+        ["id=dni", "id"],
+        ["css=#dni", "css:finder"],
+        ["xpath=//input[@id='dni']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "1"
+    }, {
+      "id": "4db10073-dd4c-453f-b22f-920beab8cc7e",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(3) > input",
+      "targets": [
+        ["css=p:nth-child(3) > input", "css:finder"],
+        ["xpath=//input[@value='Acceder']", "xpath:attributes"],
+        ["xpath=//p[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "9d0f6727-d2e4-4102-925b-536dfeeac7ba",
+    "name": "Acceso con datos erróneos",
+    "commands": [{
+      "id": "76846ac8-7709-4d23-8bd8-14e941a6064d",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:4200/auth/login?returnUrl=%2Fcitas",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "38a13509-c224-4c9b-9d42-9a54c6a646ee",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x840",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "44d153fc-d4bb-4c3a-9c27-7b6d2b26c217",
+      "comment": "",
+      "command": "click",
+      "target": "id=dni",
+      "targets": [
+        ["id=dni", "id"],
+        ["css=#dni", "css:finder"],
+        ["xpath=//input[@id='dni']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "651909e8-0611-4468-a89a-cad402998db8",
+      "comment": "",
+      "command": "type",
+      "target": "id=dni",
+      "targets": [
+        ["id=dni", "id"],
+        ["css=#dni", "css:finder"],
+        ["xpath=//input[@id='dni']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "12342"
+    }, {
+      "id": "062c44d5-8c39-42fa-9cf5-65f9b681ec86",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//p[2]/input", "xpath:position"]
+      ],
+      "value": "32522gd"
+    }, {
+      "id": "7f5a0eaf-1c6c-4fa7-a2c8-933e14328806",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(3) > input",
+      "targets": [
+        ["css=p:nth-child(3) > input", "css:finder"],
+        ["xpath=//input[@value='Acceder']", "xpath:attributes"],
+        ["xpath=//p[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "67284199-442e-4a97-aba0-d08208969c9b",
+    "name": "Acceso correcto",
+    "commands": [{
+      "id": "3d5d4db3-9d2a-4fbf-9510-5274010a9dfb",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:4200/auth/login?returnUrl=%2Fcitas",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7dac19cc-4854-4b85-9ba2-941a7c8544b3",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x840",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "92d2b732-ea0e-49af-bcea-112e9c83ab0e",
+      "comment": "",
+      "command": "click",
+      "target": "id=dni",
+      "targets": [
+        ["id=dni", "id"],
+        ["css=#dni", "css:finder"],
+        ["xpath=//input[@id='dni']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "18e7a837-7e50-4541-924a-cba4e5d56616",
+      "comment": "",
+      "command": "type",
+      "target": "id=dni",
+      "targets": [
+        ["id=dni", "id"],
+        ["css=#dni", "css:finder"],
+        ["xpath=//input[@id='dni']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "1"
+    }, {
+      "id": "f4e5f8c9-f58b-4e08-a9b7-4e923b784c2a",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//p[2]/input", "xpath:position"]
+      ],
+      "value": "test"
+    }, {
+      "id": "0b3468bc-ae3b-4b15-87c7-6dd4f55025f7",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(3) > input",
+      "targets": [
+        ["css=p:nth-child(3) > input", "css:finder"],
+        ["xpath=//input[@value='Acceder']", "xpath:attributes"],
+        ["xpath=//p[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "e7e4c831-ad00-43c3-bb47-ad91c330a09f",
+    "name": "Pantalla Registro",
+    "commands": [{
+      "id": "2a949fc2-3cae-43b4-a745-477d77558391",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:4200/auth/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "93db5f95-bc37-4993-9f9c-40a12b95551b",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x840",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c593b348-db28-4b3c-b5ed-0987f02117e2",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(4) > .btn",
+      "targets": [
+        ["css=p:nth-child(4) > .btn", "css:finder"],
+        ["xpath=//input[@value='Registrarse']", "xpath:attributes"],
+        ["xpath=//p[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "47c2dbb2-9443-44ee-a4cb-0c13b7332930",
+    "name": "Registro sin datos",
+    "commands": [{
+      "id": "e72789b5-3e0e-477f-bb9b-ecb6882b5d35",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:4200/auth/login?returnUrl=%2Fcitas",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "914b1264-792a-4f4f-80f2-1c94ac742d3e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x840",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8acdf177-bd33-4652-914e-09cbd05badfa",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(4) > .btn",
+      "targets": [
+        ["css=p:nth-child(4) > .btn", "css:finder"],
+        ["xpath=//input[@value='Registrarse']", "xpath:attributes"],
+        ["xpath=//p[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "903bc960-974e-44f3-a827-69f55f422f4e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-primary",
+      "targets": [
+        ["css=.btn-primary", "css:finder"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Registrarse')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "735d56ae-77c0-42f8-8be2-6b0b694b2d8e",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.btn-primary",
+      "targets": [
+        ["css=.btn-primary", "css:finder"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Registrarse')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3ae0fc17-7b3e-40e0-9dc6-fb27a4d85948",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.btn-primary",
+      "targets": [
+        ["css=.btn-primary", "css:finder"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Registrarse')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "21bff77e-27c7-4af1-919b-dd337c879718",
+    "name": "Registro con solo algunos datos",
+    "commands": [{
+      "id": "0679575e-10b3-4e6a-8872-dd4169a2ea3d",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:4200/auth/login?returnUrl=%2Fcitas",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f65db73d-d5ca-4ab4-b317-3f947207b2e4",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x840",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fe87837f-b947-4187-b72e-ac0a69514091",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(4) > .btn",
+      "targets": [
+        ["css=p:nth-child(4) > .btn", "css:finder"],
+        ["xpath=//input[@value='Registrarse']", "xpath:attributes"],
+        ["xpath=//p[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3c85c401-8073-41f6-9f46-b2b855b285e0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-group:nth-child(1) > .form-control",
+      "targets": [
+        ["css=.form-group:nth-child(1) > .form-control", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a419910a-efc7-4e82-982e-7622e78f7c20",
+      "comment": "",
+      "command": "type",
+      "target": "css=.ng-dirty:nth-child(2)",
+      "targets": [
+        ["css=.ng-dirty:nth-child(2)", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "sadf"
+    }, {
+      "id": "1dab2de4-33a9-4e3c-9c7c-897320b66180",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-group:nth-child(2) > .form-control",
+      "targets": [
+        ["css=.form-group:nth-child(2) > .form-control", "css:finder"],
+        ["xpath=(//input[@type='text'])[2]", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e0ecae98-ef09-45e6-b49b-2ae52107e4a1",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-group:nth-child(2) > .form-control",
+      "targets": [
+        ["css=.form-group:nth-child(2) > .form-control", "css:finder"],
+        ["xpath=(//input[@type='text'])[2]", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "sdf"
+    }, {
+      "id": "38e36d9f-26c5-4f14-94e1-76bdd54cc2cb",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-group:nth-child(3) > .form-control",
+      "targets": [
+        ["css=.form-group:nth-child(3) > .form-control", "css:finder"],
+        ["xpath=(//input[@type='text'])[3]", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "793713c3-389d-4834-9164-fce8a53092e9",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-group:nth-child(3) > .form-control",
+      "targets": [
+        ["css=.form-group:nth-child(3) > .form-control", "css:finder"],
+        ["xpath=(//input[@type='text'])[3]", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "s"
+    }, {
+      "id": "48649a3d-5dec-46b8-bf0e-6d54422aa127",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-primary",
+      "targets": [
+        ["css=.btn-primary", "css:finder"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Registrarse')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f051808d-796e-44d8-8f9b-5d4721716c58",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.btn-primary",
+      "targets": [
+        ["css=.btn-primary", "css:finder"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Registrarse')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c95c665e-b60c-46bf-9f25-6d3a35c705c7",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.btn-primary",
+      "targets": [
+        ["css=.btn-primary", "css:finder"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Registrarse')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "f2931a30-7b5f-46ab-84b5-ccf72c9a5f98",
+    "name": "Cancelar registro",
+    "commands": [{
+      "id": "a86d7c36-ac05-4d3a-8a8e-582b94894d57",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:4200/auth/login?returnUrl=%2Fcitas",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ed4951b1-1552-4c20-b0e0-b081a4051459",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "798x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e274fa45-36f8-4aa9-8a97-df20407c08f1",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(4) > .btn",
+      "targets": [
+        ["css=p:nth-child(4) > .btn", "css:finder"],
+        ["xpath=//input[@value='Registrarse']", "xpath:attributes"],
+        ["xpath=//p[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a626f398-4de9-4f8a-93e2-4c8c9953a032",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Cancelar",
+      "targets": [
+        ["linkText=Cancelar", "linkText"],
+        ["css=.btn-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Cancelar')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/auth/login')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Cancelar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "ae262c7d-b6c0-4e67-a5b8-961327225971",
+    "name": "Registro correcto",
+    "commands": [{
+      "id": "0a358db9-b454-4c24-b30a-dcc9556bcdce",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:4200/auth/login?returnUrl=%2Fcitas",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8660652b-98cb-4fff-ab60-113e2462a343",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "800x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "aa5006af-9e61-4b78-bd2c-906a741ec543",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(4) > .btn",
+      "targets": [
+        ["css=p:nth-child(4) > .btn", "css:finder"],
+        ["xpath=//input[@value='Registrarse']", "xpath:attributes"],
+        ["xpath=//p[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "60b0d9d3-2239-4080-9785-ab64fee22b12",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-group:nth-child(1) > .form-control",
+      "targets": [
+        ["css=.form-group:nth-child(1) > .form-control", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2a96b96b-72d3-4c24-bd6a-02a8ea0a7d74",
+      "comment": "",
+      "command": "type",
+      "target": "css=.ng-dirty:nth-child(2)",
+      "targets": [
+        ["css=.ng-dirty:nth-child(2)", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Sergio"
+    }, {
+      "id": "060e1c1d-95f6-43c9-ba7e-b241d78c872b",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-group:nth-child(2) > .form-control",
+      "targets": [
+        ["css=.form-group:nth-child(2) > .form-control", "css:finder"],
+        ["xpath=(//input[@type='text'])[2]", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Herrera"
+    }, {
+      "id": "7e98b780-febd-4342-81ef-153344a4f9bf",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-group:nth-child(3) > .form-control",
+      "targets": [
+        ["css=.form-group:nth-child(3) > .form-control", "css:finder"],
+        ["xpath=(//input[@type='text'])[3]", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "sherrerap"
+    }, {
+      "id": "40d12938-c45c-4017-adb7-f1b233ffc0f5",
+      "comment": "",
+      "command": "type",
+      "target": "css=.ng-untouched:nth-child(2)",
+      "targets": [
+        ["css=.ng-untouched:nth-child(2)", "css:finder"],
+        ["xpath=//input[@type='password']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "123456"
+    }, {
+      "id": "bd7a0018-fa2f-417f-beac-4702a5c9ed32",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-primary",
+      "targets": [
+        ["css=.btn-primary", "css:finder"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Registrarse')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ddcd76be-ef4e-4048-9e3b-65f9351424c0",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.btn-primary",
+      "targets": [
+        ["css=.btn-primary", "css:finder"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Registrarse')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
   }],
   "suites": [{
-    "id": "4fe13807-7ffd-4a85-a79e-fe5139a2d565",
-    "name": "Default Suite",
+    "id": "ae252a46-c93f-46fd-8077-0d39ceaa1a1e",
+    "name": "Acceso",
     "persistSession": false,
     "parallel": false,
     "timeout": 300,
-    "tests": ["4b37f916-19ca-4ceb-be1b-ef777c82a25e"]
+    "tests": ["4b37f916-19ca-4ceb-be1b-ef777c82a25e", "b3be251a-db4f-458f-a90c-53c656f8c271", "9d0f6727-d2e4-4102-925b-536dfeeac7ba", "67284199-442e-4a97-aba0-d08208969c9b"]
+  }, {
+    "id": "830da085-3c91-4a46-9584-21a9018600ea",
+    "name": "Registro",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["f2931a30-7b5f-46ab-84b5-ccf72c9a5f98", "e7e4c831-ad00-43c3-bb47-ad91c330a09f", "21bff77e-27c7-4af1-919b-dd337c879718", "ae262c7d-b6c0-4e67-a5b8-961327225971", "47c2dbb2-9443-44ee-a4cb-0c13b7332930"]
+  }, {
+    "id": "5631769a-fb72-4f27-b127-336cffc9fc10",
+    "name": "Citas",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["6dfde275-b7a4-43da-8c72-b6c2dc50451e"]
   }],
   "urls": ["http://localhost:4200/", "http://localhost:4200/citas"],
   "plugins": []

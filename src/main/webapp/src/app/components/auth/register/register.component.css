@@ -2,8 +2,9 @@
     width: 600px;
     margin: 16px auto;
     font-size: 16px;
-
 }
+
+
 /* Reset top and bottom margins from certain elements */
 
 .register-header,
@@ -11,6 +12,8 @@
     margin-top: 0;
     margin-bottom: 0;
 }
+
+
 /* The triangle form is achieved by a CSS hack */
 
 .register-triangle {
@@ -38,12 +41,14 @@
     grid-template-areas: "header header" "side content" "footer footer";
     grid-template-rows: auto auto auto;
     grid-row-gap: 10px;
-    grid-column-gap: 10 px;}
+    grid-column-gap: 10 px;
+}
 
-/* Every row inside .login-container is defined with p tags */
+
+/* Every row inside .register-container is defined with p tags */
 
 .register p {
-    padding: 12px;
+    padding: 6px;
 }
 
 .register input {
@@ -56,7 +61,6 @@
     outline: 0;
     font-family: inherit;
     font-size: 0.95em;
-    
 }
 
 .register input[type="dni"],
@@ -65,14 +69,12 @@
 .register input[type="apellidos"],
 .register input[type="tel"],
 .register input[type="email"],
-.register input[type="localidad"]{
+.register input[type="localidad"] {
     width: 100%;
     background: #fff;
     border-color: #bbb;
     color: #555;
-
 }
-
 
 
 /* Text fields' focus effect */
@@ -83,10 +85,9 @@
 .register input[type="apellidos"]:focus,
 .register input[type="tel"]:focus,
 .register input[type="email"]:focus,
-.register input[type="localidad"]:focus{
+.register input[type="localidad"]:focus {
     border-color: #888;
 }
-
 
 .register input[type="submit"] {
     background: #23C185;
@@ -100,6 +101,8 @@
 .register input[type="submit"]:hover {
     background: rgb(6, 117, 75);
 }
+
+
 /* Buttons' focus effect */
 
 .register input[type="submit"]:focus {
