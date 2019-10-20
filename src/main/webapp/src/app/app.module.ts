@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
-import {MatListModule, MatIconModule, MatToolbarModule} from '@angular/material';
+import {MatListModule, MatIconModule, MatToolbarModule,MatTableModule,MatSortModule,MatPaginatorModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
@@ -28,7 +28,7 @@ import { RegistrarMedicoComponent } from './components/admin-RegistrarMedico/Reg
 	ModificarMedicoComponent,
 	ModificarPacienteComponent,
 	MostrarMedicoComponent,
-	RegistrarMedicoComponent
+	RegistrarMedicoComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +39,11 @@ import { RegistrarMedicoComponent } from './components/admin-RegistrarMedico/Reg
     MatIconModule, 
     MatToolbarModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+	MatTableModule,
+	MatSortModule,
+	MatPaginatorModule
+	
   ],
   providers: [],
   bootstrap: [AppComponent]
