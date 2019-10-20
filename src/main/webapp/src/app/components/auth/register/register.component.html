@@ -3,59 +3,39 @@
 <div class="register">
     <div class="register-triangle"></div>
     <h2 class="register-header">Registrarse</h2>
-    <form class="register-container" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-container">
         <div class="form-group">
+            <input type="text" placeholder="DNI" formControlName="dni" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dni.errors }">
+            <div *ngIf="submitted && f.dni.errors" class="invalid-feedback">
+                <div *ngIf="f.dni.errors.required">Por favor, escriba su DNI</div>
+            </div>
 
-
-                <input type="text" placeholder="DNI" formControlName="dni" class="form-control"
-                    [ngClass]="{ 'is-invalid': submitted && f.dni.errors }">
-                <div *ngIf="submitted && f.dni.errors" class="invalid-feedback">
-                    <div *ngIf="f.dni.errors.required">Por favor, escriba su DNI</div>
-                </div>
-
-            <input type="password" placeholder="Contraseña" formControlName="password" class="form-control"
-                [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+            <input type="password" placeholder="Contraseña" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
             <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                 <div *ngIf="f.password.errors.required">Por favor, escriba una contraseña</div>
             </div>
 
-            <input type="password" placeholder="Repita su contraseña" formControlName="password2" class="form-control"
-                [ngClass]="{ 'is-invalid': submitted && f.password2.errors }" />
+            <input type="password" placeholder="Repita su contraseña" formControlName="password2" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password2.errors }" />
             <div *ngIf="submitted && f.password2.errors" class="invalid-feedback">
                 <div *ngIf="f.password2.errors.required">Por favor, escriba una contraseña</div>
             </div>
 
-            <input type="text" placeholder="Correo electrónico" formControlName="correo" class="form-control"
-                [ngClass]="{ 'is-invalid': submitted && f.correo.errors }" />
+            <input type="text" placeholder="Correo electrónico" formControlName="correo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.correo.errors }" />
             <div *ngIf="submitted && f.correo.errors" class="invalid-feedback">
                 <div *ngIf="f.correo.errors.required">Por favor, escriba un correo electrónico</div>
             </div>
 
-            <input type="text" placeholder="Localidad" formControlName="localidad" class="form-control"
-                [ngClass]="{ 'is-invalid': submitted && f.localidad.errors }" />
+            <input type="text" placeholder="Localidad" formControlName="localidad" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.localidad.errors }" />
             <div *ngIf="submitted && f.localidad.errors" class="invalid-feedback">
                 <div *ngIf="f.localidad.errors.required">Por favor, escriba su localidad</div>
             </div>
 
-            <button [disabled]="loading" class="btn btn-primary">
+            <div class="form-group">
+                <button [disabled]="loading" class="btn btn-primary">
                 <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                Registrarse
-            </button>
-            <a routerLink="/auth/login" class="btn btn-link">Cancelar</a>
+                    Register
+                </button>
+                <a routerLink="/auth/login" class="btn btn-link">Cancelar</a>
+            </div>
         </div>
-
-
-        <!--   <form (submit)="registerUser($event)" class="register-container">
-            <p><input type="tel" id="tel" placeholder="Número de teléfono"></p>
-
-            <p><input type="password" id="password" placeholder="Contraseña"></p>
-            <p><input type="password" id="password2" placeholder="Repita su contraseña"></p>
-            <p><input type="nombre" id="nombre" placeholder="Nombre"></p>
-
-            <p><input type="apellidos" id="apellidos" placeholder="Apellidos"></p>
-
-            <p><input type="email" id="email" placeholder="Correo electrónico"></p>
-            <p><input type="localidad" id="localidad" placeholder="Localidad"></p>
-            <p><input type="submit" value="Registrarse" routerLink="/auth/login"></p>
-     -->
     </form>

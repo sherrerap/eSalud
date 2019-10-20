@@ -67,7 +67,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 return error('El DNI "' + user.dni + '" ya está registrado')
             }
 
-            user.dni = users.length ? Math.max(...users.map(x => x.dni as unknown as number)) + 1 : 1;
             users.push(user);
             localStorage.setItem('users', JSON.stringify(users));
 
