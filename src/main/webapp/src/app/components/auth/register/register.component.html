@@ -5,6 +5,7 @@
     <h2 class="register-header">Registrarse</h2>
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-container">
         <div class="form-group">
+
             <input type="text" placeholder="DNI" formControlName="dni" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dni.errors }">
             <div *ngIf="submitted && f.dni.errors" class="invalid-feedback">
                 <div *ngIf="f.dni.errors.required">Por favor, escriba su DNI</div>
@@ -18,6 +19,21 @@
             <input type="password" placeholder="Repita su contraseña" formControlName="password2" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password2.errors }" />
             <div *ngIf="submitted && f.password2.errors" class="invalid-feedback">
                 <div *ngIf="f.password2.errors.required">Por favor, escriba una contraseña</div>
+            </div>
+
+            <input type="text" placeholder="Nombre" formControlName="nombre" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }">
+            <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
+                <div *ngIf="f.nombre.errors.required">Por favor, escriba su nombre</div>
+            </div>
+
+            <input type="text" placeholder="Teléfono" formControlName="tel" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tel.errors }">
+            <div *ngIf="submitted && f.tel.errors" class="invalid-feedback">
+                <div *ngIf="f.tel.errors.required">Por favor, escriba su número de teléfono</div>
+            </div>
+
+            <input type="text" placeholder="Apellidos" formControlName="apellidos" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.apellidos.errors }">
+            <div *ngIf="submitted && f.apellidos.errors" class="invalid-feedback">
+                <div *ngIf="f.apellidos.errors.required">Por favor, escriba sus apellidos</div>
             </div>
 
             <input type="text" placeholder="Correo electrónico" formControlName="correo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.correo.errors }" />
