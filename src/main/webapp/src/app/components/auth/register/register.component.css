@@ -38,10 +38,6 @@
     background: #ebebeb;
     padding: 10 px;
     display: grid;
-    grid-template-areas: "header header" "side content" "footer footer";
-    grid-template-rows: auto auto auto;
-    grid-row-gap: 10px;
-    grid-column-gap: 10 px;
 
 }
 
@@ -99,11 +95,10 @@
 
 .register input[type="submit"]:focus {
     border-color: rgb(6, 117, 75);
-}
-
-.ng-valid {
+}.ng-valid {
     border: thin solid #090;
 }
+
 .ng-invalid {
     border: thin solid #990000;
 }
