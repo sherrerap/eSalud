@@ -5,20 +5,21 @@
     <div class="login-triangle"></div>
     <h2 class="login-header">Iniciar sesión</h2>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-container">
-        <p>
+        <div class="form-group">
             <input type="dni" placeholder="DNI" id="dni" formControlName="dni" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dni.errors }" />
-        </p>
-        <div *ngIf="submitted && f.dni.errors" class="invalid-feedback">
-            <div *ngIf="f.dni.errors.required">Debes introducir un DNI</div>
-        </div>
-        <p>
+            <div *ngIf="submitted && f.dni.errors" class="invalid-feedback">
+                <div *ngIf="f.dni.errors.required">Debes introducir un DNI</div>
+            </div>
             <input type="password" placeholder="Contraseña" id="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-        </p>
-        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-            <div *ngIf="f.password.errors.required">Debes introducir una Contraseña</div>
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Debes introducir una Contraseña</div>
+            </div>
+
+            <div class="form-group">
+                <p><input type="submit" value="Acceder"></p>
+                <p><input type="submit2" value="Registrarse" routerLink="/auth/register" class="btn btn-link"></p>
+                <p><input type="submit3" value="Salir (test)" class="nav-item nav-link" (click)="logout()" class="btn btn-link"></p>
+            </div>
         </div>
-        <p><input type="submit" value="Acceder"></p>
-        <p><input type="submit2" value="Registrarse" routerLink="/auth/register" class="btn btn-link"></p>
-        <p><input type="submit3" value="Salir (test)" class="nav-item nav-link" (click)="logout()" class="btn btn-link"></p>
     </form>
 </div>
