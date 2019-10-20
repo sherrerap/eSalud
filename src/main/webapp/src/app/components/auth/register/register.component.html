@@ -6,14 +6,12 @@
     <form class="register-container" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
 
-            <div class="clase-dni">
 
                 <input type="text" placeholder="DNI" formControlName="dni" class="form-control"
                     [ngClass]="{ 'is-invalid': submitted && f.dni.errors }">
                 <div *ngIf="submitted && f.dni.errors" class="invalid-feedback">
                     <div *ngIf="f.dni.errors.required">Por favor, escriba su DNI</div>
                 </div>
-            </div>
 
             <input type="password" placeholder="Contraseña" formControlName="password" class="form-control"
                 [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
@@ -25,7 +23,6 @@
                 [ngClass]="{ 'is-invalid': submitted && f.password2.errors }" />
             <div *ngIf="submitted && f.password2.errors" class="invalid-feedback">
                 <div *ngIf="f.password2.errors.required">Por favor, escriba una contraseña</div>
-                <div *ngIf="f.password2?.f.password!=null">La contraseña debe ser igual a la otra contraseña</div>
             </div>
 
             <input type="text" placeholder="Correo electrónico" formControlName="correo" class="form-control"
@@ -37,7 +34,7 @@
             <input type="text" placeholder="Localidad" formControlName="localidad" class="form-control"
                 [ngClass]="{ 'is-invalid': submitted && f.localidad.errors }" />
             <div *ngIf="submitted && f.localidad.errors" class="invalid-feedback">
-                <div *ngIf="f.emlocalidadail.errors.required">Por favor, escriba su localidad</div>
+                <div *ngIf="f.localidad.errors.required">Por favor, escriba su localidad</div>
             </div>
 
             <button [disabled]="loading" class="btn btn-primary">

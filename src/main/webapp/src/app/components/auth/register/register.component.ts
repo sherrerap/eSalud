@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
             password2: ['', [Validators.required, Validators.minLength(6)]],
             correo: ['', Validators.required],
             localidad: ['', Validators.required]
-                });
+        });
     }
 
     // getter para acceder a los controles del form
