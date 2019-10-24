@@ -19,7 +19,8 @@
     width: 60%;
   }
 .mat-icon{
-  position: relative;
+  position: right;
+  background-color: blue;
 }
 
 

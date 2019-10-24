@@ -20,7 +20,7 @@ const routes: Routes = [
 },
   {path: 'admin', component: SidenavAdminComponent,
   children: [
-    { path: '', component: AdminComponent}
+    { path: '', component: MostrarMedicoComponent}
   ]
 },
 /********************************************************************************** */
