@@ -19,8 +19,7 @@
     width: 60%;
   }
 .mat-icon{
-  position: right;
-  background-color: blue;
+  position: relative;
 }
 
 
@@ -35,7 +34,8 @@
 
   }
   .mat-sidenav{
-    background: rgb(241, 241, 241);
+	background: rgb(255, 255, 255);
+	
   }
   
   .example-is-mobile .example-sidenav-container {
@@ -44,5 +44,31 @@
     flex: 1 0 auto;
 
   }
+  .mat-nav-list{
+    
+	margin-right: 0.3em;
+	margin-left: 0.3em;
+	background: rgb(255, 255, 255);
+	
+	
+  }
+.but1 {
+	background:linear-gradient(to bottom, rgb(255, 255, 255) 5%, rgb(255, 255, 255) 100%);
+	border-radius:9px;
+	color:rgb(0, 0, 0);
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 16px;
+}
 
+.admin{
+	position: relative;
+	left: 15px;
+	font-size:24pt;
+	font-style: normal;
+}
+
+
+ 
   

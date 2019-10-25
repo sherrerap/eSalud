@@ -1,0 +1,111 @@
+/* Style inputs, select elements and textareas */
+input[type=text],input[type=password], select, textarea{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+
+
+/* Style the label to display next to the inputs */
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+/* Style the submit button */
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+/* Style the container */
+.container {
+  border-radius: 4px;
+  background-color: #f2f2f2;
+  padding-left: 5%;
+  padding-top: 1%;
+  padding-right: 5%;
+  padding-bottom: 5%;
+  
+}
+
+/* Floating column for labels: 25% width */
+.col-25 {
+  float: left;
+  padding-top: 1%;
+  padding-left: 10%;
+  width: 20%;
+  margin-top: 6px;
+}
+
+.col-25u {
+  float: left;
+  padding-top: 1%;
+  padding-left: 10%;
+  width: 20%;
+  margin-top: 6px;
+  padding-bottom:1%
+}
+
+/* Floating column for inputs: 75% width */
+.col-75 {
+  float: left;
+  width: 60%;
+ padding-top: 1%;
+  padding-left: 10%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+.row1 {
+  background-color: rgb(0, 128, 64) ;
+  border: 2px solid #ccc;
+  text-align: right;
+}
+
+.row justify-content-center {
+  padding-top: 140%;
+}
+
+
+
+.myButton {
+	
+	box-shadow:inset 0px 0px 15px 3px #3dc21b;
+	background:linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
+	background-color:#44c767;
+	border-radius:17px;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Verdana;
+	font-size:18px;
+	padding:16px 47px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+
