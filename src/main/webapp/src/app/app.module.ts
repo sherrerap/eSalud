@@ -62,6 +62,11 @@ import { DialogBoxMedicoComponent } from './components/dialog-box-medico/dialog-
   MatPaginatorModule,
   HttpClientModule
   ],
+ entryComponents: [
+    DialogBoxPacienteComponent,
+    DialogBoxMedicoComponent
+
+  ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
