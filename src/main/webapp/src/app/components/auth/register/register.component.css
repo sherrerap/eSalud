@@ -1,8 +1,10 @@
 .register {
-    width: 400px;
+    width: 600px;
     margin: 16px auto;
     font-size: 16px;
 }
+
+
 /* Reset top and bottom margins from certain elements */
 
 .register-header,
@@ -10,6 +12,8 @@
     margin-top: 0;
     margin-bottom: 0;
 }
+
+
 /* The triangle form is achieved by a CSS hack */
 
 .register-triangle {
@@ -32,43 +36,45 @@
 
 .register-container {
     background: #ebebeb;
-    padding: 12px;
+    padding: 10 px;
+    display: grid;
+
 }
 
-.register-bg {
-    content: url(/src/main/front-end/src/assets/img/SESCAM1.png);
-    position: relative;
-    top: 0%;
-    left: -60%;
-}
-/* Every row inside .login-container is defined with p tags */
+
+/* Every row inside .register-container is defined with p tags */
 
 .register p {
-    padding: 12px;
+    padding: 6px;
 }
 
 .register input {
     box-sizing: border-box;
+    padding: 6px;
     display: block;
     width: 100%;
     border-width: 1px;
     border-style: solid;
-    padding: 16px;
+    padding: 5%;
     outline: 0;
     font-family: inherit;
     font-size: 0.95em;
 }
 
-.register input[type="email"],
-.register input[type="password"] {
+.register input[type="text"],
+.register input[type="password"]{
+    width: 100%;
     background: #fff;
     border-color: #bbb;
     color: #555;
+    margin-top: 5px;
 }
+
+
 /* Text fields' focus effect */
 
-.register input[type="email"]:focus,
-.register input[type="password"]:focus {
+.register input[type="text"]:focus,
+.register input[type="password"]:focus{
     border-color: #888;
 }
 
@@ -77,13 +83,22 @@
     border-color: transparent;
     color: #fff;
     cursor: pointer;
+    left: 50%;
 }
 
 .register input[type="submit"]:hover {
-    background: #17c;
+    background: rgb(6, 117, 75);
 }
+
+
 /* Buttons' focus effect */
 
 .register input[type="submit"]:focus {
-    border-color: #05a;
+    border-color: rgb(6, 117, 75);
+}.ng-valid {
+    border: thin solid #090;
+}
+
+.ng-invalid {
+    border: thin solid #990000;
 }
