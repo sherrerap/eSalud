@@ -1,6 +1,6 @@
 
 <h1 mat-dialog-title><strong>Actualizar médico</strong></h1>
-<div mat-dialog-content>
+<div class="container">
   <mat-form-field *ngIf="action != 'Delete'; else elseTemplate">
     <input placeholder="Dni" matInput [(ngModel)]="local_data.dni">
   </mat-form-field>
@@ -23,7 +23,9 @@
     ¿Confirma que quiere borrarlo<b>{{local_data.name}}</b>?
   </ng-template>
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="doAction()">{{action}}</button>
+<div mat-dialog-actions-center>
+  <div class="contenedor-botones">
+  <button mat-raised-button (click)="doAction()">{{action}}</button>
   <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+  </div>
 </div>

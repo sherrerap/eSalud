@@ -1,4 +1,28 @@
-.table{
-	width:100%
-	
+.container{
+	width:100%;
+}
+
+.mat-form-field{
+	width:100%;
+}
+
+h1{
+	text-align: center;
+}
+
+div.contenedor-botones{
+	text-align: center;
+}
+
+.mat-raised-button{
+	margin:3px;	
+}
+
+.mat-button{
+	margin:3px;	
+}
+
+.mat-raised-button{
+	background-color:rgb(34, 189, 131);
+	color:white;
 }

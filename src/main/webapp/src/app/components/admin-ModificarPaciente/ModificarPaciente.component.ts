@@ -48,9 +48,7 @@ displayedColumns: string[] = ['id', 'dni','nombre','apellidos','centro','correo'
     });
  
     dialogRef.afterClosed().subscribe(result => {
-      if(result.event == 'Add'){
-        this.addRowData(result.data);
-      }else if(result.event == 'Update'){
+      if(result.event == 'Update'){
         this.updateRowData(result.data);
       }else if(result.event == 'Delete'){
         this.deleteRowData(result.data);
@@ -75,7 +73,7 @@ displayedColumns: string[] = ['id', 'dni','nombre','apellidos','centro','correo'
   updateRowData(row_obj){
     this.dataSource = this.dataSource.filter((value,key)=>{
       if(value.id == row_obj.id){
-        value.dni = row_obj.name;
+        value.dni = row_obj.dni;
         value.apellidos =row_obj.apellidos;
 		value.nombre =row_obj.nombre;
 		value.centro= row_obj.centro;
