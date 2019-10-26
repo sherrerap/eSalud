@@ -100,19 +100,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/admin/admin.component.html":
-/*!*********************************************************************************************!*\
-  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/admin/admin.component.html ***!
-  \*********************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container-fluid col-8 panel_central\">\r\n    <div class=\"table-responsive\">\r\n        <table class=\"table table-bordered table-hover\">\r\n\t\t\t<label for=\"Name\">Estoy en vista principal administrador</label>\r\n        </table>\r\n    </div>");
-
-/***/ }),
-
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/dialog-box-medico/dialog-box-medico.component.html":
 /*!*********************************************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/dialog-box-medico/dialog-box-medico.component.html ***!
@@ -1003,13 +990,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_sidenav_sidenav_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/sidenav/sidenav.component */ "./src/app/components/sidenav/sidenav.component.ts");
 /* harmony import */ var _components_sidenavAdmin_sidenavAdmin_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/sidenavAdmin/sidenavAdmin.component */ "./src/app/components/sidenavAdmin/sidenavAdmin.component.ts");
 /* harmony import */ var _components_listado_citas_listado_citas_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/listado-citas/listado-citas.component */ "./src/app/components/listado-citas/listado-citas.component.ts");
-/* harmony import */ var _components_admin_admin_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/admin/admin.component */ "./src/app/components/admin/admin.component.ts");
-/* harmony import */ var _components_admin_ModificarMedico_ModificarMedico_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/admin-ModificarMedico/ModificarMedico.component */ "./src/app/components/admin-ModificarMedico/ModificarMedico.component.ts");
-/* harmony import */ var _components_admin_ModificarPaciente_ModificarPaciente_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/admin-ModificarPaciente/ModificarPaciente.component */ "./src/app/components/admin-ModificarPaciente/ModificarPaciente.component.ts");
-/* harmony import */ var _components_admin_MostrarMedico_MostrarMedico_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/admin-MostrarMedico/MostrarMedico.component */ "./src/app/components/admin-MostrarMedico/MostrarMedico.component.ts");
-/* harmony import */ var _components_admin_RegistrarMedico_RegistrarMedico_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/admin-RegistrarMedico/RegistrarMedico.component */ "./src/app/components/admin-RegistrarMedico/RegistrarMedico.component.ts");
-/* harmony import */ var _components_dialog_box_paciente_dialog_box_paciente_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/dialog-box-paciente/dialog-box-paciente.component */ "./src/app/components/dialog-box-paciente/dialog-box-paciente.component.ts");
-/* harmony import */ var _components_dialog_box_medico_dialog_box_medico_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/dialog-box-medico/dialog-box-medico.component */ "./src/app/components/dialog-box-medico/dialog-box-medico.component.ts");
+/* harmony import */ var _components_admin_ModificarMedico_ModificarMedico_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/admin-ModificarMedico/ModificarMedico.component */ "./src/app/components/admin-ModificarMedico/ModificarMedico.component.ts");
+/* harmony import */ var _components_admin_ModificarPaciente_ModificarPaciente_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/admin-ModificarPaciente/ModificarPaciente.component */ "./src/app/components/admin-ModificarPaciente/ModificarPaciente.component.ts");
+/* harmony import */ var _components_admin_MostrarMedico_MostrarMedico_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/admin-MostrarMedico/MostrarMedico.component */ "./src/app/components/admin-MostrarMedico/MostrarMedico.component.ts");
+/* harmony import */ var _components_admin_RegistrarMedico_RegistrarMedico_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/admin-RegistrarMedico/RegistrarMedico.component */ "./src/app/components/admin-RegistrarMedico/RegistrarMedico.component.ts");
+/* harmony import */ var _components_dialog_box_paciente_dialog_box_paciente_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/dialog-box-paciente/dialog-box-paciente.component */ "./src/app/components/dialog-box-paciente/dialog-box-paciente.component.ts");
+/* harmony import */ var _components_dialog_box_medico_dialog_box_medico_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/dialog-box-medico/dialog-box-medico.component */ "./src/app/components/dialog-box-medico/dialog-box-medico.component.ts");
 
 
 
@@ -1032,7 +1018,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 let AppModule = class AppModule {
 };
 AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -1042,13 +1027,12 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _components_sidenav_sidenav_component__WEBPACK_IMPORTED_MODULE_11__["SidenavComponent"],
             _components_sidenavAdmin_sidenavAdmin_component__WEBPACK_IMPORTED_MODULE_12__["SidenavAdminComponent"],
             _components_listado_citas_listado_citas_component__WEBPACK_IMPORTED_MODULE_13__["ListadoCitasComponent"],
-            _components_admin_admin_component__WEBPACK_IMPORTED_MODULE_14__["AdminComponent"],
-            _components_admin_ModificarMedico_ModificarMedico_component__WEBPACK_IMPORTED_MODULE_15__["ModificarMedicoComponent"],
-            _components_admin_ModificarPaciente_ModificarPaciente_component__WEBPACK_IMPORTED_MODULE_16__["ModificarPacienteComponent"],
-            _components_admin_MostrarMedico_MostrarMedico_component__WEBPACK_IMPORTED_MODULE_17__["MostrarMedicoComponent"],
-            _components_admin_RegistrarMedico_RegistrarMedico_component__WEBPACK_IMPORTED_MODULE_18__["RegistrarMedicoComponent"],
-            _components_dialog_box_paciente_dialog_box_paciente_component__WEBPACK_IMPORTED_MODULE_19__["DialogBoxPacienteComponent"],
-            _components_dialog_box_medico_dialog_box_medico_component__WEBPACK_IMPORTED_MODULE_20__["DialogBoxMedicoComponent"],
+            _components_admin_ModificarMedico_ModificarMedico_component__WEBPACK_IMPORTED_MODULE_14__["ModificarMedicoComponent"],
+            _components_admin_ModificarPaciente_ModificarPaciente_component__WEBPACK_IMPORTED_MODULE_15__["ModificarPacienteComponent"],
+            _components_admin_MostrarMedico_MostrarMedico_component__WEBPACK_IMPORTED_MODULE_16__["MostrarMedicoComponent"],
+            _components_admin_RegistrarMedico_RegistrarMedico_component__WEBPACK_IMPORTED_MODULE_17__["RegistrarMedicoComponent"],
+            _components_dialog_box_paciente_dialog_box_paciente_component__WEBPACK_IMPORTED_MODULE_18__["DialogBoxPacienteComponent"],
+            _components_dialog_box_medico_dialog_box_medico_component__WEBPACK_IMPORTED_MODULE_19__["DialogBoxMedicoComponent"],
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -1070,8 +1054,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpClientModule"]
         ],
         entryComponents: [
-            _components_dialog_box_paciente_dialog_box_paciente_component__WEBPACK_IMPORTED_MODULE_19__["DialogBoxPacienteComponent"],
-            _components_dialog_box_medico_dialog_box_medico_component__WEBPACK_IMPORTED_MODULE_20__["DialogBoxMedicoComponent"]
+            _components_dialog_box_paciente_dialog_box_paciente_component__WEBPACK_IMPORTED_MODULE_18__["DialogBoxPacienteComponent"],
+            _components_dialog_box_medico_dialog_box_medico_component__WEBPACK_IMPORTED_MODULE_19__["DialogBoxMedicoComponent"]
         ],
         providers: [
             { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HTTP_INTERCEPTORS"], useClass: _helpers___WEBPACK_IMPORTED_MODULE_9__["JwtInterceptor"], multi: true },
@@ -1439,50 +1423,6 @@ RegistrarMedicoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./RegistrarMedico.component.css */ "./src/app/components/admin-RegistrarMedico/RegistrarMedico.component.css")).default]
     })
 ], RegistrarMedicoComponent);
-
-
-
-/***/ }),
-
-/***/ "./src/app/components/admin/admin.component.css":
-/*!******************************************************!*\
-  !*** ./src/app/components/admin/admin.component.css ***!
-  \******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\r\n.panel_superior {\r\n    background:#23C185;\r\n    height: 125px;\r\n    width: 100%;\r\n    border-color: black\r\n}\r\n\r\n.panel_lateral {\r\n    background: #23C185;\r\n    width: 15%;\r\n    position: absolute;\r\n    height: 600px;\r\n    align-items: center;\r\n    padding-left: 0px;\r\n    margin-left: 0px;\r\n}\r\n\r\n.panel_lateral {\r\n    border-right: 1.5px solid black;\r\n    border-left: 1.5px solid black;\r\n    border-bottom: 1.5px solid black\r\n}\r\n\r\n.panel_central {\r\n    width: 85%;\r\n    height: 600px;\r\n    ;\r\n}\r\n\r\n.SescamLogo{\r\n\twidth: 205px;\r\n\theight: 185px;\r\n}\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9hZG1pbi9hZG1pbi5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtJQUNJLGtCQUFrQjtJQUNsQixhQUFhO0lBQ2IsV0FBVztJQUNYO0FBQ0o7O0FBRUE7SUFDSSxtQkFBbUI7SUFDbkIsVUFBVTtJQUNWLGtCQUFrQjtJQUNsQixhQUFhO0lBQ2IsbUJBQW1CO0lBQ25CLGlCQUFpQjtJQUNqQixnQkFBZ0I7QUFDcEI7O0FBRUE7SUFDSSwrQkFBK0I7SUFDL0IsOEJBQThCO0lBQzlCO0FBQ0o7O0FBRUE7SUFDSSxVQUFVO0lBQ1YsYUFBYTs7QUFFakI7O0FBRUE7Q0FDQyxZQUFZO0NBQ1osYUFBYTtBQUNkIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9hZG1pbi9hZG1pbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXHJcbi5wYW5lbF9zdXBlcmlvciB7XHJcbiAgICBiYWNrZ3JvdW5kOiMyM0MxODU7XHJcbiAgICBoZWlnaHQ6IDEyNXB4O1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBib3JkZXItY29sb3I6IGJsYWNrXHJcbn1cclxuXHJcbi5wYW5lbF9sYXRlcmFsIHtcclxuICAgIGJhY2tncm91bmQ6ICMyM0MxODU7XHJcbiAgICB3aWR0aDogMTUlO1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgaGVpZ2h0OiA2MDBweDtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICBwYWRkaW5nLWxlZnQ6IDBweDtcclxuICAgIG1hcmdpbi1sZWZ0OiAwcHg7XHJcbn1cclxuXHJcbi5wYW5lbF9sYXRlcmFsIHtcclxuICAgIGJvcmRlci1yaWdodDogMS41cHggc29saWQgYmxhY2s7XHJcbiAgICBib3JkZXItbGVmdDogMS41cHggc29saWQgYmxhY2s7XHJcbiAgICBib3JkZXItYm90dG9tOiAxLjVweCBzb2xpZCBibGFja1xyXG59XHJcblxyXG4ucGFuZWxfY2VudHJhbCB7XHJcbiAgICB3aWR0aDogODUlO1xyXG4gICAgaGVpZ2h0OiA2MDBweDtcclxuICAgIDtcclxufVxyXG5cclxuLlNlc2NhbUxvZ297XHJcblx0d2lkdGg6IDIwNXB4O1xyXG5cdGhlaWdodDogMTg1cHg7XHJcbn1cclxuXHJcbiJdfQ== */");
-
-/***/ }),
-
-/***/ "./src/app/components/admin/admin.component.ts":
-/*!*****************************************************!*\
-  !*** ./src/app/components/admin/admin.component.ts ***!
-  \*****************************************************/
-/*! exports provided: AdminComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminComponent", function() { return AdminComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-
-
-let AdminComponent = class AdminComponent {
-    constructor() { }
-    ngOnInit() {
-    }
-};
-AdminComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-admin',
-        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./admin.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/admin/admin.component.html")).default,
-        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./admin.component.css */ "./src/app/components/admin/admin.component.css")).default]
-    })
-], AdminComponent);
 
 
 
