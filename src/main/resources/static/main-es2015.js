@@ -109,7 +109,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\r\n<h1 mat-dialog-title><strong>Actualizar médico</strong></h1>\r\n<div mat-dialog-content>\r\n  <mat-form-field *ngIf=\"action != 'Delete'; else elseTemplate\">\r\n    <input placeholder=\"Dni\" matInput [(ngModel)]=\"local_data.dni\">\r\n  </mat-form-field>\r\n  <mat-form-field *ngIf=\"action != 'Delete'\">\r\n    <input placeholder=\"Nombre\" matInput [(ngModel)]=\"local_data.nombre\">\r\n  </mat-form-field>\r\n  <mat-form-field *ngIf=\"action != 'Delete'\">\r\n    <input placeholder=\"Apellidos\" matInput [(ngModel)]=\"local_data.apellidos\">\r\n  </mat-form-field>\r\n  <mat-form-field *ngIf=\"action != 'Delete'\">\r\n    <input placeholder=\"Centro\" matInput [(ngModel)]=\"local_data.centro\">\r\n  </mat-form-field>\r\n  <mat-form-field *ngIf=\"action != 'Delete'\">\r\n    <input placeholder=\"Correo\" matInput [(ngModel)]=\"local_data.correo\">\r\n  </mat-form-field>\r\n  <mat-form-field *ngIf=\"action != 'Delete'\">\r\n    <input placeholder=\"Teléfono\" matInput [(ngModel)]=\"local_data.telefono\">\r\n  </mat-form-field>\r\n  <ng-template #elseTemplate>\r\n    ¿Confirma que quiere borrarlo<b>{{local_data.name}}</b>?\r\n  </ng-template>\r\n</div>\r\n<div mat-dialog-actions>\r\n  <button mat-button (click)=\"doAction()\">{{action}}</button>\r\n  <button mat-button (click)=\"closeDialog()\" mat-flat-button color=\"warn\">Cancel</button>\r\n</div>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\r\n<h1 mat-dialog-title><strong>Actualizar médico</strong></h1>\r\n<div class=\"container\">\r\n  <mat-form-field *ngIf=\"action != 'Delete'; else elseTemplate\">\r\n    <input placeholder=\"Dni\" matInput [(ngModel)]=\"local_data.dni\">\r\n  </mat-form-field>\r\n  <mat-form-field *ngIf=\"action != 'Delete'\">\r\n    <input placeholder=\"Nombre\" matInput [(ngModel)]=\"local_data.nombre\">\r\n  </mat-form-field>\r\n  <mat-form-field *ngIf=\"action != 'Delete'\">\r\n    <input placeholder=\"Apellidos\" matInput [(ngModel)]=\"local_data.apellidos\">\r\n  </mat-form-field>\r\n  <mat-form-field *ngIf=\"action != 'Delete'\">\r\n    <input placeholder=\"Centro\" matInput [(ngModel)]=\"local_data.centro\">\r\n  </mat-form-field>\r\n  <mat-form-field *ngIf=\"action != 'Delete'\">\r\n    <input placeholder=\"Correo\" matInput [(ngModel)]=\"local_data.correo\">\r\n  </mat-form-field>\r\n  <mat-form-field *ngIf=\"action != 'Delete'\">\r\n    <input placeholder=\"Teléfono\" matInput [(ngModel)]=\"local_data.telefono\">\r\n  </mat-form-field>\r\n  <ng-template #elseTemplate>\r\n    ¿Confirma que quiere borrarlo<b>{{local_data.name}}</b>?\r\n  </ng-template>\r\n</div>\r\n<div mat-dialog-actions-center>\r\n  <div class=\"contenedor-botones\">\r\n  <button mat-raised-button (click)=\"doAction()\">{{action}}</button>\r\n  <button mat-button (click)=\"closeDialog()\" mat-flat-button color=\"warn\">Cancel</button>\r\n  </div>\r\n</div>\r\n");
 
 /***/ }),
 
@@ -122,7 +122,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<!-- dialog-box.component.html -->\r\n<h1 mat-dialog-title><strong>Actualizar paciente</strong></h1>\r\n<div mat-dialog-content>\r\n  <mat-form-field *ngIf=\"action != 'Delete'; else elseTemplate\">\r\n    <input placeholder=\"Dni\" matInput [(ngModel)]=\"local_data.dni\">\r\n  </mat-form-field>\r\n  <mat-form-field *ngIf=\"action != 'Delete'\">\r\n    <input placeholder=\"Nombre\" matInput [(ngModel)]=\"local_data.nombre\">\r\n  </mat-form-field>\r\n  <mat-form-field *ngIf=\"action != 'Delete'\">\r\n    <input placeholder=\"Apellidos\" matInput [(ngModel)]=\"local_data.apellidos\">\r\n  </mat-form-field>\r\n  <mat-form-field *ngIf=\"action != 'Delete'\">\r\n    <input placeholder=\"Centro\" matInput [(ngModel)]=\"local_data.centro\">\r\n  </mat-form-field>\r\n  <mat-form-field *ngIf=\"action != 'Delete'\">\r\n    <input placeholder=\"Correo\" matInput [(ngModel)]=\"local_data.correo\">\r\n  </mat-form-field>\r\n  <mat-form-field *ngIf=\"action != 'Delete'\">\r\n    <input placeholder=\"Localidad\" matInput [(ngModel)]=\"local_data.localidad\">\r\n  </mat-form-field>\r\n  <ng-template #elseTemplate>\r\n    ¿Confirma que quiere borrarlo<b>{{local_data.name}}</b>?\r\n  </ng-template>\r\n</div>\r\n<div mat-dialog-actions>\r\n  <button mat-button (click)=\"doAction()\">{{action}}</button>\r\n  <button mat-button (click)=\"closeDialog()\" mat-flat-button color=\"warn\">Cancel</button>\r\n</div>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<h1 mat-dialog-title><strong>Actualizar paciente</strong></h1>\r\n<div class=\"container\">\r\n  <mat-form-field *ngIf=\"action != 'Delete'; else elseTemplate\">\r\n    <input placeholder=\"Dni\" matInput [(ngModel)]=\"local_data.dni\">\r\n  </mat-form-field>\r\n  <mat-form-field *ngIf=\"action != 'Delete'\">\r\n    <input placeholder=\"Nombre\" matInput [(ngModel)]=\"local_data.nombre\">\r\n  </mat-form-field>\r\n  <mat-form-field *ngIf=\"action != 'Delete'\">\r\n    <input placeholder=\"Apellidos\" matInput [(ngModel)]=\"local_data.apellidos\">\r\n  </mat-form-field>\r\n  <mat-form-field *ngIf=\"action != 'Delete'\">\r\n    <input placeholder=\"Centro\" matInput [(ngModel)]=\"local_data.centro\">\r\n  </mat-form-field>\r\n  <mat-form-field *ngIf=\"action != 'Delete'\">\r\n    <input placeholder=\"Correo\" matInput [(ngModel)]=\"local_data.correo\">\r\n  </mat-form-field>\r\n  <mat-form-field *ngIf=\"action != 'Delete'\">\r\n    <input placeholder=\"Localidad\" matInput [(ngModel)]=\"local_data.localidad\">\r\n  </mat-form-field>\r\n  <ng-template #elseTemplate>\r\n    ¿Confirma que quiere borrarlo<b>{{local_data.name}}</b>?\r\n  </ng-template>\r\n</div>\r\n<div mat-dialog-actions-center>\r\n  <div class=\"contenedor-botones\">\r\n  <button mat-raised-button (click)=\"doAction()\">{{action}}</button>\r\n  <button mat-button (click)=\"closeDialog()\" mat-flat-button color=\"warn\">Cancel</button>\r\n  </div>\r\n</div>\r\n");
 
 /***/ }),
 
@@ -704,8 +704,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
-
 
 
 
@@ -721,7 +719,10 @@ let AuthService = class AuthService {
         return this.currentUserSubject.value;
     }
     login(dni, password) {
-        return this.http.post(`${_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].apiUrl}/auth/login`, { dni, password })
+        const params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]()
+            .set('dni', dni)
+            .set('password', password);
+        return this.http.get('`${environment.apiUrl}/usuarios', { params: params })
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(user => {
             // almacena detalles del usuario y el token jwt en el almacenamiento local para mantener al usuario logueado entre refrescos de página
             localStorage.setItem('currentUser', JSON.stringify(user));
@@ -729,6 +730,17 @@ let AuthService = class AuthService {
             return user;
         }));
     }
+    /*
+        login(dni, password) {
+            return this.http.post<any>(${environment.apiUrl}/auth/login, { dni, password })
+                .pipe(map(user => {
+                    // almacena detalles del usuario y el token jwt en el almacenamiento local para mantener al usuario logueado entre refrescos de página
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    this.currentUserSubject.next(user);
+                    return user;
+                }));
+        }
+    */
     logout() {
         // elimina al usuario del almacenamiento local y marca el usuario actual como nulo
         localStorage.removeItem('currentUser');
@@ -1129,10 +1141,7 @@ let ModificarMedicoComponent = class ModificarMedicoComponent {
             data: obj
         });
         dialogRef.afterClosed().subscribe(result => {
-            if (result.event == 'Add') {
-                this.addRowData(result.data);
-            }
-            else if (result.event == 'Update') {
+            if (result.event == 'Update') {
                 this.updateRowData(result.data);
             }
             else if (result.event == 'Delete') {
@@ -1156,7 +1165,7 @@ let ModificarMedicoComponent = class ModificarMedicoComponent {
     updateRowData(row_obj) {
         this.dataSource = this.dataSource.filter((value, key) => {
             if (value.id == row_obj.id) {
-                value.dni = row_obj.name;
+                value.dni = row_obj.dni;
                 value.apellidos = row_obj.apellidos;
                 value.nombre = row_obj.nombre;
                 value.centro = row_obj.centro;
@@ -1248,10 +1257,7 @@ let ModificarPacienteComponent = class ModificarPacienteComponent {
             data: obj
         });
         dialogRef.afterClosed().subscribe(result => {
-            if (result.event == 'Add') {
-                this.addRowData(result.data);
-            }
-            else if (result.event == 'Update') {
+            if (result.event == 'Update') {
                 this.updateRowData(result.data);
             }
             else if (result.event == 'Delete') {
@@ -1275,7 +1281,7 @@ let ModificarPacienteComponent = class ModificarPacienteComponent {
     updateRowData(row_obj) {
         this.dataSource = this.dataSource.filter((value, key) => {
             if (value.id == row_obj.id) {
-                value.dni = row_obj.name;
+                value.dni = row_obj.dni;
                 value.apellidos = row_obj.apellidos;
                 value.nombre = row_obj.nombre;
                 value.centro = row_obj.centro;
@@ -1437,7 +1443,7 @@ RegistrarMedicoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".table{\r\n\twidth:100%\r\n\t\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9kaWFsb2ctYm94LW1lZGljby9kaWFsb2ctYm94LW1lZGljby5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0NBQ0M7O0FBRUQiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2RpYWxvZy1ib3gtbWVkaWNvL2RpYWxvZy1ib3gtbWVkaWNvLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIudGFibGV7XHJcblx0d2lkdGg6MTAwJVxyXG5cdFxyXG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = (".container{\r\n\twidth:100%;\r\n}\r\n\r\n.mat-form-field{\r\n\twidth:100%;\r\n}\r\n\r\nh1{\r\n\ttext-align: center;\r\n}\r\n\r\ndiv.contenedor-botones{\r\n\ttext-align: center;\r\n}\r\n\r\n.mat-raised-button{\r\n\tmargin:3px;\t\r\n}\r\n\r\n.mat-button{\r\n\tmargin:3px;\t\r\n}\r\n\r\n.mat-raised-button{\r\n\tbackground-color:rgb(34, 189, 131);\r\n\tcolor:white;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9kaWFsb2ctYm94LW1lZGljby9kaWFsb2ctYm94LW1lZGljby5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0NBQ0MsVUFBVTtBQUNYOztBQUVBO0NBQ0MsVUFBVTtBQUNYOztBQUVBO0NBQ0Msa0JBQWtCO0FBQ25COztBQUVBO0NBQ0Msa0JBQWtCO0FBQ25COztBQUVBO0NBQ0MsVUFBVTtBQUNYOztBQUVBO0NBQ0MsVUFBVTtBQUNYOztBQUVBO0NBQ0Msa0NBQWtDO0NBQ2xDLFdBQVc7QUFDWiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvZGlhbG9nLWJveC1tZWRpY28vZGlhbG9nLWJveC1tZWRpY28uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jb250YWluZXJ7XHJcblx0d2lkdGg6MTAwJTtcclxufVxyXG5cclxuLm1hdC1mb3JtLWZpZWxke1xyXG5cdHdpZHRoOjEwMCU7XHJcbn1cclxuXHJcbmgxe1xyXG5cdHRleHQtYWxpZ246IGNlbnRlcjtcclxufVxyXG5cclxuZGl2LmNvbnRlbmVkb3ItYm90b25lc3tcclxuXHR0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuXHJcbi5tYXQtcmFpc2VkLWJ1dHRvbntcclxuXHRtYXJnaW46M3B4O1x0XHJcbn1cclxuXHJcbi5tYXQtYnV0dG9ue1xyXG5cdG1hcmdpbjozcHg7XHRcclxufVxyXG5cclxuLm1hdC1yYWlzZWQtYnV0dG9ue1xyXG5cdGJhY2tncm91bmQtY29sb3I6cmdiKDM0LCAxODksIDEzMSk7XHJcblx0Y29sb3I6d2hpdGU7XHJcbn0iXX0= */");
 
 /***/ }),
 
@@ -1500,7 +1506,7 @@ DialogBoxMedicoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".table{\r\n\twidth:100%\r\n\t\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9kaWFsb2ctYm94LXBhY2llbnRlL2RpYWxvZy1ib3gtcGFjaWVudGUuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtDQUNDOztBQUVEIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9kaWFsb2ctYm94LXBhY2llbnRlL2RpYWxvZy1ib3gtcGFjaWVudGUuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi50YWJsZXtcclxuXHR3aWR0aDoxMDAlXHJcblx0XHJcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = (".container{\r\n\twidth:100%;\r\n}\r\n\r\n.mat-form-field{\r\n\twidth:100%;\r\n}\r\n\r\nh1{\r\n\ttext-align: center;\r\n}\r\n\r\ndiv.contenedor-botones{\r\n\ttext-align: center;\r\n}\r\n\r\n.mat-raised-button{\r\n\tmargin:3px;\t\r\n}\r\n\r\n.mat-button{\r\n\tmargin:3px;\t\r\n}\r\n\r\n.mat-raised-button{\r\n\tbackground-color:rgb(34, 189, 131);\r\n\tcolor:white;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9kaWFsb2ctYm94LXBhY2llbnRlL2RpYWxvZy1ib3gtcGFjaWVudGUuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtDQUNDLFVBQVU7QUFDWDs7QUFFQTtDQUNDLFVBQVU7QUFDWDs7QUFFQTtDQUNDLGtCQUFrQjtBQUNuQjs7QUFFQTtDQUNDLGtCQUFrQjtBQUNuQjs7QUFFQTtDQUNDLFVBQVU7QUFDWDs7QUFFQTtDQUNDLFVBQVU7QUFDWDs7QUFFQTtDQUNDLGtDQUFrQztDQUNsQyxXQUFXO0FBQ1oiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2RpYWxvZy1ib3gtcGFjaWVudGUvZGlhbG9nLWJveC1wYWNpZW50ZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNvbnRhaW5lcntcclxuXHR3aWR0aDoxMDAlO1xyXG59XHJcblxyXG4ubWF0LWZvcm0tZmllbGR7XHJcblx0d2lkdGg6MTAwJTtcclxufVxyXG5cclxuaDF7XHJcblx0dGV4dC1hbGlnbjogY2VudGVyO1xyXG59XHJcblxyXG5kaXYuY29udGVuZWRvci1ib3RvbmVze1xyXG5cdHRleHQtYWxpZ246IGNlbnRlcjtcclxufVxyXG5cclxuLm1hdC1yYWlzZWQtYnV0dG9ue1xyXG5cdG1hcmdpbjozcHg7XHRcclxufVxyXG5cclxuLm1hdC1idXR0b257XHJcblx0bWFyZ2luOjNweDtcdFxyXG59XHJcblxyXG4ubWF0LXJhaXNlZC1idXR0b257XHJcblx0YmFja2dyb3VuZC1jb2xvcjpyZ2IoMzQsIDE4OSwgMTMxKTtcclxuXHRjb2xvcjp3aGl0ZTtcclxufSJdfQ== */");
 
 /***/ }),
 
@@ -1754,7 +1760,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const environment = {
     production: false,
-    apiUrl: 'http://localhost:4000/api/',
+    apiUrl: 'http://localhost:8080',
 };
 /*
  * For easier debugging in development mode, you can import the following file
