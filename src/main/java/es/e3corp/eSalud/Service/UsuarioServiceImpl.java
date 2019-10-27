@@ -26,69 +26,67 @@ import java.util.Optional;
 
 public class UsuarioServiceImpl implements UsuarioService {
 
-	private static final Log log = LogFactory.getLog(UsuarioServiceImpl.class);
+    private static final Log log = LogFactory.getLog(UsuarioServiceImpl.class);
 
-	private UsuarioRepository userRepository;
+    private UsuarioRepository userRepository;
 
-	@Autowired
+    @Autowired
 
-	public UsuarioServiceImpl(UsuarioRepository userRepository) {
+    public UsuarioServiceImpl(UsuarioRepository userRepository) {
 
-		this.userRepository = userRepository;
+        this.userRepository = userRepository;
 
-	}
+    }
 
-	public Usuario findByUserId(String userId) {
+    public Usuario findByUserId(String userId) {
 
-		Optional<Usuario> user = userRepository.findOne(userId);
+        Optional<Usuario> user = userRepository.findOne(userId);
 
-		if (user.isPresent()) {
+        if (user.isPresent()) {
 
-			log.debug(String.format("Read userId '{}'", userId));
+            log.debug(String.format("Read userId '{}'", userId));
 
-			return user.get();
+            return user.get();
 
-		} else
+        } else
 
-			throw new UserNotFoundException(userId);
+            throw new UserNotFoundException(userId);
 
-	}
+    }
 
-	public List<Usuario> findAll() {
+    public List<Usuario> findAll() {
 
-		Optional<List<Usuario>> user = userRepository.findAll();
+        Optional<List<Usuario>> user = userRepository.findAll();
 
-		return user.get();
+        return user.get();
 
-	}
+    }
 
-	public void saveUsuario(Usuario usuario) {
+    public void saveUsuario(Usuario usuario) {
 
-		 userRepository.saveUsuario(usuario);
+        userRepository.saveUsuario(usuario);
 
-	}
+    }
 
-	public void updateUsuario(Usuario user) {
+    public void updateUsuario(Usuario user) {
 
-		userRepository.updateUsuario(user);
+        userRepository.updateUsuario(user);
 
-	}
+    }
 
-	public void deleteUsuario(String userId) {
+    public void deleteUsuario(String userId) {
 
-		userRepository.deleteUsuario(userId);
+        userRepository.deleteUsuario(userId);
 
-	}
+    }
 
-	@Override
-	public Usuario getUserByDniAndPassword(String dni, String password) 
-	{
-		System.out.println("Dni que llega: "+dni);
-		System.out.println("Password que llega: "+password);
+    @Override
+    public Usuario getUserByDniAndPassword(String dni, String password) {
+        System.out.println("[SERVER] DNI recibido: " + dni);
+        System.out.println("[SERVER] Contraseña recibida: " + password);
 
-		Usuario usuario = userRepository.findByDniAndContraseña(dni, password);
-		return usuario;
-	}
-
+        Usuario usuario = userRepository.findByDniAndContraseña(dni, password);
+        return usuario;
+    }
 
 }

@@ -8,20 +8,17 @@ import java.util.Optional;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UsuarioRepository{
+public interface UsuarioRepository {
     Optional<List<Usuario>> findAll();
-   
-public void saveUsuario(Usuario usuario);
-  
-public void updateUsuario(Usuario usuario);
-  
-  
-public void deleteUsuario(String usuarioId);
 
-Optional<Usuario> findOne(String userId);
+    public void saveUsuario(Usuario usuario);
 
-Usuario findByDniAndContraseña(String dni, String contraseña);
+    public void updateUsuario(Usuario usuario);
 
+    public void deleteUsuario(String usuarioId);
 
+    Optional<Usuario> findOne(String userId);
 
-} 
+    Usuario findByDniAndContraseña(String dni, String contraseña);
+
+}

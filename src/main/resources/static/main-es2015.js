@@ -1812,7 +1812,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_3__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\luisj\Documents\GitHub\eSalud\src\main\webapp\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\sergi\OneDrive\Documentos\GitHub\eSalud\src\main\webapp\src\main.ts */"./src/main.ts");
 
 
 /***/ })

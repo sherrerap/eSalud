@@ -63,7 +63,6 @@ public class UsuarioRepositoryImpl implements UsuarioRepository{
 
 
     public void saveUsuario(Usuario usuario) {
-
         this.mongoOperations.save(usuario);
     }
 

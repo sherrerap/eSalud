@@ -12,7 +12,7 @@ public class UserNotFoundException extends NestedRuntimeException {
 
     public UserNotFoundException(String id) {
 
-        super(String.format("User with  Id '%s' not founded", id));
+        super(String.format("User with  Id '%s' not found", id));
 
     }
 

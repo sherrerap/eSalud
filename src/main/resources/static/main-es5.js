@@ -1669,7 +1669,7 @@
           \***************************/
         /*! no static exports found */
         /***/ (function (module, exports, __webpack_require__) {
-            module.exports = __webpack_require__(/*! C:\Users\luisj\Documents\GitHub\eSalud\src\main\webapp\src\main.ts */ "./src/main.ts");
+            module.exports = __webpack_require__(/*! C:\Users\sergi\OneDrive\Documentos\GitHub\eSalud\src\main\webapp\src\main.ts */ "./src/main.ts");
             /***/ 
         })
     }, [[0, "runtime", "vendor"]]]);

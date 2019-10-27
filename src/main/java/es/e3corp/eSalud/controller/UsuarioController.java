@@ -25,7 +25,7 @@ import com.wordnik.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/usuarios")
-@CrossOrigin(origins="http://localhost:4200", allowedHeaders="*")
+@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 public class UsuarioController {
 
     private static final Log log = LogFactory.getLog(UsuarioController.class);
@@ -36,21 +36,18 @@ public class UsuarioController {
     public UsuarioController(UsuarioService usersService) {
         this.usersService = usersService;
     }
+
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity getUserPassword(@RequestParam (required = false) String dni, @RequestParam (required = false) String password) {
-    	if(dni == null && password == null) {
-    		 log.info("Get allUsers");
-    	        return ResponseEntity.ok(usersService.findAll());
-    	}else {
-    		Usuario usuario = usersService.getUserByDniAndPassword(dni, password);
-    		System.out.println("Usuario que encuentra "+usuario.getNombre());
-        	if(!usuario.equals(null)) {
-        		return ResponseEntity.ok().build();
-        	}else {
-        		return ResponseEntity.badRequest().build();
-        	}
-    	} 	
-    	
+    public ResponseEntity<Usuario> getUserPassword(@RequestParam(required = false) String dni,
+            @RequestParam(required = false) String password) {
+        Usuario usuario = usersService.getUserByDniAndPassword(dni, password);
+        if (!usuario.equals(null)) {
+            System.out.println("[SERVER] Usuario encontrado:  " + usuario.getNombre());
+            return ResponseEntity.ok(usuario);
+        } else {
+            System.out.println("[SERVER] No se ha encontrado ningún usuario.");
+            return ResponseEntity.badRequest().build();
+        }
     }
 
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
@@ -95,7 +92,7 @@ public class UsuarioController {
     @RequestMapping(method = RequestMethod.POST)
     @ApiOperation(value = "Create an user", notes = "Create a new user")
     public ResponseEntity<Usuario> saveUser(@RequestBody @Valid Usuario usuario) {
-        log.info("Save new user");
+        log.info("[SERVER] Registrando usuario...");
         usersService.saveUsuario(usuario);
         return ResponseEntity.ok().build();
     }
