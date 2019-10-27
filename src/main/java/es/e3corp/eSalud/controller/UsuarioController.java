@@ -41,7 +41,7 @@ public class UsuarioController {
     public ResponseEntity<Usuario> getUserPassword(@RequestParam(required = false) String dni,
             @RequestParam(required = false) String password) {
         Usuario usuario = usersService.getUserByDniAndPassword(dni, password);
-        if (!usuario.equals(null)) {
+        if (usuario != null) {
             System.out.println("[SERVER] Usuario encontrado:  " + usuario.getNombre());
             return ResponseEntity.ok(usuario);
         } else {
@@ -64,7 +64,7 @@ public class UsuarioController {
 
 //    @RequestMapping(method = RequestMethod.GET)
 //    public ResponseEntity<List<Usuario>> usuarioById() {
-//        log.info("Get allUsers");
+//        log.info("[SERVER] Mostrando todos los usuarios...");
 //        return ResponseEntity.ok(usersService.findAll());
 //    }
 

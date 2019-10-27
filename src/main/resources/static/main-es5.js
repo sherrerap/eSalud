@@ -796,13 +796,13 @@
                     this.http = http;
                 }
                 UserService.prototype.getAll = function () {
-                    return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl + "/users");
+                    return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl + "/usuarios");
                 };
                 UserService.prototype.register = function (user) {
-                    return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl + "/auth/register", user);
+                    return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl + "/usuarios", user);
                 };
                 UserService.prototype.delete = function (id) {
-                    return this.http.delete(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl + "/users/" + id);
+                    return this.http.delete(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl + "/usuarios/" + id);
                 };
                 return UserService;
             }());
