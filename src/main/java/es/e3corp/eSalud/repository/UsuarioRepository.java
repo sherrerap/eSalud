@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 public interface UsuarioRepository{
     Optional<List<Usuario>> findAll();
    
-public Usuario saveUsuario(Usuario usuario);
+public void saveUsuario(Usuario usuario);
   
 public void updateUsuario(Usuario usuario);
   
@@ -19,6 +19,8 @@ public void updateUsuario(Usuario usuario);
 public void deleteUsuario(String usuarioId);
 
 Optional<Usuario> findOne(String userId);
+
+Usuario findByDniAndContraseña(String dni, String contraseña);
 
 
 

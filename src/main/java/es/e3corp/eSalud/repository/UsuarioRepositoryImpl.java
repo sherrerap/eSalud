@@ -62,12 +62,9 @@ public class UsuarioRepositoryImpl implements UsuarioRepository{
     }
 
 
-    public Usuario saveUsuario(Usuario usuario) {
+    public void saveUsuario(Usuario usuario) {
 
         this.mongoOperations.save(usuario);
-
-        return findOne(usuario.getId()).get();
-
     }
 
 
@@ -83,5 +80,12 @@ public class UsuarioRepositoryImpl implements UsuarioRepository{
         this.mongoOperations.findAndRemove(new Query(Criteria.where("id").is(id)), Usuario.class);
 
     }
+
+
+	@Override
+	public Usuario findByDniAndContraseña(String dni, String contraseña) {
+		Usuario usuario = this.mongoOperations.findOne(new Query(Criteria.where("dni").is(dni).and("contraseña").is(contraseña)),Usuario.class);
+		return usuario;
+	}
 
 }

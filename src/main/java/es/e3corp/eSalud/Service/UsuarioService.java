@@ -13,12 +13,14 @@ public interface UsuarioService {
   Usuario findByUserId(String id);
 
 
-  Usuario saveUsuario(Usuario usuario);
+  void saveUsuario(Usuario usuario);
 
 
   void updateUsuario(Usuario usuario);
 
 
   void deleteUsuario(String userId);
+  
+  Usuario getUserByDniAndPassword(String dni, String password);
 
 }

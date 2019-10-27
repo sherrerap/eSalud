@@ -36,6 +36,22 @@ public class UsuarioController {
     public UsuarioController(UsuarioService usersService) {
         this.usersService = usersService;
     }
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity getUserPassword(@RequestParam (required = false) String dni, @RequestParam (required = false) String password) {
+    	if(dni == null && password == null) {
+    		 log.info("Get allUsers");
+    	        return ResponseEntity.ok(usersService.findAll());
+    	}else {
+    		Usuario usuario = usersService.getUserByDniAndPassword(dni, password);
+    		System.out.println("Usuario que encuentra "+usuario.getNombre());
+        	if(!usuario.equals(null)) {
+        		return ResponseEntity.ok().build();
+        	}else {
+        		return ResponseEntity.badRequest().build();
+        	}
+    	} 	
+    	
+    }
 
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
     @ApiOperation(value = "Find an user", notes = "Return a user by Id")
@@ -49,11 +65,11 @@ public class UsuarioController {
         return ResponseEntity.ok(user);
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<Usuario>> usuarioById() {
-        log.info("Get allUsers");
-        return ResponseEntity.ok(usersService.findAll());
-    }
+//    @RequestMapping(method = RequestMethod.GET)
+//    public ResponseEntity<List<Usuario>> usuarioById() {
+//        log.info("Get allUsers");
+//        return ResponseEntity.ok(usersService.findAll());
+//    }
 
     /*
      * @RequestMapping(method = RequestMethod.GET)
@@ -80,7 +96,8 @@ public class UsuarioController {
     @ApiOperation(value = "Create an user", notes = "Create a new user")
     public ResponseEntity<Usuario> saveUser(@RequestBody @Valid Usuario usuario) {
         log.info("Save new user");
-        return ResponseEntity.ok(usersService.saveUsuario(usuario));
+        usersService.saveUsuario(usuario);
+        return ResponseEntity.ok().build();
     }
 
 }

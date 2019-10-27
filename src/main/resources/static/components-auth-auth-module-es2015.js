@@ -183,7 +183,7 @@ let LoginComponent = class LoginComponent {
         this.authService.login(this.f.dni.value, this.f.password.value)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
             .subscribe(data => {
-            this.router.navigate([this.returnUrl]);
+            this.router.navigate(['/citas']);
         }, error => {
             this.error = error;
             this.loading = false;

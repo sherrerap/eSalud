@@ -1,8 +1,8 @@
 package es.e3corp.eSalud.Service;
+
 import es.e3corp.eSalud.model.Usuario;
 
 import es.e3corp.eSalud.exception.UserNotFoundException;
-
 
 import es.e3corp.eSalud.repository.UsuarioRepository;
 
@@ -16,11 +16,9 @@ import org.springframework.stereotype.Service;
 
 import org.springframework.transaction.annotation.Transactional;
 
-
 import java.util.List;
 
 import java.util.Optional;
-
 
 @Service("UsuarioService")
 
@@ -28,64 +26,69 @@ import java.util.Optional;
 
 public class UsuarioServiceImpl implements UsuarioService {
 
+	private static final Log log = LogFactory.getLog(UsuarioServiceImpl.class);
 
-    private static final Log log = LogFactory.getLog(UsuarioServiceImpl.class);
+	private UsuarioRepository userRepository;
 
-    private UsuarioRepository userRepository;
+	@Autowired
 
+	public UsuarioServiceImpl(UsuarioRepository userRepository) {
 
-    @Autowired
+		this.userRepository = userRepository;
 
-    public UsuarioServiceImpl(UsuarioRepository userRepository){
+	}
 
-        this.userRepository = userRepository;
+	public Usuario findByUserId(String userId) {
 
-    }
+		Optional<Usuario> user = userRepository.findOne(userId);
 
+		if (user.isPresent()) {
 
-    public Usuario findByUserId(String userId) {
+			log.debug(String.format("Read userId '{}'", userId));
 
-        Optional<Usuario> user = userRepository.findOne(userId);
+			return user.get();
 
-        if (user.isPresent()) {
+		} else
 
-            log.debug(String.format("Read userId '{}'", userId));
+			throw new UserNotFoundException(userId);
 
-            return user.get();
+	}
 
-        }else
+	public List<Usuario> findAll() {
 
-            throw new UserNotFoundException(userId);
+		Optional<List<Usuario>> user = userRepository.findAll();
 
-    }
+		return user.get();
 
+	}
 
-    public List<Usuario> findAll() {
+	public void saveUsuario(Usuario usuario) {
 
-        Optional<List<Usuario>> user = userRepository.findAll();
+		 userRepository.saveUsuario(usuario);
 
-        return user.get();
+	}
 
-    }
+	public void updateUsuario(Usuario user) {
 
+		userRepository.updateUsuario(user);
 
-    public Usuario saveUsuario(Usuario usuario) {
+	}
 
-        return userRepository.saveUsuario(usuario);
+	public void deleteUsuario(String userId) {
 
-    }
+		userRepository.deleteUsuario(userId);
 
+	}
 
-    public void updateUsuario(Usuario user) {
+	@Override
+	public Usuario getUserByDniAndPassword(String dni, String password) 
+	{
+		System.out.println("Dni que llega: "+dni);
+		System.out.println("Password que llega: "+password);
 
-        userRepository.updateUsuario(user);
+		Usuario usuario = userRepository.findByDniAndContraseña(dni, password);
+		return usuario;
+	}
 
-    }
-
-    public void deleteUsuario(String userId) {
-
-        userRepository.deleteUsuario(userId);
-
-    }
 
 }
