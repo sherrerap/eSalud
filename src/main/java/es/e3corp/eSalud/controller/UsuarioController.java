@@ -90,16 +90,25 @@ public class UsuarioController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Usuario> getUserPasswod(@RequestBody String p) {
-     	JSONObject jso= new JSONObject(p);
-    	String dni =jso.getString("dni");
-    	String contraseña=jso.getString("contraseña");
-    	Usuario usuario1 = usersService.getUserByDniAndPassword(dni, contraseña);
-        if (!usuario1.equals(null)) {
-            System.out.println("[SERVER] Usuario encontrado:  " + usuario1.getNombre());
-            return ResponseEntity.ok(usuario1);
+    public ResponseEntity<Usuario> registrarUsuario(@RequestBody String p) {
+        JSONObject jso = new JSONObject(p);
+        String dni = jso.getString("dni");
+        String contraseña = jso.getString("password");
+        Usuario usuario1 = usersService.getUserByDniAndPassword(dni, contraseña);
+        if (usuario1 == null) {
+            System.out.println("[SERVER] Registrando usuario...");
+            String nombre = jso.getString("nombre");
+            String apellidos = jso.getString("apellidos");
+            int numTelefono = jso.getInt("tel");
+            String localidad = jso.getString("localidad");
+            String email = jso.getString("correo");
+            usuario1 = new Usuario(dni, nombre, apellidos, contraseña, "paciente", numTelefono, localidad, email);
+            usersService.saveUsuario(usuario1);
+            System.out.println("[SERVER] Usuario registrado.");
+            System.out.println("[SERVER] " + usuario1.toString());
+            return ResponseEntity.ok().build();
         } else {
-            System.out.println("[SERVER] No se ha encontrado ningún usuario.");
+            System.out.println("[SERVER] Error al registrar usuario: el usuario es null.");
             return ResponseEntity.badRequest().build();
         }
     }

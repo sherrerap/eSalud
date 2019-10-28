@@ -13,7 +13,7 @@ export class UserService {
     }
 
     register(user) {
-        return this.http.post(`${environment.apiUrl}/auth/register`, user);
+        return this.http.post(`${environment.apiUrl}/usuarios`, user);
     }
 
     registerMedico(dni,nombre,apellidos,centro,telefono,correo,contraseña)  
@@ -26,7 +26,7 @@ export class UserService {
 			centro : centro,
 			telefono : telefono,
 			correo : correo,
-			contraseña: contraseña} )
+			password: contraseña} )
             .pipe(map(user => {
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 this.currentUserSubject.next(user);
