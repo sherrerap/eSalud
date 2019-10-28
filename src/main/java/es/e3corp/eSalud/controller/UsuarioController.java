@@ -22,7 +22,7 @@ import com.wordnik.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/api/usuarios")
-@CrossOrigin(origins = { "http://localhost:4200", "http://esalud.herokuapp.com" }, allowedHeaders = "*")
+@CrossOrigin(origins = { "http://localhost:4200", "https://esalud.herokuapp.com" }, allowedHeaders = "*")
 public class UsuarioController {
 
     private static final Log log = LogFactory.getLog(UsuarioController.class);
