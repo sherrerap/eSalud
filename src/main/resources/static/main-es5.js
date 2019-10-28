@@ -1458,18 +1458,19 @@
             /* harmony import */ var _listado_citas_listado_citas_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../listado-citas/listado-citas.component */ "./src/app/components/listado-citas/listado-citas.component.ts");
             /* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../_services */ "./src/app/_services/index.ts");
             var SidenavComponent = /** @class */ (function () {
-                function SidenavComponent(changeDetectorRef, media) {
+                function SidenavComponent(changeDetectorRef, media, authService) {
                     this.fillerNav = [
                         { name: "Historial de citas", route: "listadocitas", icon: "assignment", component: _listado_citas_listado_citas_component__WEBPACK_IMPORTED_MODULE_3__["ListadoCitasComponent"] },
                         { name: "Modificar cita", icon: "autorenew" },
                         { name: "Cancelar cita", icon: "delete_outline" },
-                        { name: "Salir", icon: "logout", }
+                        { name: "Salir", route: "/", icon: "logout" }
                     ];
                     this.fillerContent = Array.from({ length: 50 }, function () { return "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco\n       laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in\n       voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat\n       cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."; });
                     this.shouldRun = true;
                     this.mobileQuery = media.matchMedia('(max-width: 600px)');
                     this._mobileQueryListener = function () { return changeDetectorRef.detectChanges(); };
                     this.mobileQuery.addListener(this._mobileQueryListener);
+                    this.authService = authService;
                 }
                 SidenavComponent.prototype.ngOnDestroy = function () {
                     this.mobileQuery.removeListener(this._mobileQueryListener);
@@ -1477,13 +1478,14 @@
                 SidenavComponent.prototype.ngOnInit = function () {
                 };
                 SidenavComponent.prototype.desconectar = function () {
-                    _services__WEBPACK_IMPORTED_MODULE_4__["AuthService"].prototype.logout();
+                    this.authService.logout();
                 };
                 return SidenavComponent;
             }());
             SidenavComponent.ctorParameters = function () { return [
                 { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"] },
-                { type: _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_2__["MediaMatcher"] }
+                { type: _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_2__["MediaMatcher"] },
+                { type: _services__WEBPACK_IMPORTED_MODULE_4__["AuthService"] }
             ]; };
             SidenavComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1526,7 +1528,7 @@
                         { name: "Registrar médicos", route: "RegistrarMedico", icon: "autorenew" },
                         { name: "Modificar médicos", route: "ModificarMedico", icon: "edit" },
                         { name: "Modificar paciente", route: "ModificarPaciente", icon: "edit" },
-                        { name: "Salir", route: "", icon: "logout" }
+                        { name: "Salir", route: "/", icon: "logout" }
                     ];
                     this.fillerContent = Array.from({ length: 50 }, function () { return "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco\n       laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in\n       voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat\n       cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."; });
                     this.shouldRun = true;

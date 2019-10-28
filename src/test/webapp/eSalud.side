@@ -1438,6 +1438,6 @@
     "timeout": 300,
     "tests": ["90bbf7f0-0d5d-470e-88cf-1f137aedf620", "7a38b9c4-590e-4ec1-8190-4aba6c350b7a", "2caa8d68-f650-4484-b132-9238a5e40bad", "67284199-442e-4a97-aba0-d08208969c9b", "363a0405-429e-4ed6-9e05-3acb7010604c", "15ce6e72-0e6f-4ce9-a2f2-3cdd7f307453", "56688efc-031e-49ce-94f3-fbb3ce37e775"]
   }],
-  "urls": ["http://localhost:4200/", "http://localhost:4200/citas", "https://esalud.herokuapp.com/auth/login"],
+  "urls": ["http://localhost:4200/", "http://localhost:4200/citas", "https://esalud.herokuapp.com/auth/login", "https://esalud.herokuapp.com/citas"],
   "plugins": []
 }

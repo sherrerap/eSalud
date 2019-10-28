@@ -17,7 +17,7 @@ export class SidenavAdminComponent implements OnInit {
     { name: "Registrar médicos", route: "RegistrarMedico", icon: "autorenew" },
     { name: "Modificar médicos", route: "ModificarMedico", icon: "edit" },
     { name: "Modificar paciente", route: "ModificarPaciente", icon: "edit" },
-    { name: "Salir", route: "", icon: "logout" }
+    { name: "Salir", route: "/", icon: "logout" }
 
   ]
 
@@ -49,7 +49,7 @@ export class SidenavAdminComponent implements OnInit {
   shouldRun = true;
   ngOnInit() {
   }
-  ngOnSubmit(){
+  ngOnSubmit() {
   }
 
 }

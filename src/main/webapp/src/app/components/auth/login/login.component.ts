@@ -29,6 +29,9 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
+        //esto desloguea el usuario antes de empezar el proceso
+        this.authService.logout();
+        
         this.loginForm = this.formBuilder.group({
             dni: ['', Validators.required],
             password: ['', Validators.required]
