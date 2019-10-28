@@ -10,11 +10,8 @@ import { Router } from '@angular/router';
 })
 export class ListadoCitasComponent implements OnInit {
 
-  constructor(private authService: AuthService, router: Router) {
-    if (localStorage.getItem('currentUser') == undefined) {
-      this.authService.logout();
-      router.navigate(['/']);
-    }
+  constructor() {
+    
   }
 
   ngOnInit() {

@@ -31,10 +31,9 @@ export class SidenavAdminComponent implements OnInit {
   private _mobileQueryListener: () => void;
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,
-    private authService: AuthService, private router: Router) {
-    if (localStorage.getItem('currentUser') == undefined || this.authService.currentUserValue.rol != "admin") {
+    private authService: AuthService) {
+    if (this.authService.currentUserValue.rol != "admin") {
       this.authService.logout();
-      router.navigate(['/']);
     }
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
