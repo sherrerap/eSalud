@@ -100,24 +100,12 @@
     padding: 24px;
 }
 
-.login input[type="submit3"] {
-    background: rgb(128, 10, 10);
-    border-color: transparent;
-    color: #fff;
-    cursor: pointer;
-    padding: 24px;
-}
-
 .login input[type="submit"]:hover {
     background: rgb(6, 117, 75);
 }
 
 .login input[type="submit2"]:hover {
     background: rgb(3, 66, 42);
-}
-
-.login input[type="submit3"]:hover {
-    background: rgb(97, 5, 5);
 }
 
 
@@ -129,10 +117,6 @@
 
 .login input[type="submit2"]:focus {
     background: rgb(3, 66, 42);
-}
-
-.login input[type="submit3"]:focus {
-    background: rgb(97, 5, 5);
 }
 
 .form-control

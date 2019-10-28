@@ -104,6 +104,7 @@ public class UsuarioController {
                 email = jso.getString("correo");
                 if (jso.getString("rol").equals("paciente")) {
                     localidad = jso.getString("localidad");
+                    rol = jso.getString("rol");
                 } else {
                     rol = jso.getString("rol");
                     centro = jso.getString("centro");
