@@ -49,7 +49,7 @@ export class RegistrarMedicoComponent implements OnInit {
 
         this.loading = true;
         this.userService.registerMedico(this.f.dni.value,this.f.nombre.value,this.f.apellidos.value,this.f.centro.value,
-									this.f.telefono.value,this.f.correo.value,this.f.contrasena.value,)
+									this.f.telefono.value,this.f.correo.value,this.f.contrasena.value,) 
             .pipe(first())
             .subscribe(
                 data => {

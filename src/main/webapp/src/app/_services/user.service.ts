@@ -16,7 +16,7 @@ export class UserService {
         return this.http.post(`${environment.apiUrl}/auth/register`, user);
     }
 
-    registerMedico(dni,nombre,apellidos,centro,telefono,correo,contraseña) 
+    registerMedico(dni,nombre,apellidos,centro,telefono,correo,contraseña)  
      {
 		
         return this.http.post('http://localhost:8080/usuarios', { 

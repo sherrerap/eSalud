@@ -11,7 +11,7 @@
 	</parent>
 
 	<groupId>es.e3corp</groupId>
-	<artifactId>eSalud</artifactId>
+	<artifactId>eSalud</artifactId> 
 	<version>0.0.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>eSalud</name>

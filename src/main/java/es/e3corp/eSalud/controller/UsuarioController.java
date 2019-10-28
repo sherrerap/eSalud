@@ -91,7 +91,7 @@ public class UsuarioController {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Usuario> getUserPasswod(@RequestBody String p) {
-    	JSONObject jso= new JSONObject(p);
+     	JSONObject jso= new JSONObject(p);
     	String dni =jso.getString("dni");
     	String contraseña=jso.getString("contraseña");
     	Usuario usuario1 = usersService.getUserByDniAndPassword(dni, contraseña);
