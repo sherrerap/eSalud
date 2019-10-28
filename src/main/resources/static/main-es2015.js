@@ -1686,6 +1686,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/cdk/layout */ "./node_modules/@angular/cdk/esm2015/layout.js");
 /* harmony import */ var _listado_citas_listado_citas_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../listado-citas/listado-citas.component */ "./src/app/components/listado-citas/listado-citas.component.ts");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../_services */ "./src/app/_services/index.ts");
+
 
 
 
@@ -1696,7 +1698,7 @@ let SidenavComponent = class SidenavComponent {
             { name: "Historial de citas", route: "listadocitas", icon: "assignment", component: _listado_citas_listado_citas_component__WEBPACK_IMPORTED_MODULE_3__["ListadoCitasComponent"] },
             { name: "Modificar cita", icon: "autorenew" },
             { name: "Cancelar cita", icon: "delete_outline" },
-            { name: "Salir", icon: "logout" }
+            { name: "Salir", icon: "logout", onclick: this.desconectar }
         ];
         this.fillerContent = Array.from({ length: 50 }, () => `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -1712,6 +1714,9 @@ let SidenavComponent = class SidenavComponent {
         this.mobileQuery.removeListener(this._mobileQueryListener);
     }
     ngOnInit() {
+    }
+    desconectar() {
+        _services__WEBPACK_IMPORTED_MODULE_4__["AuthService"].prototype.logout();
     }
 };
 SidenavComponent.ctorParameters = () => [
@@ -1788,6 +1793,8 @@ let SidenavAdminComponent = class SidenavAdminComponent {
         this.mobileQuery.removeListener(this._mobileQueryListener);
     }
     ngOnInit() {
+    }
+    ngOnSubmit() {
     }
 };
 SidenavAdminComponent.ctorParameters = () => [
@@ -1876,7 +1883,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_3__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\sergi\OneDrive\Documentos\GitHub\eSalud\src\main\webapp\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\luisj\Documents\GitHub\eSalud\src\main\webapp\src\main.ts */"./src/main.ts");
 
 
 /***/ })

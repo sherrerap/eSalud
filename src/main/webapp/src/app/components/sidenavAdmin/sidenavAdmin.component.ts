@@ -49,5 +49,7 @@ export class SidenavAdminComponent implements OnInit {
   shouldRun = true;
   ngOnInit() {
   }
+  ngOnSubmit(){
+  }
 
 }

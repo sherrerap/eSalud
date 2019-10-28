@@ -44,7 +44,7 @@ export class AuthService {
                 }));
         }
     */
-    logout() {
+    public logout() {
         // elimina al usuario del almacenamiento local y marca el usuario actual como nulo
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);

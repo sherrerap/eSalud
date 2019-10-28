@@ -60,7 +60,6 @@ export class LoginComponent implements OnInit {
 
         this.loading = true;
         this.authService.login(this.f.dni.value, this.f.password.value)
-            .pipe(first())
             .subscribe(
                 data => {
                     switch (this.authService.currentUserValue.rol) {

@@ -1578,13 +1578,14 @@
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/cdk/layout */ "./node_modules/@angular/cdk/esm2015/layout.js");
             /* harmony import */ var _listado_citas_listado_citas_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../listado-citas/listado-citas.component */ "./src/app/components/listado-citas/listado-citas.component.ts");
+            /* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../_services */ "./src/app/_services/index.ts");
             var SidenavComponent = /** @class */ (function () {
                 function SidenavComponent(changeDetectorRef, media) {
                     this.fillerNav = [
                         { name: "Historial de citas", route: "listadocitas", icon: "assignment", component: _listado_citas_listado_citas_component__WEBPACK_IMPORTED_MODULE_3__["ListadoCitasComponent"] },
                         { name: "Modificar cita", icon: "autorenew" },
                         { name: "Cancelar cita", icon: "delete_outline" },
-                        { name: "Salir", icon: "logout" }
+                        { name: "Salir", icon: "logout", onclick: this.desconectar }
                     ];
                     this.fillerContent = Array.from({ length: 50 }, function () { return "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco\n       laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in\n       voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat\n       cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."; });
                     this.shouldRun = true;
@@ -1596,6 +1597,9 @@
                     this.mobileQuery.removeListener(this._mobileQueryListener);
                 };
                 SidenavComponent.prototype.ngOnInit = function () {
+                };
+                SidenavComponent.prototype.desconectar = function () {
+                    _services__WEBPACK_IMPORTED_MODULE_4__["AuthService"].prototype.logout();
                 };
                 return SidenavComponent;
             }());
@@ -1659,6 +1663,8 @@
                     this.mobileQuery.removeListener(this._mobileQueryListener);
                 };
                 SidenavAdminComponent.prototype.ngOnInit = function () {
+                };
+                SidenavAdminComponent.prototype.ngOnSubmit = function () {
                 };
                 return SidenavAdminComponent;
             }());
@@ -1731,7 +1737,7 @@
           \***************************/
         /*! no static exports found */
         /***/ (function (module, exports, __webpack_require__) {
-            module.exports = __webpack_require__(/*! C:\Users\sergi\OneDrive\Documentos\GitHub\eSalud\src\main\webapp\src\main.ts */ "./src/main.ts");
+            module.exports = __webpack_require__(/*! C:\Users\luisj\Documents\GitHub\eSalud\src\main\webapp\src\main.ts */ "./src/main.ts");
             /***/ 
         })
     }, [[0, "runtime", "vendor"]]]);
