@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"error\" class=\"alert alert-danger\">{{error}}</div>\n<div *ngIf=\"success\" class=\"alert alert-success\">{{success}}</div>\n\n<div class=\"login\">\n    <div class=\"login-triangle\"></div>\n    <h2 class=\"login-header\">Iniciar sesión</h2>\n    <form [formGroup]=\"loginForm\" (ngSubmit)=\"onSubmit()\" class=\"login-container\">\n        <div class=\"form-group\">\n            <input type=\"dni\" placeholder=\"DNI\" id=\"dni\" formControlName=\"dni\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.dni.errors }\" />\n            <div *ngIf=\"submitted && f.dni.errors\" class=\"invalid-feedback\">\n                <div *ngIf=\"f.dni.errors.required\">Debes introducir un DNI</div>\n            </div>\n            <input type=\"password\" placeholder=\"Contraseña\" id=\"password\" formControlName=\"password\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.password.errors }\" />\n            <div *ngIf=\"submitted && f.password.errors\" class=\"invalid-feedback\">\n                <div *ngIf=\"f.password.errors.required\">Debes introducir una Contraseña</div>\n            </div>\n\n            <div class=\"form-group\">\n                <p><input type=\"submit\" value=\"Acceder\"></p>\n                <p><input type=\"submit2\" value=\"Registrarse\" routerLink=\"/auth/register\" class=\"btn btn-link\"></p>\n                <p><input type=\"submit3\" value=\"Salir (test)\" class=\"nav-item nav-link\" (click)=\"logout()\" class=\"btn btn-link\"></p>\n            </div>\n        </div>\n    </form>\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"error\" class=\"alert alert-danger\">{{error}}</div>\r\n<div *ngIf=\"success\" class=\"alert alert-success\">{{success}}</div>\r\n\r\n<div class=\"login\">\r\n    <div class=\"login-triangle\"></div>\r\n    <h2 class=\"login-header\">Iniciar sesión</h2>\r\n    <form [formGroup]=\"loginForm\" (ngSubmit)=\"onSubmit()\" class=\"login-container\">\r\n        <div class=\"form-group\">\r\n            <input type=\"dni\" placeholder=\"DNI\" id=\"dni\" formControlName=\"dni\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.dni.errors }\" />\r\n            <div *ngIf=\"submitted && f.dni.errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"f.dni.errors.required\">Debes introducir un DNI</div>\r\n            </div>\r\n            <input type=\"password\" placeholder=\"Contraseña\" id=\"password\" formControlName=\"password\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.password.errors }\" />\r\n            <div *ngIf=\"submitted && f.password.errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"f.password.errors.required\">Debes introducir una Contraseña</div>\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n                <p><input type=\"submit\" value=\"Acceder\"></p>\r\n                <p><input type=\"submit2\" value=\"Registrarse\" routerLink=\"/auth/register\" class=\"btn btn-link\"></p>\r\n                <p><input type=\"submit3\" value=\"Salir (test)\" class=\"nav-item nav-link\" (click)=\"logout()\" class=\"btn btn-link\"></p>\r\n            </div>\r\n        </div>\r\n    </form>\r\n</div>");
 
 /***/ }),
 
@@ -135,9 +135,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
-/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../_services */ "./src/app/_services/index.ts");
-
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../_services */ "./src/app/_services/index.ts");
 
 
 
@@ -179,7 +177,6 @@ let LoginComponent = class LoginComponent {
         }
         this.loading = true;
         this.authService.login(this.f.dni.value, this.f.password.value)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
             .subscribe(data => {
             switch (this.authService.currentUserValue.rol) {
                 case "paciente": {
@@ -223,7 +220,7 @@ LoginComponent.ctorParameters = () => [
     { type: _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
-    { type: _services__WEBPACK_IMPORTED_MODULE_5__["AuthService"] }
+    { type: _services__WEBPACK_IMPORTED_MODULE_4__["AuthService"] }
 ];
 LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
