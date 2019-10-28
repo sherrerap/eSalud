@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import com.wordnik.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/api/usuarios")
+@RequestMapping("/usuarios")
 @CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 public class UsuarioController {
 
