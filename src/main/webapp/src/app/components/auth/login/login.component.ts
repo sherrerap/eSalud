@@ -65,7 +65,18 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                    this.router.navigate([this.returnUrl]);
+                    switch (this.authService.currentUserValue.rol) {
+                        case "paciente": {
+                            this.router.navigate([this.returnUrl]);
+                        }
+                        case "médico": {
+                            console.log("[CLIENTE] La vista médico aún no ha sido implementada. Redirigiendo a citas.")
+                            this.router.navigate([this.returnUrl]);
+                        }
+                        case "admin": {
+                            this.router.navigate(['/admin']);
+                        }
+                    }
                 },
                 error => {
                     this.error = error;

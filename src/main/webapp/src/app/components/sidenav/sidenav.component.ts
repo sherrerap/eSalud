@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import {MediaMatcher} from '@angular/cdk/layout';
+import { MediaMatcher } from '@angular/cdk/layout';
 import { ListadoCitasComponent } from '../listado-citas/listado-citas.component';
 
 
@@ -13,13 +13,14 @@ export class SidenavComponent implements OnInit {
   mobileQuery: MediaQueryList;
 
   fillerNav = [
-    {name: "Historial de citas",route:"listadocitas",icon:"assignment", component: ListadoCitasComponent},
-    {name: "Modificar cita", icon:"autorenew"},
-    {name: "Cancelar cita", icon:"delete_outline"}
+    { name: "Historial de citas", route: "listadocitas", icon: "assignment", component: ListadoCitasComponent },
+    { name: "Modificar cita", icon: "autorenew" },
+    { name: "Cancelar cita", icon: "delete_outline" },
+    { name: "Salir", icon: "logout" }
   ]
 
-  fillerContent = Array.from({length: 50}, () =>
-      `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+  fillerContent = Array.from({ length: 50 }, () =>
+    `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
@@ -37,7 +38,7 @@ export class SidenavComponent implements OnInit {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
-  shouldRun =true;
+  shouldRun = true;
   ngOnInit() {
   }
 

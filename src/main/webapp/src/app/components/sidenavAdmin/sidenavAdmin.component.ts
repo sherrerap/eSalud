@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import {MediaMatcher} from '@angular/cdk/layout';
+import { MediaMatcher } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-sidenavAdmin',
@@ -9,17 +9,18 @@ import {MediaMatcher} from '@angular/cdk/layout';
 export class SidenavAdminComponent implements OnInit {
 
   mobileQuery: MediaQueryList;
-  
-fillerNav = [
-    {name: "Mostrar médicos" ,   route:"MostrarMedico",     icon:"list"},
-    {name: "Registrar médicos",  route:"RegistrarMedico",   icon:"autorenew"},
-    {name: "Modificar médicos",  route:"ModificarMedico",   icon:"edit"},
-	{name: "Modificar paciente", route:"ModificarPaciente", icon:"edit"},
-	
+
+  fillerNav = [
+    { name: "Mostrar médicos", route: "MostrarMedico", icon: "list" },
+    { name: "Registrar médicos", route: "RegistrarMedico", icon: "autorenew" },
+    { name: "Modificar médicos", route: "ModificarMedico", icon: "edit" },
+    { name: "Modificar paciente", route: "ModificarPaciente", icon: "edit" },
+    { name: "Salir", route: "", icon: "logout" }
+
   ]
 
-  fillerContent = Array.from({length: 50}, () =>
-      `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+  fillerContent = Array.from({ length: 50 }, () =>
+    `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
@@ -37,7 +38,7 @@ fillerNav = [
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
-  shouldRun =true;
+  shouldRun = true;
   ngOnInit() {
   }
 

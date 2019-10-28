@@ -183,7 +183,18 @@ let LoginComponent = class LoginComponent {
         this.authService.login(this.f.dni.value, this.f.password.value)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
             .subscribe(data => {
-            this.router.navigate([this.returnUrl]);
+            switch (this.authService.currentUserValue.rol) {
+                case "paciente": {
+                    this.router.navigate([this.returnUrl]);
+                }
+                case "médico": {
+                    console.log("[CLIENTE] La vista médico aún no ha sido implementada. Redirigiendo a citas.");
+                    this.router.navigate([this.returnUrl]);
+                }
+                case "admin": {
+                    this.router.navigate(['/admin']);
+                }
+            }
         }, error => {
             this.error = error;
             this.loading = false;
@@ -282,14 +293,19 @@ let RegisterComponent = class RegisterComponent {
             return;
         }
         this.loading = true;
-        this.userService.register(this.registerForm.value)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
-            .subscribe(data => {
-            this.router.navigate(['/auth/login'], { queryParams: { registered: true } });
-        }, error => {
-            this.error = error;
-            this.loading = false;
-        });
+        if (this.f.password.value == this.f.password2.value) {
+            this.userService.register(this.registerForm.value)
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
+                .subscribe(data => {
+                this.router.navigate(['/auth/login'], { queryParams: { registered: true } });
+            }, error => {
+                this.error = error;
+                this.loading = false;
+            });
+        }
+        else {
+            this.error = "Las contraseñas deben coincidir.";
+        }
     }
 };
 RegisterComponent.ctorParameters = () => [
@@ -299,8 +315,11 @@ RegisterComponent.ctorParameters = () => [
     { type: _services__WEBPACK_IMPORTED_MODULE_5__["UserService"] }
 ];
 RegisterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({ selector: 'app-register',
-        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./register.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/auth/register/register.component.html")).default, styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./register.component.css */ "./src/app/components/auth/register/register.component.css")).default] })
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-register',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./register.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/auth/register/register.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./register.component.css */ "./src/app/components/auth/register/register.component.css")).default]
+    })
 ], RegisterComponent);
 
 

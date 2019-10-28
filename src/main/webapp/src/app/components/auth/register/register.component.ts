@@ -5,9 +5,11 @@ import { first } from 'rxjs/operators';
 
 import { UserService, AuthService } from '../../../_services';
 
-@Component({ selector: 'app-register',
+@Component({
+    selector: 'app-register',
     templateUrl: './register.component.html',
-    styleUrls: ['./register.component.css'] })
+    styleUrls: ['./register.component.css']
+})
 export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
     loading = false;
@@ -52,15 +54,20 @@ export class RegisterComponent implements OnInit {
         }
 
         this.loading = true;
-        this.userService.register(this.registerForm.value)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    this.router.navigate(['/auth/login'], { queryParams: { registered: true }});
-                },
-                error => {
-                    this.error = error;
-                    this.loading = false;
-                });
+        if (this.f.password.value == this.f.password2.value) {
+            this.userService.register(this.registerForm.value)
+                .pipe(first())
+                .subscribe(
+                    data => {
+                        this.router.navigate(['/auth/login'], { queryParams: { registered: true } });
+                    },
+                    error => {
+                        this.error = error;
+                        this.loading = false;
+                    });
+        } else {
+            this.error = "Las contraseñas deben coincidir.";
+        }
+
     }
 }

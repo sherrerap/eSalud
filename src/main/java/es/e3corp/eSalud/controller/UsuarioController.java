@@ -10,6 +10,7 @@ import es.e3corp.eSalud.Service.UsuarioService;
 import org.apache.commons.logging.Log;
 
 import org.apache.commons.logging.LogFactory;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -17,14 +18,10 @@ import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
-import javax.validation.Valid;
-
 import com.wordnik.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping("/api/usuarios")
 @CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 public class UsuarioController {
 
@@ -41,7 +38,7 @@ public class UsuarioController {
     public ResponseEntity<Usuario> getUserPassword(@RequestParam(required = false) String dni,
             @RequestParam(required = false) String password) {
         Usuario usuario = usersService.getUserByDniAndPassword(dni, password);
-        if (!usuario.equals(null)) {
+        if (usuario != null) {
             System.out.println("[SERVER] Usuario encontrado: " + usuario.getNombre());
             return ResponseEntity.ok(usuario);
         } else {
@@ -96,21 +93,29 @@ public class UsuarioController {
         String contraseña = jso.getString("password");
         Usuario usuario1 = usersService.getUserByDniAndPassword(dni, contraseña);
         if (usuario1 == null) {
-            System.out.println("[SERVER] Registrando usuario...");
-            String nombre = jso.getString("nombre");
-            String apellidos = jso.getString("apellidos");
-            int numTelefono = jso.getInt("tel");
-            String email = jso.getString("correo");
-            String localidad = null;
-            String centro = null, medico = null, rol = null, especialidad = null;
-            if (jso.getString("rol").equals("paciente")) {
-                localidad = jso.getString("localidad");
-            } else {
-                rol = jso.getString("rol");
-                centro = jso.getString("centro");
-                medico = jso.getString("medico");
-                especialidad = jso.getString("especialidad");
+            String nombre = null, apellidos = null, email = null, localidad = null, centro = null, medico = null,
+                    rol = null, especialidad = null;
+            int numTelefono = 0;
+            try {
+                System.out.println("[SERVER] Registrando usuario...");
+                nombre = jso.getString("nombre");
+                apellidos = jso.getString("apellidos");
+                numTelefono = jso.getInt("tel");
+                email = jso.getString("correo");
+                if (jso.getString("rol").equals("paciente")) {
+                    localidad = jso.getString("localidad");
+                } else {
+                    rol = jso.getString("rol");
+                    centro = jso.getString("centro");
+                    medico = jso.getString("medico");
+                    especialidad = jso.getString("especialidad");
+                }
+            } catch (JSONException j) {
+                System.out.println("[SERVER] Error en la lectura del JSON.");
+                System.out.println(j.getMessage());
+                return ResponseEntity.badRequest().build();
             }
+
             usuario1 = new Usuario(dni, nombre, apellidos, contraseña, rol, especialidad, medico, numTelefono,
                     localidad, centro, email);
             usersService.saveUsuario(usuario1);

@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { UserService, AuthService } from '../../_services';
+import { UserService } from '../../_services';
 
-@Component({ selector: 'app-RegistrarMedico',
+@Component({
+    selector: 'app-RegistrarMedico',
     templateUrl: './RegistrarMedico.component.html',
-    styleUrls: ['./RegistrarMedico.component.css'] })
+    styleUrls: ['./RegistrarMedico.component.css']
+})
 export class RegistrarMedicoComponent implements OnInit {
     registerForm: FormGroup;
     loading = false;
@@ -17,15 +18,8 @@ export class RegistrarMedicoComponent implements OnInit {
 
     constructor(
         private formBuilder: FormBuilder,
-        private router: Router,
-        private authService: AuthService,
         private userService: UserService
-    ) {
-        
-        if (this.authService.currentUserValue) {
-            this.router.navigate(['/']);
-        }
-    }
+    ) { }
 
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
@@ -53,7 +47,7 @@ export class RegistrarMedicoComponent implements OnInit {
         }
 
         this.loading = true;
-        this.userService.register(this.registerForm.value) 
+        this.userService.register(this.registerForm.value)
             .pipe(first())
             .subscribe(
                 data => {

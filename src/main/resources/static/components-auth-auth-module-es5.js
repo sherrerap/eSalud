@@ -159,7 +159,18 @@
                     this.authService.login(this.f.dni.value, this.f.password.value)
                         .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
                         .subscribe(function (data) {
-                        _this.router.navigate([_this.returnUrl]);
+                        switch (_this.authService.currentUserValue.rol) {
+                            case "paciente": {
+                                _this.router.navigate([_this.returnUrl]);
+                            }
+                            case "médico": {
+                                console.log("[CLIENTE] La vista médico aún no ha sido implementada. Redirigiendo a citas.");
+                                _this.router.navigate([_this.returnUrl]);
+                            }
+                            case "admin": {
+                                _this.router.navigate(['/admin']);
+                            }
+                        }
                     }, function (error) {
                         _this.error = error;
                         _this.loading = false;
@@ -252,14 +263,19 @@
                         return;
                     }
                     this.loading = true;
-                    this.userService.register(this.registerForm.value)
-                        .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
-                        .subscribe(function (data) {
-                        _this.router.navigate(['/auth/login'], { queryParams: { registered: true } });
-                    }, function (error) {
-                        _this.error = error;
-                        _this.loading = false;
-                    });
+                    if (this.f.password.value == this.f.password2.value) {
+                        this.userService.register(this.registerForm.value)
+                            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
+                            .subscribe(function (data) {
+                            _this.router.navigate(['/auth/login'], { queryParams: { registered: true } });
+                        }, function (error) {
+                            _this.error = error;
+                            _this.loading = false;
+                        });
+                    }
+                    else {
+                        this.error = "Las contraseñas deben coincidir.";
+                    }
                 };
                 return RegisterComponent;
             }());
@@ -270,8 +286,11 @@
                 { type: _services__WEBPACK_IMPORTED_MODULE_5__["UserService"] }
             ]; };
             RegisterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({ selector: 'app-register',
-                    template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./register.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/auth/register/register.component.html")).default, styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./register.component.css */ "./src/app/components/auth/register/register.component.css")).default] })
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+                    selector: 'app-register',
+                    template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./register.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/auth/register/register.component.html")).default,
+                    styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./register.component.css */ "./src/app/components/auth/register/register.component.css")).default]
+                })
             ], RegisterComponent);
             /***/ 
         })

@@ -704,6 +704,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+
 
 
 
@@ -722,7 +724,7 @@ let AuthService = class AuthService {
         const params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]()
             .set('dni', dni)
             .set('password', password);
-        return this.http.get('http://localhost:8080/usuarios', { params: params })
+        return this.http.get(`${_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].apiUrl}/usuarios`, { params: params })
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(user => {
             // almacena detalles del usuario y el token jwt en el almacenamiento local para mantener al usuario logueado entre refrescos de página
             localStorage.setItem('currentUser', JSON.stringify(user));
@@ -1411,40 +1413,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegistrarMedicoComponent", function() { return RegistrarMedicoComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
-/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../_services */ "./src/app/_services/index.ts");
-
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../_services */ "./src/app/_services/index.ts");
 
 
 
 
 
 let RegistrarMedicoComponent = class RegistrarMedicoComponent {
-    constructor(formBuilder, router, authService, userService) {
+    constructor(formBuilder, userService) {
         this.formBuilder = formBuilder;
-        this.router = router;
-        this.authService = authService;
         this.userService = userService;
         this.loading = false;
         this.submitted = false;
-        if (this.authService.currentUserValue) {
-            this.router.navigate(['/']);
-        }
     }
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
-            dni: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
-            nombre: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
-            apellidos: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
-            centro: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
-            tel: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
-            correo: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
-            password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
+            dni: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            nombre: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            apellidos: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            centro: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            tel: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            correo: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             rol: "médico",
             medico: "",
-            especialidad: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]
+            especialidad: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
         });
     }
     get f() { return this.registerForm.controls; }
@@ -1456,7 +1451,7 @@ let RegistrarMedicoComponent = class RegistrarMedicoComponent {
         }
         this.loading = true;
         this.userService.register(this.registerForm.value)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["first"])())
             .subscribe(data => {
             console.log("[CLIENTE] Médico registrado.");
             this.success = "Médico registrado correctamente.";
@@ -1467,14 +1462,15 @@ let RegistrarMedicoComponent = class RegistrarMedicoComponent {
     }
 };
 RegistrarMedicoComponent.ctorParameters = () => [
-    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
-    { type: _services__WEBPACK_IMPORTED_MODULE_5__["AuthService"] },
-    { type: _services__WEBPACK_IMPORTED_MODULE_5__["UserService"] }
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
+    { type: _services__WEBPACK_IMPORTED_MODULE_4__["UserService"] }
 ];
 RegistrarMedicoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({ selector: 'app-RegistrarMedico',
-        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./RegistrarMedico.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/admin-RegistrarMedico/RegistrarMedico.component.html")).default, styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./RegistrarMedico.component.css */ "./src/app/components/admin-RegistrarMedico/RegistrarMedico.component.css")).default] })
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-RegistrarMedico',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./RegistrarMedico.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/admin-RegistrarMedico/RegistrarMedico.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./RegistrarMedico.component.css */ "./src/app/components/admin-RegistrarMedico/RegistrarMedico.component.css")).default]
+    })
 ], RegistrarMedicoComponent);
 
 
@@ -1687,7 +1683,8 @@ let SidenavComponent = class SidenavComponent {
         this.fillerNav = [
             { name: "Historial de citas", route: "listadocitas", icon: "assignment", component: _listado_citas_listado_citas_component__WEBPACK_IMPORTED_MODULE_3__["ListadoCitasComponent"] },
             { name: "Modificar cita", icon: "autorenew" },
-            { name: "Cancelar cita", icon: "delete_outline" }
+            { name: "Cancelar cita", icon: "delete_outline" },
+            { name: "Salir", icon: "logout" }
         ];
         this.fillerContent = Array.from({ length: 50 }, () => `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -1757,6 +1754,7 @@ let SidenavAdminComponent = class SidenavAdminComponent {
             { name: "Registrar médicos", route: "RegistrarMedico", icon: "autorenew" },
             { name: "Modificar médicos", route: "ModificarMedico", icon: "edit" },
             { name: "Modificar paciente", route: "ModificarPaciente", icon: "edit" },
+            { name: "Salir", route: "", icon: "logout" }
         ];
         this.fillerContent = Array.from({ length: 50 }, () => `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -1807,7 +1805,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const environment = {
     production: false,
-    apiUrl: 'http://localhost:8080',
+    apiUrl: 'http://localhost:8080/api',
 };
 /*
  * For easier debugging in development mode, you can import the following file
