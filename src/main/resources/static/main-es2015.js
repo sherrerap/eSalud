@@ -1562,12 +1562,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let SidenavComponent = class SidenavComponent {
-    constructor(changeDetectorRef, media, authService) {
+    constructor(changeDetectorRef, media) {
         this.fillerNav = [
             { name: "Historial de citas", route: "listadocitas", icon: "assignment", component: _listado_citas_listado_citas_component__WEBPACK_IMPORTED_MODULE_3__["ListadoCitasComponent"] },
             { name: "Modificar cita", icon: "autorenew" },
             { name: "Cancelar cita", icon: "delete_outline" },
-            { name: "Salir", icon: "logout" /*, onClick: this.desconectar()*/ }
+            { name: "Salir", icon: "logout", }
         ];
         this.fillerContent = Array.from({ length: 50 }, () => `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -1578,7 +1578,6 @@ let SidenavComponent = class SidenavComponent {
         this.mobileQuery = media.matchMedia('(max-width: 600px)');
         this._mobileQueryListener = () => changeDetectorRef.detectChanges();
         this.mobileQuery.addListener(this._mobileQueryListener);
-        this.authService = authService;
     }
     ngOnDestroy() {
         this.mobileQuery.removeListener(this._mobileQueryListener);
@@ -1586,13 +1585,12 @@ let SidenavComponent = class SidenavComponent {
     ngOnInit() {
     }
     desconectar() {
-        this.authService.logout();
+        _services__WEBPACK_IMPORTED_MODULE_4__["AuthService"].prototype.logout();
     }
 };
 SidenavComponent.ctorParameters = () => [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"] },
-    { type: _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_2__["MediaMatcher"] },
-    { type: _services__WEBPACK_IMPORTED_MODULE_4__["AuthService"] }
+    { type: _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_2__["MediaMatcher"] }
 ];
 SidenavComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
