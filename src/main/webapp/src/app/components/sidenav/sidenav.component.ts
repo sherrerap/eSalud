@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ListadoCitasComponent } from '../listado-citas/listado-citas.component';
 import { AuthService } from '../../_services'
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,17 +11,18 @@ import { AuthService } from '../../_services'
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent implements OnInit {
-
+  router: Router;
+  authService: AuthService;
   mobileQuery: MediaQueryList;
 
   fillerNav = [
     { name: "Historial de citas", route: "listadocitas", icon: "assignment", component: ListadoCitasComponent },
     { name: "Modificar cita", icon: "autorenew" },
     { name: "Cancelar cita", icon: "delete_outline" },
-    { name: "Salir", icon: "logout"}
+    { name: "Salir", icon: "logout" }
   ]
 
- 
+
 
   fillerContent = Array.from({ length: 50 }, () =>
     `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut

@@ -1,5 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { AuthService } from 'src/app/_services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidenavAdmin',
@@ -28,10 +30,17 @@ export class SidenavAdminComponent implements OnInit {
 
   private _mobileQueryListener: () => void;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,
+    private authService: AuthService, private router: Router) {
+    if (localStorage.getItem('currentUser') == undefined || this.authService.currentUserValue.rol != "admin") {
+      this.authService.logout();
+      router.navigate(['/']);
+    }
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
+
+
   }
 
   ngOnDestroy(): void {

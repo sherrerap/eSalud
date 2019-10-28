@@ -1528,13 +1528,24 @@
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListadoCitasComponent", function () { return ListadoCitasComponent; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var src_app_services__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/_services */ "./src/app/_services/index.ts");
+            /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
             var ListadoCitasComponent = /** @class */ (function () {
-                function ListadoCitasComponent() {
+                function ListadoCitasComponent(authService, router) {
+                    this.authService = authService;
+                    if (localStorage.getItem('currentUser') == undefined) {
+                        this.authService.logout();
+                        router.navigate(['/']);
+                    }
                 }
                 ListadoCitasComponent.prototype.ngOnInit = function () {
                 };
                 return ListadoCitasComponent;
             }());
+            ListadoCitasComponent.ctorParameters = function () { return [
+                { type: src_app_services__WEBPACK_IMPORTED_MODULE_2__["AuthService"] },
+                { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
+            ]; };
             ListadoCitasComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
                     selector: 'app-listado-citas',
@@ -1625,8 +1636,12 @@
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/cdk/layout */ "./node_modules/@angular/cdk/esm2015/layout.js");
+            /* harmony import */ var src_app_services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/_services */ "./src/app/_services/index.ts");
+            /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
             var SidenavAdminComponent = /** @class */ (function () {
-                function SidenavAdminComponent(changeDetectorRef, media) {
+                function SidenavAdminComponent(changeDetectorRef, media, authService, router) {
+                    this.authService = authService;
+                    this.router = router;
                     this.fillerNav = [
                         { name: "Mostrar médicos", route: "MostrarMedico", icon: "list" },
                         { name: "Registrar médicos", route: "RegistrarMedico", icon: "autorenew" },
@@ -1636,6 +1651,10 @@
                     ];
                     this.fillerContent = Array.from({ length: 50 }, function () { return "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco\n       laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in\n       voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat\n       cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."; });
                     this.shouldRun = true;
+                    if (localStorage.getItem('currentUser') == undefined || this.authService.currentUserValue.rol != "admin") {
+                        this.authService.logout();
+                        router.navigate(['/']);
+                    }
                     this.mobileQuery = media.matchMedia('(max-width: 600px)');
                     this._mobileQueryListener = function () { return changeDetectorRef.detectChanges(); };
                     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -1649,7 +1668,9 @@
             }());
             SidenavAdminComponent.ctorParameters = function () { return [
                 { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"] },
-                { type: _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_2__["MediaMatcher"] }
+                { type: _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_2__["MediaMatcher"] },
+                { type: src_app_services__WEBPACK_IMPORTED_MODULE_3__["AuthService"] },
+                { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] }
             ]; };
             SidenavAdminComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

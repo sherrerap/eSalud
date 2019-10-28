@@ -160,13 +160,16 @@
                         switch (_this.authService.currentUserValue.rol) {
                             case "paciente": {
                                 _this.router.navigate([_this.returnUrl]);
+                                break;
                             }
                             case "médico": {
                                 console.log("[CLIENTE] La vista médico aún no ha sido implementada. Redirigiendo a citas.");
                                 _this.router.navigate([_this.returnUrl]);
+                                break;
                             }
                             case "admin": {
                                 _this.router.navigate(['/admin']);
+                                break;
                             }
                         }
                     }, function (error) {
@@ -179,13 +182,16 @@
                         switch (this.authService.currentUserValue.rol) {
                             case "paciente": {
                                 this.router.navigate(['/citas']);
+                                break;
                             }
                             case "médico": {
                                 console.log("[CLIENTE] La vista médico aún no ha sido implementada. Redirigiendo a citas.");
                                 this.router.navigate(['/citas']);
+                                break;
                             }
                             case "admin": {
                                 this.router.navigate(['/admin']);
+                                break;
                             }
                         }
                     }
