@@ -46,18 +46,6 @@ public class Usuario {
 
     }
 
-    public Usuario(String dni, String nombre, String apellidos, String contraseña, String rol, int numTelefono,
-            String localidad, String email) {
-        this.id = UUID.randomUUID().toString();
-        this.dni = dni;
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.contraseña = contraseña;
-        this.numTelefono = numTelefono;
-        this.localidad = localidad;
-        this.email = email;
-    }
-
     public String getId() {
         return id;
     }

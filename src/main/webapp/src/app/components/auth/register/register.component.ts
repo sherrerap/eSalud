@@ -35,7 +35,8 @@ export class RegisterComponent implements OnInit {
             localidad: ['', Validators.required],
             nombre: ['', Validators.required],
             apellidos: ['', Validators.required],
-            tel: ['', Validators.required]
+            tel: ['', Validators.required],
+            rol: 'paciente'
         });
     }
 

@@ -269,7 +269,8 @@ let RegisterComponent = class RegisterComponent {
             localidad: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
             nombre: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
             apellidos: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
-            tel: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]
+            tel: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
+            rol: 'paciente'
         });
     }
     // getter para acceder a los controles del form

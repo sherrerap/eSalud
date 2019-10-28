@@ -100,15 +100,25 @@ public class UsuarioController {
             String nombre = jso.getString("nombre");
             String apellidos = jso.getString("apellidos");
             int numTelefono = jso.getInt("tel");
-            String localidad = jso.getString("localidad");
             String email = jso.getString("correo");
-            usuario1 = new Usuario(dni, nombre, apellidos, contraseña, "paciente", numTelefono, localidad, email);
+            String localidad = null;
+            String centro = null, medico = null, rol = null, especialidad = null;
+            if (jso.getString("rol").equals("paciente")) {
+                localidad = jso.getString("localidad");
+            } else {
+                rol = jso.getString("rol");
+                centro = jso.getString("centro");
+                medico = jso.getString("medico");
+                especialidad = jso.getString("especialidad");
+            }
+            usuario1 = new Usuario(dni, nombre, apellidos, contraseña, rol, especialidad, medico, numTelefono,
+                    localidad, centro, email);
             usersService.saveUsuario(usuario1);
             System.out.println("[SERVER] Usuario registrado.");
             System.out.println("[SERVER] " + usuario1.toString());
             return ResponseEntity.ok().build();
         } else {
-            System.out.println("[SERVER] Error al registrar usuario: el usuario es null.");
+            System.out.println("[SERVER] Error: el usuario ya está registrado.");
             return ResponseEntity.badRequest().build();
         }
     }
