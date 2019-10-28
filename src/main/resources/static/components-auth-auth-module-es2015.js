@@ -152,9 +152,7 @@ let LoginComponent = class LoginComponent {
         this.loading = false;
         this.submitted = false;
         // redirige al inicio si ya estás logueado
-        if (this.authService.currentUserValue) {
-            this.router.navigate(['/']);
-        }
+        //this.checkLogin();
     }
     ngOnInit() {
         this.loginForm = this.formBuilder.group({
@@ -199,6 +197,22 @@ let LoginComponent = class LoginComponent {
             this.error = error;
             this.loading = false;
         });
+    }
+    checkLogin() {
+        if (this.authService.currentUserValue) {
+            switch (this.authService.currentUserValue.rol) {
+                case "paciente": {
+                    this.router.navigate(['/citas']);
+                }
+                case "médico": {
+                    console.log("[CLIENTE] La vista médico aún no ha sido implementada. Redirigiendo a citas.");
+                    this.router.navigate(['/citas']);
+                }
+                case "admin": {
+                    this.router.navigate(['/admin']);
+                }
+            }
+        }
     }
     logout() {
         this.authService.logout();
