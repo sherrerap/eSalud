@@ -19,7 +19,7 @@ export class SidenavComponent implements OnInit {
     { name: "Historial de citas", route: "listadocitas", icon: "assignment", component: ListadoCitasComponent },
     { name: "Modificar cita", icon: "autorenew" },
     { name: "Cancelar cita", icon: "delete_outline" },
-    { name: "Salir", icon: "logout", onclick: this.desconectar }
+    { name: "Salir", icon: "logout", onclick: AuthService.prototype.logout() }
   ]
 
 
