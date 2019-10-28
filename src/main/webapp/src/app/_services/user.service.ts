@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-	currentUserSubject: any;
+    currentUserSubject: any;
     constructor(private http: HttpClient) { }
 
     getAll() {
@@ -14,24 +14,6 @@ export class UserService {
 
     register(user) {
         return this.http.post(`${environment.apiUrl}/usuarios`, user);
-    }
-
-    registerMedico(dni,nombre,apellidos,centro,telefono,correo,contraseña)  
-     {
-		
-        return this.http.post('http://localhost:8080/usuarios', { 
-			dni : dni,
-			nombre : nombre,
-			apellidos : apellidos,
-			centro : centro,
-			telefono : telefono,
-			correo : correo,
-			password: contraseña} )
-            .pipe(map(user => {
-                localStorage.setItem('currentUser', JSON.stringify(user));
-                this.currentUserSubject.next(user);
-                return user;
-            }));
     }
 
     delete(id) {

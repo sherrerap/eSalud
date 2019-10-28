@@ -13,6 +13,7 @@ export class RegistrarMedicoComponent implements OnInit {
     loading = false;
     submitted = false;
     error: string;
+    success: string;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -32,9 +33,12 @@ export class RegistrarMedicoComponent implements OnInit {
             nombre: ['', Validators.required],
             apellidos: ['', Validators.required],
             centro: ['', Validators.required],
-            telefono: ['', Validators.required],
+            tel: ['', Validators.required],
             correo: ['', Validators.required],
-            contrasena: ['', Validators.required]
+            password: ['', Validators.required],
+            rol: "médico",
+            medico: "",
+            especialidad: ['', Validators.required]
         });
     }
 
@@ -42,18 +46,19 @@ export class RegistrarMedicoComponent implements OnInit {
 
     onSubmit() {
         this.submitted = true;
+        this.success = null;
 
         if (this.registerForm.invalid) {
             return;
         }
 
         this.loading = true;
-        this.userService.registerMedico(this.f.dni.value,this.f.nombre.value,this.f.apellidos.value,this.f.centro.value,
-									this.f.telefono.value,this.f.correo.value,this.f.contrasena.value,) 
+        this.userService.register(this.registerForm.value) 
             .pipe(first())
             .subscribe(
                 data => {
-                    
+                    console.log("[CLIENTE] Médico registrado.")
+                    this.success = "Médico registrado correctamente."
                 },
                 error => {
                     this.error = error;
