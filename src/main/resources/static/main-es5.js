@@ -520,143 +520,21 @@
             ], ErrorInterceptor);
             /***/ 
         }),
-        /***/ "./src/app/_helpers/fake-backend.ts": 
-        /*!******************************************!*\
-          !*** ./src/app/_helpers/fake-backend.ts ***!
-          \******************************************/
-        /*! exports provided: FakeBackendInterceptor, fakeBackendProvider */
-        /***/ (function (module, __webpack_exports__, __webpack_require__) {
-            "use strict";
-            __webpack_require__.r(__webpack_exports__);
-            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FakeBackendInterceptor", function () { return FakeBackendInterceptor; });
-            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fakeBackendProvider", function () { return fakeBackendProvider; });
-            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-            /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-            /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
-            /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
-            // lista de usuarios registrados en almacenamiento local
-            //let users = JSON.parse(localStorage.getItem('users')) || [];
-            var users = [{
-                    dni: "1", nombre: 'Jason', apellido: 'Watmore', password: 'test', rol: 'paciente', localidad: 'cr',
-                    especialidad: '', medico: '', telefono: '1245', centro: 'm3', email: 'jfa@fg.ces'
-                }];
-            var FakeBackendInterceptor = /** @class */ (function () {
-                function FakeBackendInterceptor() {
-                }
-                FakeBackendInterceptor.prototype.intercept = function (request, next) {
-                    var url = request.url, method = request.method, headers = request.headers, body = request.body;
-                    // simula mediante un delayed observable una llamada al server api
-                    return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(null)
-                        .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["mergeMap"])(handleRoute))
-                        .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["materialize"])()) // llama a materialize y dematerialize para asegurar el delay incluso si se lanza un error (https://github.com/Reactive-Extensions/RxJS/issues/648)
-                        .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["delay"])(500))
-                        .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["dematerialize"])());
-                    function handleRoute() {
-                        switch (true) {
-                            case url.endsWith('/auth/login') && method === 'POST':
-                                return authenticate();
-                            case url.endsWith('/auth/register') && method === 'POST':
-                                return register();
-                            case url.endsWith('/users') && method === 'GET':
-                                return getUsers();
-                            case url.match(/\/users\/\d+$/) && method === 'DELETE':
-                                return deleteUser();
-                            default:
-                                return next.handle(request);
-                        }
-                    }
-                    // funciones de enrutado
-                    function authenticate() {
-                        var dni = body.dni, password = body.password;
-                        var user = users.find(function (x) { return x.dni === dni && x.password === password; });
-                        console.log(user);
-                        if (!user)
-                            return error('DNI o contraseña incorrectos');
-                        return ok({
-                            dni: user.dni,
-                            nombre: user.nombre,
-                            apellido: user.apellido,
-                            rol: user.rol,
-                            localidad: user.localidad,
-                            especialidad: user.especialidad,
-                            medico: user.medico,
-                            telefono: user.telefono,
-                            centro: user.centro,
-                            email: user.email,
-                            token: 'fake-jwt-token'
-                        });
-                    }
-                    function register() {
-                        var user = body;
-                        if (users.find(function (x) { return x.dni === user.dni; })) {
-                            return error('El DNI "' + user.dni + '" ya está registrado');
-                        }
-                        users.push(user);
-                        localStorage.setItem('users', JSON.stringify(users));
-                        return ok();
-                    }
-                    function getUsers() {
-                        if (!isLoggedIn())
-                            return unauthorized();
-                        return ok(users);
-                    }
-                    function deleteUser() {
-                        if (!isLoggedIn())
-                            return unauthorized();
-                        users = users.filter(function (x) { return x.dni !== idFromUrl(); });
-                        localStorage.setItem('users', JSON.stringify(users));
-                        return ok();
-                    }
-                    // funciones del helper
-                    function ok(body) {
-                        return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpResponse"]({ status: 200, body: body }));
-                    }
-                    function error(message) {
-                        return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])({ error: { message: message } });
-                    }
-                    function unauthorized() {
-                        return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])({ status: 401, error: { message: 'Unauthorised' } });
-                    }
-                    function isLoggedIn() {
-                        return headers.get('Authorization') === 'Bearer fake-jwt-token';
-                    }
-                    function idFromUrl() {
-                        var urlParts = url.split('/');
-                        return parseInt(urlParts[urlParts.length - 1]);
-                    }
-                };
-                return FakeBackendInterceptor;
-            }());
-            FakeBackendInterceptor = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])()
-            ], FakeBackendInterceptor);
-            var fakeBackendProvider = {
-                // se usa un Fake Backend en lugar de un servicio HTTP como prueba
-                provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HTTP_INTERCEPTORS"],
-                useClass: FakeBackendInterceptor,
-                multi: true
-            };
-            /***/ 
-        }),
         /***/ "./src/app/_helpers/index.ts": 
         /*!***********************************!*\
           !*** ./src/app/_helpers/index.ts ***!
           \***********************************/
-        /*! exports provided: FakeBackendInterceptor, fakeBackendProvider, AuthGuard, JwtInterceptor, ErrorInterceptor */
+        /*! exports provided: AuthGuard, JwtInterceptor, ErrorInterceptor */
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-            /* harmony import */ var _fake_backend__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./fake-backend */ "./src/app/_helpers/fake-backend.ts");
-            /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FakeBackendInterceptor", function () { return _fake_backend__WEBPACK_IMPORTED_MODULE_1__["FakeBackendInterceptor"]; });
-            /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "fakeBackendProvider", function () { return _fake_backend__WEBPACK_IMPORTED_MODULE_1__["fakeBackendProvider"]; });
-            /* harmony import */ var _auth_guard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./auth.guard */ "./src/app/_helpers/auth.guard.ts");
-            /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AuthGuard", function () { return _auth_guard__WEBPACK_IMPORTED_MODULE_2__["AuthGuard"]; });
-            /* harmony import */ var _jwt_interceptor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./jwt.interceptor */ "./src/app/_helpers/jwt.interceptor.ts");
-            /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "JwtInterceptor", function () { return _jwt_interceptor__WEBPACK_IMPORTED_MODULE_3__["JwtInterceptor"]; });
-            /* harmony import */ var _error_interceptor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./error.interceptor */ "./src/app/_helpers/error.interceptor.ts");
-            /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ErrorInterceptor", function () { return _error_interceptor__WEBPACK_IMPORTED_MODULE_4__["ErrorInterceptor"]; });
+            /* harmony import */ var _auth_guard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./auth.guard */ "./src/app/_helpers/auth.guard.ts");
+            /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AuthGuard", function () { return _auth_guard__WEBPACK_IMPORTED_MODULE_1__["AuthGuard"]; });
+            /* harmony import */ var _jwt_interceptor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./jwt.interceptor */ "./src/app/_helpers/jwt.interceptor.ts");
+            /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "JwtInterceptor", function () { return _jwt_interceptor__WEBPACK_IMPORTED_MODULE_2__["JwtInterceptor"]; });
+            /* harmony import */ var _error_interceptor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./error.interceptor */ "./src/app/_helpers/error.interceptor.ts");
+            /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ErrorInterceptor", function () { return _error_interceptor__WEBPACK_IMPORTED_MODULE_3__["ErrorInterceptor"]; });
             /***/ 
         }),
         /***/ "./src/app/_helpers/jwt.interceptor.ts": 
@@ -712,9 +590,11 @@
             /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
             /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
             /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+            /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
             var AuthService = /** @class */ (function () {
-                function AuthService(http) {
+                function AuthService(http, router) {
                     this.http = http;
+                    this.router = router;
                     this.currentUserSubject = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](JSON.parse(localStorage.getItem('currentUser')));
                     this.currentUser = this.currentUserSubject.asObservable();
                 }
@@ -753,11 +633,13 @@
                     // elimina al usuario del almacenamiento local y marca el usuario actual como nulo
                     localStorage.removeItem('currentUser');
                     this.currentUserSubject.next(null);
+                    this.router.navigate(['/']);
                 };
                 return AuthService;
             }());
             AuthService.ctorParameters = function () { return [
-                { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+                { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] },
+                { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] }
             ]; };
             AuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({ providedIn: 'root' })
@@ -838,18 +720,21 @@
             var routes = [
                 { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
                 { path: 'auth', loadChildren: './components/auth/auth.module#AuthModule' },
-                { path: 'citas', component: _components_sidenav_sidenav_component__WEBPACK_IMPORTED_MODULE_3__["SidenavComponent"], canActivate: [_helpers__WEBPACK_IMPORTED_MODULE_10__["AuthGuard"]],
+                {
+                    path: 'citas', component: _components_sidenav_sidenav_component__WEBPACK_IMPORTED_MODULE_3__["SidenavComponent"], canActivate: [_helpers__WEBPACK_IMPORTED_MODULE_10__["AuthGuard"]],
                     children: [
                         { path: '', component: _components_listado_citas_listado_citas_component__WEBPACK_IMPORTED_MODULE_5__["ListadoCitasComponent"] }
                     ]
                 },
-                { path: 'admin', component: _components_sidenavAdmin_sidenavAdmin_component__WEBPACK_IMPORTED_MODULE_4__["SidenavAdminComponent"],
+                {
+                    path: 'admin', component: _components_sidenavAdmin_sidenavAdmin_component__WEBPACK_IMPORTED_MODULE_4__["SidenavAdminComponent"], canActivate: [_helpers__WEBPACK_IMPORTED_MODULE_10__["AuthGuard"]],
                     children: [
                         { path: '', component: _components_admin_MostrarMedico_MostrarMedico_component__WEBPACK_IMPORTED_MODULE_8__["MostrarMedicoComponent"] }
                     ]
                 },
                 /********************************************************************************** */
-                { path: 'admin/ModificarMedico', component: _components_sidenavAdmin_sidenavAdmin_component__WEBPACK_IMPORTED_MODULE_4__["SidenavAdminComponent"],
+                {
+                    path: 'admin/ModificarMedico', component: _components_sidenavAdmin_sidenavAdmin_component__WEBPACK_IMPORTED_MODULE_4__["SidenavAdminComponent"], canActivate: [_helpers__WEBPACK_IMPORTED_MODULE_10__["AuthGuard"]],
                     children: [
                         { path: '', component: _components_admin_ModificarMedico_ModificarMedico_component__WEBPACK_IMPORTED_MODULE_6__["ModificarMedicoComponent"] }
                     ]
@@ -859,7 +744,8 @@
                 { path: 'admin/ModificarMedico/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
                 { path: 'admin/ModificarMedico/RegistrarMedico', redirectTo: 'admin/RegistrarMedico' },
                 /********************************************************************************** */
-                { path: 'admin/ModificarPaciente', component: _components_sidenavAdmin_sidenavAdmin_component__WEBPACK_IMPORTED_MODULE_4__["SidenavAdminComponent"],
+                {
+                    path: 'admin/ModificarPaciente', component: _components_sidenavAdmin_sidenavAdmin_component__WEBPACK_IMPORTED_MODULE_4__["SidenavAdminComponent"], canActivate: [_helpers__WEBPACK_IMPORTED_MODULE_10__["AuthGuard"]],
                     children: [
                         { path: '', component: _components_admin_ModificarPaciente_ModificarPaciente_component__WEBPACK_IMPORTED_MODULE_7__["ModificarPacienteComponent"] }
                     ]
@@ -869,7 +755,8 @@
                 { path: 'admin/ModificarPaciente/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
                 { path: 'admin/ModificarPaciente/RegistrarMedico', redirectTo: 'admin/RegistrarMedico' },
                 /********************************************************************************** */
-                { path: 'admin/MostrarMedico', component: _components_sidenavAdmin_sidenavAdmin_component__WEBPACK_IMPORTED_MODULE_4__["SidenavAdminComponent"],
+                {
+                    path: 'admin/MostrarMedico', component: _components_sidenavAdmin_sidenavAdmin_component__WEBPACK_IMPORTED_MODULE_4__["SidenavAdminComponent"], canActivate: [_helpers__WEBPACK_IMPORTED_MODULE_10__["AuthGuard"]],
                     children: [
                         { path: '', component: _components_admin_MostrarMedico_MostrarMedico_component__WEBPACK_IMPORTED_MODULE_8__["MostrarMedicoComponent"] }
                     ]
@@ -879,7 +766,8 @@
                 { path: 'admin/MostrarMedico/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
                 { path: 'admin/MostrarMedico/RegistrarMedico', redirectTo: 'admin/RegistrarMedico' },
                 /********************************************************************************** */
-                { path: 'admin/RegistrarMedico', component: _components_sidenavAdmin_sidenavAdmin_component__WEBPACK_IMPORTED_MODULE_4__["SidenavAdminComponent"],
+                {
+                    path: 'admin/RegistrarMedico', component: _components_sidenavAdmin_sidenavAdmin_component__WEBPACK_IMPORTED_MODULE_4__["SidenavAdminComponent"], canActivate: [_helpers__WEBPACK_IMPORTED_MODULE_10__["AuthGuard"]],
                     children: [
                         { path: '', component: _components_admin_RegistrarMedico_RegistrarMedico_component__WEBPACK_IMPORTED_MODULE_9__["RegistrarMedicoComponent"] }
                     ]
@@ -1528,24 +1416,13 @@
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListadoCitasComponent", function () { return ListadoCitasComponent; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-            /* harmony import */ var src_app_services__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/_services */ "./src/app/_services/index.ts");
-            /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
             var ListadoCitasComponent = /** @class */ (function () {
-                function ListadoCitasComponent(authService, router) {
-                    this.authService = authService;
-                    if (localStorage.getItem('currentUser') == undefined) {
-                        this.authService.logout();
-                        router.navigate(['/']);
-                    }
+                function ListadoCitasComponent() {
                 }
                 ListadoCitasComponent.prototype.ngOnInit = function () {
                 };
                 return ListadoCitasComponent;
             }());
-            ListadoCitasComponent.ctorParameters = function () { return [
-                { type: src_app_services__WEBPACK_IMPORTED_MODULE_2__["AuthService"] },
-                { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
-            ]; };
             ListadoCitasComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
                     selector: 'app-listado-citas',
@@ -1581,18 +1458,19 @@
             /* harmony import */ var _listado_citas_listado_citas_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../listado-citas/listado-citas.component */ "./src/app/components/listado-citas/listado-citas.component.ts");
             /* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../_services */ "./src/app/_services/index.ts");
             var SidenavComponent = /** @class */ (function () {
-                function SidenavComponent(changeDetectorRef, media) {
+                function SidenavComponent(changeDetectorRef, media, authService) {
                     this.fillerNav = [
                         { name: "Historial de citas", route: "listadocitas", icon: "assignment", component: _listado_citas_listado_citas_component__WEBPACK_IMPORTED_MODULE_3__["ListadoCitasComponent"] },
                         { name: "Modificar cita", icon: "autorenew" },
                         { name: "Cancelar cita", icon: "delete_outline" },
-                        { name: "Salir", icon: "logout", onclick: _services__WEBPACK_IMPORTED_MODULE_4__["AuthService"].prototype.logout() }
+                        { name: "Salir", icon: "logout" /*, onClick: this.desconectar()*/ }
                     ];
                     this.fillerContent = Array.from({ length: 50 }, function () { return "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco\n       laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in\n       voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat\n       cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."; });
                     this.shouldRun = true;
                     this.mobileQuery = media.matchMedia('(max-width: 600px)');
                     this._mobileQueryListener = function () { return changeDetectorRef.detectChanges(); };
                     this.mobileQuery.addListener(this._mobileQueryListener);
+                    this.authService = authService;
                 }
                 SidenavComponent.prototype.ngOnDestroy = function () {
                     this.mobileQuery.removeListener(this._mobileQueryListener);
@@ -1600,13 +1478,14 @@
                 SidenavComponent.prototype.ngOnInit = function () {
                 };
                 SidenavComponent.prototype.desconectar = function () {
-                    _services__WEBPACK_IMPORTED_MODULE_4__["AuthService"].prototype.logout();
+                    this.authService.logout();
                 };
                 return SidenavComponent;
             }());
             SidenavComponent.ctorParameters = function () { return [
                 { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"] },
-                { type: _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_2__["MediaMatcher"] }
+                { type: _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_2__["MediaMatcher"] },
+                { type: _services__WEBPACK_IMPORTED_MODULE_4__["AuthService"] }
             ]; };
             SidenavComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1641,11 +1520,9 @@
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/cdk/layout */ "./node_modules/@angular/cdk/esm2015/layout.js");
             /* harmony import */ var src_app_services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/_services */ "./src/app/_services/index.ts");
-            /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
             var SidenavAdminComponent = /** @class */ (function () {
-                function SidenavAdminComponent(changeDetectorRef, media, authService, router) {
+                function SidenavAdminComponent(changeDetectorRef, media, authService) {
                     this.authService = authService;
-                    this.router = router;
                     this.fillerNav = [
                         { name: "Mostrar médicos", route: "MostrarMedico", icon: "list" },
                         { name: "Registrar médicos", route: "RegistrarMedico", icon: "autorenew" },
@@ -1655,9 +1532,8 @@
                     ];
                     this.fillerContent = Array.from({ length: 50 }, function () { return "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco\n       laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in\n       voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat\n       cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."; });
                     this.shouldRun = true;
-                    if (localStorage.getItem('currentUser') == undefined || this.authService.currentUserValue.rol != "admin") {
+                    if (this.authService.currentUserValue.rol != "admin") {
                         this.authService.logout();
-                        router.navigate(['/']);
                     }
                     this.mobileQuery = media.matchMedia('(max-width: 600px)');
                     this._mobileQueryListener = function () { return changeDetectorRef.detectChanges(); };
@@ -1675,8 +1551,7 @@
             SidenavAdminComponent.ctorParameters = function () { return [
                 { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"] },
                 { type: _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_2__["MediaMatcher"] },
-                { type: src_app_services__WEBPACK_IMPORTED_MODULE_3__["AuthService"] },
-                { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] }
+                { type: src_app_services__WEBPACK_IMPORTED_MODULE_3__["AuthService"] }
             ]; };
             SidenavAdminComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1742,7 +1617,7 @@
           \***************************/
         /*! no static exports found */
         /***/ (function (module, exports, __webpack_require__) {
-            module.exports = __webpack_require__(/*! C:\Users\luisj\Documents\GitHub\eSalud\src\main\webapp\src\main.ts */ "./src/main.ts");
+            module.exports = __webpack_require__(/*! C:\Users\sergi\OneDrive\Documentos\GitHub\eSalud\src\main\webapp\src\main.ts */ "./src/main.ts");
             /***/ 
         })
     }, [[0, "runtime", "vendor"]]]);
