@@ -181,13 +181,16 @@ let LoginComponent = class LoginComponent {
             switch (this.authService.currentUserValue.rol) {
                 case "paciente": {
                     this.router.navigate([this.returnUrl]);
+                    break;
                 }
                 case "médico": {
                     console.log("[CLIENTE] La vista médico aún no ha sido implementada. Redirigiendo a citas.");
                     this.router.navigate([this.returnUrl]);
+                    break;
                 }
                 case "admin": {
                     this.router.navigate(['/admin']);
+                    break;
                 }
             }
         }, error => {
@@ -200,13 +203,16 @@ let LoginComponent = class LoginComponent {
             switch (this.authService.currentUserValue.rol) {
                 case "paciente": {
                     this.router.navigate(['/citas']);
+                    break;
                 }
                 case "médico": {
                     console.log("[CLIENTE] La vista médico aún no ha sido implementada. Redirigiendo a citas.");
                     this.router.navigate(['/citas']);
+                    break;
                 }
                 case "admin": {
                     this.router.navigate(['/admin']);
+                    break;
                 }
             }
         }
