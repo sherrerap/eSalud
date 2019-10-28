@@ -10,7 +10,7 @@ import es.e3corp.eSalud.Service.UsuarioService;
 import org.apache.commons.logging.Log;
 
 import org.apache.commons.logging.LogFactory;
-
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.ResponseEntity;
@@ -41,7 +41,7 @@ public class UsuarioController {
     public ResponseEntity<Usuario> getUserPassword(@RequestParam(required = false) String dni,
             @RequestParam(required = false) String password) {
         Usuario usuario = usersService.getUserByDniAndPassword(dni, password);
-        if (usuario != null) {
+        if (!usuario.equals(null)) {
             System.out.println("[SERVER] Usuario encontrado:  " + usuario.getNombre());
             return ResponseEntity.ok(usuario);
         } else {
@@ -64,7 +64,7 @@ public class UsuarioController {
 
 //    @RequestMapping(method = RequestMethod.GET)
 //    public ResponseEntity<List<Usuario>> usuarioById() {
-//        log.info("[SERVER] Mostrando todos los usuarios...");
+//        log.info("Get allUsers");
 //        return ResponseEntity.ok(usersService.findAll());
 //    }
 
@@ -90,11 +90,18 @@ public class UsuarioController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    @ApiOperation(value = "Create an user", notes = "Create a new user")
-    public ResponseEntity<Usuario> saveUser(@RequestBody @Valid Usuario usuario) {
-        log.info("[SERVER] Registrando usuario...");
-        usersService.saveUsuario(usuario);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<Usuario> getUserPasswod(@RequestBody String p) {
+    	JSONObject jso= new JSONObject(p);
+    	String dni =jso.getString("dni");
+    	String contraseña=jso.getString("contraseña");
+    	Usuario usuario1 = usersService.getUserByDniAndPassword(dni, contraseña);
+        if (!usuario1.equals(null)) {
+            System.out.println("[SERVER] Usuario encontrado:  " + usuario1.getNombre());
+            return ResponseEntity.ok(usuario1);
+        } else {
+            System.out.println("[SERVER] No se ha encontrado ningún usuario.");
+            return ResponseEntity.badRequest().build();
+        }
     }
 
 }

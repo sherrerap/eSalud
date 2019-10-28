@@ -1,84 +1,95 @@
-<div class="container">
-	<form action="action_page.php">
-		<div class="row1 ">
-			<mat-toolbar>
-				<span>Formulario</span>
-			</mat-toolbar>
-		</div>
-		<div class="row">
-			<div class="col-25">
-				<label for="fname">Nombre</label>
-			</div>
-			<div class="col-75">
-				<input type="text" id="fname" name="firstname" placeholder="Introduce nombre">
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-25">
-				<label for="lname">Apellidos</label>
-			</div>
-			<div class="col-75">
-				<input type="text" id="lname" name="lastname" placeholder="Introduce apellidos">
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-25">
-				<label for="country">Rol</label>
-			</div>
-			<div class="col-75">
-				<select id="rol" name="rol">
-					<option value="especialista">Especialista</option>
-					<option value="cabecera">Cabecera</option>
-					<option value="enfermero">Enfermero</option>
-				</select>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-25">
-				<label for="fname">Centro</label>
-			</div>
-			<div class="col-75">
-				<input type="text" id="fname" name="firstname" placeholder="Introduce centro">
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-25">
-				<label for="fname">Email</label>
-			</div>
-			<div class="col-75">
-				<input type="text" id="fname" name="firstname" placeholder="Introduce email">
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-25">
-				<label for="fname">Numero de teléfono</label>
-			</div>
-			<div class="col-75">
-				<input type="text" id="fname" name="firstname" placeholder="Introduce número de teléfono">
-			</div>
-		</div>
-		<div class="row ">
-			<div class="col-25u">
-				<label for="fname">Contraseña</label>
-			</div>
-			<div class="col-75">
-				<input type="password" id="password" name="firstname" placeholder="Introduce contraseña">
-			</div>
-		</div>
-		<div class="row justify-content-center">
-			<a href="#" class="myButton">Registrar</a>
-
-		</div>
-		<!--<div class="row">
-						<div class="col-25">
-							<label for="subject">Subject</label>
-						</div>
-						<div class="col-75">
-							<textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-						</div>
+<div *ngIf="error" class="alert alert-danger">{{error}}</div>
+<div *ngIf="success" class="alert alert-success">{{success}}</div>
+<div class="register">
+	<h2 class="register-header">Registro médicos</h2>
+	<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-container">
+		<div class="form-group">
+			<div class="row">
+				<div class="col-25">
+					<label for="fname">Dni</label>
+				</div>
+				<div class="col-75">
+					<input type="text" placeholder="DNI" formControlName="dni" class="form-control"
+						[ngClass]="{ 'is-invalid': submitted && f.dni.errors }">
+					<div *ngIf="submitted && f.dni.errors" class="invalid-feedback">
+						<div *ngIf="f.dni.errors.required">Escribe un Dni</div>
 					</div>
-					<div class="row">
-						<input type="submit" value="Submit">
-					</div>!-->
-	</form>
-</div>
+				</div>
+			</div>
+						<div class="row">
+				<div class="col-25">
+					<label for="fname">Nombre</label>
+				</div>
+				<div class="col-75">
+
+            <input type="text" placeholder="Nombre" formControlName="nombre" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }" />
+            <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
+                <div *ngIf="f.nombre.errors.required">Escribe un nombre</div>
+            </div>
+				</div>
+			</div>
+						<div class="row">
+				<div class="col-25">
+					<label for="fname">Nombre</label>
+				</div>
+				<div class="col-75">
+	            <input type="text" placeholder="Apellidos" formControlName="apellidos" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.apellidos.errors }" />
+            <div *ngIf="submitted && f.apellidos.errors" class="invalid-feedback">
+                <div *ngIf="f.apellidos.errors.required">Escribe unos apellidos</div>
+            </div>
+				</div>
+			</div>
+						<div class="row">
+				<div class="col-25">
+					<label for="fname">Centro</label>
+				</div>
+				<div class="col-75">
+	             <input type="text" placeholder="Centro" formControlName="centro" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.centro.errors }" />
+            <div *ngIf="submitted && f.centro.errors" class="invalid-feedback">
+                <div *ngIf="f.ventro.errors.required">Escriba un centro</div>
+            </div>
+				</div>
+			</div>
+						<div class="row">
+				<div class="col-25">
+					<label for="fname">Telefono</label>
+				</div>
+				<div class="col-75">
+	            <input type="text" placeholder="Telefono" formControlName="telefono" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.telefono.errors }">
+            <div *ngIf="submitted && f.telefono.errors" class="invalid-feedback">
+                <div *ngIf="f.telefono.errors.required">Escriba un telefono</div>
+            </div>
+				</div>
+			</div>
+						<div class="row">
+				<div class="col-25">
+					<label for="fname">Correo electrónico</label>
+				</div>
+				<div class="col-75">
+            <input type="text" placeholder="Correo electrónico" formControlName="correo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.correo.errors }" />
+            <div *ngIf="submitted && f.correo.errors" class="invalid-feedback">
+                <div *ngIf="f.correo.errors.required">Escriba un correo electrónico</div>
+            </div>
+				</div>
+			</div>
+						<div class="row">
+				<div class="col-25">
+					<label for="fname">Contraseña</label>
+				</div>
+				<div class="col-75">
+
+
+            <input type="password" placeholder="Contraseña" formControlName="contrasena" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.contrasena.errors }" />
+            <div *ngIf="submitted && f.contrasena.errors" class="invalid-feedback">
+                <div *ngIf="f.contrasena.errors.required">Escriba una contraseña</div>
+            </div>
+				</div>
+			</div>
+			
+
+            <div class="row justify-content-center">
+                <p><input type="submit" value="Registrarse" class="button2"></p>
+                <p><input type="submit" value="Cancelar" class="button1"></p>
+            </div>
+        </div>
+    </form>

@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
+	currentUserSubject: any;
     constructor(private http: HttpClient) { }
 
     getAll() {
@@ -11,7 +13,25 @@ export class UserService {
     }
 
     register(user) {
-        return this.http.post(`${environment.apiUrl}/usuarios`, user);
+        return this.http.post(`${environment.apiUrl}/auth/register`, user);
+    }
+
+    registerMedico(dni,nombre,apellidos,centro,telefono,correo,contraseña) 
+     {
+		
+        return this.http.post('http://localhost:8080/usuarios', { 
+			dni : dni,
+			nombre : nombre,
+			apellidos : apellidos,
+			centro : centro,
+			telefono : telefono,
+			correo : correo,
+			contraseña: contraseña} )
+            .pipe(map(user => {
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                this.currentUserSubject.next(user);
+                return user;
+            }));
     }
 
     delete(id) {
