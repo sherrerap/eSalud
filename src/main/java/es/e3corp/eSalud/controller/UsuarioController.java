@@ -42,7 +42,7 @@ public class UsuarioController {
             @RequestParam(required = false) String password) {
         Usuario usuario = usersService.getUserByDniAndPassword(dni, password);
         if (!usuario.equals(null)) {
-            System.out.println("[SERVER] Usuario encontrado:  " + usuario.getNombre());
+            System.out.println("[SERVER] Usuario encontrado: " + usuario.getNombre());
             return ResponseEntity.ok(usuario);
         } else {
             System.out.println("[SERVER] No se ha encontrado ningún usuario.");

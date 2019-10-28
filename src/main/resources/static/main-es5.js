@@ -984,7 +984,7 @@
             /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
             /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
             /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-            /* harmony import */ var _helpers___WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./_helpers/ */ "./src/app/_helpers/index.ts");
+            /* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./_helpers */ "./src/app/_helpers/index.ts");
             /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
             /* harmony import */ var _components_sidenav_sidenav_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/sidenav/sidenav.component */ "./src/app/components/sidenav/sidenav.component.ts");
             /* harmony import */ var _components_sidenavAdmin_sidenavAdmin_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/sidenavAdmin/sidenavAdmin.component */ "./src/app/components/sidenavAdmin/sidenavAdmin.component.ts");
@@ -995,7 +995,6 @@
             /* harmony import */ var _components_admin_RegistrarMedico_RegistrarMedico_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/admin-RegistrarMedico/RegistrarMedico.component */ "./src/app/components/admin-RegistrarMedico/RegistrarMedico.component.ts");
             /* harmony import */ var _components_dialog_box_paciente_dialog_box_paciente_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/dialog-box-paciente/dialog-box-paciente.component */ "./src/app/components/dialog-box-paciente/dialog-box-paciente.component.ts");
             /* harmony import */ var _components_dialog_box_medico_dialog_box_medico_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/dialog-box-medico/dialog-box-medico.component */ "./src/app/components/dialog-box-medico/dialog-box-medico.component.ts");
-            // used to create fake backend
             var AppModule = /** @class */ (function () {
                 function AppModule() {
                 }
@@ -1039,10 +1038,8 @@
                         _components_dialog_box_medico_dialog_box_medico_component__WEBPACK_IMPORTED_MODULE_19__["DialogBoxMedicoComponent"]
                     ],
                     providers: [
-                        { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HTTP_INTERCEPTORS"], useClass: _helpers___WEBPACK_IMPORTED_MODULE_9__["JwtInterceptor"], multi: true },
-                        { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HTTP_INTERCEPTORS"], useClass: _helpers___WEBPACK_IMPORTED_MODULE_9__["ErrorInterceptor"], multi: true },
-                        // provider used to create fake backend
-                        _helpers___WEBPACK_IMPORTED_MODULE_9__["fakeBackendProvider"]
+                        { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HTTP_INTERCEPTORS"], useClass: _helpers__WEBPACK_IMPORTED_MODULE_9__["JwtInterceptor"], multi: true },
+                        { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HTTP_INTERCEPTORS"], useClass: _helpers__WEBPACK_IMPORTED_MODULE_9__["ErrorInterceptor"], multi: true }
                     ],
                     bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"]]
                 })
