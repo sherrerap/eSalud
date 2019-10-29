@@ -13,10 +13,10 @@ export class AppComponent {
   currentUser: any;
 
   constructor(
-      private router: Router,
-      private authService: AuthService
+    private router: Router,
+    private authService: AuthService
   ) {
-      this.authService.currentUser.subscribe(x => this.currentUser = x);
+    this.authService.currentUser.subscribe(x => this.currentUser = x);
   }
 
 }

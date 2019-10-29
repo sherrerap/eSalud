@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
 
 import { AuthService } from '../../../_services'
 
@@ -31,7 +30,7 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
         //esto desloguea el usuario antes de empezar el proceso
         this.authService.logout();
-        
+
         this.loginForm = this.formBuilder.group({
             dni: ['', Validators.required],
             password: ['', Validators.required]
