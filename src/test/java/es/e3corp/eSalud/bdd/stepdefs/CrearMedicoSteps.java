@@ -2,11 +2,11 @@ package es.e3corp.eSalud.bdd.stepdefs;
 
 import org.springframework.boot.test.context.SpringBootTest;
 
-import cucumber.api.DataTable;
 import cucumber.api.PendingException;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import io.cucumber.datatable.DataTable;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 @SpringBootTest
 public class CrearMedicoSteps {
