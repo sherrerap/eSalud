@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-
-import { UserService, AuthService } from '../../../_services';
+import { UserService, AuthService} from '../../../_services';
+import { AlertService } from 'src/app/_services/alert.service';
 
 @Component({
     selector: 'app-register',
@@ -14,13 +14,13 @@ export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
     loading = false;
     submitted = false;
-    error: string;
 
     constructor(
         private formBuilder: FormBuilder,
         private router: Router,
         private authService: AuthService,
-        private userService: UserService
+        private userService: UserService,
+        private alertService : AlertService
     ) {
         // redirige al home si el usuario ya está logueado
         if (this.authService.currentUserValue) {
@@ -59,14 +59,15 @@ export class RegisterComponent implements OnInit {
                 .pipe(first())
                 .subscribe(
                     data => {
+                        this.alertService.success('Registration successful', true);
                         this.router.navigate(['/auth/login'], { queryParams: { registered: true } });
                     },
                     error => {
-                        this.error = error;
+                        this.alertService.error(error);
                         this.loading = false;
                     });
-        } else {
-            this.error = "Las contraseñas deben coincidir.";
+        } else{
+            this.alertService.error("Las contraseñas no coinciden", false);
         }
 
     }
