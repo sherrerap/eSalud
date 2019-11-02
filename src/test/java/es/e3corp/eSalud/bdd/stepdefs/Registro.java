@@ -13,6 +13,7 @@ import java.util.Map;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Registro {
 
@@ -23,9 +24,11 @@ public class Registro {
     @Given("abrimos el navegador e iniciamos la pantalla de registro")
     public void abrimos_el_navegador_e_iniciamos_la_pantalla_de_registro() {
 
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--headless", "window-size=1024,768", "--no-sandbox");
         System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
 
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(chromeOptions);
         driver.manage().window().maximize();
         driver.get("https://esalud.herokuapp.com/auth/register");
 
