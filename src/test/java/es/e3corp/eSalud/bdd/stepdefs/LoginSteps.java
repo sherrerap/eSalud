@@ -23,11 +23,11 @@ public class LoginSteps {
     @Given("abrimos el navegador e iniciamos la aplicacion")
     public void abrimos_el_navegador_e_iniciamos_la_aplicacion() {
 
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
 
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("https://esalud.herokuapp.com/auth/login");
+        driver.get("http://localhost:8080/auth/login");
     }
 
     @When("introducimos los datos de acceso a la aplicación")
@@ -40,7 +40,7 @@ public class LoginSteps {
 
     }
 
-    @Then("accedemos a la aplicacionla aplicacion")
+    @Then("accedemos a la aplicacion")
     public void accedemos_a_la_aplicacionla_aplicacion() throws InterruptedException {
 
         driver.findElement(By.xpath("//input[@value='Acceder']")).click();
@@ -50,21 +50,13 @@ public class LoginSteps {
         String expectedUrl = driver.getCurrentUrl();
 
         if (a.get(0).get("testCase") == "CASE 1") {
-
-            assertEquals("https://esalud.herokuapp.com/admin", expectedUrl);
-
+            assertEquals("http://localhost:8080/admin", expectedUrl);
         } else if (a.get(0).get("testCase") == "CASE 2") {
-
-            assertEquals("https://esalud.herokuapp.com/listado-citas", expectedUrl);
-
+            assertEquals("http://localhost:8080/listado-citas", expectedUrl);
         } else if (a.get(0).get("testCase") == "CASE 3") {
-
-            assertEquals("https://esalud.herokuapp.com/sidenavAdmin", expectedUrl);
-
+            assertEquals("http://localhost:8080/sidenavAdmin", expectedUrl);
         } else {
-
-            assertEquals("https://esalud.herokuapp.com/auth/login", expectedUrl);
-
+            assertEquals("http://localhost:8080/auth/login", expectedUrl);
         }
 
         Thread.sleep(7000);

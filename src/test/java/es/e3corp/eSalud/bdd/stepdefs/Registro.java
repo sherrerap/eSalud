@@ -1,6 +1,5 @@
 package es.e3corp.eSalud.bdd.stepdefs;
 
-import es.e3corp.eSalud.repository.UsuarioRepository;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -18,6 +17,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import es.e3corp.eSalud.repository.UsuarioRepository;
+
 public class Registro {
 
     WebDriver driver;
@@ -27,18 +28,18 @@ public class Registro {
     @Given("abrimos el navegador e iniciamos la pantalla de registro")
     public void abrimos_el_navegador_e_iniciamos_la_pantalla_de_registro() throws MalformedURLException {
 
-        ClassLoader classLoader = getClass().getClassLoader();
-        String filePath = classLoader.getResource("chromedriver").getFile();
-        ChromeDriverService service = new ChromeDriverService.Builder().usingDriverExecutable(new File(filePath))
-                .build();
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--no-sandbox", "--verbose", "--headless", "--disable-web-security",
-                "--ignore-certificate-errors", "--allow-running-insecure-content", "--allow-insecure-localhost",
-                "--disable-gpu");
+//        ClassLoader classLoader = getClass().getClassLoader();
+//        String filePath = classLoader.getResource("chromedriver.exe").getFile();
+//        ChromeDriverService service = new ChromeDriverService.Builder().usingDriverExecutable(new File(filePath))
+//                .build();
+//        ChromeOptions chromeOptions = new ChromeOptions();
+//        chromeOptions.addArguments("--no-sandbox", "--verbose", "--headless", "--disable-web-security",
+//                "--ignore-certificate-errors", "--allow-running-insecure-content", "--allow-insecure-localhost",
+//                "--disable-gpu");
 
-        driver = new ChromeDriver(service, chromeOptions);
+        driver = new ChromeDriver(/* service, chromeOptions */);
         driver.manage().window().maximize();
-        driver.get("https://esalud.herokuapp.com/auth/register");
+        driver.get("localhost:8080/auth/register");
 
     }
 
