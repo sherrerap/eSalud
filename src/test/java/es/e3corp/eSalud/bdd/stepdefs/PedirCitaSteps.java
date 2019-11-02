@@ -59,7 +59,6 @@ public class PedirCitaSteps {
         driver.findElement(By.xpath("//input[@placeholder='centro']")).sendKeys(c.getCentro());
         driver.findElement(By.xpath("//input[@placeholder='médico']")).sendKeys(c.getMedico());
         driver.findElement(By.xpath("//input[@placeholder='hora']")).sendKeys(c.getHora());
-
     }
 
     @Then("la cita se guarda en la base de datos y se asocia con el paciente {string}")
@@ -99,6 +98,7 @@ public class PedirCitaSteps {
         case "EN OTRO CASO":
             citasRepository.saveCita(c);
             assertEquals(c.getId(), citasRepository.findById(c.getId).getId());
+            citasRepository.deleteCita(c.getId());
             break;
         }
         Thread.sleep(7000);
