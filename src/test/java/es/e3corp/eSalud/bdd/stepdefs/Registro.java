@@ -8,15 +8,19 @@ import io.cucumber.java.en.When;
 import static org.junit.Assert.assertEquals;
 
 import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class Registro {
 
@@ -25,30 +29,27 @@ public class Registro {
     List<Map<String, String>> a;
 
     @Given("abrimos el navegador e iniciamos la pantalla de registro")
-    public void abrimos_el_navegador_e_iniciamos_la_pantalla_de_registro() {
+    public void abrimos_el_navegador_e_iniciamos_la_pantalla_de_registro() throws MalformedURLException {
 
         ClassLoader classLoader = getClass().getClassLoader();
         String filePath = classLoader.getResource("chromedriver").getFile();
-        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+        DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
+        desiredCapabilities.setPlatform(Platform.LINUX);
         ChromeDriverService service = new ChromeDriverService.Builder().usingDriverExecutable(new File(filePath))
                 .build();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox"); // Bypass OS security model, MUST BE THE VERY FIRST OPTION
-        options.addArguments("--headless");
-        options.setExperimentalOption("useAutomationExtension", false);
-        options.addArguments("start-maximized"); // open Browser in maximized mode
-        options.addArguments("disable-infobars"); // disabling infobars
-        options.addArguments("--disable-extensions"); // disabling extensions
-        options.addArguments("--disable-gpu"); // applicable to windows os only
-        options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
-        options.merge(capabilities);
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--verbose", "--headless", "--disable-web-security", "--ignore-certificate-errors",
+                "--allow-running-insecure-content", "--allow-insecure-localhost", "--no-sandbox", "--disable-gpu");
+
+        chromeOptions.merge(desiredCapabilities);
 
 //        ChromeOptions chromeOptions = new ChromeOptions();
 //        chromeOptions.addArguments("--no-sandbox", "--headless", "window-size=1024,768", "--disable-dev-shm-usage");
 //        chromeOptions.setExperimentalOption("useAutomationExtension", false);
 //        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
 
-        driver = new ChromeDriver(service, options);
+        driver = new ChromeDriver(service, chromeOptions);
+        driver = new RemoteWebDriver(new URL("https://esalud.herokuapp.com"), chromeOptions);
         driver.manage().window().maximize();
         driver.get("https://esalud.herokuapp.com/auth/register");
 
