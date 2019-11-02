@@ -14,7 +14,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-@SpringBootTest
 public class PedirCitaSteps {
 
     WebDriver driver;
@@ -34,7 +33,7 @@ public class PedirCitaSteps {
 
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("http://esalud.herokuapp.com/citas");
+        driver.get("localhost:8080/citas");
     }
 
     @When("el usuario rellena los campos de la cita")
