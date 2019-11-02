@@ -48,7 +48,7 @@ public class Registro {
 //        chromeOptions.setExperimentalOption("useAutomationExtension", false);
 //        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
 
-        driver = new ChromeDriver(options);
+        driver = new ChromeDriver(service, options);
         driver.manage().window().maximize();
         driver.get("https://esalud.herokuapp.com/auth/register");
 
