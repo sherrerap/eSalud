@@ -1,7 +1,6 @@
 language: java
 before_install:
 - sudo apt-get update
-- sudo apt-get -y install libxml2-dev
 - chmod +x src/test/resources/drivers/chromedriver
 
 addons:
@@ -10,6 +9,7 @@ addons:
       - google-chrome
     packages:
       - google-chrome-stable
+      - oracle-java8-installer
 deploy:
   provider: heroku
   api_key: 
