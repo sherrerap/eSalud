@@ -14,7 +14,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-@SpringBootTest
 public class PedirCitaSteps {
 
     WebDriver driver;
