@@ -23,7 +23,7 @@ public class LoginSteps {
     @Given("abrimos el navegador e iniciamos la aplicacion")
     public void abrimos_el_navegador_e_iniciamos_la_aplicacion() {
 
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
 
         driver = new ChromeDriver();
         driver.manage().window().maximize();
