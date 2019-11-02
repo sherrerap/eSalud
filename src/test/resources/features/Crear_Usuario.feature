@@ -1,4 +1,5 @@
 Feature: Crear usuario
+Se podrán guardar usuarios en la base de datos
 
 	Scenario: Se podrá crear un usuario e introducirlo al sistema
 	

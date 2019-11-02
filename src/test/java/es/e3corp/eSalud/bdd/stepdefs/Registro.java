@@ -25,8 +25,8 @@ public class Registro {
 	UsuarioRepository ur;
 	List<Map<String,String>> a;
 	
-	@Given("abrimos el navegador e iniciamos la aplicacion")
-	public void abrimos_el_navegador_e_iniciamos_la_aplicacion() {
+	@Given("abrimos el navegador e iniciamos la pantalla de registro")
+	public void abrimos_el_navegador_e_iniciamos_la_pantalla_de_registro() {
 		
 		   System.setProperty("webdriver.chrome.driver","src/test/resources/drivers/chromedriver.exe");
 	    
@@ -41,7 +41,7 @@ public class Registro {
 	@When("introducimos los datos de registro")
 	public void introducimos_los_datos_de_registro(io.cucumber.datatable.DataTable dataTable) {
 			
-			 a = dataTable.asMaps(String.class,String.class);
+			a = dataTable.asMaps(String.class,String.class);
 		
 			
 			driver.findElement(By.xpath("//input[@placeholder='DNI']")).sendKeys(a.get(0).get("dni"));			
@@ -57,14 +57,16 @@ public class Registro {
 	    
 	}
 
-	@Then("entramos a la aplicacion")
-	public void entramos_a_la_aplicacion() {
+	@Then("nos registramos en la aplicacion")
+	public void nos_registramos_en_la_aplicacion() {
 	    
+			//REMIRARLO
+		
 			driver.findElement(By.xpath("//input[@value='Registrarse']")).click();
 			
 			if(a.get(0).get("resultadoEsperado")=="REGISTRO CORRECTO") {
 			assertEquals(a.get(0).get("dni"), this.ur.findOne(a.get(0).get("dni")));
-			this.ur.deleteUsuario(a.get(0).get("dni"));
+			//this.ur.deleteUsuario(a.get(0).get("dni"));
 			}
 		    
 			driver.close();
