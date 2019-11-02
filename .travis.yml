@@ -1,4 +1,6 @@
 language: java
+before_install:
+- chmod +x src/test/resources/drivers/chromedriver
 addons:
   apt:
     sources:
