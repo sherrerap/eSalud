@@ -1,7 +1,6 @@
 language: java
 before_install:
 - sudo apt-get update
-- sudo apt-get -y install libu2f-udev
 - chmod +x src/test/resources/drivers/chromedriver
 
 addons:
