@@ -73,6 +73,9 @@ public class PedirCitaSteps {
         case "SIN FECHA INTRODUCIDA":
             fail("No se ha introducido una fecha");
             break;
+        case "SIN HORA INTRODUCIDA":
+            fail("No se ha introducido una hora");
+            break;
         case "SIN CENTRO INTRODUCIDO":
             fail("No se ha introducido un centro");
             break;
@@ -81,6 +84,9 @@ public class PedirCitaSteps {
             break;
         case "CON FECHA ERRÓNEA":
             fail("No se ha introducido una fecha correcta");
+            break;
+        case "CON HORA ERRÓNEA":
+            fail("No se ha introducido una hora correcta");
             break;
         case "CON PACIENTE INEXISTENTE":
             fail("El paciente no existe");
