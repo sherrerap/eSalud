@@ -23,11 +23,11 @@ public class Registro {
     @Given("abrimos el navegador e iniciamos la pantalla de registro")
     public void abrimos_el_navegador_e_iniciamos_la_pantalla_de_registro() {
 
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
 
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("localhost:8080/auth/register");
+        driver.get("https://esalud.herokuapp.com/auth/register");
 
     }
 

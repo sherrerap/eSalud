@@ -33,7 +33,7 @@ public class PedirCitaSteps {
 
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("localhost:8080/citas");
+        driver.get("https://esalud.herokuapp.com/citas");
     }
 
     @When("el usuario rellena los campos de la cita")

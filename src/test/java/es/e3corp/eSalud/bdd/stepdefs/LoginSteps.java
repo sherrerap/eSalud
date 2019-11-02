@@ -27,7 +27,7 @@ public class LoginSteps {
 
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("localhost:8080/auth/login");
+        driver.get("https://esalud.herokuapp.com/auth/login");
     }
 
     @When("introducimos los datos de acceso a la aplicación")
@@ -51,19 +51,19 @@ public class LoginSteps {
 
         if (a.get(0).get("testCase") == "CASE 1") {
 
-            assertEquals("localhost:8080/admin", expectedUrl);
+            assertEquals("https://esalud.herokuapp.com/admin", expectedUrl);
 
         } else if (a.get(0).get("testCase") == "CASE 2") {
 
-            assertEquals("localhost:8080/listado-citas", expectedUrl);
+            assertEquals("https://esalud.herokuapp.com/listado-citas", expectedUrl);
 
         } else if (a.get(0).get("testCase") == "CASE 3") {
 
-            assertEquals("localhost:8080/sidenavAdmin", expectedUrl);
+            assertEquals("https://esalud.herokuapp.com/sidenavAdmin", expectedUrl);
 
         } else {
 
-            assertEquals("localhost:8080/auth/login", expectedUrl);
+            assertEquals("https://esalud.herokuapp.com/auth/login", expectedUrl);
 
         }
 
