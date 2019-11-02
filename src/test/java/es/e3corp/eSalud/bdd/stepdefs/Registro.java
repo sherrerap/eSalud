@@ -25,8 +25,7 @@ public class Registro {
     public void abrimos_el_navegador_e_iniciamos_la_pantalla_de_registro() {
 
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--headless", "window-size=1024,768", "--no-sandbox");
-        chromeOptions.addArguments("--disable-dev-shm-usage");
+        chromeOptions.addArguments("--headless", "window-size=1024,768", "--no-sandbox", "--disable-dev-shm-usage");
         System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
 
         driver = new ChromeDriver(chromeOptions);
