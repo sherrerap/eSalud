@@ -26,6 +26,7 @@ public class Registro {
 
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--headless", "window-size=1024,768", "--no-sandbox");
+        chromeOptions.addArguments("--disable-dev-shm-usage");
         System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
 
         driver = new ChromeDriver(chromeOptions);
