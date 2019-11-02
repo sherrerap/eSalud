@@ -47,16 +47,18 @@ public class PedirCitaSteps {
         //
         // For other transformations you can register a DataTableType.
         a = dataTable.asMaps(String.class, String.class);
-//        c.setpaciente(a.get(0).get("paciente"));
-//        c.setTipo(a.get(0).get("tipo"));
-//        c.setFecha(a.get(0).get("fecha"));
-//        c.setCentro(a.get(0).get("centro"));
-//        c.setMedico(a.get(0).get("médico"));
-        driver.findElement(By.xpath("//input[@placeholder='paciente']")).sendKeys(a.get(0).get("paciente"));
-        driver.findElement(By.xpath("//input[@placeholder='tipo']")).sendKeys(a.get(0).get("tipo"));
-        driver.findElement(By.xpath("//input[@placeholder='fecha']")).sendKeys(a.get(0).get("fecha"));
-        driver.findElement(By.xpath("//input[@placeholder='centro']")).sendKeys(a.get(0).get("centro"));
-        driver.findElement(By.xpath("//input[@placeholder='médico']")).sendKeys(a.get(0).get("médico"));
+        c.setPaciente(a.get(0).get("paciente"));
+        c.setTipo(a.get(0).get("tipo"));
+        c.setFecha(a.get(0).get("fecha"));
+        c.setCentro(a.get(0).get("centro"));
+        c.setMedico(a.get(0).get("médico"));
+        c.setHora(a.get(0).get("hora"));
+        driver.findElement(By.xpath("//input[@placeholder='paciente']")).sendKeys(c.getPaciente());
+        driver.findElement(By.xpath("//input[@placeholder='tipo']")).sendKeys(c.getTipo());
+        driver.findElement(By.xpath("//input[@placeholder='fecha']")).sendKeys(c.getFecha());
+        driver.findElement(By.xpath("//input[@placeholder='centro']")).sendKeys(c.getCentro());
+        driver.findElement(By.xpath("//input[@placeholder='médico']")).sendKeys(c.getMedico());
+        driver.findElement(By.xpath("//input[@placeholder='hora']")).sendKeys(c.getHora());
 
     }
 
