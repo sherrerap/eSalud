@@ -36,6 +36,7 @@ public class Registro {
 //        chromeOptions.addArguments("--no-sandbox", "--verbose", "--headless", "--disable-web-security",
 //                "--ignore-certificate-errors", "--allow-running-insecure-content", "--allow-insecure-localhost",
 //                "--disable-gpu");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
 
         driver = new ChromeDriver(/* service, chromeOptions */);
         driver.manage().window().maximize();

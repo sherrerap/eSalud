@@ -1,5 +1,7 @@
 package es.e3corp.eSalud.bdd.stepdefs;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.List;
@@ -8,8 +10,10 @@ import java.util.Map;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import es.e3corp.eSalud.repository.UsuarioRepository;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -17,6 +21,8 @@ import io.cucumber.java.en.When;
 public class PedirCitaSteps {
 
     WebDriver driver;
+    @Autowired
+    UsuarioRepository usuarioRepository;
 //    CitasRepository citasRepository;
 //    Cita c = new Cita();
     List<Map<String, String>> a;
@@ -30,10 +36,11 @@ public class PedirCitaSteps {
         // Double, Byte, Short, Long, BigInteger or BigDecimal.
         //
         // For other transformations you can register a DataTableType.
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
 
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("http://localhost:8080/citas");
+        driver.get("http://localhost:8080/auth/login");
 
         a = dataTable.asMaps(String.class, String.class);
 
@@ -71,48 +78,40 @@ public class PedirCitaSteps {
         driver.findElement(By.xpath("//input[@value='Crear cita']")).click();
         switch (a.get(0).get("testCase")) {
         case "SIN DNI INTRODUCIDO":
-            fail("No se ha introducido un DNI");
-            driver.close();
+            assertEquals(usuarioRepository.findByDniAndContraseña(a.get(0).get("paciente"), a.get(0).get("contraseña")),
+                    null);
             break;
         case "SIN CONTRASEÑA INTRODUCIDA":
-            fail("No se ha introducido una contraseña");
-            driver.close();
+            assertEquals(usuarioRepository.findByDniAndContraseña(a.get(0).get("paciente"), a.get(0).get("contraseña")),
+                    null);
             break;
         case "SIN TIPO INTRODUCIDO":
-            fail("No se ha introducido un tipo");
-            driver.close();
+            assertTrue(c == null);
             break;
         case "SIN FECHA INTRODUCIDA":
-            fail("No se ha introducido una fecha");
-            driver.close();
+            assertTrue(c == null);
             break;
         case "SIN HORA INTRODUCIDA":
-            fail("No se ha introducido una hora");
-            driver.close();
+            assertTrue(c == null);
             break;
         case "SIN CENTRO INTRODUCIDO":
-            fail("No se ha introducido un centro");
-            driver.close();
+            assertTrue(c == null);
             break;
         case "SIN MÉDICO INTRODUCIDO":
-            fail("No se ha introducido un médico");
-            driver.close();
+            assertTrue(c == null);
             break;
         case "CON FECHA ERRÓNEA":
-            fail("No se ha introducido una fecha correcta");
-            driver.close();
+            assertTrue(c == null);
             break;
         case "CON HORA ERRÓNEA":
-            fail("No se ha introducido una hora correcta");
-            driver.close();
+            assertTrue(c == null);
             break;
         case "CON PACIENTE INEXISTENTE":
-            fail("El paciente no existe");
-            driver.close();
+            assertEquals(usuarioRepository.findByDniAndContraseña(a.get(0).get("paciente"), a.get(0).get("contraseña")),
+                    null);
             break;
         case "CON MÉDICO INEXISTENTE":
-            fail("El médico no existe");
-            driver.close();
+            assertTrue(!usuarioRepository.findOne(a.get(0).get("médico")).get().getRol().equals("médico"));
             break;
         case "EN OTRO CASO":
 //            citasRepository.saveCita(c);
