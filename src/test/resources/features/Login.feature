@@ -6,7 +6,7 @@ Scenario Outline: <testCase> <resultadoEsperado>
   	|	dni	| contraseña  | 
     |<dni>| <contraseña>|
 			
-  Then accedemos a la aplicacionla aplicacion
+  Then accedemos a la aplicacion
   
   Examples: 
   	|testCase	| resultadoEsperado 	|	dni 	  				| contraseña |
