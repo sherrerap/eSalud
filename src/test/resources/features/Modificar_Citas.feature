@@ -13,7 +13,7 @@ Feature: Modificar cita paciente
     		| DNI	  	        |Tipo		    | Fecha          | Hora         | Centro       | ID_Medico      |
     		| <dniPaciente>	  | <tipo>		| <fecha>		     | <hora>       | <centro>		 | <médico>	      |
     		
-    Then se modifica la cita y se sustituye en la base de datos <expectedResult>
+    Then se modifica la cita y se sustituye en la base de datos '<expectedResult>'
     
 
       Examples:
