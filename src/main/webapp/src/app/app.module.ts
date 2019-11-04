@@ -17,6 +17,7 @@ import { MostrarMedicoComponent } from './components/admin-MostrarMedico/Mostrar
 import { RegistrarMedicoComponent } from './components/admin-RegistrarMedico/RegistrarMedico.component';
 import { DialogBoxPacienteComponent } from './components/dialog-box-paciente/dialog-box-paciente.component';
 import { DialogBoxMedicoComponent } from './components/dialog-box-medico/dialog-box-medico.component';
+import { DialogBoxModificarCita } from './components/dialog-box-modificarCita/dialog-box-modificarCita.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { DialogBoxMedicoComponent } from './components/dialog-box-medico/dialog-
     RegistrarMedicoComponent,
     DialogBoxPacienteComponent,
     DialogBoxMedicoComponent,
+	DialogBoxModificarCita,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,8 @@ import { DialogBoxMedicoComponent } from './components/dialog-box-medico/dialog-
   ],
   entryComponents: [
     DialogBoxPacienteComponent,
-    DialogBoxMedicoComponent
+    DialogBoxMedicoComponent,
+	DialogBoxModificarCita,
 
   ],
   providers: [
