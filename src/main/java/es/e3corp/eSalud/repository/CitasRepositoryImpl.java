@@ -1,7 +1,7 @@
 package es.e3corp.eSalud.repository;
 import es.e3corp.eSalud.model.Cita;
 import es.e3corp.eSalud.model.Usuario;
-import es.e3corp.eSalud.repository.CitaRepository;
+import es.e3corp.eSalud.repository.CitasRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -23,13 +23,13 @@ import org.springframework.data.mongodb.core.query.Query;
 
 
 @Repository
-public class CitaRepositoryImpl implements CitaRepository{
+public class CitasRepositoryImpl implements CitasRepository{
 
 	private final MongoOperations mongoOperations;
 
     @Autowired
 
-    public CitaRepositoryImpl(MongoOperations mongoOperations) {
+    public CitasRepositoryImpl(MongoOperations mongoOperations) {
         Assert.notNull(mongoOperations, "notNull");
         this.mongoOperations = mongoOperations;
 

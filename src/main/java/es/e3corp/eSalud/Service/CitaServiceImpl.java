@@ -3,7 +3,7 @@ package es.e3corp.eSalud.Service;
 import es.e3corp.eSalud.exception.CitaNotFoundException;
 import es.e3corp.eSalud.model.Cita;
 import es.e3corp.eSalud.model.Usuario;
-import es.e3corp.eSalud.repository.CitaRepository;
+import es.e3corp.eSalud.repository.CitasRepository;
 import es.e3corp.eSalud.repository.UsuarioRepository;
 
 import org.apache.commons.logging.Log;
@@ -27,11 +27,11 @@ public class CitaServiceImpl implements CitaService{
 	
 	private static final Log log = LogFactory.getLog(CitaServiceImpl.class);
 
-    private CitaRepository citaRepository;
+    private CitasRepository citaRepository;
 
     @Autowired
 
-    public CitaServiceImpl(CitaRepository citaRepository) {
+    public CitaServiceImpl(CitasRepository citaRepository) {
 
         this.citaRepository = citaRepository;
 
