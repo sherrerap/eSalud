@@ -70,7 +70,7 @@ public class Registro {
 
         if (a.get(0).get("resultadoEsperado") == "REGISTRO CORRECTO") {
             assertEquals(a.get(0).get("dni"), this.ur.findOne(a.get(0).get("dni")));
-            // this.ur.deleteUsuario(a.get(0).get("dni"));
+            this.ur.deleteUsuario(a.get(0).get("dni"));
         }
 
         driver.close();
