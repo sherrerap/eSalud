@@ -18,6 +18,8 @@ import { RegistrarMedicoComponent } from './components/admin-RegistrarMedico/Reg
 import { DialogBoxPacienteComponent } from './components/dialog-box-paciente/dialog-box-paciente.component';
 import { DialogBoxMedicoComponent } from './components/dialog-box-medico/dialog-box-medico.component';
 import { DialogBoxModificarCita } from './components/dialog-box-modificarCita/dialog-box-modificarCita.component';
+import { AlertComponent } from './components/alert/alert.component';
+import { RegistrarCitaComponent } from './components/paciente-RegistrarCita/RegistrarCita.component';
 
 
 @NgModule({
@@ -33,6 +35,8 @@ import { DialogBoxModificarCita } from './components/dialog-box-modificarCita/di
     DialogBoxPacienteComponent,
     DialogBoxMedicoComponent,
 	DialogBoxModificarCita,
+	AlertComponent,
+    RegistrarCitaComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +63,8 @@ import { DialogBoxModificarCita } from './components/dialog-box-modificarCita/di
 	DialogBoxModificarCita,
 
   ],
+
+
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],

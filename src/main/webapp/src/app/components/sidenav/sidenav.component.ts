@@ -1,6 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
-import { ListadoCitasComponent } from '../listado-citas/listado-citas.component';
 import { AuthService } from '../../_services'
 import { Router } from '@angular/router';
 
@@ -16,8 +15,8 @@ export class SidenavComponent implements OnInit {
   mobileQuery: MediaQueryList;
 
   fillerNav = [
-    { name: "Historial de citas", route: "listadocitas", icon: "assignment", component: ListadoCitasComponent },
-    { name: "Modificar cita", icon: "autorenew" },
+    { name: "Historial de citas", route: "citas", icon: "assignment" },
+    { name: "Registrar cita", route:"RegistrarCita", icon: "autorenew" },
     { name: "Cancelar cita", icon: "delete_outline" },
     { name: "Salir", route: "/", icon: "logout" }
   ]
@@ -47,8 +46,8 @@ export class SidenavComponent implements OnInit {
   shouldRun = true;
   ngOnInit() {
   }
-
-  desconectar() {
+ 
+  desconectar() { 
     this.authService.logout();
   }
 }
