@@ -26,14 +26,14 @@
                 <div *ngIf="f.nombre.errors.required">Por favor, escriba su nombre</div>
             </div>
 
-            <input type="text" placeholder="Teléfono" formControlName="tel" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tel.errors }">
-            <div *ngIf="submitted && f.tel.errors" class="invalid-feedback">
-                <div *ngIf="f.tel.errors.required">Por favor, escriba su número de teléfono</div>
-            </div>
-
             <input type="text" placeholder="Apellidos" formControlName="apellidos" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.apellidos.errors }">
             <div *ngIf="submitted && f.apellidos.errors" class="invalid-feedback">
                 <div *ngIf="f.apellidos.errors.required">Por favor, escriba sus apellidos</div>
+            </div>
+            
+            <input type="text" placeholder="Teléfono" formControlName="tel" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tel.errors }">
+            <div *ngIf="submitted && f.tel.errors" class="invalid-feedback">
+                <div *ngIf="f.tel.errors.required">Por favor, escriba su número de teléfono</div>
             </div>
 
             <input type="text" placeholder="Correo electrónico" formControlName="correo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.correo.errors }" />
