@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UsuarioRepository {
+	
     Optional<List<Usuario>> findAll();
 
     public void saveUsuario(Usuario usuario);
