@@ -46,13 +46,15 @@ export class RegisterComponent implements OnInit {
     get f() { return this.registerForm.controls; }
 
     onSubmit() {
-        this.alertService.clear();
         this.submitted = true;
+        this.alertService.clear();
+
 
         // para aquí si el form es inválido
         if (this.registerForm.invalid) {
             return;
         }
+    
         if ((this.f.dni.value.length != 8)) {
             this.alertService.error("Formato de DNI incorrecto. El DNI debe de tener 8 números y sin letra", false);
             return;
