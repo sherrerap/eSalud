@@ -23,75 +23,70 @@ import java.util.Optional;
 @Service("CitaService")
 
 @Transactional
-public class CitaServiceImpl implements CitaService{
-	
-	private static final Log log = LogFactory.getLog(CitaServiceImpl.class);
+public class CitaServiceImpl implements CitaService {
 
-    private CitasRepository citaRepository;
+  private static final Log log = LogFactory.getLog(CitaServiceImpl.class);
 
-    @Autowired
+  private CitasRepository citaRepository;
 
-    public CitaServiceImpl(CitasRepository citaRepository) {
+  @Autowired
 
-        this.citaRepository = citaRepository;
+  public CitaServiceImpl(CitasRepository citaRepository) {
 
-    }
+    this.citaRepository = citaRepository;
 
-	
-	public List<Cita> findAll() {
-		
-		Optional<List<Cita>> cita = citaRepository.findAll();
+  }
 
-        return cita.get();
-        
-	}
+  public List<Cita> findAll() {
 
-	
-	public Cita findByCitaId(String citaId) {
-		
-		Optional<Cita> cita = citaRepository.findOne(citaId);
+    Optional<List<Cita>> cita = citaRepository.findAll();
 
-        if (cita.isPresent()) {
+    return cita.get();
 
-            log.debug(String.format("Read citaId '{}'", citaId));
+  }
 
-            return cita.get();
+  public Cita findByCitaId(String citaId) {
 
-        } else
+    Optional<Cita> cita = citaRepository.findOne(citaId);
 
-            throw new CitaNotFoundException(citaId);
-	}
+    if (cita.isPresent()) {
 
-	
-	public void saveCita(Cita cita) {
+      log.debug(String.format("Read citaId '{}'", citaId));
 
-		citaRepository.saveCita(cita);
-		
-	}
+      return cita.get();
 
+    } else
 
-	public void updateCita(Cita cita) {
-		
-		citaRepository.updateCita(cita);
-		
-	}
+      throw new CitaNotFoundException(citaId);
+  }
 
+  public void saveCita(Cita cita) {
 
-	public void deleteCita(String citaId) {
-		
-		citaRepository.deleteCita(citaId);
-		
-	}
+    citaRepository.saveCita(cita);
 
-	public Cita getCitaByPacienteMedicoFechaHora(String idPaciente, String idMedico, String fecha, String hora) {
-		
-		System.out.println("[SERVER] Id paciente recibido: " + idPaciente);
-        System.out.println("[SERVER] Id medico recibido: " + idMedico);
-        System.out.println("[SERVER] Fecha recibida: " + fecha);
-        System.out.println("[SERVER] Hora recibida: " + hora);
+  }
 
-        Cita cita = citaRepository.findByPacienteMedicoFechaHora(idPaciente, idMedico, fecha, hora);
-        return cita;
-	}
+  public void updateCita(Cita cita) {
+
+    citaRepository.updateCita(cita);
+
+  }
+
+  public void deleteCita(String citaId) {
+    Cita cita = getCitaByPacienteMedicoFechaHora(citaId, citaId, citaId, citaId);
+    citaRepository.deleteCita(citaId);
+
+  }
+
+  public Cita getCitaByPacienteMedicoFechaHora(String idPaciente, String idMedico, String fecha, String hora) {
+
+    System.out.println("[SERVER] Id paciente recibido: " + idPaciente);
+    System.out.println("[SERVER] Id medico recibido: " + idMedico);
+    System.out.println("[SERVER] Fecha recibida: " + fecha);
+    System.out.println("[SERVER] Hora recibida: " + hora);
+
+    Cita cita = citaRepository.findByPacienteMedicoFechaHora(idPaciente, idMedico, fecha, hora);
+    return cita;
+  }
 
 }
