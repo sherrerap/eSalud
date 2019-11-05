@@ -18,8 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.wordnik.swagger.annotations.ApiOperation;
 
 import es.e3corp.eSalud.Service.CitaService;
+import es.e3corp.eSalud.Service.UsuarioService;
 import es.e3corp.eSalud.exception.CitaNotFoundException;
+import es.e3corp.eSalud.exception.UserNotFoundException;
 import es.e3corp.eSalud.model.Cita;
+import es.e3corp.eSalud.model.Usuario;
 
 @RestController
 @RequestMapping("/citas")
@@ -28,10 +31,12 @@ public class CitaController {
 
   private static final Log log = LogFactory.getLog(CitaController.class);
   private final CitaService citasService;
+  private final UsuarioService usuarioService;
   private Cita cita;
 
   @Autowired
-  public CitaController(CitaService citasService) {
+  public CitaController(CitaService citasService, UsuarioService usuarioService) {
+    this.usuarioService = usuarioService;
     this.citasService = citasService;
   }
 
@@ -55,7 +60,6 @@ public class CitaController {
     log.info("[SERVER] Actualizando cita...");
     JSONObject jso = new JSONObject(p);
     Cita cita = citasService.findByCitaId(citaId);
-
     if (cita == null) {
       System.out.println("[SERVER] Error: la cita no existe.");
       return ResponseEntity.badRequest().build();
@@ -70,6 +74,24 @@ public class CitaController {
         String hora = jso.getString("hora");
         String tipo = jso.getString("tipo");
         String centro = jso.getString("centro");
+
+        try {
+          Usuario usuarioPaciente = usuarioService.findByUserDni(paciente);
+          Usuario usuarioMedico = usuarioService.findByUserDni(médico);
+          if (!usuarioPaciente.getRol().equals("paciente")) {
+            log.error("[SERVER] El usuario paciente no es válido.");
+            return ResponseEntity.badRequest().build();
+          }
+          if (!usuarioMedico.getRol().equals("medico")) {
+            log.error("[SERVER] El usuario médico no es válido.");
+            return ResponseEntity.badRequest().build();
+          }
+
+        } catch (UserNotFoundException u) {
+          log.error("[SERVER] El usuario paciente o médico no se ha encontrado.");
+          return ResponseEntity.badRequest().build();
+        }
+        
         cita.setPaciente(paciente);
         cita.setMédico(médico);
         cita.setFecha(fecha);
@@ -95,6 +117,7 @@ public class CitaController {
     log.info("[SERVER] Buscando cita...");
     try {
       cita = citasService.findByCitaId(citaId);
+      log.info("[SERVER] " + cita.toString());
     } catch (CitaNotFoundException e) {
       cita = null;
     }
@@ -117,6 +140,23 @@ public class CitaController {
     String fecha = jso.getString("fecha");
     String hora = jso.getString("hora");
     Cita cita1 = citasService.findCitaByPacienteMedicoFechaHora(paciente, médico, fecha, hora);
+    try {
+      Usuario usuarioPaciente = usuarioService.findByUserDni(paciente);
+      Usuario usuarioMedico = usuarioService.findByUserDni(médico);
+      if (!usuarioPaciente.getRol().equals("paciente")) {
+        log.error("[SERVER] El usuario paciente no es válido.");
+        return ResponseEntity.badRequest().build();
+      }
+      if (!usuarioMedico.getRol().equals("medico")) {
+        log.error("[SERVER] El usuario médico no es válido.");
+        return ResponseEntity.badRequest().build();
+      }
+
+    } catch (UserNotFoundException u) {
+      log.error("[SERVER] El usuario paciente o médico no se ha encontrado.");
+      return ResponseEntity.badRequest().build();
+    }
+
     if (cita1 == null) {
       String tipo = null, centro = null;
 
