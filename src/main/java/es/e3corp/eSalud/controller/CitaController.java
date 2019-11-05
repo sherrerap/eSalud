@@ -1,24 +1,25 @@
 
 package es.e3corp.eSalud.controller;
 
-import es.e3corp.eSalud.exception.CitaNotFoundException;
-
-import es.e3corp.eSalud.model.Cita;
-
-import es.e3corp.eSalud.Service.CitaService;
-
 import org.apache.commons.logging.Log;
-
 import org.apache.commons.logging.LogFactory;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.http.ResponseEntity;
-
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.wordnik.swagger.annotations.ApiOperation;
+
+import es.e3corp.eSalud.Service.CitaService;
+import es.e3corp.eSalud.exception.CitaNotFoundException;
+import es.e3corp.eSalud.model.Cita;
 
 @RestController
 @RequestMapping("/citas")
@@ -38,7 +39,7 @@ public class CitaController {
   public ResponseEntity<Cita> getCitaFecha(@RequestParam(required = false) String paciente,
       @RequestParam(required = false) String médico, @RequestParam(required = false) String fecha,
       @RequestParam(required = false) String hora) {
-    Cita cita = citasService.getCitaByPacienteMedicoFechaHora(paciente, médico, fecha, hora);
+    Cita cita = citasService.findCitaByPacienteMedicoFechaHora(paciente, médico, fecha, hora);
     if (cita != null) {
       System.out.println("[SERVER] Cita encontrada: " + cita.getId());
       return ResponseEntity.ok(cita);
@@ -48,10 +49,50 @@ public class CitaController {
     }
   }
 
+  @RequestMapping(value = "/{citaId}", method = RequestMethod.PUT)
+  @ApiOperation(value = "Update cita", notes = "Finds a cita ID and updates its fields")
+  public ResponseEntity<Cita> updateCita(@RequestBody String p, @PathVariable String citaId) {
+    log.info("[SERVER] Actualizando cita...");
+    JSONObject jso = new JSONObject(p);
+    Cita cita = citasService.findByCitaId(citaId);
+
+    if (cita == null) {
+      System.out.println("[SERVER] Error: la cita no existe.");
+      return ResponseEntity.badRequest().build();
+    } else {
+      try {
+        System.out.println("[SERVER] Actualizando cita...");
+
+        // Depende de los campos que queramos que puedan actualizarse
+        String paciente = jso.getString("paciente");
+        String médico = jso.getString("médico");
+        String fecha = jso.getString("fecha");
+        String hora = jso.getString("hora");
+        String tipo = jso.getString("tipo");
+        String centro = jso.getString("centro");
+        cita.setPaciente(paciente);
+        cita.setMédico(médico);
+        cita.setFecha(fecha);
+        cita.setHora(hora);
+        cita.setTipo(tipo);
+        cita.setCentro(centro);
+      } catch (JSONException j) {
+        System.out.println("[SERVER] Error en la lectura del JSON.");
+        System.out.println(j.getMessage());
+        return ResponseEntity.badRequest().build();
+      }
+
+      citasService.updateCita(cita);
+      System.out.println("[SERVER] Cita actualizada.");
+      System.out.println("[SERVER] " + cita.toString());
+      return ResponseEntity.ok().build();
+    }
+  }
+
   @RequestMapping(value = "/{citaId}", method = RequestMethod.GET)
   @ApiOperation(value = "Find cita", notes = "Return a cita by Id")
   public ResponseEntity<Cita> citaById(@PathVariable String citaId) throws CitaNotFoundException {
-    log.info("Get citaById");
+    log.info("[SERVER] Buscando cita...");
     try {
       cita = citasService.findByCitaId(citaId);
     } catch (CitaNotFoundException e) {
@@ -75,7 +116,7 @@ public class CitaController {
     String médico = jso.getString("médico");
     String fecha = jso.getString("fecha");
     String hora = jso.getString("hora");
-    Cita cita1 = citasService.getCitaByPacienteMedicoFechaHora(paciente, médico, fecha, hora);
+    Cita cita1 = citasService.findCitaByPacienteMedicoFechaHora(paciente, médico, fecha, hora);
     if (cita1 == null) {
       String tipo = null, centro = null;
 
