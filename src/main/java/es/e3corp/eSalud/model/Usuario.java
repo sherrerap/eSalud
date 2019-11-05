@@ -1,5 +1,8 @@
 package es.e3corp.eSalud.model;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
 
 import javax.validation.constraints.NotNull;
@@ -29,19 +32,36 @@ public class Usuario {
             String especialidad, String medico, int numTelefono, String localidad, String centro, String email) {
         super();
         this.id = UUID.randomUUID().toString();
-        this.dni = dni;
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.contraseña = contraseña;
+        this.dni = getMD5(dni);
+        this.nombre = getMD5(nombre);
+        this.apellidos = getMD5(apellidos);
+        this.contraseña = getMD5(contraseña);
         this.rol = rol;
         this.especialidad = especialidad;
         this.medico = medico;
         this.numTelefono = numTelefono;
         this.localidad = localidad;
         this.centro = centro;
-        this.email = email;
+        this.email = getMD5(email);
     }
 
+    public static String getMD5(String input) {
+    	try {
+	    	 MessageDigest md = MessageDigest.getInstance("MD5");
+	    	 byte[] messageDigest = md.digest(input.getBytes());
+	    	 BigInteger number = new BigInteger(1, messageDigest);
+	    	 String hashtext = number.toString(16);
+
+    	 while (hashtext.length() < 32) {
+    	 hashtext = "0" + hashtext;
+    	 }
+    	 return hashtext;
+    	 }
+    	 catch (NoSuchAlgorithmException e) {
+    	 throw new RuntimeException(e);
+    	 }
+    }
+    
     public Usuario() {
 
     }
