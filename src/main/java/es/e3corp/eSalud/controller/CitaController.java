@@ -91,7 +91,7 @@ public class CitaController {
           log.error("[SERVER] El usuario paciente o médico no se ha encontrado.");
           return ResponseEntity.badRequest().build();
         }
-        
+
         cita.setPaciente(paciente);
         cita.setMédico(médico);
         cita.setFecha(fecha);

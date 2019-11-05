@@ -8,7 +8,7 @@ public interface UsuarioService {
 
   List<Usuario> findAll();
 
-  Usuario findByUserDni(String id);
+  Usuario findByUserDni(String dni);
 
   void saveUsuario(Usuario usuario);
 
