@@ -1,0 +1,54 @@
+<div *ngIf="error" class="alert alert-danger">{{error}}</div>
+
+<div class="register">
+    <div class="register-triangle"></div>
+    <h2 class="register-header">Registrarse</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-container">
+        <div class="form-group">
+
+            <input type="text" placeholder="DNI" formControlName="dni" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dni.errors }">
+            <div *ngIf="submitted && f.dni.errors" class="invalid-feedback">
+                <div *ngIf="f.dni.errors.required">Por favor, escriba su DNI</div>
+            </div>
+
+            <input type="password" placeholder="Contraseña" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Por favor, escriba una contraseña</div>
+            </div>
+
+            <input type="password" placeholder="Repita su contraseña" formControlName="password2" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password2.errors }" />
+            <div *ngIf="submitted && f.password2.errors" class="invalid-feedback">
+                <div *ngIf="f.password2.errors.required">Por favor, escriba una contraseña</div>
+            </div>
+
+            <input type="text" placeholder="Nombre" formControlName="nombre" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }">
+            <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
+                <div *ngIf="f.nombre.errors.required">Por favor, escriba su nombre</div>
+            </div>
+
+            <input type="text" placeholder="Apellidos" formControlName="apellidos" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.apellidos.errors }">
+            <div *ngIf="submitted && f.apellidos.errors" class="invalid-feedback">
+                <div *ngIf="f.apellidos.errors.required">Por favor, escriba sus apellidos</div>
+            </div>
+            
+            <input type="text" placeholder="Teléfono" formControlName="tel" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tel.errors }">
+            <div *ngIf="submitted && f.tel.errors" class="invalid-feedback">
+                <div *ngIf="f.tel.errors.required">Por favor, escriba su número de teléfono</div>
+            </div>
+
+            <input type="text" placeholder="Correo electrónico" formControlName="correo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.correo.errors }" />
+            <div *ngIf="submitted && f.correo.errors" class="invalid-feedback">
+                <div *ngIf="f.correo.errors.required">Por favor, escriba un correo electrónico</div>
+            </div>
+
+            <input type="text" placeholder="Localidad" formControlName="localidad" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.localidad.errors }" />
+            <div *ngIf="submitted && f.localidad.errors" class="invalid-feedback">
+                <div *ngIf="f.localidad.errors.required">Por favor, escriba su localidad</div>
+            </div>
+
+            <div class="form-group">
+                <p><input type="submit" value="Registrarse"></p>
+                <p><input type="submit" value="Cancelar" routerLink="/auth/login"></p>
+            </div>
+        </div>
+    </form>

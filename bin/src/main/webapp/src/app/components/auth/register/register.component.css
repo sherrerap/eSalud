@@ -1,0 +1,104 @@
+.register {
+    width: 600px;
+    margin: 16px auto;
+    font-size: 16px;
+}
+
+
+/* Reset top and bottom margins from certain elements */
+
+.register-header,
+.register p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+/* The triangle form is achieved by a CSS hack */
+
+.register-triangle {
+    width: 0;
+    margin-right: auto;
+    margin-left: auto;
+    border: 12px solid transparent;
+    border-bottom-color: #23C185;
+}
+
+.register-header {
+    background: #23C185;
+    padding: 20px;
+    font-size: 1.4em;
+    font-weight: normal;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.register-container {
+    background: #ebebeb;
+    padding: 10 px;
+    display: grid;
+
+}
+
+
+/* Every row inside .register-container is defined with p tags */
+
+.register p {
+    padding: 6px;
+}
+
+.register input {
+    box-sizing: border-box;
+    padding: 6px;
+    display: block;
+    width: 100%;
+    border-width: 1px;
+    border-style: solid;
+    padding: 5%;
+    outline: 0;
+    font-family: inherit;
+    font-size: 0.95em;
+}
+
+.register input[type="text"],
+.register input[type="password"]{
+    width: 100%;
+    background: #fff;
+    border-color: #bbb;
+    color: #555;
+    margin-top: 5px;
+}
+
+
+/* Text fields' focus effect */
+
+.register input[type="text"]:focus,
+.register input[type="password"]:focus{
+    border-color: #888;
+}
+
+.register input[type="submit"] {
+    background: #23C185;
+    border-color: transparent;
+    color: #fff;
+    cursor: pointer;
+    left: 50%;
+}
+
+.register input[type="submit"]:hover {
+    background: rgb(6, 117, 75);
+}
+
+
+/* Buttons' focus effect */
+
+.register input[type="submit"]:focus {
+    border-color: rgb(6, 117, 75);
+}.ng-valid {
+    border: thin solid #090;
+}
+
+.ng-invalid {
+    border: thin solid #990000;
+}
