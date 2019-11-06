@@ -91,17 +91,20 @@ public class UsuarioController {
         JSONObject jso = new JSONObject(p);
         String dni = jso.getString("dni");
         String contraseña = jso.getString("password");
+        //String contraseña = jso.getString("contraseña");
         Usuario usuario1 = usersService.getUserByDniAndPassword(dni, contraseña);
         if (usuario1 == null) {
             String nombre = null, apellidos = null, email = null, localidad = null, centro = null, medico = null,
                     rol = null, especialidad = null;
-            int numTelefono = 0;
+            String numTelefono = null;
             try {
                 System.out.println("[SERVER] Registrando usuario...");
                 nombre = jso.getString("nombre");
                 apellidos = jso.getString("apellidos");
-                numTelefono = jso.getInt("tel");
+                numTelefono = jso.getString("tel");
+                //numTelefono = jso.getString("numTelefono");
                 email = jso.getString("correo");
+                //email = jso.getString("email");
                 if (jso.getString("rol").equals("paciente")) {
                     localidad = jso.getString("localidad");
                     rol = jso.getString("rol");

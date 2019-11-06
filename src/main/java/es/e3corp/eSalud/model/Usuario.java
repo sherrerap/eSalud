@@ -3,9 +3,15 @@ package es.e3corp.eSalud.model;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 import java.util.UUID;
 
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 import javax.validation.constraints.NotNull;
+
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -23,26 +29,75 @@ public class Usuario {
     private String rol;
     private String especialidad;
     private String medico;
-    private int numTelefono;
+    private String numTelefono;
     private String localidad;
     private String centro;
     private String email;
 
     public Usuario(@NotNull String dni, String nombre, String apellidos, @NotNull String contraseña, String rol,
-            String especialidad, String medico, int numTelefono, String localidad, String centro, String email) {
+            String especialidad, String medico, String numTelefono, String localidad, String centro, String email) {
         super();
         this.id = UUID.randomUUID().toString();
-        this.dni = getMD5(dni);
-        this.nombre = getMD5(nombre);
-        this.apellidos = getMD5(apellidos);
-        this.contraseña = getMD5(contraseña);
-        this.rol = rol;
-        this.especialidad = especialidad;
-        this.medico = medico;
-        this.numTelefono = numTelefono;
-        this.localidad = localidad;
-        this.centro = centro;
-        this.email = getMD5(email);
+        this.dni = encriptar(dni);
+        this.nombre = encriptar(nombre);
+        this.apellidos = encriptar(apellidos);
+        this.contraseña = encriptar(contraseña);
+        this.rol = encriptar(rol);
+        this.especialidad = encriptar(especialidad);
+        this.medico = encriptar(medico);
+        this.numTelefono = encriptar(numTelefono);
+        this.localidad = encriptar(localidad);
+        this.centro = encriptar(centro);
+        this.email = encriptar(email);
+    }
+    
+    public static String encriptar(String texto) {
+
+        String secretKey = "esalud"; //llave para encriptar datos
+        String base64EncryptedString = "";
+
+        try {
+
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] digestOfPassword = md.digest(secretKey.getBytes("utf-8"));
+            byte[] keyBytes = Arrays.copyOf(digestOfPassword, 24);
+
+            SecretKey key = new SecretKeySpec(keyBytes, "DESede");
+            Cipher cipher = Cipher.getInstance("DESede");
+            cipher.init(Cipher.ENCRYPT_MODE, key);
+
+            byte[] plainTextBytes = texto.getBytes("utf-8");
+            byte[] buf = cipher.doFinal(plainTextBytes);
+            byte[] base64Bytes = Base64.encodeBase64(buf);
+            base64EncryptedString = new String(base64Bytes);
+
+        } catch (Exception ex) {
+        }
+        return base64EncryptedString;
+    }
+    
+    public static String Desencriptar(String textoEncriptado) throws Exception {
+
+        String secretKey = "esalud"; //llave para desencriptar datos
+        String base64EncryptedString = "";
+
+        try {
+            byte[] message = Base64.decodeBase64(textoEncriptado.getBytes("utf-8"));
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] digestOfPassword = md.digest(secretKey.getBytes("utf-8"));
+            byte[] keyBytes = Arrays.copyOf(digestOfPassword, 24);
+            SecretKey key = new SecretKeySpec(keyBytes, "DESede");
+
+            Cipher decipher = Cipher.getInstance("DESede");
+            decipher.init(Cipher.DECRYPT_MODE, key);
+
+            byte[] plainText = decipher.doFinal(message);
+
+            base64EncryptedString = new String(plainText, "UTF-8");
+
+        } catch (Exception ex) {
+        }
+        return base64EncryptedString;
     }
 
     public static String getMD5(String input) {
@@ -130,11 +185,11 @@ public class Usuario {
         this.medico = medico;
     }
 
-    public int getNumTelefono() {
+    public String getNumTelefono() {
         return numTelefono;
     }
 
-    public void setNumTelefono(int numTelefono) {
+    public void setNumTelefono(String numTelefono) {
         this.numTelefono = numTelefono;
     }
 
@@ -176,7 +231,7 @@ public class Usuario {
         result = prime * result + ((localidad == null) ? 0 : localidad.hashCode());
         result = prime * result + ((medico == null) ? 0 : medico.hashCode());
         result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
-        result = prime * result + numTelefono;
+        result = prime * result + ((nombre == null) ? 0 : numTelefono.hashCode());
         result = prime * result + ((rol == null) ? 0 : rol.hashCode());
         return result;
     }

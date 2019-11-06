@@ -82,8 +82,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public Usuario getUserByDniAndPassword(String dni, String password) {
-        System.out.println("[SERVER] DNI recibido: " + dni);
-        System.out.println("[SERVER] Contraseña recibida: " + password);
+        //System.out.println("[SERVER] DNI recibido: " + dni);
+        //System.out.println("[SERVER] Contraseña recibida: " + password);
 
         Usuario usuario = userRepository.findByDniAndContraseña(dni, password);
         return usuario;
