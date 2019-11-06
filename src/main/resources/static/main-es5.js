@@ -39,7 +39,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<router-outlet></router-outlet>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<alert></alert>\r\n<router-outlet></router-outlet>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/admin-ModificarMedico/ModificarMedico.component.html": 
@@ -83,7 +83,18 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"error\" class=\"alert alert-danger\">{{error}}</div>\r\n<div *ngIf=\"success\" class=\"alert alert-success\">{{success}}</div>\r\n<div class=\"register\">\r\n    <h2 class=\"register-header\">Registro médicos</h2>\r\n    <form [formGroup]=\"registerForm\" (ngSubmit)=\"onSubmit()\" class=\"register-container\">\r\n        <div class=\"form-group\">\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Dni</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <input type=\"text\" placeholder=\"DNI\" formControlName=\"dni\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.dni.errors }\">\r\n                    <div *ngIf=\"submitted && f.dni.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.dni.errors.required\">Escribe un Dni</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Nombre</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <input type=\"text\" placeholder=\"Nombre\" formControlName=\"nombre\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.nombre.errors }\" />\r\n                    <div *ngIf=\"submitted && f.nombre.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.nombre.errors.required\">Escribe un nombre</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Apellidos</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <input type=\"text\" placeholder=\"Apellidos\" formControlName=\"apellidos\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.apellidos.errors }\" />\r\n                    <div *ngIf=\"submitted && f.apellidos.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.apellidos.errors.required\">Escribe unos apellidos</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Especialidad</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <select input=\"text\" class=\"form-control\" formControlName=\"especialidad\" [ngClass]=\"{ 'is-invalid': submitted && f.especialidad.errors }\">\r\n          \t\t\t\t\t      <option value=\"\">Seleccionar</option>\r\n          \t\t\t\t\t      <option value=\"Cabecera\">Cabecera</option>\r\n          \t\t\t\t\t\t  <option value=\"Enfermero\">Enfermero</option>\r\n          \t\t\t\t\t      <option value=\"Pediatría\">Pediatría</option>\r\n          \t\t\t\t\t\t  <option value=\"Traumatología\">Traumatología</option>\t\t\t\t      \r\n          \t\t\t\t\t      \r\n          \t\t\t\t\t    </select>\r\n                    <div *ngIf=\"submitted && f.especialidad.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.especialidad.errors.required\">Seleccione una especialidad</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Centro</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <input type=\"text\" placeholder=\"Centro\" formControlName=\"centro\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.centro.errors }\" />\r\n                    <div *ngIf=\"submitted && f.centro.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.centro.errors.required\">Escriba un centro</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Telefono</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <input type=\"text\" placeholder=\"Telefono\" formControlName=\"tel\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.tel.errors }\">\r\n                    <div *ngIf=\"submitted && f.tel.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.tel.errors.required\">Escriba un telefono</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Correo electrónico</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <input type=\"text\" placeholder=\"Correo electrónico\" formControlName=\"correo\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.correo.errors }\" />\r\n                    <div *ngIf=\"submitted && f.correo.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.correo.errors.required\">Escriba un correo electrónico</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Contraseña</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <input type=\"password\" placeholder=\"Contraseña\" formControlName=\"password\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.password.errors }\" />\r\n                    <div *ngIf=\"submitted && f.password.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.password.errors.required\">Escriba una contraseña</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"row justify-content-center\">\r\n            <p><input type=\"submit\" value=\"Registrarse   \" class=\"button2\"></p>\r\n            <p><input type=\"submit\" value=\"Cancelar  \" class=\"button1\"></p>\r\n        </div>\r\n    </form>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"register\">\r\n    <h2 class=\"register-header\">Registro médicos</h2>\r\n    <form [formGroup]=\"registerForm\" (ngSubmit)=\"onSubmit()\" class=\"register-container\">\r\n        <div *ngIf=\"error\" class=\"alert alert-danger\">{{error}}</div>\r\n        <div class=\"form-group\">\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Dni</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <input type=\"text\" placeholder=\"DNI\" formControlName=\"dni\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.dni.errors }\">\r\n                    <div *ngIf=\"submitted && f.dni.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.dni.errors.required\">Escribe un Dni</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Nombre</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <input type=\"text\" placeholder=\"Nombre\" formControlName=\"nombre\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.nombre.errors }\" />\r\n                    <div *ngIf=\"submitted && f.nombre.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.nombre.errors.required\">Escribe un nombre</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Apellidos</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <input type=\"text\" placeholder=\"Apellidos\" formControlName=\"apellidos\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.apellidos.errors }\" />\r\n                    <div *ngIf=\"submitted && f.apellidos.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.apellidos.errors.required\">Escribe unos apellidos</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Contraseña</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <input type=\"password\" placeholder=\"Contraseña\" formControlName=\"password\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.password.errors }\" />\r\n                    <div *ngIf=\"submitted && f.password.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.password.errors.required\">Escriba una contraseña</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Especialidad</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <select input=\"text\" class=\"form-control\" formControlName=\"especialidad\" [ngClass]=\"{ 'is-invalid': submitted && f.especialidad.errors }\">\r\n          \t\t\t\t\t      <option value=\"\">Seleccionar</option>\r\n          \t\t\t\t\t      <option value=\"Cabecera\">Cabecera</option>\r\n          \t\t\t\t\t\t  <option value=\"Enfermero\">Enfermero</option>\r\n          \t\t\t\t\t      <option value=\"Pediatría\">Pediatría</option>\r\n          \t\t\t\t\t\t  <option value=\"Traumatología\">Traumatología</option>\t\t\t\t      \r\n          \t\t\t\t\t      \r\n          \t\t\t\t\t    </select>\r\n                    <div *ngIf=\"submitted && f.especialidad.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.especialidad.errors.required\">Seleccione una especialidad</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Centro</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <input type=\"text\" placeholder=\"Centro\" formControlName=\"centro\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.centro.errors }\" />\r\n                    <div *ngIf=\"submitted && f.centro.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.centro.errors.required\">Escriba un centro</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Telefono</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <input type=\"text\" placeholder=\"Telefono\" formControlName=\"tel\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.tel.errors }\">\r\n                    <div *ngIf=\"submitted && f.tel.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.tel.errors.required\">Escriba un telefono</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Correo electrónico</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <input type=\"text\" placeholder=\"Correo electrónico\" formControlName=\"correo\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.correo.errors }\" />\r\n                    <div *ngIf=\"submitted && f.correo.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.correo.errors.required\">Escriba un correo electrónico</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            \r\n        </div>\r\n        <div class=\"row justify-content-center\">\r\n            <p><input type=\"submit\" value=\"Registrarse\" class=\"button2\"></p>\r\n            <p><input type=\"submit\" value=\"Cancelar\" class=\"button1\"></p>\r\n        </div>\r\n    </form>");
+            /***/ 
+        }),
+        /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/alert/alert.component.html": 
+        /*!*********************************************************************************************!*\
+          !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/alert/alert.component.html ***!
+          \*********************************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"message\" [ngClass]=\"message.cssClass\">{{message.text}}</div>\r\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/dialog-box-medico/dialog-box-medico.component.html": 
@@ -138,7 +149,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"example-container\" [class.example-is-mobile]=\"mobileQuery.matches\" *ngIf=\"shouldRun\">\r\n    <mat-toolbar color=\"primary\" class=\"example-toolbar\">\r\n        <button class=\"but1\" mat-icon-button (click)=\"snav.toggle()\" style=\"border: 0ch\">\r\n        <mat-icon>menu</mat-icon></button>\r\n        <h1 class=\"admin\">Administrador</h1>\r\n\r\n    </mat-toolbar>\r\n\r\n    <mat-sidenav-container class=\"example-sidenav-container\" [style.marginTop.px]=\"mobileQuery.matches ? 56 : 0\">\r\n\r\n        <mat-sidenav #snav [mode]=\"mobileQuery.matches ? 'over' : 'side'\" [fixedInViewport]=\"mobileQuery.matches\" fixedTopGap=\"56\" [opened]=\"true\">\r\n            <mat-nav-list>\r\n\r\n                <a mat-list-item [routerLink]=\"nav.route\" *ngFor=\"let nav of fillerNav\">\r\n                    <mat-icon>{{nav.icon}}</mat-icon>\r\n                    {{nav.name}}</a>\r\n            </mat-nav-list>\r\n        </mat-sidenav>\r\n\r\n        <mat-sidenav-content>\r\n            <router-outlet></router-outlet>\r\n        </mat-sidenav-content>\r\n\r\n    </mat-sidenav-container>\r\n</div>\r\n\r\n<div *ngIf=\"!shouldRun\">Please open on Stackblitz to see result</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"example-container\" [class.example-is-mobile]=\"mobileQuery.matches\" *ngIf=\"shouldRun\">\r\n    <mat-toolbar color=\"primary\" class=\"example-toolbar\">\r\n        <button class=\"but1\" mat-icon-button (click)=\"snav.toggle()\" style=\"border: 0ch\">\r\n        <mat-icon>menu</mat-icon></button>\r\n        <h1 class=\"admin\">Administrador</h1>\r\n\r\n    </mat-toolbar>\r\n\r\n    <mat-sidenav-container class=\"example-sidenav-container\" [style.marginTop.px]=\"mobileQuery.matches ? 56 : 0\">\r\n\r\n        <mat-sidenav #snav [mode]=\"mobileQuery.matches ? 'over' : 'side'\" [fixedInViewport]=\"mobileQuery.matches\" fixedTopGap=\"56\" [opened]=\"true\">\r\n            <mat-nav-list>\r\n\r\n                <a mat-list-item [routerLink]=\"nav.route\" *ngFor=\"let nav of fillerNav\">\r\n                    <mat-icon>{{nav.icon}}</mat-icon>\r\n                    {{nav.name}}</a>\r\n            </mat-nav-list>\r\n        </mat-sidenav>\r\n\r\n        <mat-sidenav-content>\r\n            <router-outlet></router-outlet>\r\n        </mat-sidenav-content>\r\n\r\n    </mat-sidenav-container>\r\n</div>\r\n");
             /***/ 
         }),
         /***/ "./node_modules/tslib/tslib.es6.js": 
@@ -575,6 +586,66 @@
             ], JwtInterceptor);
             /***/ 
         }),
+        /***/ "./src/app/_services/alert.service.ts": 
+        /*!********************************************!*\
+          !*** ./src/app/_services/alert.service.ts ***!
+          \********************************************/
+        /*! exports provided: AlertService */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AlertService", function () { return AlertService; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+            /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+            var AlertService = /** @class */ (function () {
+                function AlertService(router) {
+                    var _this = this;
+                    this.router = router;
+                    this.subject = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+                    this.keepAfterRouteChange = false;
+                    // clear alert messages on route change unless 'keepAfterRouteChange' flag is true
+                    this.router.events.subscribe(function (event) {
+                        if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_2__["NavigationStart"]) {
+                            if (_this.keepAfterRouteChange) {
+                                // only keep for a single route change
+                                _this.keepAfterRouteChange = false;
+                            }
+                            else {
+                                // clear alert message
+                                _this.clear();
+                            }
+                        }
+                    });
+                }
+                AlertService.prototype.getAlert = function () {
+                    return this.subject.asObservable();
+                };
+                AlertService.prototype.success = function (message, keepAfterRouteChange) {
+                    if (keepAfterRouteChange === void 0) { keepAfterRouteChange = false; }
+                    this.keepAfterRouteChange = keepAfterRouteChange;
+                    this.subject.next({ type: 'success', text: message });
+                };
+                AlertService.prototype.error = function (message, keepAfterRouteChange) {
+                    if (keepAfterRouteChange === void 0) { keepAfterRouteChange = false; }
+                    this.keepAfterRouteChange = keepAfterRouteChange;
+                    this.subject.next({ type: 'error', text: message });
+                };
+                AlertService.prototype.clear = function () {
+                    // clear by calling subject.next() without parameters
+                    this.subject.next();
+                };
+                return AlertService;
+            }());
+            AlertService.ctorParameters = function () { return [
+                { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+            ]; };
+            AlertService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({ providedIn: 'root' })
+            ], AlertService);
+            /***/ 
+        }),
         /***/ "./src/app/_services/auth.service.ts": 
         /*!*******************************************!*\
           !*** ./src/app/_services/auth.service.ts ***!
@@ -866,6 +937,7 @@
             /* harmony import */ var _components_admin_RegistrarMedico_RegistrarMedico_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/admin-RegistrarMedico/RegistrarMedico.component */ "./src/app/components/admin-RegistrarMedico/RegistrarMedico.component.ts");
             /* harmony import */ var _components_dialog_box_paciente_dialog_box_paciente_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/dialog-box-paciente/dialog-box-paciente.component */ "./src/app/components/dialog-box-paciente/dialog-box-paciente.component.ts");
             /* harmony import */ var _components_dialog_box_medico_dialog_box_medico_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/dialog-box-medico/dialog-box-medico.component */ "./src/app/components/dialog-box-medico/dialog-box-medico.component.ts");
+            /* harmony import */ var _components_alert_alert_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/alert/alert.component */ "./src/app/components/alert/alert.component.ts");
             var AppModule = /** @class */ (function () {
                 function AppModule() {
                 }
@@ -884,6 +956,7 @@
                         _components_admin_RegistrarMedico_RegistrarMedico_component__WEBPACK_IMPORTED_MODULE_17__["RegistrarMedicoComponent"],
                         _components_dialog_box_paciente_dialog_box_paciente_component__WEBPACK_IMPORTED_MODULE_18__["DialogBoxPacienteComponent"],
                         _components_dialog_box_medico_dialog_box_medico_component__WEBPACK_IMPORTED_MODULE_19__["DialogBoxMedicoComponent"],
+                        _components_alert_alert_component__WEBPACK_IMPORTED_MODULE_20__["AlertComponent"]
                     ],
                     imports: [
                         _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -1224,11 +1297,13 @@
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
             /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
-            /* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../_services */ "./src/app/_services/index.ts");
+            /* harmony import */ var src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/_services/alert.service */ "./src/app/_services/alert.service.ts");
+            /* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../_services */ "./src/app/_services/index.ts");
             var RegistrarMedicoComponent = /** @class */ (function () {
-                function RegistrarMedicoComponent(formBuilder, userService) {
+                function RegistrarMedicoComponent(formBuilder, userService, alertService) {
                     this.formBuilder = formBuilder;
                     this.userService = userService;
+                    this.alertService = alertService;
                     this.loading = false;
                     this.submitted = false;
                 }
@@ -1241,8 +1316,8 @@
                         tel: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
                         correo: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
                         password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-                        rol: "médico",
-                        medico: "",
+                        rol: 'médico',
+                        medico: '',
                         especialidad: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
                     });
                 };
@@ -1254,26 +1329,71 @@
                 RegistrarMedicoComponent.prototype.onSubmit = function () {
                     var _this = this;
                     this.submitted = true;
-                    this.success = null;
+                    this.alertService.clear();
                     if (this.registerForm.invalid) {
+                        return;
+                    }
+                    if ((this.f.dni.value.length != 8)) {
+                        //this.sidenavAdmin.alertDni();
+                        this.alertService.error("Formato de DNI incorrecto. El DNI debe de tener 8 números y sin letra", false);
+                        return;
+                    }
+                    if (!allLetter(this.f.nombre)) {
+                        this.alertService.error("Formato de nombre incorrecto.", false);
+                        return;
+                    }
+                    if (!allLetter(this.f.apellidos)) {
+                        this.alertService.error("Formato de apellidos incorrecto.", false);
+                        return;
+                    }
+                    if (this.f.password.value.length < 5) {
+                        this.alertService.error("Formato de contraseña incorrecta. La contraseña debe tener al menos 6 carácteres", false);
+                        return;
+                    }
+                    if (!allLetter(this.f.centro)) {
+                        this.alertService.error("Formato del centro incorrecto.", false);
+                        return;
+                    }
+                    if ((this.f.tel.value.length != 9)) {
+                        this.alertService.error("Formato de número de teléfono incorrecto. El teléfono debe tener al menos 9 números", false);
+                        return;
+                    }
+                    if (isNaN(this.f.tel.value)) {
+                        this.alertService.error("Formato de número de teléfono incorrecto. El teléfono debe ser un número", false);
+                        return;
+                    }
+                    if (!((this.f.correo.value.includes('@')) &&
+                        (this.f.correo.value.includes('.es') || this.f.correo.value.includes('.com')))) {
+                        this.alertService.error("Formato incorrecto del correo electrónico. ", false);
                         return;
                     }
                     this.loading = true;
                     this.userService.register(this.registerForm.value)
                         .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["first"])())
                         .subscribe(function (data) {
+                        _this.alertService.success('Registro completado', true);
                         console.log("[CLIENTE] Médico registrado.");
-                        _this.success = "Médico registrado correctamente.";
                     }, function (error) {
-                        _this.error = error;
+                        _this.alertService.error(error);
                         _this.loading = false;
                     });
+                    function allLetter(inputtxt) {
+                        var letters = /^[A-Za-z]+$/;
+                        var space = ' ';
+                        if (inputtxt.value.match(letters) || inputtxt.value.match(space)) {
+                            return true;
+                        }
+                        else {
+                            return false;
+                        }
+                    }
                 };
                 return RegistrarMedicoComponent;
             }());
             RegistrarMedicoComponent.ctorParameters = function () { return [
                 { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
-                { type: _services__WEBPACK_IMPORTED_MODULE_4__["UserService"] }
+                { type: _services__WEBPACK_IMPORTED_MODULE_5__["UserService"] },
+                { type: src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_4__["AlertService"] }
             ]; };
             RegistrarMedicoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1282,6 +1402,50 @@
                     styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./RegistrarMedico.component.css */ "./src/app/components/admin-RegistrarMedico/RegistrarMedico.component.css")).default]
                 })
             ], RegistrarMedicoComponent);
+            /***/ 
+        }),
+        /***/ "./src/app/components/alert/alert.component.ts": 
+        /*!*****************************************************!*\
+          !*** ./src/app/components/alert/alert.component.ts ***!
+          \*****************************************************/
+        /*! exports provided: AlertComponent */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AlertComponent", function () { return AlertComponent; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/_services/alert.service */ "./src/app/_services/alert.service.ts");
+            var AlertComponent = /** @class */ (function () {
+                function AlertComponent(alertService) {
+                    this.alertService = alertService;
+                }
+                AlertComponent.prototype.ngOnInit = function () {
+                    var _this = this;
+                    this.subscription = this.alertService.getAlert()
+                        .subscribe(function (message) {
+                        switch (message && message.type) {
+                            case 'success':
+                                message.cssClass = 'alert alert-success';
+                                break;
+                            case 'error':
+                                message.cssClass = 'alert alert-danger';
+                                break;
+                        }
+                        _this.message = message;
+                    });
+                };
+                AlertComponent.prototype.ngOnDestroy = function () {
+                    this.subscription.unsubscribe();
+                };
+                return AlertComponent;
+            }());
+            AlertComponent.ctorParameters = function () { return [
+                { type: src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_2__["AlertService"] }
+            ]; };
+            AlertComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({ selector: 'alert', template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./alert.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/alert/alert.component.html")).default })
+            ], AlertComponent);
             /***/ 
         }),
         /***/ "./src/app/components/dialog-box-medico/dialog-box-medico.component.css": 
@@ -1504,7 +1668,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = (".example-container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    background: #23C185;\r\n  }\r\n .mat-toolbar.mat-primary{\r\n  background: #23C185;\r\n  color: #fff;\r\n }\r\n .example-is-mobile .example-toolbar {\r\n    position: fixed;\r\n    /* Make sure the toolbar will stay on top of the content as it scrolls past. */\r\n    z-index: 2;\r\n    width: 60%;\r\n  }\r\n .mat-icon{\r\n  position: relative;\r\n}\r\n h1.example-app-name {\r\n    margin-left: 8px;\r\n  }\r\n .example-sidenav-container {\r\n    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This\r\n       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */\r\n    flex: 1;\r\n\r\n  }\r\n .mat-sidenav{\r\n\tbackground: rgb(255, 255, 255);\r\n\t\r\n  }\r\n .example-is-mobile .example-sidenav-container {\r\n    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the\r\n       `<body>` to be our scrolling element for mobile layouts. */\r\n    flex: 1 0 auto;\r\n\r\n  }\r\n .mat-nav-list{\r\n    \r\n\tmargin-right: 0.3em;\r\n\tmargin-left: 0.3em;\r\n\tbackground: rgb(255, 255, 255);\r\n\t\r\n\t\r\n  }\r\n .but1 {\r\n\tbackground:linear-gradient(to bottom, rgb(255, 255, 255) 5%, rgb(255, 255, 255) 100%);\r\n\tborder-radius:9px;\r\n\tcolor:rgb(0, 0, 0);\r\n\tfont-family:Arial;\r\n\tfont-size:15px;\r\n\tfont-weight:bold;\r\n\tpadding:6px 16px;\r\n}\r\n .admin{\r\n\tposition: relative;\r\n\tleft: 15px;\r\n\tfont-size:24pt;\r\n\tfont-style: normal;\r\n}\r\n\r\n\r\n \r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zaWRlbmF2QWRtaW4vc2lkZW5hdkFkbWluLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxhQUFhO0lBQ2Isc0JBQXNCO0lBQ3RCLGtCQUFrQjtJQUNsQixNQUFNO0lBQ04sU0FBUztJQUNULE9BQU87SUFDUCxRQUFRO0lBQ1IsbUJBQW1CO0VBQ3JCO0NBQ0Q7RUFDQyxtQkFBbUI7RUFDbkIsV0FBVztDQUNaO0NBQ0M7SUFDRSxlQUFlO0lBQ2YsOEVBQThFO0lBQzlFLFVBQVU7SUFDVixVQUFVO0VBQ1o7Q0FDRjtFQUNFLGtCQUFrQjtBQUNwQjtDQUdFO0lBQ0UsZ0JBQWdCO0VBQ2xCO0NBRUE7SUFDRTs0RkFDd0Y7SUFDeEYsT0FBTzs7RUFFVDtDQUNBO0NBQ0QsOEJBQThCOztFQUU3QjtDQUVBO0lBQ0U7aUVBQzZEO0lBQzdELGNBQWM7O0VBRWhCO0NBQ0E7O0NBRUQsbUJBQW1CO0NBQ25CLGtCQUFrQjtDQUNsQiw4QkFBOEI7OztFQUc3QjtDQUNGO0NBQ0MscUZBQXFGO0NBQ3JGLGlCQUFpQjtDQUNqQixrQkFBa0I7Q0FDbEIsaUJBQWlCO0NBQ2pCLGNBQWM7Q0FDZCxnQkFBZ0I7Q0FDaEIsZ0JBQWdCO0FBQ2pCO0NBRUE7Q0FDQyxrQkFBa0I7Q0FDbEIsVUFBVTtDQUNWLGNBQWM7Q0FDZCxrQkFBa0I7QUFDbkIiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL3NpZGVuYXZBZG1pbi9zaWRlbmF2QWRtaW4uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5leGFtcGxlLWNvbnRhaW5lciB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHRvcDogMDtcclxuICAgIGJvdHRvbTogMDtcclxuICAgIGxlZnQ6IDA7XHJcbiAgICByaWdodDogMDtcclxuICAgIGJhY2tncm91bmQ6ICMyM0MxODU7XHJcbiAgfVxyXG4gLm1hdC10b29sYmFyLm1hdC1wcmltYXJ5e1xyXG4gIGJhY2tncm91bmQ6ICMyM0MxODU7XHJcbiAgY29sb3I6ICNmZmY7XHJcbiB9XHJcbiAgLmV4YW1wbGUtaXMtbW9iaWxlIC5leGFtcGxlLXRvb2xiYXIge1xyXG4gICAgcG9zaXRpb246IGZpeGVkO1xyXG4gICAgLyogTWFrZSBzdXJlIHRoZSB0b29sYmFyIHdpbGwgc3RheSBvbiB0b3Agb2YgdGhlIGNvbnRlbnQgYXMgaXQgc2Nyb2xscyBwYXN0LiAqL1xyXG4gICAgei1pbmRleDogMjtcclxuICAgIHdpZHRoOiA2MCU7XHJcbiAgfVxyXG4ubWF0LWljb257XHJcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG59XHJcblxyXG5cclxuICBoMS5leGFtcGxlLWFwcC1uYW1lIHtcclxuICAgIG1hcmdpbi1sZWZ0OiA4cHg7XHJcbiAgfVxyXG4gXHJcbiAgLmV4YW1wbGUtc2lkZW5hdi1jb250YWluZXIge1xyXG4gICAgLyogV2hlbiB0aGUgc2lkZW5hdiBpcyBub3QgZml4ZWQsIHN0cmV0Y2ggdGhlIHNpZGVuYXYgY29udGFpbmVyIHRvIGZpbGwgdGhlIGF2YWlsYWJsZSBzcGFjZS4gVGhpc1xyXG4gICAgICAgY2F1c2VzIGA8bWF0LXNpZGVuYXYtY29udGVudD5gIHRvIGFjdCBhcyBvdXIgc2Nyb2xsaW5nIGVsZW1lbnQgZm9yIGRlc2t0b3AgbGF5b3V0cy4gKi9cclxuICAgIGZsZXg6IDE7XHJcblxyXG4gIH1cclxuICAubWF0LXNpZGVuYXZ7XHJcblx0YmFja2dyb3VuZDogcmdiKDI1NSwgMjU1LCAyNTUpO1xyXG5cdFxyXG4gIH1cclxuICBcclxuICAuZXhhbXBsZS1pcy1tb2JpbGUgLmV4YW1wbGUtc2lkZW5hdi1jb250YWluZXIge1xyXG4gICAgLyogV2hlbiB0aGUgc2lkZW5hdiBpcyBmaXhlZCwgZG9uJ3QgY29uc3RyYWluIHRoZSBoZWlnaHQgb2YgdGhlIHNpZGVuYXYgY29udGFpbmVyLiBUaGlzIGFsbG93cyB0aGVcclxuICAgICAgIGA8Ym9keT5gIHRvIGJlIG91ciBzY3JvbGxpbmcgZWxlbWVudCBmb3IgbW9iaWxlIGxheW91dHMuICovXHJcbiAgICBmbGV4OiAxIDAgYXV0bztcclxuXHJcbiAgfVxyXG4gIC5tYXQtbmF2LWxpc3R7XHJcbiAgICBcclxuXHRtYXJnaW4tcmlnaHQ6IDAuM2VtO1xyXG5cdG1hcmdpbi1sZWZ0OiAwLjNlbTtcclxuXHRiYWNrZ3JvdW5kOiByZ2IoMjU1LCAyNTUsIDI1NSk7XHJcblx0XHJcblx0XHJcbiAgfVxyXG4uYnV0MSB7XHJcblx0YmFja2dyb3VuZDpsaW5lYXItZ3JhZGllbnQodG8gYm90dG9tLCByZ2IoMjU1LCAyNTUsIDI1NSkgNSUsIHJnYigyNTUsIDI1NSwgMjU1KSAxMDAlKTtcclxuXHRib3JkZXItcmFkaXVzOjlweDtcclxuXHRjb2xvcjpyZ2IoMCwgMCwgMCk7XHJcblx0Zm9udC1mYW1pbHk6QXJpYWw7XHJcblx0Zm9udC1zaXplOjE1cHg7XHJcblx0Zm9udC13ZWlnaHQ6Ym9sZDtcclxuXHRwYWRkaW5nOjZweCAxNnB4O1xyXG59XHJcblxyXG4uYWRtaW57XHJcblx0cG9zaXRpb246IHJlbGF0aXZlO1xyXG5cdGxlZnQ6IDE1cHg7XHJcblx0Zm9udC1zaXplOjI0cHQ7XHJcblx0Zm9udC1zdHlsZTogbm9ybWFsO1xyXG59XHJcblxyXG5cclxuIFxyXG4gICJdfQ== */");
+            /* harmony default export */ __webpack_exports__["default"] = (".example-container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    position: relative;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    background: #23C185;\r\n  }\r\n .mat-toolbar.mat-primary{\r\n  background: #23C185;\r\n  color: #fff;\r\n }\r\n .example-is-mobile .example-toolbar {\r\n    position: fixed;\r\n    /* Make sure the toolbar will stay on top of the content as it scrolls past. */\r\n    z-index: 2;\r\n    width: 60%;\r\n  }\r\n .mat-icon{\r\n  position: relative;\r\n}\r\n h1.example-app-name {\r\n    margin-left: 8px;\r\n  }\r\n .example-sidenav-container {\r\n    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This\r\n       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */\r\n    flex: 1;\r\n\r\n  }\r\n .mat-sidenav{\r\n\tbackground: rgb(255, 255, 255);\r\n\t\r\n  }\r\n .example-is-mobile .example-sidenav-container {\r\n    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the\r\n       `<body>` to be our scrolling element for mobile layouts. */\r\n    flex: 1 0 auto;\r\n\r\n  }\r\n .mat-nav-list{\r\n    \r\n\tmargin-right: 0.3em;\r\n\tmargin-left: 0.3em;\r\n\tbackground: rgb(255, 255, 255);\r\n\t\r\n\t\r\n  }\r\n .but1 {\r\n\tbackground:linear-gradient(to bottom, rgb(255, 255, 255) 5%, rgb(255, 255, 255) 100%);\r\n\tborder-radius:9px;\r\n\tcolor:rgb(0, 0, 0);\r\n\tfont-family:Arial;\r\n\tfont-size:15px;\r\n\tfont-weight:bold;\r\n\tpadding:6px 16px;\r\n}\r\n .admin{\r\n\tposition: relative;\r\n\tleft: 15px;\r\n\tfont-size:24pt;\r\n\tfont-style: normal;\r\n}\r\n\r\n\r\n \r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zaWRlbmF2QWRtaW4vc2lkZW5hdkFkbWluLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxhQUFhO0lBQ2Isc0JBQXNCO0lBQ3RCLGtCQUFrQjtJQUNsQixNQUFNO0lBQ04sU0FBUztJQUNULE9BQU87SUFDUCxRQUFRO0lBQ1IsbUJBQW1CO0VBQ3JCO0NBQ0Q7RUFDQyxtQkFBbUI7RUFDbkIsV0FBVztDQUNaO0NBQ0M7SUFDRSxlQUFlO0lBQ2YsOEVBQThFO0lBQzlFLFVBQVU7SUFDVixVQUFVO0VBQ1o7Q0FDRjtFQUNFLGtCQUFrQjtBQUNwQjtDQUdFO0lBQ0UsZ0JBQWdCO0VBQ2xCO0NBRUE7SUFDRTs0RkFDd0Y7SUFDeEYsT0FBTzs7RUFFVDtDQUNBO0NBQ0QsOEJBQThCOztFQUU3QjtDQUVBO0lBQ0U7aUVBQzZEO0lBQzdELGNBQWM7O0VBRWhCO0NBQ0E7O0NBRUQsbUJBQW1CO0NBQ25CLGtCQUFrQjtDQUNsQiw4QkFBOEI7OztFQUc3QjtDQUNGO0NBQ0MscUZBQXFGO0NBQ3JGLGlCQUFpQjtDQUNqQixrQkFBa0I7Q0FDbEIsaUJBQWlCO0NBQ2pCLGNBQWM7Q0FDZCxnQkFBZ0I7Q0FDaEIsZ0JBQWdCO0FBQ2pCO0NBRUE7Q0FDQyxrQkFBa0I7Q0FDbEIsVUFBVTtDQUNWLGNBQWM7Q0FDZCxrQkFBa0I7QUFDbkIiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL3NpZGVuYXZBZG1pbi9zaWRlbmF2QWRtaW4uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5leGFtcGxlLWNvbnRhaW5lciB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgIHRvcDogMDtcclxuICAgIGJvdHRvbTogMDtcclxuICAgIGxlZnQ6IDA7XHJcbiAgICByaWdodDogMDtcclxuICAgIGJhY2tncm91bmQ6ICMyM0MxODU7XHJcbiAgfVxyXG4gLm1hdC10b29sYmFyLm1hdC1wcmltYXJ5e1xyXG4gIGJhY2tncm91bmQ6ICMyM0MxODU7XHJcbiAgY29sb3I6ICNmZmY7XHJcbiB9XHJcbiAgLmV4YW1wbGUtaXMtbW9iaWxlIC5leGFtcGxlLXRvb2xiYXIge1xyXG4gICAgcG9zaXRpb246IGZpeGVkO1xyXG4gICAgLyogTWFrZSBzdXJlIHRoZSB0b29sYmFyIHdpbGwgc3RheSBvbiB0b3Agb2YgdGhlIGNvbnRlbnQgYXMgaXQgc2Nyb2xscyBwYXN0LiAqL1xyXG4gICAgei1pbmRleDogMjtcclxuICAgIHdpZHRoOiA2MCU7XHJcbiAgfVxyXG4ubWF0LWljb257XHJcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG59XHJcblxyXG5cclxuICBoMS5leGFtcGxlLWFwcC1uYW1lIHtcclxuICAgIG1hcmdpbi1sZWZ0OiA4cHg7XHJcbiAgfVxyXG4gXHJcbiAgLmV4YW1wbGUtc2lkZW5hdi1jb250YWluZXIge1xyXG4gICAgLyogV2hlbiB0aGUgc2lkZW5hdiBpcyBub3QgZml4ZWQsIHN0cmV0Y2ggdGhlIHNpZGVuYXYgY29udGFpbmVyIHRvIGZpbGwgdGhlIGF2YWlsYWJsZSBzcGFjZS4gVGhpc1xyXG4gICAgICAgY2F1c2VzIGA8bWF0LXNpZGVuYXYtY29udGVudD5gIHRvIGFjdCBhcyBvdXIgc2Nyb2xsaW5nIGVsZW1lbnQgZm9yIGRlc2t0b3AgbGF5b3V0cy4gKi9cclxuICAgIGZsZXg6IDE7XHJcblxyXG4gIH1cclxuICAubWF0LXNpZGVuYXZ7XHJcblx0YmFja2dyb3VuZDogcmdiKDI1NSwgMjU1LCAyNTUpO1xyXG5cdFxyXG4gIH1cclxuICBcclxuICAuZXhhbXBsZS1pcy1tb2JpbGUgLmV4YW1wbGUtc2lkZW5hdi1jb250YWluZXIge1xyXG4gICAgLyogV2hlbiB0aGUgc2lkZW5hdiBpcyBmaXhlZCwgZG9uJ3QgY29uc3RyYWluIHRoZSBoZWlnaHQgb2YgdGhlIHNpZGVuYXYgY29udGFpbmVyLiBUaGlzIGFsbG93cyB0aGVcclxuICAgICAgIGA8Ym9keT5gIHRvIGJlIG91ciBzY3JvbGxpbmcgZWxlbWVudCBmb3IgbW9iaWxlIGxheW91dHMuICovXHJcbiAgICBmbGV4OiAxIDAgYXV0bztcclxuXHJcbiAgfVxyXG4gIC5tYXQtbmF2LWxpc3R7XHJcbiAgICBcclxuXHRtYXJnaW4tcmlnaHQ6IDAuM2VtO1xyXG5cdG1hcmdpbi1sZWZ0OiAwLjNlbTtcclxuXHRiYWNrZ3JvdW5kOiByZ2IoMjU1LCAyNTUsIDI1NSk7XHJcblx0XHJcblx0XHJcbiAgfVxyXG4uYnV0MSB7XHJcblx0YmFja2dyb3VuZDpsaW5lYXItZ3JhZGllbnQodG8gYm90dG9tLCByZ2IoMjU1LCAyNTUsIDI1NSkgNSUsIHJnYigyNTUsIDI1NSwgMjU1KSAxMDAlKTtcclxuXHRib3JkZXItcmFkaXVzOjlweDtcclxuXHRjb2xvcjpyZ2IoMCwgMCwgMCk7XHJcblx0Zm9udC1mYW1pbHk6QXJpYWw7XHJcblx0Zm9udC1zaXplOjE1cHg7XHJcblx0Zm9udC13ZWlnaHQ6Ym9sZDtcclxuXHRwYWRkaW5nOjZweCAxNnB4O1xyXG59XHJcblxyXG4uYWRtaW57XHJcblx0cG9zaXRpb246IHJlbGF0aXZlO1xyXG5cdGxlZnQ6IDE1cHg7XHJcblx0Zm9udC1zaXplOjI0cHQ7XHJcblx0Zm9udC1zdHlsZTogbm9ybWFsO1xyXG59XHJcblxyXG5cclxuIFxyXG4gICJdfQ== */");
             /***/ 
         }),
         /***/ "./src/app/components/sidenavAdmin/sidenavAdmin.component.ts": 
@@ -1520,8 +1684,10 @@
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/cdk/layout */ "./node_modules/@angular/cdk/esm2015/layout.js");
             /* harmony import */ var src_app_services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/_services */ "./src/app/_services/index.ts");
+            /* harmony import */ var src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/_services/alert.service */ "./src/app/_services/alert.service.ts");
             var SidenavAdminComponent = /** @class */ (function () {
-                function SidenavAdminComponent(changeDetectorRef, media, authService) {
+                function SidenavAdminComponent(alertService, changeDetectorRef, media, authService) {
+                    this.alertService = alertService;
                     this.authService = authService;
                     this.fillerNav = [
                         { name: "Mostrar médicos", route: "MostrarMedico", icon: "list" },
@@ -1546,9 +1712,13 @@
                 };
                 SidenavAdminComponent.prototype.ngOnSubmit = function () {
                 };
+                SidenavAdminComponent.prototype.alertDni = function () {
+                    //this.alertService.error("Formato de DNI incorrecto. El DNI debe de tener 8 números y sin letra", false);
+                };
                 return SidenavAdminComponent;
             }());
             SidenavAdminComponent.ctorParameters = function () { return [
+                { type: src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_4__["AlertService"] },
                 { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"] },
                 { type: _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_2__["MediaMatcher"] },
                 { type: src_app_services__WEBPACK_IMPORTED_MODULE_3__["AuthService"] }

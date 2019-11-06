@@ -1,0 +1,37 @@
+<h1 mat-dialog-title><strong>Modificar cita</strong></h1>
+<div class="container">
+	<select input="text" class="form-control" formControlName="hora"
+		[ngClass]="{ 'is-invalid': submitted && f.hora.errors }">
+		<option value="">Seleccionar</option>
+		<option value="Cabecera">Cabecera</option>
+		<option value="Enfermero">Enfermero</option>
+		<option value="Pediatría">Pediatría</option>
+		<option value="Traumatología">Traumatología</option>
+
+	</select>
+	<div *ngIf="submitted && f.hora.errors" class="invalid-feedback">
+		<div *ngIf="f.hora.errors.required">Seleccione una hora</div>
+	</div>
+	
+	<select input="text" class="form-control" formControlName="fecha"
+		[ngClass]="{ 'is-invalid': submitted && f.fecha.errors }">
+		<option value="">Seleccionar</option>
+		<option value="Cabecera">Cabecera</option>
+		<option value="Enfermero">Enfermero</option>
+		<option value="Pediatría">Pediatría</option>
+		<option value="Traumatología">Traumatología</option>
+
+	</select>
+	<div *ngIf="submitted && f.fecha.errors" class="invalid-feedback">
+		<div *ngIf="f.fecha.errors.required">Seleccione una fecha</div>
+	</div>
+	<ng-template #elseTemplate>
+		¿Confirma que quiere modificar la cita<b>{{local_data.name}}</b>?
+	</ng-template>
+</div>
+<div mat-dialog-actions-center>
+	<div class="contenedor-botones">
+		<button mat-raised-button (click)="doAction()">{{action}}</button>
+		<button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancelar</button>
+	</div>
+</div>

@@ -1,26 +1,24 @@
 package es.e3corp.eSalud.Service;
 
-import es.e3corp.eSalud.model.Cita;
-
-
 import java.util.List;
+
+import es.e3corp.eSalud.model.Cita;
 
 public interface CitaService {
 
-	
-	  List<Cita> findAll();
+  List<Cita> findAll();
 
+  Cita findByCitaId(String id);
 
-	  Cita findByCitaId(String id);
+  void saveCita(Cita cita);
 
+  void updateCita(Cita cita);
 
-	  void saveCita(Cita cita);
+  void deleteCita(String citaId);
 
+  Cita findCitaByPacienteMedicoFechaHora(String idPaciente, String idMedico, String fecha, String hora);
 
-	  void updateCita(Cita cita);
+  List<Cita> getCitasByPaciente(String dni);
 
-
-	  void deleteCita(String citaId);
-	  
-	  Cita getCitaByPacienteMedicoFechaHora(String idPaciente, String idMedico, String fecha, String hora);
+  List<Cita> getCitasByMedico(String id);
 }

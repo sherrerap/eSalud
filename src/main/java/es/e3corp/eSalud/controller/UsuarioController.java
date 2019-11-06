@@ -1,63 +1,66 @@
 
 package es.e3corp.eSalud.controller;
 
-import es.e3corp.eSalud.exception.UserNotFoundException;
-
-import es.e3corp.eSalud.model.Usuario;
-
-import es.e3corp.eSalud.Service.UsuarioService;
-
 import org.apache.commons.logging.Log;
-
 import org.apache.commons.logging.LogFactory;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.http.ResponseEntity;
-
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.wordnik.swagger.annotations.ApiOperation;
+
+import es.e3corp.eSalud.Service.UsuarioService;
+import es.e3corp.eSalud.exception.UserNotFoundException;
+import es.e3corp.eSalud.model.Usuario;
 
 @RestController
 @RequestMapping("/usuarios")
 @CrossOrigin(origins = { "http://localhost:4200", "https://esalud.herokuapp.com" }, allowedHeaders = "*")
 public class UsuarioController {
 
-    private static final Log log = LogFactory.getLog(UsuarioController.class);
-    private final UsuarioService usersService;
-    private Usuario user;
+  private static final Log log = LogFactory.getLog(UsuarioController.class);
+  private final UsuarioService usersService;
+  private Usuario user;
 
-    @Autowired
-    public UsuarioController(UsuarioService usersService) {
-        this.usersService = usersService;
-    }
+  @Autowired
+  public UsuarioController(UsuarioService usersService) {
+    this.usersService = usersService;
+  }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<Usuario> getUserPassword(@RequestParam(required = false) String dni,
-            @RequestParam(required = false) String password) {
-        Usuario usuario = usersService.getUserByDniAndPassword(dni, password);
-        if (usuario != null) {
-            System.out.println("[SERVER] Usuario encontrado: " + usuario.getNombre());
-            return ResponseEntity.ok(usuario);
-        } else {
-            System.out.println("[SERVER] No se ha encontrado ningún usuario.");
-            return ResponseEntity.badRequest().build();
-        }
+  @RequestMapping(method = RequestMethod.GET)
+  public ResponseEntity<Usuario> getUserPassword(@RequestParam("dni") String dni,
+      @RequestParam("password") String password) {
+    Usuario usuario = usersService.getUserByDniAndPassword(dni, password);
+    if (usuario != null) {
+      System.out.println("[SERVER] Usuario encontrado: " + usuario.getNombre());
+      return ResponseEntity.ok(usuario);
+    } else {
+      System.out.println("[SERVER] No se ha encontrado ningún usuario.");
+      return ResponseEntity.badRequest().build();
     }
+  }
 
-    @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
-    @ApiOperation(value = "Find an user", notes = "Return a user by Id")
-    public ResponseEntity<Usuario> userById(@PathVariable String userId) throws UserNotFoundException {
-        log.info("Get userById");
-        try {
-            user = usersService.findByUserId(userId);
-        } catch (UserNotFoundException e) {
-            user = null;
-        }
-        return ResponseEntity.ok(user);
+  @RequestMapping(value = "/{userDni}", method = RequestMethod.GET)
+  @ApiOperation(value = "Find an user", notes = "Return a user by DNI")
+  public ResponseEntity<Usuario> userByDni(@PathVariable String userDni) throws UserNotFoundException {
+    log.info("[SERVER] Buscando usuario: " + userDni);
+    try {
+      user = usersService.findByUserDni(userDni);
+      log.info("[SERVER] Usuario encontrado.");
+    } catch (UserNotFoundException e) {
+      user = null;
+      log.error("[SERVER] Usuario no encontrado.");
     }
+    return ResponseEntity.ok(user);
+  }
 
 //    @RequestMapping(method = RequestMethod.GET)
 //    public ResponseEntity<List<Usuario>> usuarioById() {
@@ -127,9 +130,27 @@ public class UsuarioController {
             System.out.println("[SERVER] " + usuario1.toString());
             return ResponseEntity.ok().build();
         } else {
-            System.out.println("[SERVER] Error: el usuario ya está registrado.");
-            return ResponseEntity.badRequest().build();
+          rol = jso.getString("rol");
+          centro = jso.getString("centro");
+          medico = jso.getString("medico");
+          especialidad = jso.getString("especialidad");
         }
+      } catch (JSONException j) {
+        System.out.println("[SERVER] Error en la lectura del JSON.");
+        System.out.println(j.getMessage());
+        return ResponseEntity.badRequest().build();
+      }
+
+      usuario1 = new Usuario(dni, nombre, apellidos, contraseña, rol, especialidad, medico, numTelefono, localidad,
+          centro, email);
+      usersService.saveUsuario(usuario1);
+      System.out.println("[SERVER] Usuario registrado.");
+      System.out.println("[SERVER] " + usuario1.toString());
+      return ResponseEntity.ok().build();
+    } else {
+      System.out.println("[SERVER] Error: el usuario ya está registrado.");
+      return ResponseEntity.badRequest().build();
     }
+  }
 
 }

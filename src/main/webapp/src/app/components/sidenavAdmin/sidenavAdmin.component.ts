@@ -2,6 +2,8 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { AuthService } from 'src/app/_services';
 import { Router } from '@angular/router';
+import { AlertService } from 'src/app/_services/alert.service';
+
 
 @Component({
   selector: 'app-sidenavAdmin',
@@ -30,7 +32,7 @@ export class SidenavAdminComponent implements OnInit {
 
   private _mobileQueryListener: () => void;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,
+  constructor(private alertService: AlertService, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,
     private authService: AuthService) {
     if (this.authService.currentUserValue.rol != "admin") {
       this.authService.logout();
@@ -38,7 +40,6 @@ export class SidenavAdminComponent implements OnInit {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
-
 
   }
 
@@ -48,8 +49,13 @@ export class SidenavAdminComponent implements OnInit {
 
   shouldRun = true;
   ngOnInit() {
+    
   }
   ngOnSubmit() {
+  }
+  
+  alertDni() {
+    //this.alertService.error("Formato de DNI incorrecto. El DNI debe de tener 8 números y sin letra", false);
   }
 
 }

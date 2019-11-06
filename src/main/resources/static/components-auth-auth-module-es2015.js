@@ -22,7 +22,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"error\" class=\"alert alert-danger\">{{error}}</div>\r\n\r\n<div class=\"register\">\r\n    <div class=\"register-triangle\"></div>\r\n    <h2 class=\"register-header\">Registrarse</h2>\r\n    <form [formGroup]=\"registerForm\" (ngSubmit)=\"onSubmit()\" class=\"register-container\">\r\n        <div class=\"form-group\">\r\n\r\n            <input type=\"text\" placeholder=\"DNI\" formControlName=\"dni\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.dni.errors }\">\r\n            <div *ngIf=\"submitted && f.dni.errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"f.dni.errors.required\">Por favor, escriba su DNI</div>\r\n            </div>\r\n\r\n            <input type=\"password\" placeholder=\"Contraseña\" formControlName=\"password\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.password.errors }\" />\r\n            <div *ngIf=\"submitted && f.password.errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"f.password.errors.required\">Por favor, escriba una contraseña</div>\r\n            </div>\r\n\r\n            <input type=\"password\" placeholder=\"Repita su contraseña\" formControlName=\"password2\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.password2.errors }\" />\r\n            <div *ngIf=\"submitted && f.password2.errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"f.password2.errors.required\">Por favor, escriba una contraseña</div>\r\n            </div>\r\n\r\n            <input type=\"text\" placeholder=\"Nombre\" formControlName=\"nombre\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.nombre.errors }\">\r\n            <div *ngIf=\"submitted && f.nombre.errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"f.nombre.errors.required\">Por favor, escriba su nombre</div>\r\n            </div>\r\n\r\n            <input type=\"text\" placeholder=\"Teléfono\" formControlName=\"tel\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.tel.errors }\">\r\n            <div *ngIf=\"submitted && f.tel.errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"f.tel.errors.required\">Por favor, escriba su número de teléfono</div>\r\n            </div>\r\n\r\n            <input type=\"text\" placeholder=\"Apellidos\" formControlName=\"apellidos\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.apellidos.errors }\">\r\n            <div *ngIf=\"submitted && f.apellidos.errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"f.apellidos.errors.required\">Por favor, escriba sus apellidos</div>\r\n            </div>\r\n\r\n            <input type=\"text\" placeholder=\"Correo electrónico\" formControlName=\"correo\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.correo.errors }\" />\r\n            <div *ngIf=\"submitted && f.correo.errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"f.correo.errors.required\">Por favor, escriba un correo electrónico</div>\r\n            </div>\r\n\r\n            <input type=\"text\" placeholder=\"Localidad\" formControlName=\"localidad\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.localidad.errors }\" />\r\n            <div *ngIf=\"submitted && f.localidad.errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"f.localidad.errors.required\">Por favor, escriba su localidad</div>\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n                <p><input type=\"submit\" value=\"Registrarse\"></p>\r\n                <p><input type=\"submit\" value=\"Cancelar\" routerLink=\"/auth/login\"></p>\r\n            </div>\r\n        </div>\r\n    </form>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"error\" class=\"alert alert-danger\">{{error}}</div>\r\n\r\n<div class=\"register\">\r\n    <div class=\"register-triangle\"></div>\r\n    <h2 class=\"register-header\">Registrarse</h2>\r\n    <form [formGroup]=\"registerForm\" (ngSubmit)=\"onSubmit()\" class=\"register-container\">\r\n        <div class=\"form-group\">\r\n\r\n            <input type=\"text\" placeholder=\"DNI\" formControlName=\"dni\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.dni.errors }\">\r\n            <div *ngIf=\"submitted && f.dni.errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"f.dni.errors.required\">Por favor, escriba su DNI</div>\r\n            </div>\r\n\r\n            <input type=\"password\" placeholder=\"Contraseña\" formControlName=\"password\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.password.errors }\" />\r\n            <div *ngIf=\"submitted && f.password.errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"f.password.errors.required\">Por favor, escriba una contraseña</div>\r\n            </div>\r\n\r\n            <input type=\"password\" placeholder=\"Repita su contraseña\" formControlName=\"password2\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.password2.errors }\" />\r\n            <div *ngIf=\"submitted && f.password2.errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"f.password2.errors.required\">Por favor, escriba una contraseña</div>\r\n            </div>\r\n\r\n            <input type=\"text\" placeholder=\"Nombre\" formControlName=\"nombre\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.nombre.errors }\">\r\n            <div *ngIf=\"submitted && f.nombre.errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"f.nombre.errors.required\">Por favor, escriba su nombre</div>\r\n            </div>\r\n\r\n            <input type=\"text\" placeholder=\"Apellidos\" formControlName=\"apellidos\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.apellidos.errors }\">\r\n            <div *ngIf=\"submitted && f.apellidos.errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"f.apellidos.errors.required\">Por favor, escriba sus apellidos</div>\r\n            </div>\r\n            \r\n            <input type=\"text\" placeholder=\"Teléfono\" formControlName=\"tel\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.tel.errors }\">\r\n            <div *ngIf=\"submitted && f.tel.errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"f.tel.errors.required\">Por favor, escriba su número de teléfono</div>\r\n            </div>\r\n\r\n            <input type=\"text\" placeholder=\"Correo electrónico\" formControlName=\"correo\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.correo.errors }\" />\r\n            <div *ngIf=\"submitted && f.correo.errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"f.correo.errors.required\">Por favor, escriba un correo electrónico</div>\r\n            </div>\r\n\r\n            <input type=\"text\" placeholder=\"Localidad\" formControlName=\"localidad\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.localidad.errors }\" />\r\n            <div *ngIf=\"submitted && f.localidad.errors\" class=\"invalid-feedback\">\r\n                <div *ngIf=\"f.localidad.errors.required\">Por favor, escriba su localidad</div>\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n                <p><input type=\"submit\" value=\"Registrarse\"></p>\r\n                <p><input type=\"submit\" value=\"Cancelar\" routerLink=\"/auth/login\"></p>\r\n            </div>\r\n        </div>\r\n    </form>");
 
 /***/ }),
 
@@ -271,6 +271,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
 /* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../_services */ "./src/app/_services/index.ts");
+/* harmony import */ var src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/_services/alert.service */ "./src/app/_services/alert.service.ts");
+
 
 
 
@@ -278,11 +280,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let RegisterComponent = class RegisterComponent {
-    constructor(formBuilder, router, authService, userService) {
+    constructor(formBuilder, router, authService, userService, alertService) {
         this.formBuilder = formBuilder;
         this.router = router;
         this.authService = authService;
         this.userService = userService;
+        this.alertService = alertService;
         this.loading = false;
         this.submitted = false;
         // redirige al home si el usuario ya está logueado
@@ -293,8 +296,8 @@ let RegisterComponent = class RegisterComponent {
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
             dni: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
-            password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].minLength(6)]],
-            password2: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].minLength(6)]],
+            password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]],
+            password2: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]],
             correo: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
             localidad: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
             nombre: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
@@ -307,23 +310,66 @@ let RegisterComponent = class RegisterComponent {
     get f() { return this.registerForm.controls; }
     onSubmit() {
         this.submitted = true;
+        this.alertService.clear();
         // para aquí si el form es inválido
         if (this.registerForm.invalid) {
             return;
         }
-        this.loading = true;
-        if (this.f.password.value == this.f.password2.value) {
-            this.userService.register(this.registerForm.value)
-                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
-                .subscribe(data => {
-                this.router.navigate(['/auth/login'], { queryParams: { registered: true } });
-            }, error => {
-                this.error = error;
-                this.loading = false;
-            });
+        if ((this.f.dni.value.length != 8)) {
+            this.alertService.error("Formato de DNI incorrecto. El DNI debe de tener 8 números y sin letra", false);
+            return;
         }
-        else {
-            this.error = "Las contraseñas deben coincidir.";
+        if (this.f.password.value.length < 5) {
+            this.alertService.error("Formato de contraseña incorrecta. La contraseña debe tener al menos 6 carácteres", false);
+            return;
+        }
+        if (this.f.password.value != this.f.password2.value) {
+            this.alertService.error("Las contraseñas no coinciden.", false);
+            return;
+        }
+        if (!allLetter(this.f.nombre)) {
+            this.alertService.error("Formato de nombre incorrecto.", false);
+            return;
+        }
+        if (!allLetter(this.f.apellidos)) {
+            this.alertService.error("Formato de apellidos incorrecto.", false);
+            return;
+        }
+        if ((this.f.tel.value.length != 9) && (!isNaN(this.f.tel.value))) {
+            this.alertService.error("Formato de número de teléfono incorrecto. El teléfono debe tener al menos 9 números", false);
+            return;
+        }
+        if (isNaN(this.f.tel.value)) {
+            this.alertService.error("Formato de número de teléfono incorrecto. El teléfono debe ser un número", false);
+            return;
+        }
+        if (!((this.f.correo.value.includes('@')) &&
+            (this.f.correo.value.includes('.es') || this.f.correo.value.includes('.com')))) {
+            this.alertService.error("Formato incorrecto del correo electrónico. ", false);
+            return;
+        }
+        if (!allLetter(this.f.localidad)) {
+            this.alertService.error("Formato de localidad incorrecto.", false);
+        }
+        this.loading = true;
+        this.userService.register(this.registerForm.value)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
+            .subscribe(data => {
+            this.alertService.success('Registration successful', true);
+            this.router.navigate(['/auth/login'], { queryParams: { registered: true } });
+        }, error => {
+            this.alertService.error(error);
+            this.loading = false;
+        });
+        function allLetter(inputtxt) {
+            var letters = /^[A-Za-z]+$/;
+            var space = ' ';
+            if (inputtxt.value.match(letters) || inputtxt.value.match(space)) {
+                return true;
+            }
+            else {
+                return false;
+            }
         }
     }
 };
@@ -331,7 +377,8 @@ RegisterComponent.ctorParameters = () => [
     { type: _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
     { type: _services__WEBPACK_IMPORTED_MODULE_5__["AuthService"] },
-    { type: _services__WEBPACK_IMPORTED_MODULE_5__["UserService"] }
+    { type: _services__WEBPACK_IMPORTED_MODULE_5__["UserService"] },
+    { type: src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_6__["AlertService"] }
 ];
 RegisterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
