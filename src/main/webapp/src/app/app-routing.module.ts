@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: 'auth', loadChildren: './components/auth/auth.module#AuthModule' }, 
   { path: 'citas/RegistrarCita/citas', redirectTo: 'citas' },
   { path: 'citas/RegistrarCita/RegistrarCita', redirectTo: 'citas/RegistrarCita' },
+  { path: 'citas/citas', redirectTo: 'citas' },
   {
     path: 'citas', component: SidenavComponent, canActivate: [AuthGuard],
     children: [
