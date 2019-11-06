@@ -37,7 +37,7 @@ public class UsuarioController {
 
   @RequestMapping(method = RequestMethod.GET)
   public ResponseEntity<Usuario> getUserPassword(@RequestParam("dni") String dni,
-      @RequestParam("contraseña") String password) {
+      @RequestParam("password") String password) {
     Usuario usuario = usersService.getUserByDniAndPassword(dni, password);
     if (usuario != null) {
       System.out.println("[SERVER] Usuario encontrado: " + usuario.getNombre());
