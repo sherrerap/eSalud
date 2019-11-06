@@ -29,7 +29,6 @@ export class RegistrarCitaComponent implements OnInit {
             fecha: ['', Validators.required],
             hora: ['', Validators.required],
             paciente: this.authService.currentUserValue.dni,
-            //El usuario no tiene centro
             centro: this.authService.currentUserValue.centro
         });
     }
@@ -45,7 +44,6 @@ export class RegistrarCitaComponent implements OnInit {
         }
 
         this.loading = true;
-        // TODO: currentUserValue devuelve el paciente entero, necesitamos DNI
         this.citasService.register(this.registerForm.value)
             .pipe(first())
             .subscribe(
