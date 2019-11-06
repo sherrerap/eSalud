@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { UserService } from '../../_services';
+import { CitasService, AuthService } from '../../_services';
 
 @Component({
     selector: 'app-RegistrarCita',
@@ -17,7 +17,8 @@ export class RegistrarCitaComponent implements OnInit {
 
     constructor(
         private formBuilder: FormBuilder,
-        /* private userService: UserService */
+        private citasService: CitasService,
+        private authService: AuthService
     ) { }
 
     ngOnInit() {
@@ -26,13 +27,13 @@ export class RegistrarCitaComponent implements OnInit {
             especialidadcita: ['', Validators.required],
             medicocita: ['', Validators.required],
             fechacita: ['', Validators.required],
-            horacita: ['', Validators.required],
+            horacita: ['', Validators.required]
         });
     }
 
-    get f() { return this.registerForm.controls; } 
+    get f() { return this.registerForm.controls; }
 
-    /* onSubmit() {
+    onSubmit() {
         this.submitted = true;
         this.success = null;
 
@@ -41,17 +42,17 @@ export class RegistrarCitaComponent implements OnInit {
         }
 
         this.loading = true;
-        this.userService.register(this.registerForm.value)
+        // TODO: currentUserValue devuelve el paciente entero, necesitamos DNI
+        this.citasService.register(this.registerForm.value, this.authService.currentUserValue.dni)
             .pipe(first())
             .subscribe(
                 data => {
-                    console.log("[CITA] Cita registrada.")
+                    console.log("[CLIENTE] Cita registrada.")
                     this.success = "Cita registrada correctamente."
                 },
                 error => {
                     this.error = error;
                     this.loading = false;
                 });
-    } */
-    //**************************************FALTA CITA SERVICE**********************************************************
+    }
 }

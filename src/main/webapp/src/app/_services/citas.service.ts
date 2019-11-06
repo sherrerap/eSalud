@@ -11,8 +11,8 @@ export class CitasService {
         return this.http.get<any[]>(`${environment.apiUrl}/citas`);
     }
 
-    register(cita) {
-        return this.http.post(`${environment.apiUrl}/citas`, cita);
+    register(cita, paciente) {
+        return this.http.post(`${environment.apiUrl}/citas`, cita, paciente);
     }
 
     update(cita) {
