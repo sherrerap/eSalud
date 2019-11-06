@@ -1,24 +1,17 @@
 package es.e3corp.eSalud.Service;
 
-import es.e3corp.eSalud.model.Usuario;
-
-import es.e3corp.eSalud.exception.UserNotFoundException;
-
-import es.e3corp.eSalud.repository.UsuarioRepository;
+import java.util.List;
+import java.util.Optional;
 
 import org.apache.commons.logging.Log;
-
 import org.apache.commons.logging.LogFactory;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Service;
-
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
-import java.util.Optional;
+import es.e3corp.eSalud.exception.UserNotFoundException;
+import es.e3corp.eSalud.model.Usuario;
+import es.e3corp.eSalud.repository.UsuarioRepository;
 
 @Service("UsuarioService")
 

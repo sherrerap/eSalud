@@ -61,16 +61,16 @@ public class CitaServiceImpl implements CitaService {
     return cita;
   }
 
-@Override
-public List<Cita> getCitasByPaciente(String dni) {
-	List<Cita> citas = citaRepository.findPaciente(dni);
-	return citas;
-}
+  @Override
+  public List<Cita> getCitasByPaciente(String dni) {
+    List<Cita> citas = citaRepository.findPaciente(dni);
+    return citas;
+  }
 
-@Override
-public List<Cita> getCitasByMedico(String id) {
-	List<Cita> citas = citaRepository.findMedico(id);
-	return citas;
-}
+  @Override
+  public List<Cita> getCitasByMedico(String id) {
+    List<Cita> citas = citaRepository.findMedico(id);
+    return citas;
+  }
 
 }
