@@ -8,7 +8,7 @@ import { ModificarMedicoComponent } from './components/admin-ModificarMedico/Mod
 import { ModificarPacienteComponent } from './components/admin-ModificarPaciente/ModificarPaciente.component';
 import { MostrarMedicoComponent } from './components/admin-MostrarMedico/MostrarMedico.component';
 import { RegistrarMedicoComponent } from './components/admin-RegistrarMedico/RegistrarMedico.component';
-
+import { RegistrarCitaComponent } from './components/paciente-RegistrarCita/RegistrarCita.component';
 
 
 import { AuthGuard } from './_helpers';
@@ -18,11 +18,19 @@ import { AuthGuard } from './_helpers';
 const routes: Routes = [
 
   { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
-  { path: 'auth', loadChildren: './components/auth/auth.module#AuthModule' },
+  { path: 'auth', loadChildren: './components/auth/auth.module#AuthModule' }, 
+  { path: 'citas/RegistrarCita/citas', redirectTo: 'citas' },
+  { path: 'citas/RegistrarCita/RegistrarCita', redirectTo: 'citas/RegistrarCita' },
   {
     path: 'citas', component: SidenavComponent, canActivate: [AuthGuard],
     children: [
       { path: '', component: ListadoCitasComponent }
+    ]
+  },
+  {
+    path: 'citas/RegistrarCita', component: SidenavComponent, canActivate: [AuthGuard],
+    children: [
+      { path: '', component: RegistrarCitaComponent }
     ]
   },
   {
