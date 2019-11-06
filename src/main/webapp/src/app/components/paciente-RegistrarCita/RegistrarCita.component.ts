@@ -23,11 +23,14 @@ export class RegistrarCitaComponent implements OnInit {
 
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
-            tipocita: ['', Validators.required],
-            especialidadcita: ['', Validators.required],
-            medicocita: ['', Validators.required],
-            fechacita: ['', Validators.required],
-            horacita: ['', Validators.required]
+            tipo: ['', Validators.required],
+            especialidad: ['', Validators.required],
+            medico: ['', Validators.required],
+            fecha: ['', Validators.required],
+            hora: ['', Validators.required],
+            paciente: this.authService.currentUserValue.dni,
+            //El usuario no tiene centro
+            centro: this.authService.currentUserValue.centro
         });
     }
 
@@ -43,7 +46,7 @@ export class RegistrarCitaComponent implements OnInit {
 
         this.loading = true;
         // TODO: currentUserValue devuelve el paciente entero, necesitamos DNI
-        this.citasService.register(this.registerForm.value, this.authService.currentUserValue.dni)
+        this.citasService.register(this.registerForm.value)
             .pipe(first())
             .subscribe(
                 data => {
