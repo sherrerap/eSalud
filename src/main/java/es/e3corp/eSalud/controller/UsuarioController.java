@@ -91,66 +91,45 @@ public class UsuarioController {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Usuario> registrarUsuario(@RequestBody String p) {
-        JSONObject jso = new JSONObject(p);
+    	JSONObject jso = new JSONObject(p);
         String dni = jso.getString("dni");
         String contraseña = jso.getString("password");
-        //String contraseña = jso.getString("contraseña");
         Usuario usuario1 = usersService.getUserByDniAndPassword(dni, contraseña);
         if (usuario1 == null) {
-            String nombre = null, apellidos = null, email = null, localidad = null, centro = null, medico = null,
-                    rol = null, especialidad = null;
-            String numTelefono = null;
-            try {
-                System.out.println("[SERVER] Registrando usuario...");
-                nombre = jso.getString("nombre");
-                apellidos = jso.getString("apellidos");
-                numTelefono = jso.getString("tel");
-                //numTelefono = jso.getString("numTelefono");
-                email = jso.getString("correo");
-                //email = jso.getString("email");
-                if (jso.getString("rol").equals("paciente")) {
-                    localidad = jso.getString("localidad");
-                    rol = jso.getString("rol");
-                } else {
-                    rol = jso.getString("rol");
-                    centro = jso.getString("centro");
-                    medico = jso.getString("medico");
-                    especialidad = jso.getString("especialidad");
-                }
-            } catch (JSONException j) {
-                System.out.println("[SERVER] Error en la lectura del JSON.");
-                System.out.println(j.getMessage());
-                return ResponseEntity.badRequest().build();
+          String nombre = null, apellidos = null, email = null, localidad = null, centro = null, medico = null, rol = null,
+              especialidad = null;
+          String numTelefono = null;
+          try {
+            System.out.println("[SERVER] Registrando usuario...");
+            nombre = jso.getString("nombre");
+            apellidos = jso.getString("apellidos");
+            numTelefono = jso.getString("tel");
+            email = jso.getString("correo");
+            if (jso.getString("rol").equals("paciente")) {
+              localidad = jso.getString("localidad");
+              rol = jso.getString("rol");
+            } else {
+              rol = jso.getString("rol");
+              centro = jso.getString("centro");
+              medico = jso.getString("medico");
+              especialidad = jso.getString("especialidad");
             }
+          } catch (JSONException j) {
+            System.out.println("[SERVER] Error en la lectura del JSON.");
+            System.out.println(j.getMessage());
+            return ResponseEntity.badRequest().build();
+          }
 
-            usuario1 = new Usuario(dni, nombre, apellidos, contraseña, rol, especialidad, medico, numTelefono,
-                    localidad, centro, email);
-            usersService.saveUsuario(usuario1);
-            System.out.println("[SERVER] Usuario registrado.");
-            System.out.println("[SERVER] " + usuario1.toString());
-            return ResponseEntity.ok().build();
+          usuario1 = new Usuario(dni, nombre, apellidos, contraseña, rol, especialidad, medico, numTelefono, localidad,
+              centro, email);
+          usersService.saveUsuario(usuario1);
+          System.out.println("[SERVER] Usuario registrado.");
+          System.out.println("[SERVER] " + usuario1.toString());
+          return ResponseEntity.ok().build();
         } else {
-          rol = jso.getString("rol");
-          centro = jso.getString("centro");
-          medico = jso.getString("medico");
-          especialidad = jso.getString("especialidad");
+          System.out.println("[SERVER] Error: el usuario ya está registrado.");
+          return ResponseEntity.badRequest().build();
         }
-      } catch (JSONException j) {
-        System.out.println("[SERVER] Error en la lectura del JSON.");
-        System.out.println(j.getMessage());
-        return ResponseEntity.badRequest().build();
-      }
-
-      usuario1 = new Usuario(dni, nombre, apellidos, contraseña, rol, especialidad, medico, numTelefono, localidad,
-          centro, email);
-      usersService.saveUsuario(usuario1);
-      System.out.println("[SERVER] Usuario registrado.");
-      System.out.println("[SERVER] " + usuario1.toString());
-      return ResponseEntity.ok().build();
-    } else {
-      System.out.println("[SERVER] Error: el usuario ya está registrado.");
-      return ResponseEntity.badRequest().build();
     }
-  }
+ }
 
-}
