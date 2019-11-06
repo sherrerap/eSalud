@@ -1,4 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator,MatTableDataSource} from '@angular/material';
+
+export interface PeriodicElement {
+  position: number;
+  tipo: string;
+  centro: string;
+  fecha: string;
+  hora: string;
+}
+const ELEMENT_DATA: PeriodicElement[] = [
+  { position: 1, tipo: 'Enfermería', centro: 'Ciudad Real III', fecha: '22/11/2019', hora: '11:54' },
+  { position: 2, tipo: 'Pediatría', centro: 'Ciudad Real III', fecha: '23/11/2019', hora: '12:00' }
+  
+];
 
 @Component({
   selector: 'app-listado-citas',
@@ -6,28 +20,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listado-citas.component.css']
 })
 export class ListadoCitasComponent implements OnInit {
-  citasService: any;
-  success: string;
-  error: any;
-  loading: boolean;
+  displayedColumns: string[] = ['position','tipo','centro','fecha','hora'];
+  dataSource= new MatTableDataSource <PeriodicElement>(ELEMENT_DATA);  
+  @ViewChild(MatPaginator,{static:true}) paginator: MatPaginator;
 
   constructor() {
-
   }
 
   ngOnInit() {
-
-    /*
-    this.citasService.getAll()
-      .subscribe(
-        data => {
-          console.log("[CLIENTE] Cargando lista de citas...")
-        },
-        error => {
-          this.error = error;
-          this.loading = false;
-        });
-    */
-  }
+    this.dataSource.paginator=this.paginator;
+    }
 
 }
