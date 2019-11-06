@@ -1,6 +1,14 @@
 
 package es.e3corp.eSalud.controller;
 
+import es.e3corp.eSalud.exception.CitaNotFoundException;
+
+import es.e3corp.eSalud.model.Cita;
+
+import es.e3corp.eSalud.Service.CitaService;
+
+import java.util.List;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.json.JSONException;
@@ -53,6 +61,18 @@ public class CitaController {
       return ResponseEntity.badRequest().build();
     }
   }
+  @RequestMapping(value = "paciente/{dni}", method = RequestMethod.GET)
+  public ResponseEntity<List<Cita>> getListadoCitasByPaciente(@PathVariable(required = true) String dni){
+	  List<Cita> citas= citasService.getCitasByPaciente(dni);
+	  return ResponseEntity.ok(citas);
+  }
+  
+  @RequestMapping(value = "medico/{id}", method = RequestMethod.GET)
+  public ResponseEntity<List<Cita>> getListadoCitasByMedico(@PathVariable(required = true) String id){
+	  List<Cita> citas= citasService.getCitasByMedico(id);
+	  return ResponseEntity.ok(citas);
+  }
+  
 
   @RequestMapping(value = "/{citaId}", method = RequestMethod.PUT)
   @ApiOperation(value = "Update cita", notes = "Finds a cita ID and updates its fields")

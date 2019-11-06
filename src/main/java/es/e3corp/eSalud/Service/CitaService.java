@@ -16,5 +16,13 @@ public interface CitaService {
 
   void deleteCita(String citaId);
 
-  Cita findCitaByPacienteMedicoFechaHora(String idPaciente, String idMedico, String fecha, String hora);
+	  void deleteCita(String citaId);
+	  
+	  Cita getCitaByPacienteMedicoFechaHora(String idPaciente, String idMedico, String fecha, String hora);
+
+
+	List<Cita> getCitasByPaciente(String dni);
+
+
+	List<Cita> getCitasByMedico(String id);
 }

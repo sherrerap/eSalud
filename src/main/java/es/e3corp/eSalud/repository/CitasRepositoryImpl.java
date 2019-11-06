@@ -53,4 +53,16 @@ public class CitasRepositoryImpl implements CitasRepository {
     return cita;
   }
 
+	@Override
+	public List<Cita> findPaciente(String dni) {
+		List<Cita> citas = this.mongoOperations.find(new Query(Criteria.where("paciente").is(dni)), Cita.class);
+		return citas;
+	}
+
+	@Override
+	public List<Cita> findMedico(String id) {
+		List<Cita> citas = this.mongoOperations.find(new Query(Criteria.where("médico").is(id)), Cita.class);
+		return citas;
+	}
+
 }

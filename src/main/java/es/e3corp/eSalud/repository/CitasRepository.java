@@ -21,4 +21,8 @@ public interface CitasRepository {
 
     Cita findByPacienteMedicoFechaHora(String idPaciente, String idMedico, String fecha, String hora);
 
+	List<Cita> findPaciente(String dni);
+
+	List<Cita> findMedico(String id);
+
 }
