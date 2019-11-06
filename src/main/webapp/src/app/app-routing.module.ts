@@ -18,7 +18,7 @@ import { AuthGuard } from './_helpers';
 const routes: Routes = [
 
   { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
-  { path: 'auth', loadChildren: './components/auth/auth.module#AuthModule' }, 
+  { path: 'auth', loadChildren: './components/auth/auth.module#AuthModule' },
   { path: 'citas/RegistrarCita/citas', redirectTo: 'citas' },
   { path: 'citas/RegistrarCita/RegistrarCita', redirectTo: 'citas/RegistrarCita' },
   {
@@ -33,6 +33,7 @@ const routes: Routes = [
       { path: '', component: RegistrarCitaComponent }
     ]
   },
+
   {
     path: 'admin', component: SidenavAdminComponent, canActivate: [AuthGuard],
     children: [
