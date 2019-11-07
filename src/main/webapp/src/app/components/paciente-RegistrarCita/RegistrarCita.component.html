@@ -64,7 +64,7 @@
                     <label for="fname">Fecha:</label>
                 </div>
                 <div class="col-75">
-                    <input type="date" placeholder="Fecha" formControlName="fechacita" min="2019-11-02" max="2021-11-26" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fechacita.errors }" />
+                    <input type="date" formControlName="fechacita" min="2019-11-02" max="2021-11-26" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fechacita.errors }" />
                     <div *ngIf="submitted && f.fechacita.errors" class="invalid-feedback">
                         <div *ngIf="f.fechacita.errors.required">Selecciona una fecha valida</div>
                     </div>
@@ -79,6 +79,7 @@
                     <div *ngIf="submitted && f.horacita.errors" class="invalid-feedback">
                         <div *ngIf="f.horacita.errors.required">Selecciona una fecha valida</div>
                     </div>
+					
                 </div>
             </div>
         <div class="row justify-content-center"> 

@@ -1,30 +1,18 @@
 <h1 mat-dialog-title><strong>Modificar cita</strong></h1>
-<div class="container">
-	<select input="text" class="form-control" formControlName="hora"
-		[ngClass]="{ 'is-invalid': submitted && f.hora.errors }">
-		<option value="">Seleccionar</option>
-		<option value="Cabecera">Cabecera</option>
-		<option value="Enfermero">Enfermero</option>
-		<option value="Pediatría">Pediatría</option>
-		<option value="Traumatología">Traumatología</option>
+<div class="container">	
 
-	</select>
-	<div *ngIf="submitted && f.hora.errors" class="invalid-feedback">
-		<div *ngIf="f.hora.errors.required">Seleccione una hora</div>
+	<input type="date" matInput [(ngModel)]="local_data.fechacita" formControlName="fechacita" min="2019-11-02" max="2021-11-26" class="form-control"
+		[ngClass]="{ 'is-invalid': submitted && f.fechacita.errors }" />
+	<div *ngIf="submitted && f.fechacita.errors" class="invalid-feedback">
+		<div *ngIf="f.fechacita.errors.required">Selecciona una fecha valida</div>
 	</div>
 	
-	<select input="text" class="form-control" formControlName="fecha"
-		[ngClass]="{ 'is-invalid': submitted && f.fecha.errors }">
-		<option value="">Seleccionar</option>
-		<option value="Cabecera">Cabecera</option>
-		<option value="Enfermero">Enfermero</option>
-		<option value="Pediatría">Pediatría</option>
-		<option value="Traumatología">Traumatología</option>
-
-	</select>
-	<div *ngIf="submitted && f.fecha.errors" class="invalid-feedback">
-		<div *ngIf="f.fecha.errors.required">Seleccione una fecha</div>
+	<input type="time" placeholder="Hora" matInput [(ngModel)]="local_data.horacita" formControlName="horacita" min="08:00" max="14:30" class="form-control"
+		[ngClass]="{ 'is-invalid': submitted && f.horacita.errors }" />
+	<div *ngIf="submitted && f.horacita.errors" class="invalid-feedback">
+		<div *ngIf="f.horacita.errors.required">Selecciona una fecha valida</div>
 	</div>
+	
 	<ng-template #elseTemplate>
 		¿Confirma que quiere modificar la cita<b>{{local_data.name}}</b>?
 	</ng-template>
