@@ -749,6 +749,12 @@ let CitasService = class CitasService {
     getAll() {
         return this.http.get(`${_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl}/citas`);
     }
+    getCitasPaciente(dni) {
+        return this.http.get(`${_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl}/citas/paciente/${dni}`);
+    }
+    getCitasMedico(id) {
+        return this.http.get(`${_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl}/citas/medico/${id}`);
+    }
     register(cita) {
         return this.http.post(`${_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl}/citas`, cita);
     }
@@ -825,6 +831,9 @@ let UserService = class UserService {
     }
     getAll() {
         return this.http.get(`${_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl}/usuarios`);
+    }
+    getUsersByRole(rol) {
+        return this.http.get(`${_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl}/usuarios/rol/${rol}`);
     }
     register(user) {
         return this.http.post(`${_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl}/usuarios`, user);
@@ -1379,40 +1388,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
+/* harmony import */ var src_app_services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/_services */ "./src/app/_services/index.ts");
+
 
 
 
 const ELEMENT_DATA = [
-    { position: 1, nombre: 'Juan', apellido: 'Gonzalez Garcia', rol: 'Enfermero', centro: 'Hospital General de Ciudad Real' },
-    { position: 2, nombre: 'Alba', apellido: 'Sanchez López', rol: 'Cabecera', centro: 'Centro Salud Miguelturra' },
-    { position: 3, nombre: 'Jose', apellido: 'Garcia Martinez', rol: 'Enfermero', centro: 'Hospital General de Ciudad Real' },
-    { position: 4, nombre: 'Juan', apellido: 'Garcia Moreno', rol: 'Oftalmología', centro: 'Hospital Santa Bárbara' },
-    { position: 5, nombre: 'Francisco', apellido: 'Sanchez Garcia', rol: 'Enfermero', centro: 'Centro Salud Miguelturra' },
-    { position: 6, nombre: 'Ana', apellido: 'Gonzalez Garcia', rol: 'Cabecera', centro: 'Hospital General de Ciudad Real' },
-    { position: 7, nombre: 'Elena', apellido: 'Garcia Cortés', rol: 'Enfermero', centro: 'Centro Salud Ciudad Real 3' },
-    { position: 8, nombre: 'Juan', apellido: 'Garcia López', rol: 'Cardíología', centro: 'Hospital General de Ciudad Real' },
-    { position: 9, nombre: 'Manuel', apellido: 'Garcia Garcia', rol: 'Enfermero', centro: 'Hospital Santa Bárbara' },
-    { position: 10, nombre: 'Alba', apellido: 'Gonzalez Garcia', rol: 'Cabecera', centro: 'Hospital Santa Bárbara' },
-    { position: 11, nombre: 'Laura', apellido: 'López Sanchez', rol: 'Enfermero', centro: 'Hospital General de Ciudad Real' },
-    { position: 12, nombre: 'Luis', apellido: 'Martinez Cortés', rol: 'Pediatría', centro: 'Centro Salud Miguelturra' },
-    { position: 13, nombre: 'Juan', apellido: 'Martinez Martinez', rol: 'Oftalmología', centro: 'Hospital General de Ciudad Real' },
-    { position: 14, nombre: 'María', apellido: 'Cortés López', rol: 'Enfermero', centro: 'Hospital General de Ciudad Real' },
-    { position: 15, nombre: 'Juan', apellido: 'Moreno Gonzalez', rol: 'Enfermero', centro: 'Centro Salud Almagro' },
-    { position: 16, nombre: 'Lucía', apellido: 'López Garcia', rol: 'Cabecera', centro: 'Hospital General de Ciudad Real' },
-    { position: 17, nombre: 'Juan', apellido: 'Garcia Cortés', rol: 'Pediatría', centro: 'Hospital Santa Bárbara' },
-    { position: 18, nombre: 'Mario', apellido: 'Garcia Garcia', rol: 'Cardíología', centro: 'Hospital General de Ciudad Real' },
-    { position: 19, nombre: 'Patricia', apellido: 'López Garcia', rol: 'Oftalmología', centro: 'Centro Salud Almagro' },
-    { position: 20, nombre: 'Juan', apellido: 'Martinez Garcia', rol: 'Enfermero', centro: 'Hospital General de Ciudad Real' }
+    { nombre: 'Enfermería', apellido: 'Ciudad Real III', especialidad: '22/11/2019', centro: '11:54' }
 ];
 let MostrarMedicoComponent = class MostrarMedicoComponent {
-    constructor() {
-        this.displayedColumns = ['position', 'nombre', 'apellido', 'rol', 'centro'];
-        this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](ELEMENT_DATA);
+    constructor(usersService) {
+        this.usersService = usersService;
+        this.displayedColumns = ['nombre', 'apellido', 'especialidad', 'centro'];
+        this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"]();
     }
     ngOnInit() {
         this.dataSource.paginator = this.paginator;
+        const medico = 'medico';
+        this.usersService.getUsersByRole(medico)
+            .subscribe((data) => {
+            this.data = data;
+            this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](data);
+        });
     }
 };
+MostrarMedicoComponent.ctorParameters = () => [
+    { type: src_app_services__WEBPACK_IMPORTED_MODULE_3__["UserService"] }
+];
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginator"], { static: true })
 ], MostrarMedicoComponent.prototype, "paginator", void 0);
@@ -1766,22 +1768,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
+/* harmony import */ var src_app_services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/_services */ "./src/app/_services/index.ts");
+/* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/_services/auth.service */ "./src/app/_services/auth.service.ts");
 
 
 
-const ELEMENT_DATA = [
-    { position: 1, tipo: 'Enfermería', centro: 'Ciudad Real III', fecha: '22/11/2019', hora: '11:54' },
-    { position: 2, tipo: 'Pediatría', centro: 'Ciudad Real III', fecha: '23/11/2019', hora: '12:00' }
-];
+
+
 let ListadoCitasComponent = class ListadoCitasComponent {
-    constructor() {
-        this.displayedColumns = ['position', 'tipo', 'centro', 'fecha', 'hora'];
-        this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](ELEMENT_DATA);
+    constructor(citasService, authService) {
+        this.citasService = citasService;
+        this.authService = authService;
+        this.displayedColumns = ['tipo', 'centro', 'fecha', 'hora'];
+        this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"]();
     }
     ngOnInit() {
         this.dataSource.paginator = this.paginator;
+        this.citasService.getCitasPaciente(this.authService.currentUserValue.dni)
+            .subscribe((data) => {
+            this.data = data;
+            this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](data);
+        });
     }
 };
+ListadoCitasComponent.ctorParameters = () => [
+    { type: src_app_services__WEBPACK_IMPORTED_MODULE_3__["CitasService"] },
+    { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"] }
+];
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginator"], { static: true })
 ], ListadoCitasComponent.prototype, "paginator", void 0);
