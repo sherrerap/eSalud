@@ -20,6 +20,7 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import es.e3corp.eSalud.Service.UsuarioService;
 import es.e3corp.eSalud.exception.UserNotFoundException;
 import es.e3corp.eSalud.model.Usuario;
+import es.e3corp.eSalud.utilidades.Utilidades;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -38,7 +39,11 @@ public class UsuarioController {
   @RequestMapping(method = RequestMethod.GET)
   public ResponseEntity<Usuario> getUserPassword(@RequestParam("dni") String dni,
       @RequestParam("password") String password) {
-    Usuario usuario = usersService.getUserByDniAndPassword(dni, password);
+	  
+	String dniEncriptado = Utilidades.encriptar(dni);
+    String contraseñaEncriptado = Utilidades.encriptar(password);
+      
+    Usuario usuario = usersService.getUserByDniAndPassword(dniEncriptado, contraseñaEncriptado);
     if (usuario != null) {
       System.out.println("[SERVER] Usuario encontrado: " + usuario.getNombre());
       return ResponseEntity.ok(usuario);
@@ -53,7 +58,10 @@ public class UsuarioController {
   public ResponseEntity<Usuario> userByDni(@PathVariable String userDni) throws UserNotFoundException {
     log.info("[SERVER] Buscando usuario: " + userDni);
     try {
-      user = usersService.findByUserDni(userDni);
+      //System.out.println("Se recibe el dni: " +userDni);
+      String dniEncriptado = Utilidades.encriptar(userDni);
+      //System.out.println("Se recibe el dni encriptado: " +dniEncriptado);
+      user = usersService.findByUserDni(dniEncriptado);
       log.info("[SERVER] Usuario encontrado.");
     } catch (UserNotFoundException e) {
       user = null;
@@ -94,7 +102,14 @@ public class UsuarioController {
     	JSONObject jso = new JSONObject(p);
         String dni = jso.getString("dni");
         String contraseña = jso.getString("password");
-        Usuario usuario1 = usersService.getUserByDniAndPassword(dni, contraseña);
+        
+        //System.out.println("Se recibe el dni: " +dni);
+        String dniEncriptado = Utilidades.encriptar(dni);
+        //System.out.println("Se recibe el dni encriptado: " +dniEncriptado);
+       
+        String contraseñaEncriptado = Utilidades.encriptar(contraseña);
+        
+        Usuario usuario1 = usersService.getUserByDniAndPassword(dniEncriptado, contraseñaEncriptado);
         if (usuario1 == null) {
           String nombre = null, apellidos = null, email = null, localidad = null, centro = null, medico = null, rol = null,
               especialidad = null;

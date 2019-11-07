@@ -13,6 +13,9 @@ import org.apache.commons.codec.binary.Base64;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import es.e3corp.eSalud.utilidades.Utilidades;
+
+
 @Document(collection = "citas")
 
 public class Cita {
@@ -31,62 +34,14 @@ public class Cita {
 			String hora) {
 		super();
 		this.id = UUID.randomUUID().toString();
-		this.paciente = encriptar(paciente);
-		this.tipo = encriptar(tipo);
-		this.fecha = encriptar(fecha);
-		this.centro = encriptar(centro);
-		this.médico = encriptar(médico);
-		this.hora = encriptar(hora);
+		this.paciente = Utilidades.encriptar(paciente);
+		this.tipo = Utilidades.encriptar(tipo);
+		this.fecha = Utilidades.encriptar(fecha);
+		this.centro = Utilidades.encriptar(centro);
+		this.médico = Utilidades.encriptar(médico);
+		this.hora = Utilidades.encriptar(hora);
 	}
-	
-	public static String encriptar(String texto) {
 
-        String secretKey = "esalud"; //llave para encriptar datos
-        String base64EncryptedString = "";
-
-        try {
-
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] digestOfPassword = md.digest(secretKey.getBytes("utf-8"));
-            byte[] keyBytes = Arrays.copyOf(digestOfPassword, 24);
-
-            SecretKey key = new SecretKeySpec(keyBytes, "DESede");
-            Cipher cipher = Cipher.getInstance("DESede");
-            cipher.init(Cipher.ENCRYPT_MODE, key);
-
-            byte[] plainTextBytes = texto.getBytes("utf-8");
-            byte[] buf = cipher.doFinal(plainTextBytes);
-            byte[] base64Bytes = Base64.encodeBase64(buf);
-            base64EncryptedString = new String(base64Bytes);
-
-        } catch (Exception ex) {
-        }
-        return base64EncryptedString;
-    }
-    
-    public static String Desencriptar(String textoEncriptado) throws Exception {
-
-        String secretKey = "esalud"; //llave para desencriptar datos
-        String base64EncryptedString = "";
-
-        try {
-            byte[] message = Base64.decodeBase64(textoEncriptado.getBytes("utf-8"));
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] digestOfPassword = md.digest(secretKey.getBytes("utf-8"));
-            byte[] keyBytes = Arrays.copyOf(digestOfPassword, 24);
-            SecretKey key = new SecretKeySpec(keyBytes, "DESede");
-
-            Cipher decipher = Cipher.getInstance("DESede");
-            decipher.init(Cipher.DECRYPT_MODE, key);
-
-            byte[] plainText = decipher.doFinal(message);
-
-            base64EncryptedString = new String(plainText, "UTF-8");
-
-        } catch (Exception ex) {
-        }
-        return base64EncryptedString;
-    }
 
 	public String getId() {
 		return id;
