@@ -22,6 +22,6 @@ public interface UsuarioRepository {
 
     Usuario findByDniAndContraseña(String dni, String contraseña);
     
-    List findByRol(String rol);
+    List <Usuario> findByRol(String rol);
 
 }
