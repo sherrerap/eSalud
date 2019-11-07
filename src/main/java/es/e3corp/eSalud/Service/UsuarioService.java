@@ -18,5 +18,7 @@ public interface UsuarioService {
   void deleteUsuario(String userId);
 
   Usuario getUserByDniAndPassword(String dni, String password);
+  
+  List <Usuario> getUsersByRol(String rol);
 
 }

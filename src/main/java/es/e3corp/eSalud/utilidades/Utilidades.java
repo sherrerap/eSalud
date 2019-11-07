@@ -1,7 +1,9 @@
 package es.e3corp.eSalud.utilidades;
 
 import java.security.MessageDigest;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -18,6 +20,8 @@ public class Utilidades {
 
 	
 	
+	
+
 	public static String encriptar(String texto) {
 
         String secretKey = "esalud"; //llave para encriptar datos
@@ -67,7 +71,7 @@ public class Utilidades {
         return base64EncryptedString;
     }
 
-	public static Optional<Usuario> desencriptarUsuario(Optional<Usuario> user) {
+	public static Optional<Usuario> desencriptarOptionalUsuario(Optional<Usuario> user) {
 		
 		try {
 			
@@ -93,5 +97,55 @@ public class Utilidades {
 		
 	}
 	
+	public static Usuario desencriptarUsuario(Usuario user) {
+		
+		try {
+			
+			user.setDni(desencriptar(user.getDni()));
+			user.setNombre(desencriptar(user.getNombre()));
+			user.setApellidos(desencriptar(user.getApellidos()));
+			user.setContraseña(desencriptar(user.getContraseña()));
+			user.setRol(desencriptar(user.getRol()));
+			user.setEspecialidad(desencriptar(user.getEspecialidad()));
+			user.setMedico(desencriptar(user.getMedico()));
+			user.setNumTelefono(desencriptar(user.getNumTelefono()));
+			user.setLocalidad(desencriptar(user.getLocalidad()));
+			user.setCentro(desencriptar(user.getCentro()));
+			user.setEmail(desencriptar(user.getEmail()));
+			return user;
+		}
+		
+		catch (Exception ex) {
+			
+			return null;
+	    }
+		
+		
+	}
+
+	public static List<Usuario> desencriptarListaUsuarios(Optional<List<Usuario>> users) {
+
+		List <Usuario> usersDesencriptado =  new ArrayList<Usuario>();
+		System.out.println("Tamaño de la lista normal: "+users.get().size());
+		
+		for(int i=0; i < users.get().size();i++) {
+			Usuario usuario = users.get().get(i);
+			System.out.println(usuario.toString());
+			//aun no desencripta porque no coinciden los valores que hay en la BBDD
+			//usersDesencriptado.add(desencriptarUsuario(usuario));
+			
+			
+			usersDesencriptado.add(usuario);
+		}
+		
+//		System.out.println("Tamaño de la lista desencriptada: "+usersDesencriptado.size());
+//		for(int i=0; i < usersDesencriptado.size();i++) {
+//			Usuario usuario = usersDesencriptado.get(i);
+//			System.out.println(usuario.toString());
+//			
+//		}
+		
+		return usersDesencriptado;
+	}
 	
 }
