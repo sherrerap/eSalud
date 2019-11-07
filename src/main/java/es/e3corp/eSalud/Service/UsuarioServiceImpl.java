@@ -1,5 +1,6 @@
 package es.e3corp.eSalud.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -50,8 +51,19 @@ public class UsuarioServiceImpl implements UsuarioService {
 	public List<Usuario> findAll() {
 
 		Optional<List<Usuario>> user = userRepository.findAll();
+		
+		//Estoy habria que cambiarlo luego para la desencriptacion
+		List <Usuario> usersDesencriptado =  new ArrayList<Usuario>();
+		
+		
+		for(int i=0; i < user.get().size();i++) {
+			Usuario usuario = user.get().get(i);
+			usersDesencriptado.add(usuario);
+		}
 
-		return user.get();
+		//return user.get();
+		
+		return usersDesencriptado;
 
 	}
 
