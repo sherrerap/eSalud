@@ -1,6 +1,8 @@
 
 package es.e3corp.eSalud.controller;
 
+import java.util.List;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.json.JSONException;
@@ -81,6 +83,28 @@ public class UsuarioController {
    * 
    * }
    */
+  
+  @RequestMapping(value = "/all",method = RequestMethod.GET)
+  @ApiOperation(value = "Find all user", notes = "Return all users" )
+  public ResponseEntity<List<Usuario>> allUsers(){
+    log.info("Get allUsers");
+    return ResponseEntity.ok(usersService.findAll());
+  }
+  
+  @RequestMapping(value = "/pacientes",method = RequestMethod.GET)
+  @ApiOperation(value = "Find all user", notes = "Return all users" )
+  public ResponseEntity<List<Usuario>> allPacientes(){
+    log.info("Get Users Pacietnes");
+    return ResponseEntity.ok(usersService.getUsersByRol("paciente"));
+  }
+  
+  @RequestMapping(value = "/medicos",method = RequestMethod.GET)
+  @ApiOperation(value = "Find all user", notes = "Return all users" )
+  public ResponseEntity<List<Usuario>> allMedicos(){
+    log.info("Get Users Medicos");
+    return ResponseEntity.ok(usersService.getUsersByRol("medico"));
+  }
+
   @RequestMapping(value = "/{userId}", method = RequestMethod.DELETE)
   @ApiOperation(value = "Delete an user", notes = "Delete a user by Id")
   public ResponseEntity<Void> deleteUser(@PathVariable String userId) {

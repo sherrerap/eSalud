@@ -73,5 +73,13 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
         .findOne(new Query(Criteria.where("dni").is(dni).and("contraseña").is(contraseña)), Usuario.class);
     return usuario;
   }
+  
+  @Override
+  public List<Usuario> findByRol(String rol) {
+    List <Usuario> usuariosRol = this.mongoOperations.find(new Query(Criteria.where("rol").is(rol)),Usuario.class);
+    return usuariosRol;
+  }
+
+
 
 }

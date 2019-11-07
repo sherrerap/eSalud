@@ -19,67 +19,74 @@ import es.e3corp.eSalud.repository.UsuarioRepository;
 
 public class UsuarioServiceImpl implements UsuarioService {
 
-  private static final Log log = LogFactory.getLog(UsuarioServiceImpl.class);
+	private static final Log log = LogFactory.getLog(UsuarioServiceImpl.class);
 
-  private UsuarioRepository userRepository;
+	private UsuarioRepository userRepository;
 
-  @Autowired
+	@Autowired
 
-  public UsuarioServiceImpl(UsuarioRepository userRepository) {
+	public UsuarioServiceImpl(UsuarioRepository userRepository) {
 
-    this.userRepository = userRepository;
+		this.userRepository = userRepository;
 
-  }
+	}
 
-  public Usuario findByUserDni(String userDni) {
+	public Usuario findByUserDni(String userDni) {
 
-    Optional<Usuario> user = userRepository.findOne(userDni);
+		Optional<Usuario> user = userRepository.findOne(userDni);
 
-    if (user.isPresent()) {
+		if (user.isPresent()) {
 
-      log.debug(String.format("Read userId '{}'", userDni));
+			log.debug(String.format("Read userId '{}'", userDni));
 
-      return user.get();
+			return user.get();
 
-    } else
+		} else
 
-      throw new UserNotFoundException(userDni);
+			throw new UserNotFoundException(userDni);
 
-  }
+	}
 
-  public List<Usuario> findAll() {
+	public List<Usuario> findAll() {
 
-    Optional<List<Usuario>> user = userRepository.findAll();
+		Optional<List<Usuario>> user = userRepository.findAll();
 
-    return user.get();
+		return user.get();
 
-  }
+	}
 
-  public void saveUsuario(Usuario usuario) {
+	public void saveUsuario(Usuario usuario) {
 
-    userRepository.saveUsuario(usuario);
+		userRepository.saveUsuario(usuario);
 
-  }
+	}
 
-  public void updateUsuario(Usuario user) {
+	public void updateUsuario(Usuario user) {
 
-    userRepository.updateUsuario(user);
+		userRepository.updateUsuario(user);
 
-  }
+	}
 
-  public void deleteUsuario(String userId) {
+	public void deleteUsuario(String userId) {
 
-    userRepository.deleteUsuario(userId);
+		userRepository.deleteUsuario(userId);
 
-  }
+	}
 
-  @Override
-  public Usuario getUserByDniAndPassword(String dni, String password) {
-    System.out.println("[SERVER] DNI recibido: " + dni);
-    System.out.println("[SERVER] Contraseña recibida: " + password);
+	@Override
+	public Usuario getUserByDniAndPassword(String dni, String password) {
+		System.out.println("[SERVER] DNI recibido: " + dni);
+		System.out.println("[SERVER] Contraseña recibida: " + password);
 
-    Usuario usuario = userRepository.findByDniAndContraseña(dni, password);
-    return usuario;
-  }
+		Usuario usuario = userRepository.findByDniAndContraseña(dni, password);
+		return usuario;
+	}
+
+	@Override
+	public List<Usuario> getUsersByRol(String rol) {
+		// Faltaria implementar un desencriptado despues
+		List<Usuario> usersRol = userRepository.findByRol(rol);
+		return usersRol;
+	}
 
 }

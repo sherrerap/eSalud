@@ -21,5 +21,7 @@ public interface UsuarioRepository {
     Optional<Usuario> findOne(String userId);
 
     Usuario findByDniAndContraseña(String dni, String contraseña);
+    
+    List <Usuario> findByRol(String rol);
 
 }
