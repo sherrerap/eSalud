@@ -149,30 +149,39 @@ public class CitaController {
   @RequestMapping(method = RequestMethod.POST)
   public ResponseEntity<Cita> registrarCita(@RequestBody String p) {
     JSONObject jso = new JSONObject(p);
-    String paciente = jso.getString("paciente");
-    String médico = jso.getString("médico");
-    String fecha = jso.getString("fecha");
-    String hora = jso.getString("hora");
-    Cita cita1 = citasService.findCitaByPacienteMedicoFechaHora(paciente, médico, fecha, hora);
+    String paciente = null, médico = null, fecha = null, hora = null;
     try {
-      Usuario usuarioPaciente = usuarioService.findByUserDni(paciente);
-      Usuario usuarioMedico = usuarioService.findByUserDni(médico);
-      if (!usuarioPaciente.getRol().equals("paciente")) {
-        log.error("[SERVER] El usuario paciente no es válido.");
-        return ResponseEntity.badRequest().build();
-      }
-      if (!usuarioMedico.getRol().equals("medico")) {
-        log.error("[SERVER] El usuario médico no es válido.");
-        return ResponseEntity.badRequest().build();
-      }
-
-    } catch (UserNotFoundException u) {
-      log.error("[SERVER] El usuario paciente o médico no se ha encontrado.");
+      paciente = jso.getString("paciente");
+      médico = jso.getString("medico");
+      fecha = jso.getString("fecha");
+      hora = jso.getString("hora");
+    } catch (JSONException j) {
+      log.error("[SERVER] Error en la lectura del JSON.");
+      System.out.println(j.getMessage());
       return ResponseEntity.badRequest().build();
     }
 
+    Cita cita1 = citasService.findCitaByPacienteMedicoFechaHora(paciente, médico, fecha, hora);
+
     if (cita1 == null) {
       String tipo = null, centro = null;
+
+      try {
+        Usuario usuarioPaciente = usuarioService.findByUserDni(paciente);
+        Usuario usuarioMedico = usuarioService.findByUserDni(médico);
+        if (!usuarioPaciente.getRol().equals("paciente")) {
+          log.error("[SERVER] El usuario paciente no es válido.");
+          return ResponseEntity.badRequest().build();
+        }
+        if (!usuarioMedico.getRol().equals("medico")) {
+          log.error("[SERVER] El usuario médico no es válido.");
+          return ResponseEntity.badRequest().build();
+        }
+
+      } catch (UserNotFoundException u) {
+        log.error("[SERVER] El usuario paciente o médico no se ha encontrado.");
+        return ResponseEntity.badRequest().build();
+      }
 
       try {
         System.out.println("[SERVER] Registrando cita...");

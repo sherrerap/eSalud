@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { UserService } from '../../_services';
+import { CitasService, AuthService } from '../../_services';
 
 @Component({
     selector: 'app-RegistrarCita',
@@ -17,22 +17,25 @@ export class RegistrarCitaComponent implements OnInit {
 
     constructor(
         private formBuilder: FormBuilder,
-        /* private userService: UserService */
+        private citasService: CitasService,
+        private authService: AuthService
     ) { }
 
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
-            tipocita: ['', Validators.required],
-            especialidadcita: ['', Validators.required],
-            medicocita: ['', Validators.required],
-            fechacita: ['', Validators.required],
-            horacita: ['', Validators.required],
+            tipo: ['', Validators.required],
+            especialidad: ['', Validators.required],
+            medico: ['', Validators.required],
+            fecha: ['', Validators.required],
+            hora: ['', Validators.required],
+            paciente: this.authService.currentUserValue.dni,
+            centro: this.authService.currentUserValue.centro
         });
     }
 
-    get f() { return this.registerForm.controls; } 
+    get f() { return this.registerForm.controls; }
 
-    /* onSubmit() {
+    onSubmit() {
         this.submitted = true;
         this.success = null;
 
@@ -41,17 +44,16 @@ export class RegistrarCitaComponent implements OnInit {
         }
 
         this.loading = true;
-        this.userService.register(this.registerForm.value)
+        this.citasService.register(this.registerForm.value)
             .pipe(first())
             .subscribe(
                 data => {
-                    console.log("[CITA] Cita registrada.")
+                    console.log("[CLIENTE] Cita registrada.")
                     this.success = "Cita registrada correctamente."
                 },
                 error => {
                     this.error = error;
                     this.loading = false;
                 });
-    } */
-    //**************************************FALTA CITA SERVICE**********************************************************
+    }
 }

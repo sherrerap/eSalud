@@ -127,7 +127,18 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container-fluid col-8 panel_central\">\r\n    <div class=\"table-responsive\">\r\n        <td><label style=\"font-size:20px;\" for=\"Name\">Citas Pendientes:</label></td>\r\n        <table class=\"table table-bordered table-hover\">\r\n            <thead>\r\n                <tr>\r\n                    <th scope=\"col\">#</th>\r\n                    <th scope=\"col\">Cita</th>\r\n                    <th scope=\"col\">Dia</th>\r\n                    <th scope=\"col\">Hora</th>\r\n                    <th scope=\"col\">Centro</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr>\r\n                    <th scope=\"row\">1</th>\r\n                    <td>Revisión rutinaria</td>\r\n                    <td>16/10/2019</td>\r\n                    <td>12:50</td>\r\n                    <td>Hospital de puertollano</td>\r\n                </tr>\r\n                <tr>\r\n                    <th scope=\"row\">2</th>\r\n                    <td>Recogida de resultados</td>\r\n                    <td>24/12/2109</td>\r\n                    <td>20:50</td>\r\n                    <td>Hospital general de ciudad real</td>\r\n                </tr>\r\n                <tr>\r\n                    <th scope=\"row\">3</th>\r\n                    <td>Analisis de sangre</td>\r\n                    <td>20/11/2019</td>\r\n                    <td>13:10</td>\r\n                    <td>Hospital general de ciudad real</td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"mat-elevation-z8\">\r\n    <table mat-table [dataSource]=\"dataSource\">\r\n  \r\n      <!-- Position Column -->\r\n      <ng-container matColumnDef=\"position\">\r\n        <th mat-header-cell *matHeaderCellDef> No. </th>\r\n        <td mat-cell *matCellDef=\"let element\"> {{element.position}} </td>\r\n      </ng-container>\r\n  \r\n      <!-- nombre Column -->\r\n      <ng-container matColumnDef=\"tipo\">\r\n        <th mat-header-cell *matHeaderCellDef> Tipo </th>\r\n        <td mat-cell *matCellDef=\"let element\"> {{element.tipo}} </td>\r\n      </ng-container>\r\n  \r\n      <!-- Weight Column -->\r\n      <ng-container matColumnDef=\"centro\">\r\n        <th mat-header-cell *matHeaderCellDef> Centro </th>\r\n        <td mat-cell *matCellDef=\"let element\"> {{element.centro}} </td>\r\n      </ng-container>\r\n  \r\n      <!-- Symbol Column -->\r\n      <ng-container matColumnDef=\"fecha\">\r\n        <th mat-header-cell *matHeaderCellDef> Fecha </th>\r\n        <td mat-cell *matCellDef=\"let element\"> {{element.fecha}} </td>\r\n      </ng-container>\r\n  \r\n      <ng-container matColumnDef=\"hora\">\r\n        <th mat-header-cell *matHeaderCellDef> Hora </th>\r\n        <td mat-cell *matCellDef=\"let element\"> {{element.hora}} </td>\r\n      </ng-container>\r\n  \r\n      <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n      <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n    </table>\r\n  \r\n    <mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons [pageSize]=\"10\"></mat-paginator>\r\n  </div>");
+            /***/ 
+        }),
+        /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/paciente-RegistrarCita/RegistrarCita.component.html": 
+        /*!**********************************************************************************************************************!*\
+          !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/paciente-RegistrarCita/RegistrarCita.component.html ***!
+          \**********************************************************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"error\" class=\"alert alert-danger\">{{error}}</div>\r\n<div *ngIf=\"success\" class=\"alert alert-success\">{{success}}</div>\r\n<div class=\"register\">\r\n    <h2 class=\"register-header\">Registra tu cita</h2>\r\n    <form [formGroup]=\"registerForm\" (ngSubmit)=\"onSubmit()\" class=\"register-container\">\r\n        <div class=\"form-group\">\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Tipo de Cita:</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <select input=\"text\" class=\"form-control\" formControlName=\"tipo\" [ngClass]=\"{ 'is-invalid': submitted && f.especialidad.errors }\">\r\n          \t\t\t\t\t      <option value=\"\">Selecciona el tipo de cita</option>\r\n          \t\t\t\t\t      <option value=\"Cabecera\">Cabecera</option>\r\n          \t\t\t\t\t\t  <option value=\"Especialidad\">Especialidad</option>\r\n          \t\t\t\t\t      <option value=\"Enfermeria\">Enfermería</option>\r\n          \t\t\t\t\t\t  <option value=\"Reabilitación\">Reabilitación</option>\t\t\t\t      \r\n          \t\t\t\t\t      \r\n          \t\t\t\t\t    </select>\r\n                    <div *ngIf=\"submitted && f.tipo.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.tipo.errors.required\">Seleccione un tipo de cita</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Especialidad:</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <select input=\"text\" class=\"form-control\" formControlName=\"especialidad\" [ngClass]=\"{ 'is-invalid': submitted && f.especialidad.errors }\">\r\n          \t\t\t\t\t      <option value=\"\">Selecciona la especialidad</option>\r\n          \t\t\t\t\t      <option value=\"Cabecera\">Dermatologia</option>\r\n          \t\t\t\t\t\t  <option value=\"Enfermero\">Traumatología</option>\r\n          \t\t\t\t\t      <option value=\"Pediatría\">Oftalmologia</option>\r\n          \t\t\t\t\t\t  <option value=\"Traumatología\">Cardiología</option>\t\t\t\t      \r\n          \t\t\t\t\t      <option value=\"\">Otorrinolaringología</option>\r\n          \t\t\t\t\t      <option value=\"Cabecera\">Urología</option>\r\n          \t\t\t\t\t\t  <option value=\"Enfermero\">Psiquiatría</option>\r\n          \t\t\t\t\t      <option value=\"Pediatría\">Alergología</option>\r\n          \t\t\t\t\t\t  <option value=\"Traumatología\">Endocrinología</option>\r\n          \t\t\t\t\t    </select>\r\n                    <div *ngIf=\"submitted && f.especialidad.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.especialidad.errors.required\">Seleccione una especialidad</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Médico:</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <select input=\"text\" class=\"form-control\" formControlName=\"medico\" [ngClass]=\"{ 'is-invalid': submitted && f.medico.errors }\">\r\n                                    <option value=\"\">Selecciona un médico</option>\r\n                                    <option value=\"05123456\">Médico 1</option>\r\n                                    <option value=\"Medico2\">Médico 2</option>\t\t\t\t      \r\n                                    </select>\r\n                    <div *ngIf=\"submitted && f.medico.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.medico.errors.required\">Selecciona un médico</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Fecha:</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <input type=\"date\" placeholder=\"Fecha\" formControlName=\"fecha\" min=\"2019-11-02\" max=\"2021-11-26\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.fecha.errors }\" />\r\n                    <div *ngIf=\"submitted && f.fecha.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.fecha.errors.required\">Selecciona una fecha valida</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Hora:</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <input type=\"time\" placeholder=\"Hora\" formControlName=\"hora\" min=\"08:00\" max=\"14:30\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.hora.errors }\" />\r\n                    <div *ngIf=\"submitted && f.hora.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.hora.errors.required\">Selecciona una fecha valida</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"row justify-content-center\">\r\n                <p><input type=\"submit\" value=\"Registrar cita \" class=\"button2\"></p>\r\n                <p><input type=\"submit\" value=\"Cancelar  \" class=\"button1\"></p>\r\n            </div>\r\n        </div>\r\n    </form>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/paciente-RegistrarCita/RegistrarCita.component.html": 
@@ -748,6 +759,12 @@
                 CitasService.prototype.getAll = function () {
                     return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl + "/citas");
                 };
+                CitasService.prototype.getCitasPaciente = function (dni) {
+                    return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl + "/citas/paciente/" + dni);
+                };
+                CitasService.prototype.getCitasMedico = function (id) {
+                    return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl + "/citas/medico/" + id);
+                };
                 CitasService.prototype.register = function (cita) {
                     return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl + "/citas", cita);
                 };
@@ -805,6 +822,9 @@
                 }
                 UserService.prototype.getAll = function () {
                     return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl + "/usuarios");
+                };
+                UserService.prototype.getUsersByRole = function (rol) {
+                    return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl + "/usuarios/rol/" + rol);
                 };
                 UserService.prototype.register = function (user) {
                     return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl + "/usuarios", user);
@@ -1279,7 +1299,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("table{\r\n\twidth:100%\r\n\t\r\n}\r\nmat-paginator{\r\n\twidth:100%;\r\n\tbackground-color: rgb(218, 241, 230);\r\n}\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9hZG1pbi1Nb3N0cmFyTWVkaWNvL01vc3RyYXJNZWRpY28uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtDQUNDOztBQUVEO0FBQ0E7Q0FDQyxVQUFVO0NBQ1Ysb0NBQW9DO0FBQ3JDIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9hZG1pbi1Nb3N0cmFyTWVkaWNvL01vc3RyYXJNZWRpY28uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbInRhYmxle1xyXG5cdHdpZHRoOjEwMCVcclxuXHRcclxufVxyXG5tYXQtcGFnaW5hdG9ye1xyXG5cdHdpZHRoOjEwMCU7XHJcblx0YmFja2dyb3VuZC1jb2xvcjogcmdiKDIxOCwgMjQxLCAyMzApO1xyXG59XHJcblxyXG4iXX0= */");
+            /* harmony default export */ __webpack_exports__["default"] = ("table{\r\n\twidth:100%;\r\n}\r\nmat-paginator{\r\n\twidth:100%;\r\n\tbackground-color: rgb(218, 241, 230);\r\n}\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9hZG1pbi1Nb3N0cmFyTWVkaWNvL01vc3RyYXJNZWRpY28uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtDQUNDLFVBQVU7QUFDWDtBQUNBO0NBQ0MsVUFBVTtDQUNWLG9DQUFvQztBQUNyQyIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvYWRtaW4tTW9zdHJhck1lZGljby9Nb3N0cmFyTWVkaWNvLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJ0YWJsZXtcclxuXHR3aWR0aDoxMDAlO1xyXG59XHJcbm1hdC1wYWdpbmF0b3J7XHJcblx0d2lkdGg6MTAwJTtcclxuXHRiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMjE4LCAyNDEsIDIzMCk7XHJcbn1cclxuXHJcbiJdfQ== */");
             /***/ 
         }),
         /***/ "./src/app/components/admin-MostrarMedico/MostrarMedico.component.ts": 
@@ -1294,38 +1314,31 @@
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
+            /* harmony import */ var src_app_services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/_services */ "./src/app/_services/index.ts");
             var ELEMENT_DATA = [
-                { position: 1, nombre: 'Juan', apellido: 'Gonzalez Garcia', rol: 'Enfermero', centro: 'Hospital General de Ciudad Real' },
-                { position: 2, nombre: 'Alba', apellido: 'Sanchez López', rol: 'Cabecera', centro: 'Centro Salud Miguelturra' },
-                { position: 3, nombre: 'Jose', apellido: 'Garcia Martinez', rol: 'Enfermero', centro: 'Hospital General de Ciudad Real' },
-                { position: 4, nombre: 'Juan', apellido: 'Garcia Moreno', rol: 'Oftalmología', centro: 'Hospital Santa Bárbara' },
-                { position: 5, nombre: 'Francisco', apellido: 'Sanchez Garcia', rol: 'Enfermero', centro: 'Centro Salud Miguelturra' },
-                { position: 6, nombre: 'Ana', apellido: 'Gonzalez Garcia', rol: 'Cabecera', centro: 'Hospital General de Ciudad Real' },
-                { position: 7, nombre: 'Elena', apellido: 'Garcia Cortés', rol: 'Enfermero', centro: 'Centro Salud Ciudad Real 3' },
-                { position: 8, nombre: 'Juan', apellido: 'Garcia López', rol: 'Cardíología', centro: 'Hospital General de Ciudad Real' },
-                { position: 9, nombre: 'Manuel', apellido: 'Garcia Garcia', rol: 'Enfermero', centro: 'Hospital Santa Bárbara' },
-                { position: 10, nombre: 'Alba', apellido: 'Gonzalez Garcia', rol: 'Cabecera', centro: 'Hospital Santa Bárbara' },
-                { position: 11, nombre: 'Laura', apellido: 'López Sanchez', rol: 'Enfermero', centro: 'Hospital General de Ciudad Real' },
-                { position: 12, nombre: 'Luis', apellido: 'Martinez Cortés', rol: 'Pediatría', centro: 'Centro Salud Miguelturra' },
-                { position: 13, nombre: 'Juan', apellido: 'Martinez Martinez', rol: 'Oftalmología', centro: 'Hospital General de Ciudad Real' },
-                { position: 14, nombre: 'María', apellido: 'Cortés López', rol: 'Enfermero', centro: 'Hospital General de Ciudad Real' },
-                { position: 15, nombre: 'Juan', apellido: 'Moreno Gonzalez', rol: 'Enfermero', centro: 'Centro Salud Almagro' },
-                { position: 16, nombre: 'Lucía', apellido: 'López Garcia', rol: 'Cabecera', centro: 'Hospital General de Ciudad Real' },
-                { position: 17, nombre: 'Juan', apellido: 'Garcia Cortés', rol: 'Pediatría', centro: 'Hospital Santa Bárbara' },
-                { position: 18, nombre: 'Mario', apellido: 'Garcia Garcia', rol: 'Cardíología', centro: 'Hospital General de Ciudad Real' },
-                { position: 19, nombre: 'Patricia', apellido: 'López Garcia', rol: 'Oftalmología', centro: 'Centro Salud Almagro' },
-                { position: 20, nombre: 'Juan', apellido: 'Martinez Garcia', rol: 'Enfermero', centro: 'Hospital General de Ciudad Real' }
+                { nombre: 'Enfermería', apellido: 'Ciudad Real III', especialidad: '22/11/2019', centro: '11:54' }
             ];
             var MostrarMedicoComponent = /** @class */ (function () {
-                function MostrarMedicoComponent() {
-                    this.displayedColumns = ['position', 'nombre', 'apellido', 'rol', 'centro'];
-                    this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](ELEMENT_DATA);
+                function MostrarMedicoComponent(usersService) {
+                    this.usersService = usersService;
+                    this.displayedColumns = ['nombre', 'apellido', 'especialidad', 'centro'];
+                    this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"]();
                 }
                 MostrarMedicoComponent.prototype.ngOnInit = function () {
+                    var _this = this;
                     this.dataSource.paginator = this.paginator;
+                    var medico = 'medico';
+                    this.usersService.getUsersByRole(medico)
+                        .subscribe(function (data) {
+                        _this.data = data;
+                        _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](data);
+                    });
                 };
                 return MostrarMedicoComponent;
             }());
+            MostrarMedicoComponent.ctorParameters = function () { return [
+                { type: src_app_services__WEBPACK_IMPORTED_MODULE_3__["UserService"] }
+            ]; };
             tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginator"], { static: true })
             ], MostrarMedicoComponent.prototype, "paginator", void 0);
@@ -1631,7 +1644,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbGlzdGFkby1jaXRhcy9saXN0YWRvLWNpdGFzLmNvbXBvbmVudC5jc3MifQ== */");
+            /* harmony default export */ __webpack_exports__["default"] = ("table{\r\n\twidth:100%;\r\n}\r\nmat-paginator{\r\n\twidth:100%;\r\n\tbackground-color: rgb(218, 241, 230);\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9saXN0YWRvLWNpdGFzL2xpc3RhZG8tY2l0YXMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtDQUNDLFVBQVU7QUFDWDtBQUNBO0NBQ0MsVUFBVTtDQUNWLG9DQUFvQztBQUNyQyIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbGlzdGFkby1jaXRhcy9saXN0YWRvLWNpdGFzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJ0YWJsZXtcclxuXHR3aWR0aDoxMDAlO1xyXG59XHJcbm1hdC1wYWdpbmF0b3J7XHJcblx0d2lkdGg6MTAwJTtcclxuXHRiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMjE4LCAyNDEsIDIzMCk7XHJcbn1cclxuIl19 */");
             /***/ 
         }),
         /***/ "./src/app/components/listado-citas/listado-citas.component.ts": 
@@ -1645,13 +1658,34 @@
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListadoCitasComponent", function () { return ListadoCitasComponent; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
+            /* harmony import */ var src_app_services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/_services */ "./src/app/_services/index.ts");
+            /* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/_services/auth.service */ "./src/app/_services/auth.service.ts");
             var ListadoCitasComponent = /** @class */ (function () {
-                function ListadoCitasComponent() {
+                function ListadoCitasComponent(citasService, authService) {
+                    this.citasService = citasService;
+                    this.authService = authService;
+                    this.displayedColumns = ['tipo', 'centro', 'fecha', 'hora'];
+                    this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"]();
                 }
                 ListadoCitasComponent.prototype.ngOnInit = function () {
+                    var _this = this;
+                    this.dataSource.paginator = this.paginator;
+                    this.citasService.getCitasPaciente(this.authService.currentUserValue.dni)
+                        .subscribe(function (data) {
+                        _this.data = data;
+                        _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](data);
+                    });
                 };
                 return ListadoCitasComponent;
             }());
+            ListadoCitasComponent.ctorParameters = function () { return [
+                { type: src_app_services__WEBPACK_IMPORTED_MODULE_3__["CitasService"] },
+                { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"] }
+            ]; };
+            tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginator"], { static: true })
+            ], ListadoCitasComponent.prototype, "paginator", void 0);
             ListadoCitasComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
                     selector: 'app-listado-citas',
@@ -1684,19 +1718,25 @@
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+            /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+            /* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../_services */ "./src/app/_services/index.ts");
             var RegistrarCitaComponent = /** @class */ (function () {
-                function RegistrarCitaComponent(formBuilder) {
+                function RegistrarCitaComponent(formBuilder, citasService, authService) {
                     this.formBuilder = formBuilder;
+                    this.citasService = citasService;
+                    this.authService = authService;
                     this.loading = false;
                     this.submitted = false;
                 }
                 RegistrarCitaComponent.prototype.ngOnInit = function () {
                     this.registerForm = this.formBuilder.group({
-                        tipocita: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-                        especialidadcita: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-                        medicocita: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-                        fechacita: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-                        horacita: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+                        tipo: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+                        especialidad: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+                        medico: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+                        fecha: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+                        hora: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+                        paciente: this.authService.currentUserValue.dni,
+                        centro: this.authService.currentUserValue.centro
                     });
                 };
                 Object.defineProperty(RegistrarCitaComponent.prototype, "f", {
@@ -1704,10 +1744,30 @@
                     enumerable: true,
                     configurable: true
                 });
+                RegistrarCitaComponent.prototype.onSubmit = function () {
+                    var _this = this;
+                    this.submitted = true;
+                    this.success = null;
+                    if (this.registerForm.invalid) {
+                        return;
+                    }
+                    this.loading = true;
+                    this.citasService.register(this.registerForm.value)
+                        .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["first"])())
+                        .subscribe(function (data) {
+                        console.log("[CLIENTE] Cita registrada.");
+                        _this.success = "Cita registrada correctamente.";
+                    }, function (error) {
+                        _this.error = error;
+                        _this.loading = false;
+                    });
+                };
                 return RegistrarCitaComponent;
             }());
             RegistrarCitaComponent.ctorParameters = function () { return [
-                { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] }
+                { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
+                { type: _services__WEBPACK_IMPORTED_MODULE_4__["CitasService"] },
+                { type: _services__WEBPACK_IMPORTED_MODULE_4__["AuthService"] }
             ]; };
             RegistrarCitaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1726,7 +1786,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = (".example-container {\n    display: flex;\n    flex-direction: column;\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    background: #23C185;\n  }\n .mat-toolbar.mat-primary{\n  background: #23C185;\n  color: #fff;\n }\n .example-is-mobile .example-toolbar {\n    position: fixed;\n    /* Make sure the toolbar will stay on top of the content as it scrolls past. */\n    z-index: 2;\n    width: 60%;\n  }\n .mat-icon{\n  position: right;\n  background-color: rgb(241, 241, 241);\n}\n h1.example-app-name {\n    margin-left: 8px;\n  }\n .example-sidenav-container {\n    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This\n       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */\n    flex: 1;\n\n  }\n .mat-sidenav{\n    background: rgb(241, 241, 241);\n  }\n .example-is-mobile .example-sidenav-container {\n    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the\n       `<body>` to be our scrolling element for mobile layouts. */\n    flex: 1 0 auto;\n\n  }  \n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zaWRlbmF2L3NpZGVuYXYuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGFBQWE7SUFDYixzQkFBc0I7SUFDdEIsa0JBQWtCO0lBQ2xCLE1BQU07SUFDTixTQUFTO0lBQ1QsT0FBTztJQUNQLFFBQVE7SUFDUixtQkFBbUI7RUFDckI7Q0FDRDtFQUNDLG1CQUFtQjtFQUNuQixXQUFXO0NBQ1o7Q0FDQztJQUNFLGVBQWU7SUFDZiw4RUFBOEU7SUFDOUUsVUFBVTtJQUNWLFVBQVU7RUFDWjtDQUNGO0VBQ0UsZUFBZTtFQUNmLG9DQUFvQztBQUN0QztDQUdFO0lBQ0UsZ0JBQWdCO0VBQ2xCO0NBRUE7SUFDRTs0RkFDd0Y7SUFDeEYsT0FBTzs7RUFFVDtDQUNBO0lBQ0UsOEJBQThCO0VBQ2hDO0NBRUE7SUFDRTtpRUFDNkQ7SUFDN0QsY0FBYzs7RUFFaEIiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL3NpZGVuYXYvc2lkZW5hdi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmV4YW1wbGUtY29udGFpbmVyIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIHRvcDogMDtcbiAgICBib3R0b206IDA7XG4gICAgbGVmdDogMDtcbiAgICByaWdodDogMDtcbiAgICBiYWNrZ3JvdW5kOiAjMjNDMTg1O1xuICB9XG4gLm1hdC10b29sYmFyLm1hdC1wcmltYXJ5e1xuICBiYWNrZ3JvdW5kOiAjMjNDMTg1O1xuICBjb2xvcjogI2ZmZjtcbiB9XG4gIC5leGFtcGxlLWlzLW1vYmlsZSAuZXhhbXBsZS10b29sYmFyIHtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgLyogTWFrZSBzdXJlIHRoZSB0b29sYmFyIHdpbGwgc3RheSBvbiB0b3Agb2YgdGhlIGNvbnRlbnQgYXMgaXQgc2Nyb2xscyBwYXN0LiAqL1xuICAgIHotaW5kZXg6IDI7XG4gICAgd2lkdGg6IDYwJTtcbiAgfVxuLm1hdC1pY29ue1xuICBwb3NpdGlvbjogcmlnaHQ7XG4gIGJhY2tncm91bmQtY29sb3I6IHJnYigyNDEsIDI0MSwgMjQxKTtcbn1cblxuXG4gIGgxLmV4YW1wbGUtYXBwLW5hbWUge1xuICAgIG1hcmdpbi1sZWZ0OiA4cHg7XG4gIH1cbiBcbiAgLmV4YW1wbGUtc2lkZW5hdi1jb250YWluZXIge1xuICAgIC8qIFdoZW4gdGhlIHNpZGVuYXYgaXMgbm90IGZpeGVkLCBzdHJldGNoIHRoZSBzaWRlbmF2IGNvbnRhaW5lciB0byBmaWxsIHRoZSBhdmFpbGFibGUgc3BhY2UuIFRoaXNcbiAgICAgICBjYXVzZXMgYDxtYXQtc2lkZW5hdi1jb250ZW50PmAgdG8gYWN0IGFzIG91ciBzY3JvbGxpbmcgZWxlbWVudCBmb3IgZGVza3RvcCBsYXlvdXRzLiAqL1xuICAgIGZsZXg6IDE7XG5cbiAgfVxuICAubWF0LXNpZGVuYXZ7XG4gICAgYmFja2dyb3VuZDogcmdiKDI0MSwgMjQxLCAyNDEpO1xuICB9XG4gIFxuICAuZXhhbXBsZS1pcy1tb2JpbGUgLmV4YW1wbGUtc2lkZW5hdi1jb250YWluZXIge1xuICAgIC8qIFdoZW4gdGhlIHNpZGVuYXYgaXMgZml4ZWQsIGRvbid0IGNvbnN0cmFpbiB0aGUgaGVpZ2h0IG9mIHRoZSBzaWRlbmF2IGNvbnRhaW5lci4gVGhpcyBhbGxvd3MgdGhlXG4gICAgICAgYDxib2R5PmAgdG8gYmUgb3VyIHNjcm9sbGluZyBlbGVtZW50IGZvciBtb2JpbGUgbGF5b3V0cy4gKi9cbiAgICBmbGV4OiAxIDAgYXV0bztcblxuICB9ICAiXX0= */");
+            /* harmony default export */ __webpack_exports__["default"] = (".example-container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    background: #23C185;\r\n  }\r\n .mat-toolbar.mat-primary{\r\n  background: #23C185;\r\n  color: #fff;\r\n }\r\n .example-is-mobile .example-toolbar {\r\n    position: fixed;\r\n    /* Make sure the toolbar will stay on top of the content as it scrolls past. */\r\n    z-index: 2;\r\n    width: 60%;\r\n  }\r\n .mat-icon{\r\n  position: right;\r\n  background-color: rgb(241, 241, 241);\r\n}\r\n h1.example-app-name {\r\n    margin-left: 8px;\r\n  }\r\n .example-sidenav-container {\r\n    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This\r\n       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */\r\n    flex: 1;\r\n\r\n  }\r\n .mat-sidenav{\r\n    background: rgb(241, 241, 241);\r\n  }\r\n .example-is-mobile .example-sidenav-container {\r\n    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the\r\n       `<body>` to be our scrolling element for mobile layouts. */\r\n    flex: 1 0 auto;\r\n\r\n  }  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zaWRlbmF2L3NpZGVuYXYuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGFBQWE7SUFDYixzQkFBc0I7SUFDdEIsa0JBQWtCO0lBQ2xCLE1BQU07SUFDTixTQUFTO0lBQ1QsT0FBTztJQUNQLFFBQVE7SUFDUixtQkFBbUI7RUFDckI7Q0FDRDtFQUNDLG1CQUFtQjtFQUNuQixXQUFXO0NBQ1o7Q0FDQztJQUNFLGVBQWU7SUFDZiw4RUFBOEU7SUFDOUUsVUFBVTtJQUNWLFVBQVU7RUFDWjtDQUNGO0VBQ0UsZUFBZTtFQUNmLG9DQUFvQztBQUN0QztDQUdFO0lBQ0UsZ0JBQWdCO0VBQ2xCO0NBRUE7SUFDRTs0RkFDd0Y7SUFDeEYsT0FBTzs7RUFFVDtDQUNBO0lBQ0UsOEJBQThCO0VBQ2hDO0NBRUE7SUFDRTtpRUFDNkQ7SUFDN0QsY0FBYzs7RUFFaEIiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL3NpZGVuYXYvc2lkZW5hdi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmV4YW1wbGUtY29udGFpbmVyIHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgdG9wOiAwO1xyXG4gICAgYm90dG9tOiAwO1xyXG4gICAgbGVmdDogMDtcclxuICAgIHJpZ2h0OiAwO1xyXG4gICAgYmFja2dyb3VuZDogIzIzQzE4NTtcclxuICB9XHJcbiAubWF0LXRvb2xiYXIubWF0LXByaW1hcnl7XHJcbiAgYmFja2dyb3VuZDogIzIzQzE4NTtcclxuICBjb2xvcjogI2ZmZjtcclxuIH1cclxuICAuZXhhbXBsZS1pcy1tb2JpbGUgLmV4YW1wbGUtdG9vbGJhciB7XHJcbiAgICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgICAvKiBNYWtlIHN1cmUgdGhlIHRvb2xiYXIgd2lsbCBzdGF5IG9uIHRvcCBvZiB0aGUgY29udGVudCBhcyBpdCBzY3JvbGxzIHBhc3QuICovXHJcbiAgICB6LWluZGV4OiAyO1xyXG4gICAgd2lkdGg6IDYwJTtcclxuICB9XHJcbi5tYXQtaWNvbntcclxuICBwb3NpdGlvbjogcmlnaHQ7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDI0MSwgMjQxLCAyNDEpO1xyXG59XHJcblxyXG5cclxuICBoMS5leGFtcGxlLWFwcC1uYW1lIHtcclxuICAgIG1hcmdpbi1sZWZ0OiA4cHg7XHJcbiAgfVxyXG4gXHJcbiAgLmV4YW1wbGUtc2lkZW5hdi1jb250YWluZXIge1xyXG4gICAgLyogV2hlbiB0aGUgc2lkZW5hdiBpcyBub3QgZml4ZWQsIHN0cmV0Y2ggdGhlIHNpZGVuYXYgY29udGFpbmVyIHRvIGZpbGwgdGhlIGF2YWlsYWJsZSBzcGFjZS4gVGhpc1xyXG4gICAgICAgY2F1c2VzIGA8bWF0LXNpZGVuYXYtY29udGVudD5gIHRvIGFjdCBhcyBvdXIgc2Nyb2xsaW5nIGVsZW1lbnQgZm9yIGRlc2t0b3AgbGF5b3V0cy4gKi9cclxuICAgIGZsZXg6IDE7XHJcblxyXG4gIH1cclxuICAubWF0LXNpZGVuYXZ7XHJcbiAgICBiYWNrZ3JvdW5kOiByZ2IoMjQxLCAyNDEsIDI0MSk7XHJcbiAgfVxyXG4gIFxyXG4gIC5leGFtcGxlLWlzLW1vYmlsZSAuZXhhbXBsZS1zaWRlbmF2LWNvbnRhaW5lciB7XHJcbiAgICAvKiBXaGVuIHRoZSBzaWRlbmF2IGlzIGZpeGVkLCBkb24ndCBjb25zdHJhaW4gdGhlIGhlaWdodCBvZiB0aGUgc2lkZW5hdiBjb250YWluZXIuIFRoaXMgYWxsb3dzIHRoZVxyXG4gICAgICAgYDxib2R5PmAgdG8gYmUgb3VyIHNjcm9sbGluZyBlbGVtZW50IGZvciBtb2JpbGUgbGF5b3V0cy4gKi9cclxuICAgIGZsZXg6IDEgMCBhdXRvO1xyXG5cclxuICB9ICAiXX0= */");
             /***/ 
         }),
         /***/ "./src/app/components/sidenav/sidenav.component.ts": 
@@ -1745,9 +1805,8 @@
             var SidenavComponent = /** @class */ (function () {
                 function SidenavComponent(changeDetectorRef, media, authService) {
                     this.fillerNav = [
-                        { name: "Historial de citas", route: "citas", icon: "assignment" },
-                        { name: "Registrar cita", route: "RegistrarCita", icon: "autorenew" },
-                        { name: "Cancelar cita", icon: "delete_outline" },
+                        { name: "Citas", route: "citas", icon: "assignment" },
+                        { name: "Registrar Cita", route: "RegistrarCita", icon: "edit" },
                         { name: "Salir", route: "/", icon: "logout" }
                     ];
                     this.fillerContent = Array.from({ length: 50 }, function () { return "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco\n       laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in\n       voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat\n       cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."; });
@@ -1908,7 +1967,7 @@
           \***************************/
         /*! no static exports found */
         /***/ (function (module, exports, __webpack_require__) {
-            module.exports = __webpack_require__(/*! C:\Users\Oscar\git\eSalud\src\main\webapp\src\main.ts */ "./src/main.ts");
+            module.exports = __webpack_require__(/*! C:\Users\luisj\Documents\GitHub\eSalud\src\main\webapp\src\main.ts */ "./src/main.ts");
             /***/ 
         })
     }, [[0, "runtime", "vendor"]]]);
