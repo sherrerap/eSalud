@@ -83,11 +83,14 @@ public class CitaController {
 
         // Depende de los campos que queramos que puedan actualizarse
         String paciente = jso.getString("paciente");
-        String médico = jso.getString("médico");
+        
+        
         String fecha = jso.getString("fecha");
         String hora = jso.getString("hora");
         String tipo = jso.getString("tipo");
         String centro = jso.getString("centro");
+        System.out.println(paciente+" "+fecha+" "+hora+" "+tipo+" "+centro);
+        String médico = jso.getString("médico");
 
         try {
           Usuario usuarioPaciente = usuarioService.findByUserDni(paciente);

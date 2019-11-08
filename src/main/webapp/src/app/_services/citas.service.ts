@@ -23,8 +23,8 @@ export class CitasService {
         return this.http.post(`${environment.apiUrl}/citas`, cita);
     }
 
-    update(cita) {
-        return this.http.post(`${environment.apiUrl}/citas`, cita);
+    update(cita,id) {
+        return this.http.put(`${environment.apiUrl}/citas/${id}`, cita);
     }
 
     delete(idCita) {

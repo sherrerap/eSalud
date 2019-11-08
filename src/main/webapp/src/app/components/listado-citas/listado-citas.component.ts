@@ -4,6 +4,7 @@ import { CitasService } from 'src/app/_services';
 import { first } from 'rxjs/operators';
 import { AuthService } from 'src/app/_services/auth.service';
 import { DialogBoxModificarCita } from '../dialog-box-modificarCita/dialog-box-modificarCita.component';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 
 export interface PeriodicElement {
@@ -12,6 +13,7 @@ export interface PeriodicElement {
   centro: string;
   fecha: string;
   hora: string;
+  médico: string;
 }
 
 @Component({
@@ -23,12 +25,18 @@ export class ListadoCitasComponent implements OnInit {
   displayedColumns: string[] = ['tipo', 'centro', 'fecha', 'hora','action'];
   dataSource = new MatTableDataSource<PeriodicElement>();
   data: PeriodicElement[];
+  submitted = false;
+  error: string;
+  success: string;
+  loading = false;
+  citaForm: FormGroup;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   constructor(
     private citasService: CitasService,
     private authService: AuthService,
-	public dialog: MatDialog
+	public dialog: MatDialog,
+	private formBuilder: FormBuilder,
   ) {
 
   }
@@ -64,9 +72,32 @@ export class ListadoCitasComponent implements OnInit {
         value.centro =row_obj.centro;
 		value.fecha =row_obj.fecha;
 		value.hora= row_obj.hora;
+		value.médico=row_obj.médico;
       }
       return true;
     });
+	    this.submitted = true;
+        this.success = null;
+		this.citaForm = this.formBuilder.group({
+            id: row_obj.id,
+            tipo:  row_obj.tipo,
+			centro: row_obj.centro,
+			fecha: row_obj.fecha,
+			hora: row_obj.hora,
+			paciente: row_obj.paciente,
+			médico: row_obj.médico
+        });
+        this.citasService.update(this.citaForm.value,this.citaForm.controls.id.value)
+            .pipe(first())
+            .subscribe(
+                data => {
+                    console.log("[CLIENTE] Cita actualizada.")
+                    this.success = "Cita actualizada correctamente."
+                },
+                error => {
+                    this.error = error;
+                    this.loading = false;
+                });
   }
   deleteRowData(row_obj){
     this.data = this.data.filter((value,key)=>{
