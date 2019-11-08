@@ -52,7 +52,7 @@ public class UsuarioController {
 
 	@RequestMapping(value = "/rol/{rol}", method = RequestMethod.GET)
 	public ResponseEntity<List<Usuario>> getUsersByRole(@PathVariable String rol) {
-		List<Usuario> usuarios = usersService.getUsersByRole(rol);
+		List<Usuario> usuarios = usersService.getUsersByRol(rol);
 		log.info("[SERVER] Numero de usuarios con rol " + rol +" encontrado: "+usuarios.size());
 		return ResponseEntity.ok(usuarios);
 	}

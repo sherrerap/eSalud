@@ -100,11 +100,4 @@ public class UsuarioServiceImpl implements UsuarioService {
 		List<Usuario> usersRol = userRepository.findByRol(rol);
 		return usersRol;
 	}
-
-@Override
-public List<Usuario> getUsersByRole(String rol) {
-	List<Usuario> usuarios= userRepository.findByRole(rol);
-	return usuarios;
-}
-
 }
