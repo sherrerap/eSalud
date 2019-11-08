@@ -1,18 +1,13 @@
 <h1 mat-dialog-title><strong>Modificar cita</strong></h1>
-<div class="container">	
+<div class="container">
 
-	<input type="date" matInput [(ngModel)]="local_data.fechacita" formControlName="fechacita" min="2019-11-02" max="2021-11-26" class="form-control"
-		[ngClass]="{ 'is-invalid': submitted && f.fechacita.errors }" />
-	<div *ngIf="submitted && f.fechacita.errors" class="invalid-feedback">
-		<div *ngIf="f.fechacita.errors.required">Selecciona una fecha valida</div>
-	</div>
-	
-	<input type="time" placeholder="Hora" matInput [(ngModel)]="local_data.horacita" formControlName="horacita" min="08:00" max="14:30" class="form-control"
-		[ngClass]="{ 'is-invalid': submitted && f.horacita.errors }" />
-	<div *ngIf="submitted && f.horacita.errors" class="invalid-feedback">
-		<div *ngIf="f.horacita.errors.required">Selecciona una fecha valida</div>
-	</div>
-	
+	<mat-form-field *ngIf="action != 'Delete'; else elseTemplate">
+		<input placeholder="Dni" matInput [(ngModel)]="local_data.tipo">
+	</mat-form-field>
+	<mat-form-field *ngIf="action != 'Delete'">
+		<input placeholder="Nombre" matInput [(ngModel)]="local_data.tipo">
+	</mat-form-field>
+
 	<ng-template #elseTemplate>
 		¿Confirma que quiere modificar la cita<b>{{local_data.name}}</b>?
 	</ng-template>

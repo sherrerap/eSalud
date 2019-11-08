@@ -59,7 +59,8 @@ import { RegistrarCitaComponent } from './components/paciente-RegistrarCita/Regi
   ],
   entryComponents: [
     DialogBoxPacienteComponent,
-    DialogBoxMedicoComponent
+    DialogBoxMedicoComponent,
+	DialogBoxModificarCita,
 
   ],
   providers: [
