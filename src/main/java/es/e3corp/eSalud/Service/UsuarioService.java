@@ -7,15 +7,15 @@ import es.e3corp.eSalud.model.Usuario;
 
 public interface UsuarioService {
 
-  List<Usuario> findAll();
+	List<Usuario> findAll();
 
-  Usuario findByUserDni(String dni);
+	Usuario findByUserDni(String dni);
 
-  void saveUsuario(Usuario usuario);
+	void saveUsuario(Usuario usuario);
 
-  void updateUsuario(Usuario usuario);
+	void updateUsuario(Usuario usuario);
 
-  void deleteUsuario(String userId);
+	void deleteUsuario(String userId);
 
   Usuario getUserByDniAndPassword(String dni, String password);
   

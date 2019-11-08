@@ -1,32 +1,23 @@
-<h1 mat-dialog-title><strong>Modificar cita</strong></h1>
+<h1 mat-dialog-title><strong>Opciones citas</strong></h1>
 <div class="container">
-	<select input="text" class="form-control" formControlName="hora"
-		[ngClass]="{ 'is-invalid': submitted && f.hora.errors }">
-		<option value="">Seleccionar</option>
-		<option value="Cabecera">Cabecera</option>
-		<option value="Enfermero">Enfermero</option>
-		<option value="Pediatría">Pediatría</option>
-		<option value="Traumatología">Traumatología</option>
 
-	</select>
-	<div *ngIf="submitted && f.hora.errors" class="invalid-feedback">
-		<div *ngIf="f.hora.errors.required">Seleccione una hora</div>
-	</div>
-	
-	<select input="text" class="form-control" formControlName="fecha"
-		[ngClass]="{ 'is-invalid': submitted && f.fecha.errors }">
-		<option value="">Seleccionar</option>
-		<option value="Cabecera">Cabecera</option>
-		<option value="Enfermero">Enfermero</option>
-		<option value="Pediatría">Pediatría</option>
-		<option value="Traumatología">Traumatología</option>
+	<mat-form-field *ngIf="action != 'Delete'; else elseTemplate">
+		<input type="date" placeholder="Fecha" min="2019-11-02" max="2021-11-26" class="form-control" matInput
+			[(ngModel)]="local_data.fecha" [ngClass]="{ 'is-invalid': submitted && f.fechacita.errors }" />
+		<div *ngIf="submitted && f.fechacita.errors" class="invalid-feedback">
+			<div *ngIf="f.fechacita.errors.required">Selecciona una fecha valida</div>
+		</div>
+	</mat-form-field>
+	<mat-form-field *ngIf="action != 'Delete'">
+		<input type="time" placeholder="Hora" min="8:00" max="18:00" class="form-control" matInput
+		[(ngModel)]="local_data.hora" [ngClass]="{ 'is-invalid': submitted && f.hora.errors }" />
+		<div *ngIf="submitted && f.hora.errors" class="invalid-feedback">
+			<div *ngIf="f.hora.errors.required">Selecciona una hora valida</div>
+		</div>
+	</mat-form-field>
 
-	</select>
-	<div *ngIf="submitted && f.fecha.errors" class="invalid-feedback">
-		<div *ngIf="f.fecha.errors.required">Seleccione una fecha</div>
-	</div>
 	<ng-template #elseTemplate>
-		¿Confirma que quiere modificar la cita<b>{{local_data.name}}</b>?
+		¿Confirma que quiere eliminar la cita<b>{{local_data.name}}</b>?
 	</ng-template>
 </div>
 <div mat-dialog-actions-center>

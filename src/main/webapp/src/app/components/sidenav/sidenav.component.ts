@@ -15,9 +15,8 @@ export class SidenavComponent implements OnInit {
   mobileQuery: MediaQueryList;
 
   fillerNav = [
-    { name: "Historial de citas", route: "citas", icon: "assignment" },
-    { name: "Registrar cita", route:"RegistrarCita", icon: "autorenew" },
-    { name: "Cancelar cita", icon: "delete_outline" },
+    { name: "Citas", route: "citas", icon: "assignment" },
+    { name: "Registrar Cita", route: "RegistrarCita", icon: "edit" },
     { name: "Salir", route: "/", icon: "logout" }
   ]
 
@@ -46,8 +45,8 @@ export class SidenavComponent implements OnInit {
   shouldRun = true;
   ngOnInit() {
   }
- 
-  desconectar() { 
+
+  desconectar() {
     this.authService.logout();
   }
 }

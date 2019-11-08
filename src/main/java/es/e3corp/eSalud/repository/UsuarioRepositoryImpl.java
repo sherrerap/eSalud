@@ -23,49 +23,49 @@ import org.springframework.data.mongodb.core.query.Query;
 
 public class UsuarioRepositoryImpl implements UsuarioRepository {
 
-  private final MongoOperations mongoOperations;
+	private final MongoOperations mongoOperations;
 
-  @Autowired
+	@Autowired
 
-  public UsuarioRepositoryImpl(MongoOperations mongoOperations) {
-    Assert.notNull(mongoOperations, "notNull");
-    this.mongoOperations = mongoOperations;
+	public UsuarioRepositoryImpl(MongoOperations mongoOperations) {
+		Assert.notNull(mongoOperations, "notNull");
+		this.mongoOperations = mongoOperations;
 
-  }
+	}
 
-  // Find all users
+	// Find all users
 
-  public Optional<List<Usuario>> findAll() {
+	public Optional<List<Usuario>> findAll() {
 
-    List<Usuario> users = this.mongoOperations.find(new Query(), Usuario.class);
+		List<Usuario> users = this.mongoOperations.find(new Query(), Usuario.class);
 
-    Optional<List<Usuario>> optionalUsuarios = Optional.ofNullable(users);
+		Optional<List<Usuario>> optionalUsuarios = Optional.ofNullable(users);
 
-    return optionalUsuarios;
+		return optionalUsuarios;
 
-  }
+	}
 
-  public Optional<Usuario> findOne(String dni) {
-    Usuario d = this.mongoOperations.findOne(new Query(Criteria.where("dni").is(dni)), Usuario.class);
-    Optional<Usuario> usuario = Optional.ofNullable(d);
-    return usuario;
-  }
+	public Optional<Usuario> findOne(String dni) {
+		Usuario d = this.mongoOperations.findOne(new Query(Criteria.where("dni").is(dni)), Usuario.class);
+		Optional<Usuario> usuario = Optional.ofNullable(d);
+		return usuario;
+	}
 
-  public void saveUsuario(Usuario usuario) {
-    this.mongoOperations.save(usuario);
-  }
+	public void saveUsuario(Usuario usuario) {
+		this.mongoOperations.save(usuario);
+	}
 
-  public void updateUsuario(Usuario usuario) {
+	public void updateUsuario(Usuario usuario) {
 
-    this.mongoOperations.save(usuario);
+		this.mongoOperations.save(usuario);
 
-  }
+	}
 
-  public void deleteUsuario(String id) {
+	public void deleteUsuario(String id) {
 
-    this.mongoOperations.findAndRemove(new Query(Criteria.where("id").is(id)), Usuario.class);
+		this.mongoOperations.findAndRemove(new Query(Criteria.where("id").is(id)), Usuario.class);
 
-  }
+	}
 
   @Override
   public Usuario findByDniAndContraseña(String dni, String contraseña) {

@@ -10,6 +10,9 @@ export class UserService {
     getAll() {
         return this.http.get<any[]>(`${environment.apiUrl}/usuarios`);
     }
+    getUsersByRole(rol) {
+        return this.http.get<any[]>(`${environment.apiUrl}/usuarios/rol/${rol}`);
+    }
 
     register(user) {
         return this.http.post(`${environment.apiUrl}/usuarios`, user);

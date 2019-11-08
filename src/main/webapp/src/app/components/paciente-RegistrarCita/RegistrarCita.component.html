@@ -9,7 +9,7 @@
                     <label for="fname">Tipo de Cita:</label>
                 </div>
                 <div class="col-75">
-                    <select input="text" class="form-control" formControlName="tipocita" [ngClass]="{ 'is-invalid': submitted && f.especialidadcita.errors }">
+                    <select input="text" class="form-control" formControlName="tipo" [ngClass]="{ 'is-invalid': submitted && f.especialidad.errors }">
           					      <option value="">Selecciona el tipo de cita</option>
           					      <option value="Cabecera">Cabecera</option>
           						  <option value="Especialidad">Especialidad</option>
@@ -17,8 +17,8 @@
           						  <option value="Reabilitación">Reabilitación</option>				      
           					      
           					    </select>
-                    <div *ngIf="submitted && f.tipocita.errors" class="invalid-feedback">
-                        <div *ngIf="f.tipocita.errors.required">Seleccione un tipo de cita</div>
+                    <div *ngIf="submitted && f.tipo.errors" class="invalid-feedback">
+                        <div *ngIf="f.tipo.errors.required">Seleccione un tipo de cita</div>
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                     <label for="fname">Especialidad:</label>
                 </div>
                 <div class="col-75">
-                    <select input="text" class="form-control" formControlName="especialidadcita" [ngClass]="{ 'is-invalid': submitted && f.especialidadcita.errors }">
+                    <select input="text" class="form-control" formControlName="especialidad" [ngClass]="{ 'is-invalid': submitted && f.especialidad.errors }">
           					      <option value="">Selecciona la especialidad</option>
           					      <option value="Cabecera">Dermatologia</option>
           						  <option value="Enfermero">Traumatología</option>
@@ -39,8 +39,8 @@
           					      <option value="Pediatría">Alergología</option>
           						  <option value="Traumatología">Endocrinología</option>
           					    </select>
-                    <div *ngIf="submitted && f.especialidadcita.errors" class="invalid-feedback">
-                        <div *ngIf="f.especialidadcita.errors.required">Seleccione una especialidad</div>
+                    <div *ngIf="submitted && f.especialidad.errors" class="invalid-feedback">
+                        <div *ngIf="f.especialidad.errors.required">Seleccione una especialidad</div>
                     </div>
                 </div>
             </div>
@@ -49,13 +49,13 @@
                     <label for="fname">Médico:</label>
                 </div>
                 <div class="col-75">
-                    <select input="text" class="form-control" formControlName="medicocita" [ngClass]="{ 'is-invalid': submitted && f.medicocita.errors }">
+                    <select input="text" class="form-control" formControlName="medico" [ngClass]="{ 'is-invalid': submitted && f.medico.errors }">
                                     <option value="">Selecciona un médico</option>
-                                    <option value="Medico1">Médico prueba 1</option>
-                                    <option value="Medico2">Médico prueba 2</option>				      
+                                    <option value="05123456">Médico 1</option>
+                                    <option value="Medico2">Médico 2</option>				      
                                     </select>
-                    <div *ngIf="submitted && f.medicocita.errors" class="invalid-feedback">
-                        <div *ngIf="f.medicocita.errors.required">Selecciona un médico</div>
+                    <div *ngIf="submitted && f.medico.errors" class="invalid-feedback">
+                        <div *ngIf="f.medico.errors.required">Selecciona un médico</div>
                     </div>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                     <label for="fname">Fecha:</label>
                 </div>
                 <div class="col-75">
-                    <input type="date" placeholder="Fecha" formControlName="fechacita" min="2019-11-02" max="2021-11-26" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fechacita.errors }" />
+                    <input type="date" formControlName="fecha" min="2019-11-02" max="2021-11-26" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fechacita.errors }" />
                     <div *ngIf="submitted && f.fechacita.errors" class="invalid-feedback">
                         <div *ngIf="f.fechacita.errors.required">Selecciona una fecha valida</div>
                     </div>
@@ -75,15 +75,16 @@
                     <label for="fname">Hora:</label>
                 </div>
                 <div class="col-75">
-                    <input type="time" placeholder="Hora" formControlName="horacita" min="08:00" max="14:30" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.horacita.errors }" />
-                    <div *ngIf="submitted && f.horacita.errors" class="invalid-feedback">
-                        <div *ngIf="f.horacita.errors.required">Selecciona una fecha valida</div>
+                    <input type="time" placeholder="Hora" formControlName="hora" min="08:00" max="14:30" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.hora.errors }" />
+                    <div *ngIf="submitted && f.hora.errors" class="invalid-feedback">
+                        <div *ngIf="f.hora.errors.required">Selecciona una fecha valida</div>
                     </div>
+					
                 </div>
             </div>
-        <div class="row justify-content-center"> 
-            <p><input type="submit" value="Registrar cita " class="button2"></p>
-            <p><input type="submit" value="Cancelar  " class="button1"></p>
+            <div class="row justify-content-center">
+                <p><input type="submit" value="Registrar cita " class="button2"></p>
+                <p><input type="submit" value="Cancelar  " class="button1"></p>
+            </div>
         </div>
-	</div>
     </form>

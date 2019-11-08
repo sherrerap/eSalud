@@ -17,6 +17,7 @@ import { MostrarMedicoComponent } from './components/admin-MostrarMedico/Mostrar
 import { RegistrarMedicoComponent } from './components/admin-RegistrarMedico/RegistrarMedico.component';
 import { DialogBoxPacienteComponent } from './components/dialog-box-paciente/dialog-box-paciente.component';
 import { DialogBoxMedicoComponent } from './components/dialog-box-medico/dialog-box-medico.component';
+import { DialogBoxModificarCita} from './components/dialog-box-modificarCita/dialog-box-modificarCita.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { RegistrarCitaComponent } from './components/paciente-RegistrarCita/RegistrarCita.component';
 
@@ -33,6 +34,7 @@ import { RegistrarCitaComponent } from './components/paciente-RegistrarCita/Regi
     RegistrarMedicoComponent,
     DialogBoxPacienteComponent,
     DialogBoxMedicoComponent,
+	DialogBoxModificarCita,
     AlertComponent,
     RegistrarCitaComponent
   ],
@@ -57,7 +59,8 @@ import { RegistrarCitaComponent } from './components/paciente-RegistrarCita/Regi
   ],
   entryComponents: [
     DialogBoxPacienteComponent,
-    DialogBoxMedicoComponent
+    DialogBoxMedicoComponent,
+	DialogBoxModificarCita,
 
   ],
   providers: [

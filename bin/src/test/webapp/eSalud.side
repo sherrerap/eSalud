@@ -1,0 +1,1443 @@
+{
+  "id": "370ecf69-8ed9-472e-a924-3dad0b356f0a",
+  "version": "2.0",
+  "name": "eSalud",
+  "url": "https://esalud.herokuapp.com/citas",
+  "tests": [{
+    "id": "4b37f916-19ca-4ceb-be1b-ef777c82a25e",
+    "name": "Acceso sin datos",
+    "commands": [{
+      "id": "15525566-6b5d-41e3-989c-bce3ad1fd8a7",
+      "comment": "",
+      "command": "open",
+      "target": "https://esalud.herokuapp.com/auth/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fde747f5-d498-4332-97d2-8bdd59c987fa",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x840",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d054fb5e-3c90-46ef-af23-aeb3fb273f5c",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(1) > input",
+      "targets": [
+        ["css=p:nth-child(1) > input", "css:finder"],
+        ["xpath=//input[@value='Acceder']", "xpath:attributes"],
+        ["xpath=//p/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "6dfde275-b7a4-43da-8c72-b6c2dc50451e",
+    "name": "Citas Test (logueado)",
+    "commands": [{
+      "id": "7ac0e9f4-44f2-4380-9b3d-6916ab3c96c7",
+      "comment": "",
+      "command": "open",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a7ed7965-094c-4ae1-ad64-55158a39ccd9",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "75cab6d0-42bd-433b-9484-6041da6df771",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "b3be251a-db4f-458f-a90c-53c656f8c271",
+    "name": "Acceso con DNI",
+    "commands": [{
+      "id": "0b8dc4fd-f886-4103-9257-1be449515097",
+      "comment": "",
+      "command": "open",
+      "target": "https://esalud.herokuapp.com/auth/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7adcf0ba-6d2a-47a4-9899-97f2b9265358",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1053x807",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f6e813d5-42ea-4704-9cc3-d3a33d31c14a",
+      "comment": "",
+      "command": "click",
+      "target": "id=dni",
+      "targets": [
+        ["id=dni", "id"],
+        ["css=#dni", "css:finder"],
+        ["xpath=//input[@id='dni']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "465615a3-5d13-45a9-9214-df6198c0a6a3",
+      "comment": "",
+      "command": "type",
+      "target": "id=dni",
+      "targets": [
+        ["id=dni", "id"],
+        ["css=#dni", "css:finder"],
+        ["xpath=//input[@id='dni']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "1"
+    }, {
+      "id": "01508633-00af-41bf-8fe8-399726614c5c",
+      "comment": "",
+      "command": "click",
+      "target": "css=app-login",
+      "targets": [
+        ["css=app-login", "css:finder"],
+        ["xpath=//app-login", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7207514c-2af9-4b0c-816d-d1811d3ce528",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(1) > input",
+      "targets": [
+        ["css=p:nth-child(1) > input", "css:finder"],
+        ["xpath=//input[@value='Acceder']", "xpath:attributes"],
+        ["xpath=//p/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f5b75345-dd51-41e9-9698-b7a7ee9ebdc7",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=p:nth-child(1) > input",
+      "targets": [
+        ["css=p:nth-child(1) > input", "css:finder"],
+        ["xpath=//input[@value='Acceder']", "xpath:attributes"],
+        ["xpath=//p/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "944cdd6e-adc2-4c0e-8903-d5dd3d81a38f",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=p:nth-child(1) > input",
+      "targets": [
+        ["css=p:nth-child(1) > input", "css:finder"],
+        ["xpath=//input[@value='Acceder']", "xpath:attributes"],
+        ["xpath=//p/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "9d0f6727-d2e4-4102-925b-536dfeeac7ba",
+    "name": "Acceso con datos erróneos",
+    "commands": [{
+      "id": "b6dd74a0-9339-4504-9116-44b277b817a8",
+      "comment": "",
+      "command": "open",
+      "target": "https://esalud.herokuapp.com/auth/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b02a90bf-9110-46a6-b950-a3318d8256a7",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1057x808",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2001bad9-961d-4f5c-abef-b4c57dae0057",
+      "comment": "",
+      "command": "click",
+      "target": "id=dni",
+      "targets": [
+        ["id=dni", "id"],
+        ["css=#dni", "css:finder"],
+        ["xpath=//input[@id='dni']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "959b66b2-7841-4bdf-873e-14aaeae09e9e",
+      "comment": "",
+      "command": "type",
+      "target": "id=dni",
+      "targets": [
+        ["id=dni", "id"],
+        ["css=#dni", "css:finder"],
+        ["xpath=//input[@id='dni']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "2357"
+    }, {
+      "id": "e664e003-f0bb-44e8-8d2b-d8bf9eb5eb19",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "Sdjhfhnjiad"
+    }, {
+      "id": "6de0b5fd-5281-4c19-ad6b-7b3d754b2e23",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(1) > input",
+      "targets": [
+        ["css=p:nth-child(1) > input", "css:finder"],
+        ["xpath=//input[@value='Acceder']", "xpath:attributes"],
+        ["xpath=//p/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "67284199-442e-4a97-aba0-d08208969c9b",
+    "name": "Acceso correcto",
+    "commands": [{
+      "id": "3789f8fe-9b79-435b-bcec-2eb8bccf6932",
+      "comment": "",
+      "command": "open",
+      "target": "https://esalud.herokuapp.com/auth/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b34e5150-c128-4997-935d-18d7a59cd0ea",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1058x810",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a9861678-78bb-48d1-b254-89b63656c94f",
+      "comment": "",
+      "command": "click",
+      "target": "id=dni",
+      "targets": [
+        ["id=dni", "id"],
+        ["css=#dni", "css:finder"],
+        ["xpath=//input[@id='dni']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b519f7de-28b9-4d75-b043-8aa735e36e4c",
+      "comment": "",
+      "command": "type",
+      "target": "id=dni",
+      "targets": [
+        ["id=dni", "id"],
+        ["css=#dni", "css:finder"],
+        ["xpath=//input[@id='dni']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "1"
+    }, {
+      "id": "6d554672-7e39-4102-a075-5d8310f651b1",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "1"
+    }, {
+      "id": "bea65b44-3939-46a0-a56a-590c5bc69b50",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(1) > input",
+      "targets": [
+        ["css=p:nth-child(1) > input", "css:finder"],
+        ["xpath=//input[@value='Acceder']", "xpath:attributes"],
+        ["xpath=//p/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "e7e4c831-ad00-43c3-bb47-ad91c330a09f",
+    "name": "Pantalla Registro",
+    "commands": [{
+      "id": "250c6e13-8720-4f95-a2b7-70323be0c28e",
+      "comment": "",
+      "command": "open",
+      "target": "https://esalud.herokuapp.com/auth/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cd03f155-5a55-4a33-afa6-6d3f728f54a8",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1053x807",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "db63608c-66d5-46dd-8558-9ffa71e04630",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(2) > .btn",
+      "targets": [
+        ["css=p:nth-child(2) > .btn", "css:finder"],
+        ["xpath=//input[@value='Registrarse']", "xpath:attributes"],
+        ["xpath=//p[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "56821630-036f-4a3a-8fb7-673a20954e85",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "47c2dbb2-9443-44ee-a4cb-0c13b7332930",
+    "name": "Registro sin datos",
+    "commands": [{
+      "id": "319ff362-7090-4914-88f7-0ca84f9af37c",
+      "comment": "",
+      "command": "open",
+      "target": "https://esalud.herokuapp.com/auth/register",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "13f2a2b9-262d-45d3-9f98-9f46f01ceec2",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1054x808",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "397d40b3-bd8b-40e2-a7fa-227ed9bba5db",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(1) > input",
+      "targets": [
+        ["css=p:nth-child(1) > input", "css:finder"],
+        ["xpath=//input[@value='Registrarse']", "xpath:attributes"],
+        ["xpath=//p/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "21bff77e-27c7-4af1-919b-dd337c879718",
+    "name": "Registro con solo algunos datos",
+    "commands": [{
+      "id": "1b7e4dff-880c-4d43-8a07-e90936d9c867",
+      "comment": "",
+      "command": "open",
+      "target": "https://esalud.herokuapp.com/auth/register",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b51f6f48-9378-4da2-8123-3dfa4610a2c1",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1053x807",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8ef86437-daf4-4b1f-bfcd-831f0fb5dd56",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-control:nth-child(1)",
+      "targets": [
+        ["css=.form-control:nth-child(1)", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "473dab98-9cc4-4e33-bd9b-9889114505c4",
+      "comment": "",
+      "command": "type",
+      "target": "css=.ng-valid",
+      "targets": [
+        ["css=.ng-valid", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "354cfe53-63bb-424a-b8c2-2616232a3f36",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-control:nth-child(2)",
+      "targets": [
+        ["css=.form-control:nth-child(2)", "css:finder"],
+        ["xpath=//input[@type='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "837ba4da-7a29-49f8-9023-93b949b4c56e",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-control:nth-child(2)",
+      "targets": [
+        ["css=.form-control:nth-child(2)", "css:finder"],
+        ["xpath=//input[@type='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "123456"
+    }, {
+      "id": "32c32eb8-71fc-492e-86c3-4b5a808e091d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-control:nth-child(3)",
+      "targets": [
+        ["css=.form-control:nth-child(3)", "css:finder"],
+        ["xpath=(//input[@type='password'])[2]", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fd24404c-4a72-45b9-9234-9a2f56fd910a",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-control:nth-child(3)",
+      "targets": [
+        ["css=.form-control:nth-child(3)", "css:finder"],
+        ["xpath=(//input[@type='password'])[2]", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "123456"
+    }, {
+      "id": "df3e4ba5-6d8c-44c6-8cb2-59cfb3974434",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-control:nth-child(4)",
+      "targets": [
+        ["css=.form-control:nth-child(4)", "css:finder"],
+        ["xpath=(//input[@type='text'])[2]", "xpath:attributes"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c66b2212-4608-4221-ac13-4a408be91efc",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(1) > input",
+      "targets": [
+        ["css=p:nth-child(1) > input", "css:finder"],
+        ["xpath=//input[@value='Registrarse']", "xpath:attributes"],
+        ["xpath=//p/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "364a9952-2acf-4440-b4c1-9155772cbcec",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,160.8000030517578)",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "f2931a30-7b5f-46ab-84b5-ccf72c9a5f98",
+    "name": "Cancelar registro",
+    "commands": [{
+      "id": "717724f8-5b27-4ea1-8f8c-43076e1c16c4",
+      "comment": "",
+      "command": "open",
+      "target": "https://esalud.herokuapp.com/auth/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c5ed24db-69a0-4fdc-9647-66f359e0e1c2",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1051x806",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d0946a26-cb82-4fbb-9b54-1eb499232f49",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(2) > .btn",
+      "targets": [
+        ["css=p:nth-child(2) > .btn", "css:finder"],
+        ["xpath=//input[@value='Registrarse']", "xpath:attributes"],
+        ["xpath=//p[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "26086e39-e4e9-42f0-977c-1d7cc294cd69",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(2) > input",
+      "targets": [
+        ["css=p:nth-child(2) > input", "css:finder"],
+        ["xpath=//input[@value='Cancelar']", "xpath:attributes"],
+        ["xpath=//p[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "ae262c7d-b6c0-4e67-a5b8-961327225971",
+    "name": "Registro correcto",
+    "commands": [{
+      "id": "51d1f0c7-9276-4264-9079-e79cdcd0dc20",
+      "comment": "",
+      "command": "open",
+      "target": "https://esalud.herokuapp.com/auth/register",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a917446a-de0f-46f7-bc5c-91bd6c2ab6b3",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1055x808",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1cd80d49-2aba-49a7-ac21-c2457fced0dd",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-control:nth-child(1)",
+      "targets": [
+        ["css=.form-control:nth-child(1)", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f17506e5-cf5b-4f1b-bae9-08f39500b43d",
+      "comment": "",
+      "command": "type",
+      "target": "css=.ng-valid",
+      "targets": [
+        ["css=.ng-valid", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "50"
+    }, {
+      "id": "6b20f17e-d0b4-43df-9a2e-b410a7b7c896",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-control:nth-child(2)",
+      "targets": [
+        ["css=.form-control:nth-child(2)", "css:finder"],
+        ["xpath=//input[@type='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "123456"
+    }, {
+      "id": "7759d847-12eb-4655-9c96-4c8c73f76352",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-control:nth-child(3)",
+      "targets": [
+        ["css=.form-control:nth-child(3)", "css:finder"],
+        ["xpath=(//input[@type='password'])[2]", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "123456"
+    }, {
+      "id": "8962e4af-9bb6-4329-aafd-9a0643b64784",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-control:nth-child(4)",
+      "targets": [
+        ["css=.form-control:nth-child(4)", "css:finder"],
+        ["xpath=(//input[@type='text'])[2]", "xpath:attributes"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": "Sergio"
+    }, {
+      "id": "692daaef-a0b4-425d-a197-408c70f1e506",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-control:nth-child(5)",
+      "targets": [
+        ["css=.form-control:nth-child(5)", "css:finder"],
+        ["xpath=(//input[@type='text'])[3]", "xpath:attributes"],
+        ["xpath=//input[5]", "xpath:position"]
+      ],
+      "value": "666111323"
+    }, {
+      "id": "e9f51418-408f-4e36-ba24-d39877b6ef80",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-control:nth-child(6)",
+      "targets": [
+        ["css=.form-control:nth-child(6)", "css:finder"],
+        ["xpath=(//input[@type='text'])[4]", "xpath:attributes"],
+        ["xpath=//input[6]", "xpath:position"]
+      ],
+      "value": "HP"
+    }, {
+      "id": "a3d22703-5930-44d3-97d1-39de2900462a",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-control:nth-child(7)",
+      "targets": [
+        ["css=.form-control:nth-child(7)", "css:finder"],
+        ["xpath=(//input[@type='text'])[5]", "xpath:attributes"],
+        ["xpath=//input[7]", "xpath:position"]
+      ],
+      "value": "sghp@gm.es"
+    }, {
+      "id": "512f032a-8515-4196-999f-9cf7583e231d",
+      "comment": "",
+      "command": "type",
+      "target": "css=.ng-untouched",
+      "targets": [
+        ["css=.ng-untouched", "css:finder"],
+        ["xpath=(//input[@type='text'])[6]", "xpath:attributes"],
+        ["xpath=//input[8]", "xpath:position"]
+      ],
+      "value": "CR"
+    }, {
+      "id": "d31a94ed-c480-459f-9648-c5cb6935f1ba",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(1) > input",
+      "targets": [
+        ["css=p:nth-child(1) > input", "css:finder"],
+        ["xpath=//input[@value='Registrarse']", "xpath:attributes"],
+        ["xpath=//p/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "c1c08aa1-3193-4769-a5f4-51fa1c2fa83b",
+    "name": "Citas Test (no logueado)",
+    "commands": [{
+      "id": "04b9bc43-7330-4215-acc1-78f6887b1437",
+      "comment": "",
+      "command": "open",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "787ccaf2-946b-43a9-b6ce-9b25eb7a1d17",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4c4a14aa-8d2c-40ec-a7aa-001062bac343",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "c5245e51-d486-4756-9f1f-11e0e0da0b95",
+    "name": "Registro con contraseñas diferentes",
+    "commands": [{
+      "id": "d174cf32-82c6-4389-8ed3-01f742c498e9",
+      "comment": "",
+      "command": "open",
+      "target": "https://esalud.herokuapp.com/auth/register",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8c3756b0-2882-41f0-808a-e52fb6adb05c",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1057x808",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "11851eac-08fd-4140-9fb9-1259007eb95b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-control:nth-child(1)",
+      "targets": [
+        ["css=.form-control:nth-child(1)", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7807056c-74c1-4993-b173-4cce371ebe7d",
+      "comment": "",
+      "command": "type",
+      "target": "css=.ng-valid",
+      "targets": [
+        ["css=.ng-valid", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "4ccadd3d-58cf-42cf-bac8-42b379cc43d7",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-control:nth-child(2)",
+      "targets": [
+        ["css=.form-control:nth-child(2)", "css:finder"],
+        ["xpath=//input[@type='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bf31b1b6-d5c8-4731-a83b-9041676558e0",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-control:nth-child(2)",
+      "targets": [
+        ["css=.form-control:nth-child(2)", "css:finder"],
+        ["xpath=//input[@type='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "123456"
+    }, {
+      "id": "76bf608c-c6af-48b7-ba87-7279275b5e47",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-control:nth-child(3)",
+      "targets": [
+        ["css=.form-control:nth-child(3)", "css:finder"],
+        ["xpath=(//input[@type='password'])[2]", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2db87f9f-fcfd-4a59-bac2-866e5d90b0b7",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-control:nth-child(3)",
+      "targets": [
+        ["css=.form-control:nth-child(3)", "css:finder"],
+        ["xpath=(//input[@type='password'])[2]", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "12"
+    }, {
+      "id": "dbb87faa-8cb4-4969-babb-f2bab3be61c1",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-control:nth-child(4)",
+      "targets": [
+        ["css=.form-control:nth-child(4)", "css:finder"],
+        ["xpath=(//input[@type='text'])[2]", "xpath:attributes"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "afe34cb5-e595-4599-9ea3-4357bc71f6ef",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-control:nth-child(4)",
+      "targets": [
+        ["css=.form-control:nth-child(4)", "css:finder"],
+        ["xpath=(//input[@type='text'])[2]", "xpath:attributes"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": "Sergio"
+    }, {
+      "id": "09008c38-d3fc-42f7-a8c1-a31c0e349a88",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-control:nth-child(5)",
+      "targets": [
+        ["css=.form-control:nth-child(5)", "css:finder"],
+        ["xpath=(//input[@type='text'])[3]", "xpath:attributes"],
+        ["xpath=//input[5]", "xpath:position"]
+      ],
+      "value": "68529348"
+    }, {
+      "id": "e1fa945d-a3e3-4ba5-8a2a-753ec391cbf6",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-control:nth-child(6)",
+      "targets": [
+        ["css=.form-control:nth-child(6)", "css:finder"],
+        ["xpath=(//input[@type='text'])[4]", "xpath:attributes"],
+        ["xpath=//input[6]", "xpath:position"]
+      ],
+      "value": "HA"
+    }, {
+      "id": "0dfcf5a6-18f6-4e2b-ad28-3fc88327dff8",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-control:nth-child(7)",
+      "targets": [
+        ["css=.form-control:nth-child(7)", "css:finder"],
+        ["xpath=(//input[@type='text'])[5]", "xpath:attributes"],
+        ["xpath=//input[7]", "xpath:position"]
+      ],
+      "value": "ser@had.e"
+    }, {
+      "id": "71e27469-02ce-44d4-9faf-8ab333a60706",
+      "comment": "",
+      "command": "type",
+      "target": "css=.ng-untouched",
+      "targets": [
+        ["css=.ng-untouched", "css:finder"],
+        ["xpath=(//input[@type='text'])[6]", "xpath:attributes"],
+        ["xpath=//input[8]", "xpath:position"]
+      ],
+      "value": "sad"
+    }, {
+      "id": "af6d3d51-5988-4d16-af6f-4a9cc2f5570c",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(1) > input",
+      "targets": [
+        ["css=p:nth-child(1) > input", "css:finder"],
+        ["xpath=//input[@value='Registrarse']", "xpath:attributes"],
+        ["xpath=//p/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "33eb235a-ae0b-4410-8e57-256048b15978",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,159.1999969482422)",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "90bbf7f0-0d5d-470e-88cf-1f137aedf620",
+    "name": "Acceso como admin",
+    "commands": [{
+      "id": "a20a9255-a73b-4f78-a7b2-6ce9e46264ab",
+      "comment": "",
+      "command": "open",
+      "target": "https://esalud.herokuapp.com/auth/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "18a07419-9e2c-4338-b66f-89f543d23ec5",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1058x808",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b0176d68-88a3-4b33-9502-295bbe2faf8f",
+      "comment": "",
+      "command": "click",
+      "target": "id=dni",
+      "targets": [
+        ["id=dni", "id"],
+        ["css=#dni", "css:finder"],
+        ["xpath=//input[@id='dni']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f6f2d783-0516-4425-ac19-03383ffe2000",
+      "comment": "",
+      "command": "type",
+      "target": "id=dni",
+      "targets": [
+        ["id=dni", "id"],
+        ["css=#dni", "css:finder"],
+        ["xpath=//input[@id='dni']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "admin"
+    }, {
+      "id": "e8a16f43-a95b-47a7-ae21-08306171df05",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "root"
+    }, {
+      "id": "1d5ae0dc-cb33-44d5-84f5-923ee0bcb1af",
+      "comment": "",
+      "command": "click",
+      "target": "css=p:nth-child(1) > input",
+      "targets": [
+        ["css=p:nth-child(1) > input", "css:finder"],
+        ["xpath=//input[@value='Acceder']", "xpath:attributes"],
+        ["xpath=//p/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "363a0405-429e-4ed6-9e05-3acb7010604c",
+    "name": "Admin mostrar médicos",
+    "commands": [{
+      "id": "cf1a75b2-2e65-4ab4-b25e-cf53772ffd0f",
+      "comment": "",
+      "command": "open",
+      "target": "https://esalud.herokuapp.com/admin",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1b9445ae-8d6c-4b7b-9ea7-3041d11b64e7",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1059x808",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "69fbd53f-659e-4c44-85f8-0c5257248301",
+      "comment": "",
+      "command": "click",
+      "target": "css=.mat-list-item:nth-child(1) > .mat-list-item-content",
+      "targets": [
+        ["css=.mat-list-item:nth-child(1) > .mat-list-item-content", "css:finder"],
+        ["xpath=//a/div", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "15ce6e72-0e6f-4ce9-a2f2-3cdd7f307453",
+    "name": "Admin registrar médicos",
+    "commands": [{
+      "id": "81d002ed-ef45-40ec-92de-3607fe7852bb",
+      "comment": "",
+      "command": "open",
+      "target": "https://esalud.herokuapp.com/admin",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8c4202b9-d246-4587-8a00-524725da3c64",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1061x808",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0b03970c-1ec0-46a2-a3e4-df203a82ba3c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.mat-list-item:nth-child(2) > .mat-list-item-content",
+      "targets": [
+        ["css=.mat-list-item:nth-child(2) > .mat-list-item-content", "css:finder"],
+        ["xpath=//a[2]/div", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "7a38b9c4-590e-4ec1-8190-4aba6c350b7a",
+    "name": "Admin modificar médicos",
+    "commands": [{
+      "id": "6967d2dd-f69c-477e-85b9-d67e01c65fdb",
+      "comment": "",
+      "command": "open",
+      "target": "https://esalud.herokuapp.com/admin",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1a41de50-bd7b-48e8-a184-dcdb681a2243",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1062x808",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "05ce6ef5-48fc-4ca3-a6d2-dae4c2a677e2",
+      "comment": "",
+      "command": "click",
+      "target": "css=.mat-list-item:nth-child(3) > .mat-list-item-content",
+      "targets": [
+        ["css=.mat-list-item:nth-child(3) > .mat-list-item-content", "css:finder"],
+        ["xpath=//a[3]/div", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "2caa8d68-f650-4484-b132-9238a5e40bad",
+    "name": "Admin modificar paciente",
+    "commands": [{
+      "id": "c6d76747-ebff-4a31-837c-a2dc4f8c3e18",
+      "comment": "",
+      "command": "open",
+      "target": "https://esalud.herokuapp.com/admin",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4c4ef1c4-5628-41fc-9a63-42ac53589aa9",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1063x808",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a54806ec-f6c1-4eda-a96d-75def8d96d9e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.mat-list-item:nth-child(4) > .mat-list-item-content",
+      "targets": [
+        ["css=.mat-list-item:nth-child(4) > .mat-list-item-content", "css:finder"],
+        ["xpath=//a[4]/div", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "56688efc-031e-49ce-94f3-fbb3ce37e775",
+    "name": "Admin salir",
+    "commands": [{
+      "id": "74619858-1bd0-41e7-809c-9371b2149f88",
+      "comment": "",
+      "command": "open",
+      "target": "https://esalud.herokuapp.com/admin",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "83a6c60d-5366-40e1-9ddf-daf3416a9326",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1065x808",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2091b379-2df0-4882-8709-fe9731c5424a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.mat-list-item:nth-child(5) > .mat-list-item-content",
+      "targets": [
+        ["css=.mat-list-item:nth-child(5) > .mat-list-item-content", "css:finder"],
+        ["xpath=//a[5]/div", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "8f390178-2efe-4e63-9b78-641d6c9e5565",
+    "name": "Registro médico con solo algunos datos",
+    "commands": [{
+      "id": "1bd76871-bcf9-44dc-9636-67e6d4559215",
+      "comment": "",
+      "command": "open",
+      "target": "https://esalud.herokuapp.com/admin/RegistrarMedico",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7125a9ea-204f-489f-a085-c1cd69cebebf",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1065x808",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5f00b864-4fc9-41e5-9b79-6ee8dec9d352",
+      "comment": "",
+      "command": "click",
+      "target": "css=.row:nth-child(1) .form-control",
+      "targets": [
+        ["css=.row:nth-child(1) .form-control", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6e3c98e1-031f-4cae-8bec-7ff0031c5874",
+      "comment": "",
+      "command": "type",
+      "target": "css=.ng-valid",
+      "targets": [
+        ["css=.ng-valid", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "2415"
+    }, {
+      "id": "9a63f866-bc86-444b-be2e-dcfb594e4e3a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.row:nth-child(2) .form-control",
+      "targets": [
+        ["css=.row:nth-child(2) .form-control", "css:finder"],
+        ["xpath=(//input[@type='text'])[2]", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2693e95d-6249-4ba0-b4b2-11d2fb35627f",
+      "comment": "",
+      "command": "type",
+      "target": "css=.row:nth-child(2) .form-control",
+      "targets": [
+        ["css=.row:nth-child(2) .form-control", "css:finder"],
+        ["xpath=(//input[@type='text'])[2]", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": "Luis"
+    }, {
+      "id": "81895f69-0f81-4297-a724-749dccc48d24",
+      "comment": "",
+      "command": "click",
+      "target": "css=.row:nth-child(4) .form-control",
+      "targets": [
+        ["css=.row:nth-child(4) .form-control", "css:finder"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b617c1fa-25e7-4616-8ded-1bcfef30f46a",
+      "comment": "",
+      "command": "select",
+      "target": "css=.row:nth-child(4) .form-control",
+      "targets": [],
+      "value": "label=Pediatría"
+    }, {
+      "id": "5a613ac1-31c9-4009-89e9-6a82072b1da0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.row:nth-child(4) .form-control",
+      "targets": [
+        ["css=.row:nth-child(4) .form-control", "css:finder"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fc77cd72-8a5b-4edf-8988-1b794d3a0998",
+      "comment": "",
+      "command": "click",
+      "target": "css=.row:nth-child(6) .form-control",
+      "targets": [
+        ["css=.row:nth-child(6) .form-control", "css:finder"],
+        ["xpath=(//input[@type='text'])[5]", "xpath:attributes"],
+        ["xpath=//div[6]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5564bd03-809a-4e1d-916c-d7af31373786",
+      "comment": "",
+      "command": "type",
+      "target": "css=.row:nth-child(6) .form-control",
+      "targets": [
+        ["css=.row:nth-child(6) .form-control", "css:finder"],
+        ["xpath=(//input[@type='text'])[5]", "xpath:attributes"],
+        ["xpath=//div[6]/div[2]/input", "xpath:position"]
+      ],
+      "value": "65324634"
+    }, {
+      "id": "5753ed23-b17b-40bc-af59-0a770de0d665",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button2",
+      "targets": [
+        ["css=.button2", "css:finder"],
+        ["xpath=//input[@value='Registrarse   ']", "xpath:attributes"],
+        ["xpath=//p/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "502255bb-87e4-4630-b36e-1f3ff891d201",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.button2",
+      "targets": [
+        ["css=.button2", "css:finder"],
+        ["xpath=//input[@value='Registrarse   ']", "xpath:attributes"],
+        ["xpath=//p/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3f0f2744-ef01-4659-b809-a0dd83617239",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.button2",
+      "targets": [
+        ["css=.button2", "css:finder"],
+        ["xpath=//input[@value='Registrarse   ']", "xpath:attributes"],
+        ["xpath=//p/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "3d0dd75e-a85a-40b2-9436-2c379420f994",
+    "name": "Registro médico correcto",
+    "commands": [{
+      "id": "8e53a657-9aeb-4fbe-90b8-58d40e369e5f",
+      "comment": "",
+      "command": "open",
+      "target": "https://esalud.herokuapp.com/admin/RegistrarMedico",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b3e15ede-21fd-4101-bc34-cb711e69a66d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1051x806",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "89d6a128-81aa-409e-9de1-b4f16e6df7fa",
+      "comment": "",
+      "command": "click",
+      "target": "css=.row:nth-child(1) .form-control",
+      "targets": [
+        ["css=.row:nth-child(1) .form-control", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "228ac31d-25d3-47ef-9f80-ac92d324d04c",
+      "comment": "",
+      "command": "type",
+      "target": "css=.ng-valid",
+      "targets": [
+        ["css=.ng-valid", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "1924854"
+    }, {
+      "id": "bd2630ef-6d16-4404-b308-3fd7aa49b841",
+      "comment": "",
+      "command": "type",
+      "target": "css=.row:nth-child(2) .form-control",
+      "targets": [
+        ["css=.row:nth-child(2) .form-control", "css:finder"],
+        ["xpath=(//input[@type='text'])[2]", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": "Fernando"
+    }, {
+      "id": "cfa30f10-399c-4c3b-aea1-6794f51e4d71",
+      "comment": "",
+      "command": "type",
+      "target": "css=.row:nth-child(3) .form-control",
+      "targets": [
+        ["css=.row:nth-child(3) .form-control", "css:finder"],
+        ["xpath=(//input[@type='text'])[3]", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"]
+      ],
+      "value": "Gómez"
+    }, {
+      "id": "38811cbd-2c67-47f0-b8a6-71475375b2e3",
+      "comment": "",
+      "command": "click",
+      "target": "css=.row:nth-child(4) .form-control",
+      "targets": [
+        ["css=.row:nth-child(4) .form-control", "css:finder"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4d7fca3f-8315-44a0-92cc-7e90aa4be10f",
+      "comment": "",
+      "command": "select",
+      "target": "css=.row:nth-child(4) .form-control",
+      "targets": [],
+      "value": "label=Enfermero"
+    }, {
+      "id": "29cf23e5-f0a6-4fb0-9543-fb4a0136a981",
+      "comment": "",
+      "command": "click",
+      "target": "css=.row:nth-child(4) .form-control",
+      "targets": [
+        ["css=.row:nth-child(4) .form-control", "css:finder"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a864a61d-3b8d-438f-8e51-3fae8c8f02b7",
+      "comment": "",
+      "command": "click",
+      "target": "css=.row:nth-child(5) .form-control",
+      "targets": [
+        ["css=.row:nth-child(5) .form-control", "css:finder"],
+        ["xpath=(//input[@type='text'])[4]", "xpath:attributes"],
+        ["xpath=//div[5]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6ea4079f-538f-4951-9d13-b6e20034f055",
+      "comment": "",
+      "command": "type",
+      "target": "css=.row:nth-child(5) .form-control",
+      "targets": [
+        ["css=.row:nth-child(5) .form-control", "css:finder"],
+        ["xpath=(//input[@type='text'])[4]", "xpath:attributes"],
+        ["xpath=//div[5]/div[2]/input", "xpath:position"]
+      ],
+      "value": "Cons. Montiel"
+    }, {
+      "id": "152be57d-f2d7-45df-a4cd-f14b684f3568",
+      "comment": "",
+      "command": "click",
+      "target": "css=.row:nth-child(6) .form-control",
+      "targets": [
+        ["css=.row:nth-child(6) .form-control", "css:finder"],
+        ["xpath=(//input[@type='text'])[5]", "xpath:attributes"],
+        ["xpath=//div[6]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9ad3de29-b13b-404f-93e9-073da59cf0c3",
+      "comment": "",
+      "command": "type",
+      "target": "css=.row:nth-child(6) .form-control",
+      "targets": [
+        ["css=.row:nth-child(6) .form-control", "css:finder"],
+        ["xpath=(//input[@type='text'])[5]", "xpath:attributes"],
+        ["xpath=//div[6]/div[2]/input", "xpath:position"]
+      ],
+      "value": "666999333"
+    }, {
+      "id": "06c6b47a-8a81-4b78-96e6-ad4ff47d0cf3",
+      "comment": "",
+      "command": "click",
+      "target": "css=.row:nth-child(7) .form-control",
+      "targets": [
+        ["css=.row:nth-child(7) .form-control", "css:finder"],
+        ["xpath=(//input[@type='text'])[6]", "xpath:attributes"],
+        ["xpath=//div[7]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "db6c3e34-343b-4803-ae1c-d30480fa1743",
+      "comment": "",
+      "command": "type",
+      "target": "css=.row:nth-child(7) .form-control",
+      "targets": [
+        ["css=.row:nth-child(7) .form-control", "css:finder"],
+        ["xpath=(//input[@type='text'])[6]", "xpath:attributes"],
+        ["xpath=//div[7]/div[2]/input", "xpath:position"]
+      ],
+      "value": "fergox@gmail.com"
+    }, {
+      "id": "be00976f-24b1-44d8-90a9-10ffe1e0b864",
+      "comment": "",
+      "command": "type",
+      "target": "css=.ng-untouched",
+      "targets": [
+        ["css=.ng-untouched", "css:finder"],
+        ["xpath=//input[@type='password']", "xpath:attributes"],
+        ["xpath=//div[8]/div[2]/input", "xpath:position"]
+      ],
+      "value": "123456"
+    }, {
+      "id": "e8d42c03-d573-43c3-ad91-239064dfbf76",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button2",
+      "targets": [
+        ["css=.button2", "css:finder"],
+        ["xpath=//input[@value='Registrarse   ']", "xpath:attributes"],
+        ["xpath=//p/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "fe89a701-2bb2-43c9-9e3b-e1cf3e1f7731",
+    "name": "Registro médico sin datos",
+    "commands": [{
+      "id": "227e2f7c-972c-4825-85ec-df8a7b4cfad9",
+      "comment": "",
+      "command": "open",
+      "target": "https://esalud.herokuapp.com/admin/RegistrarMedico",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1440168e-1dda-47a4-84ec-385f49001c21",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1053x807",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c8650a1f-b6f6-481c-986f-c2b8d3172163",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button2",
+      "targets": [
+        ["css=.button2", "css:finder"],
+        ["xpath=//input[@value='Registrarse   ']", "xpath:attributes"],
+        ["xpath=//p/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "12695da4-a78b-497a-b78a-0913056a9149",
+    "name": "Citas salir",
+    "commands": [{
+      "id": "3a66f47c-15fb-4c36-ac8a-e60d39f1a51d",
+      "comment": "",
+      "command": "open",
+      "target": "https://esalud.herokuapp.com/citas",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b20e289a-dcb0-425d-9cbd-49e824737400",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1054x808",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "48699074-a9b6-4340-a458-df731da319cf",
+      "comment": "",
+      "command": "click",
+      "target": "css=.mat-list-item:nth-child(4) > .mat-list-item-content",
+      "targets": [
+        ["css=.mat-list-item:nth-child(4) > .mat-list-item-content", "css:finder"],
+        ["xpath=//a[4]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "12394784-4a9a-4e8a-9352-40fb47e146e4",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "ae252a46-c93f-46fd-8077-0d39ceaa1a1e",
+    "name": "Acceso",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["4b37f916-19ca-4ceb-be1b-ef777c82a25e", "b3be251a-db4f-458f-a90c-53c656f8c271", "9d0f6727-d2e4-4102-925b-536dfeeac7ba", "67284199-442e-4a97-aba0-d08208969c9b"]
+  }, {
+    "id": "830da085-3c91-4a46-9584-21a9018600ea",
+    "name": "Registro Usuarios",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["f2931a30-7b5f-46ab-84b5-ccf72c9a5f98", "e7e4c831-ad00-43c3-bb47-ad91c330a09f", "21bff77e-27c7-4af1-919b-dd337c879718", "ae262c7d-b6c0-4e67-a5b8-961327225971", "47c2dbb2-9443-44ee-a4cb-0c13b7332930"]
+  }, {
+    "id": "5631769a-fb72-4f27-b127-336cffc9fc10",
+    "name": "Citas",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["6dfde275-b7a4-43da-8c72-b6c2dc50451e", "c1c08aa1-3193-4769-a5f4-51fa1c2fa83b"]
+  }, {
+    "id": "c2f449e8-ca3f-4730-9942-00c0d231883c",
+    "name": "Registro Médicos",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["3d0dd75e-a85a-40b2-9436-2c379420f994", "fe89a701-2bb2-43c9-9e3b-e1cf3e1f7731", "8f390178-2efe-4e63-9b78-641d6c9e5565"]
+  }, {
+    "id": "dce45e7e-288d-4453-8222-b52d6e81b06c",
+    "name": "Admin",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["90bbf7f0-0d5d-470e-88cf-1f137aedf620", "7a38b9c4-590e-4ec1-8190-4aba6c350b7a", "2caa8d68-f650-4484-b132-9238a5e40bad", "67284199-442e-4a97-aba0-d08208969c9b", "363a0405-429e-4ed6-9e05-3acb7010604c", "15ce6e72-0e6f-4ce9-a2f2-3cdd7f307453", "56688efc-031e-49ce-94f3-fbb3ce37e775"]
+  }],
+  "urls": ["http://localhost:4200/", "http://localhost:4200/citas", "https://esalud.herokuapp.com/auth/login", "https://esalud.herokuapp.com/citas"],
+  "plugins": []
+}

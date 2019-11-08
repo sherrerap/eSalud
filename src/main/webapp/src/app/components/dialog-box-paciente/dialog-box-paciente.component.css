@@ -14,10 +14,6 @@ div.contenedor-botones{
 	text-align: center;
 }
 
-.mat-raised-button{
-	margin:3px;	
-}
-
 .mat-button{
 	margin:3px;	
 }
@@ -26,3 +22,4 @@ div.contenedor-botones{
 	background-color:rgb(34, 189, 131);
 	color:white;
 }
+

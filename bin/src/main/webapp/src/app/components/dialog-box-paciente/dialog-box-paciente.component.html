@@ -1,0 +1,30 @@
+<h1 mat-dialog-title><strong>Actualizar paciente</strong></h1>
+<div class="container">
+    <mat-form-field *ngIf="action != 'Delete'; else elseTemplate">
+        <input placeholder="Dni" matInput [(ngModel)]="local_data.dni">
+    </mat-form-field>
+    <mat-form-field *ngIf="action != 'Delete'">
+        <input placeholder="Nombre" matInput [(ngModel)]="local_data.nombre">
+    </mat-form-field>
+    <mat-form-field *ngIf="action != 'Delete'">
+        <input placeholder="Apellidos" matInput [(ngModel)]="local_data.apellidos">
+    </mat-form-field>
+    <mat-form-field *ngIf="action != 'Delete'">
+        <input placeholder="Centro" matInput [(ngModel)]="local_data.centro">
+    </mat-form-field>
+    <mat-form-field *ngIf="action != 'Delete'">
+        <input placeholder="Correo" matInput [(ngModel)]="local_data.correo">
+    </mat-form-field>
+    <mat-form-field *ngIf="action != 'Delete'">
+        <input placeholder="Localidad" matInput [(ngModel)]="local_data.localidad">
+    </mat-form-field>
+    <ng-template #elseTemplate>
+        ¿Confirma que quiere borrarlo<b>{{local_data.name}}</b>?
+    </ng-template>
+</div>
+<div mat-dialog-actions-center>
+    <div class="contenedor-botones">
+        <button mat-raised-button (click)="doAction()">{{action}}</button>
+        <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+    </div>
+</div>
