@@ -1,5 +1,6 @@
 package es.e3corp.eSalud.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -85,7 +86,21 @@ public class UsuarioServiceImpl implements UsuarioService {
 @Override
 public List<Usuario> getUsersByRole(String rol) {
 	List<Usuario> usuarios= userRepository.findByRole(rol);
-	return usuarios;
+	List<Usuario> listado = new ArrayList<>();	
+	if(rol.equals("medico")) {
+		for(Usuario u : usuarios) {
+			Usuario temp = new Usuario();
+			temp.setNombre(u.getNombre());
+			temp.setApellidos(u.getApellidos());
+			temp.setEspecialidad(u.getEspecialidad());
+			temp.setCentro(u.getCentro());
+			listado.add(temp);
+		}
+	}
+	else {
+		listado = usuarios;
+	}
+	return listado;
 }
 
 }
