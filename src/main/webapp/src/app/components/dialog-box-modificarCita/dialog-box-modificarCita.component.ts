@@ -5,11 +5,11 @@ import { first } from 'rxjs/operators';
 import { CitasService } from '../../_services';
 
 export interface CitaData {
-  especialidad: string;
-  medico: string;
+  id: string;
+  tipo: string;
   centro: string;
-  horacita: string;
-  fechacita: string;
+  fecha: string;
+  hora: string;
 }
 
 @Component({

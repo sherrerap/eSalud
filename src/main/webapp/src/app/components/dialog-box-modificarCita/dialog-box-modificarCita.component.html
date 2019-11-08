@@ -2,14 +2,22 @@
 <div class="container">
 
 	<mat-form-field *ngIf="action != 'Delete'; else elseTemplate">
-		<input placeholder="Dni" matInput [(ngModel)]="local_data.tipo">
+		<input type="date" placeholder="Fecha" min="2019-11-02" max="2021-11-26" class="form-control" matInput
+			[(ngModel)]="local_data.fecha" [ngClass]="{ 'is-invalid': submitted && f.fechacita.errors }" />
+		<div *ngIf="submitted && f.fechacita.errors" class="invalid-feedback">
+			<div *ngIf="f.fechacita.errors.required">Selecciona una fecha valida</div>
+		</div>
 	</mat-form-field>
 	<mat-form-field *ngIf="action != 'Delete'">
-		<input placeholder="Nombre" matInput [(ngModel)]="local_data.tipo">
+		<input type="time" placeholder="Hora" min="8:00" max="18:00" class="form-control" matInput
+		[(ngModel)]="local_data.hora" [ngClass]="{ 'is-invalid': submitted && f.hora.errors }" />
+		<div *ngIf="submitted && f.hora.errors" class="invalid-feedback">
+			<div *ngIf="f.hora.errors.required">Selecciona una hora valida</div>
+		</div>
 	</mat-form-field>
 
 	<ng-template #elseTemplate>
-		¿Confirma que quiere modificar la cita<b>{{local_data.name}}</b>?
+		¿Confirma que quiere eliminar la cita<b>{{local_data.name}}</b>?
 	</ng-template>
 </div>
 <div mat-dialog-actions-center>
