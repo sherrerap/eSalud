@@ -25,6 +25,7 @@ import es.e3corp.eSalud.exception.CitaNotFoundException;
 import es.e3corp.eSalud.exception.UserNotFoundException;
 import es.e3corp.eSalud.model.Cita;
 import es.e3corp.eSalud.model.Usuario;
+import es.e3corp.eSalud.utilidades.Utilidades;
 
 @RestController
 @RequestMapping("/citas")
@@ -88,10 +89,17 @@ public class CitaController {
         String hora = jso.getString("hora");
         String tipo = jso.getString("tipo");
         String centro = jso.getString("centro");
+        
+        String pacienteEncriptado = Utilidades.encriptar(paciente);
+        String médicoEncriptado = Utilidades.encriptar(médico);
+        String fechaEncriptado = Utilidades.encriptar(fecha);
+        String horaEncriptado = Utilidades.encriptar(hora);
+        String centroEncriptado = Utilidades.encriptar(centro);
+        String tipoEncriptado = Utilidades.encriptar(tipo);
 
         try {
-          Usuario usuarioPaciente = usuarioService.findByUserDni(paciente);
-          Usuario usuarioMedico = usuarioService.findByUserDni(médico);
+          Usuario usuarioPaciente = usuarioService.findByUserDni(pacienteEncriptado);
+          Usuario usuarioMedico = usuarioService.findByUserDni(médicoEncriptado);
           if (!usuarioPaciente.getRol().equals("paciente")) {
             log.error("[SERVER] El usuario paciente no es válido.");
             return ResponseEntity.badRequest().build();
@@ -106,12 +114,12 @@ public class CitaController {
           return ResponseEntity.badRequest().build();
         }
 
-        cita.setPaciente(paciente);
-        cita.setMédico(médico);
-        cita.setFecha(fecha);
-        cita.setHora(hora);
-        cita.setTipo(tipo);
-        cita.setCentro(centro);
+        cita.setPaciente(pacienteEncriptado);
+        cita.setMédico(médicoEncriptado);
+        cita.setFecha(fechaEncriptado);
+        cita.setHora(horaEncriptado);
+        cita.setTipo(tipoEncriptado);
+        cita.setCentro(centroEncriptado);
       } catch (JSONException j) {
         System.out.println("[SERVER] Error en la lectura del JSON.");
         System.out.println(j.getMessage());
@@ -153,10 +161,18 @@ public class CitaController {
     String médico = jso.getString("médico");
     String fecha = jso.getString("fecha");
     String hora = jso.getString("hora");
-    Cita cita1 = citasService.findCitaByPacienteMedicoFechaHora(paciente, médico, fecha, hora);
+    System.out.println("el paciente que se recibe es:"+paciente);
+    
+    String pacienteEncriptado = Utilidades.encriptar(paciente);
+    
+    System.out.println("el paciente escriptado es:"+pacienteEncriptado);
+    String médicoEncriptado = Utilidades.encriptar(médico);
+    String fechaEncriptado = Utilidades.encriptar(fecha);
+    String horaEncriptado = Utilidades.encriptar(hora);
+    Cita cita1 = citasService.findCitaByPacienteMedicoFechaHora(pacienteEncriptado, médicoEncriptado, fechaEncriptado, horaEncriptado);
     try {
-      Usuario usuarioPaciente = usuarioService.findByUserDni(paciente);
-      Usuario usuarioMedico = usuarioService.findByUserDni(médico);
+      Usuario usuarioPaciente = usuarioService.findByUserDni(pacienteEncriptado);
+      Usuario usuarioMedico = usuarioService.findByUserDni(médicoEncriptado);
       if (!usuarioPaciente.getRol().equals("paciente")) {
         log.error("[SERVER] El usuario paciente no es válido.");
         return ResponseEntity.badRequest().build();
@@ -172,20 +188,23 @@ public class CitaController {
     }
 
     if (cita1 == null) {
-      String tipo = null, centro = null;
+      String tipo = null, centro = null, tipoEncriptado=null, centroEncriptado=null; 
 
       try {
         System.out.println("[SERVER] Registrando cita...");
 
         tipo = jso.getString("tipo");
         centro = jso.getString("centro");
+        
+        tipoEncriptado = Utilidades.encriptar(tipo);
+        centroEncriptado = Utilidades.encriptar(centro);
 
       } catch (JSONException j) {
         System.out.println("[SERVER] Error en la lectura del JSON.");
         System.out.println(j.getMessage());
         return ResponseEntity.badRequest().build();
       }
-
+      System.out.println("el paciente que se recibe es:"+pacienteEncriptado);
       cita1 = new Cita(paciente, tipo, fecha, centro, médico, hora);
       citasService.saveCita(cita1);
       System.out.println("[SERVER] Cita registrada.");

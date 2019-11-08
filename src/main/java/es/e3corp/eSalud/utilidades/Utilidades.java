@@ -14,6 +14,7 @@ import javax.validation.constraints.NotNull;
 
 import org.apache.commons.codec.binary.Base64;
 
+import es.e3corp.eSalud.model.Cita;
 import es.e3corp.eSalud.model.Usuario;
 
 public class Utilidades {
@@ -132,10 +133,10 @@ public class Utilidades {
 			Usuario usuario = users.get().get(i);
 			System.out.println(usuario.toString());
 			//aun no desencripta porque no coinciden los valores que hay en la BBDD
-			//usersDesencriptado.add(desencriptarUsuario(usuario));
+			usersDesencriptado.add(desencriptarUsuario(usuario));
 			
 			
-			usersDesencriptado.add(usuario);
+			//usersDesencriptado.add(usuario);
 		}
 		
 //		System.out.println("Tamaño de la lista desencriptada: "+usersDesencriptado.size());
@@ -146,6 +147,76 @@ public class Utilidades {
 //		}
 		
 		return usersDesencriptado;
+	}
+
+	public static Cita desencriptarCita(Cita cita) {
+		try {
+			
+			cita.setPaciente(desencriptar(cita.getPaciente()));
+			cita.setPaciente(desencriptar(cita.getPaciente()));
+			
+			cita.setMédico(desencriptar(cita.getMédico()));
+			cita.setMédico(desencriptar(cita.getMédico()));
+			
+			cita.setFecha(desencriptar(cita.getFecha()));
+			cita.setFecha(desencriptar(cita.getFecha()));
+			
+			cita.setHora(desencriptar(cita.getHora()));
+			cita.setHora(desencriptar(cita.getHora()));
+			
+			cita.setTipo(desencriptar(cita.getTipo()));
+			cita.setTipo(desencriptar(cita.getTipo()));
+			
+			cita.setCentro(desencriptar(cita.getCentro()));
+			cita.setCentro(desencriptar(cita.getCentro()));
+			return cita;
+		}
+		
+		catch (Exception ex) {
+			
+			return null;
+	    }
+	}
+
+	public static List<Cita> desencriptarListaCitas(List<Cita> citas) {
+		List <Cita> citasDesencriptado =  new ArrayList<Cita>();
+		System.out.println("Tamaño de la lista normal: "+citas.size());
+		
+		for(int i=0; i < citas.size();i++) {
+			Cita cita = citas.get(i);
+			System.out.println(cita.toString());
+			//aun no desencripta porque no coinciden los valores que hay en la BBDD
+			citasDesencriptado.add(desencriptarCita(cita));
+			System.out.println(citasDesencriptado.get(i).toString());
+			
+			//citasDesencriptado.add(usuario);
+		}
+		
+		return citasDesencriptado;
+	}
+
+	public static Optional<Cita> desencriptarOptionalCita(Optional<Cita> cita) {
+		try {
+			
+			cita.get().setPaciente(desencriptar(cita.get().getPaciente()));
+			cita.get().setPaciente(desencriptar(cita.get().getPaciente()));
+			cita.get().setMédico(desencriptar(cita.get().getMédico()));
+			cita.get().setMédico(desencriptar(cita.get().getMédico()));
+			cita.get().setFecha(desencriptar(cita.get().getFecha()));
+			cita.get().setFecha(desencriptar(cita.get().getFecha()));
+			cita.get().setHora(desencriptar(cita.get().getHora()));
+			cita.get().setHora(desencriptar(cita.get().getHora()));
+			cita.get().setTipo(desencriptar(cita.get().getTipo()));
+			cita.get().setTipo(desencriptar(cita.get().getTipo()));
+			cita.get().setCentro(desencriptar(cita.get().getCentro()));
+			cita.get().setCentro(desencriptar(cita.get().getCentro()));
+			return cita;
+		}
+		
+		catch (Exception ex) {
+			
+			return null;
+	    }
 	}
 	
 }
