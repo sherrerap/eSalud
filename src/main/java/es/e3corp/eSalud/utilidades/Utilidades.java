@@ -200,14 +200,19 @@ public class Utilidades {
 			
 			cita.get().setPaciente(desencriptar(cita.get().getPaciente()));
 			cita.get().setPaciente(desencriptar(cita.get().getPaciente()));
+			
 			cita.get().setMédico(desencriptar(cita.get().getMédico()));
 			cita.get().setMédico(desencriptar(cita.get().getMédico()));
+			
 			cita.get().setFecha(desencriptar(cita.get().getFecha()));
 			cita.get().setFecha(desencriptar(cita.get().getFecha()));
+			
 			cita.get().setHora(desencriptar(cita.get().getHora()));
 			cita.get().setHora(desencriptar(cita.get().getHora()));
+			
 			cita.get().setTipo(desencriptar(cita.get().getTipo()));
 			cita.get().setTipo(desencriptar(cita.get().getTipo()));
+			
 			cita.get().setCentro(desencriptar(cita.get().getCentro()));
 			cita.get().setCentro(desencriptar(cita.get().getCentro()));
 			return cita;
