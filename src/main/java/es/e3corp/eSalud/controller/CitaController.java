@@ -105,7 +105,7 @@ public class CitaController {
             log.error("[SERVER] El usuario paciente no es válido.");
             return ResponseEntity.badRequest().build();
           }
-          if (!usuarioMedico.getRol().equals("medico")) {
+          if (!usuarioMedico.getRol().equals("médico")) {
             log.error("[SERVER] El usuario médico no es válido.");
             return ResponseEntity.badRequest().build();
           }
@@ -200,7 +200,7 @@ public class CitaController {
           log.error("[SERVER] El usuario paciente no es válido.");
           return ResponseEntity.badRequest().build();
         }
-        if (!usuarioMedico.getRol().equals("medico")) {
+        if (!usuarioMedico.getRol().equals("médico")) {
           log.error("[SERVER] El usuario médico no es válido.");
           return ResponseEntity.badRequest().build();
         }
