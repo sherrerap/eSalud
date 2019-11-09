@@ -96,23 +96,23 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return usersRol;
 	}
 
-  @Override
-  public List<Usuario> getUsersByRol(String rol) {
-    List<Usuario> usuarios = userRepository.findByRol(rol);
-    List<Usuario> listado = new ArrayList<>();
-    if (rol.equals("medico")) {
-      for (Usuario u : usuarios) {
-        Usuario temp = new Usuario();
-        temp.setNombre(u.getNombre());
-        temp.setApellidos(u.getApellidos());
-        temp.setEspecialidad(u.getEspecialidad());
-        temp.setCentro(u.getCentro());
-        listado.add(temp);
-      }
-    } else {
-      listado = usuarios;
-    }
-    return listado;
-  }
+//  @Override
+//  public List<Usuario> getUsersByRol(String rol) {
+//    List<Usuario> usuarios = userRepository.findByRol(rol);
+//    List<Usuario> listado = new ArrayList<>();
+//    if (rol.equals("medico")) {
+//      for (Usuario u : usuarios) {
+//        Usuario temp = new Usuario();
+//        temp.setNombre(u.getNombre());
+//        temp.setApellidos(u.getApellidos());
+//        temp.setEspecialidad(u.getEspecialidad());
+//        temp.setCentro(u.getCentro());
+//        listado.add(temp);
+//      }
+//    } else {
+//      listado = usuarios;
+//    }
+//    return listado;
+//  }
 
 }
