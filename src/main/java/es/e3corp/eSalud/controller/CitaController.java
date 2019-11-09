@@ -84,7 +84,7 @@ public class CitaController {
 
         // Depende de los campos que queramos que puedan actualizarse
         String paciente = jso.getString("paciente");
-        
+        String médico = jso.getString("médico");
         
         String fecha = jso.getString("fecha");
         String hora = jso.getString("hora");
@@ -188,7 +188,7 @@ public class CitaController {
       return ResponseEntity.badRequest().build();
     }
 
-    Cita cita1 = citasService.findCitaByPacienteMedicoFechaHora(paciente, médico, fecha, hora);
+    //Cita cita1 = citasService.findCitaByPacienteMedicoFechaHora(paciente, médico, fecha, hora);
 
     if (cita1 == null) {
       String tipo = null, centro = null, tipoEncriptado=null, centroEncriptado=null; 
