@@ -24,5 +24,4 @@ public interface UsuarioRepository {
     
     List <Usuario> findByRol(String rol);
 
-
 }

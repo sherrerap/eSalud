@@ -43,7 +43,9 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
 		return optionalUsuarios;
 
-	}
+  }
+  
+  
 
 	public Optional<Usuario> findOne(String dni) {
 		Usuario d = this.mongoOperations.findOne(new Query(Criteria.where("dni").is(dni)), Usuario.class);
@@ -79,7 +81,5 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     List <Usuario> usuariosRol = this.mongoOperations.find(new Query(Criteria.where("rol").is(rol)),Usuario.class);
     return usuariosRol;
   }
-
-
 
 }

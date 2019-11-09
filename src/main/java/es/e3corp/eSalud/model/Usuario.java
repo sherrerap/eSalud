@@ -1,10 +1,21 @@
 package es.e3corp.eSalud.model;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 import java.util.UUID;
 
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 import javax.validation.constraints.NotNull;
+
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import es.e3corp.eSalud.utilidades.Utilidades;
 
 @Document(collection = "usuarios")
 public class Usuario {
@@ -20,28 +31,28 @@ public class Usuario {
     private String rol;
     private String especialidad;
     private String medico;
-    private int numTelefono;
+    private String numTelefono;
     private String localidad;
     private String centro;
     private String email;
 
     public Usuario(@NotNull String dni, String nombre, String apellidos, @NotNull String contraseña, String rol,
-            String especialidad, String medico, int numTelefono, String localidad, String centro, String email) {
+            String especialidad, String medico, String numTelefono, String localidad, String centro, String email) {
         super();
         this.id = UUID.randomUUID().toString();
-        this.dni = dni;
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.contraseña = contraseña;
-        this.rol = rol;
-        this.especialidad = especialidad;
-        this.medico = medico;
-        this.numTelefono = numTelefono;
-        this.localidad = localidad;
-        this.centro = centro;
-        this.email = email;
+        this.dni = Utilidades.encriptar(dni);
+        this.nombre = Utilidades.encriptar(nombre);
+        this.apellidos = Utilidades.encriptar(apellidos);
+        this.contraseña = Utilidades.encriptar(contraseña);
+        this.rol = Utilidades.encriptar(rol);
+        this.especialidad = Utilidades.encriptar(especialidad);
+        this.medico = Utilidades.encriptar(medico);
+        this.numTelefono = Utilidades.encriptar(numTelefono);
+        this.localidad = Utilidades.encriptar(localidad);
+        this.centro = Utilidades.encriptar(centro);
+        this.email = Utilidades.encriptar(email);
     }
-
+    
     public Usuario() {
 
     }
@@ -110,11 +121,11 @@ public class Usuario {
         this.medico = medico;
     }
 
-    public int getNumTelefono() {
+    public String getNumTelefono() {
         return numTelefono;
     }
 
-    public void setNumTelefono(int numTelefono) {
+    public void setNumTelefono(String numTelefono) {
         this.numTelefono = numTelefono;
     }
 
@@ -156,7 +167,7 @@ public class Usuario {
         result = prime * result + ((localidad == null) ? 0 : localidad.hashCode());
         result = prime * result + ((medico == null) ? 0 : medico.hashCode());
         result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
-        result = prime * result + numTelefono;
+        result = prime * result + ((nombre == null) ? 0 : numTelefono.hashCode());
         result = prime * result + ((rol == null) ? 0 : rol.hashCode());
         return result;
     }

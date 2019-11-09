@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import es.e3corp.eSalud.exception.CitaNotFoundException;
 import es.e3corp.eSalud.model.Cita;
 import es.e3corp.eSalud.repository.CitasRepository;
+import es.e3corp.eSalud.utilidades.Utilidades;
 
 @Service("CitaService")
 
@@ -63,12 +64,14 @@ public class CitaServiceImpl implements CitaService {
 
   @Override
   public List<Cita> getCitasByPaciente(String dni) {
+	
     List<Cita> citas = citaRepository.findPaciente(dni);
     return citas;
   }
 
   @Override
   public List<Cita> getCitasByMedico(String id) {
+	
     List<Cita> citas = citaRepository.findMedico(id);
     return citas;
   }

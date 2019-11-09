@@ -39,7 +39,7 @@ public class CrearUsuarioSteps {
         u.setApellidos(a.get(0).get("apellidos"));
         u.setContraseña(a.get(0).get("contraseña"));
         u.setRol(a.get(0).get("rol"));
-        u.setNumTelefono(Integer.parseInt(a.get(0).get("numTelefono")));
+        u.setNumTelefono(a.get(0).get("numTelefono"));
         u.setEmail(a.get(0).get("email"));
         u.setEspecialidad(a.get(0).get("especialidad"));
         u.setLocalidad(a.get(0).get("localidad"));
