@@ -90,9 +90,29 @@ public class UsuarioServiceImpl implements UsuarioService {
 		System.out.println("[SERVER] DNI recibido: " + dni);
 		System.out.println("[SERVER] Contraseña recibida: " + password);
 
-		Usuario usuario = userRepository.findByDniAndContraseña(dni, password);
-		return usuario;
+    Usuario usuario = userRepository.findByDniAndContraseña(dni, password);
+    return usuario;
+  }
+
+@Override
+public List<Usuario> getUsersByRole(String rol) {
+	List<Usuario> usuarios= userRepository.findByRole(rol);
+	List<Usuario> listado = new ArrayList<>();	
+	if(rol.equals("medico")) {
+		for(Usuario u : usuarios) {
+			Usuario temp = new Usuario();
+			temp.setNombre(u.getNombre());
+			temp.setApellidos(u.getApellidos());
+			temp.setEspecialidad(u.getEspecialidad());
+			temp.setCentro(u.getCentro());
+			listado.add(temp);
+		}
 	}
+	else {
+		listado = usuarios;
+	}
+	return listado;
+}
 
 	@Override
 	public List<Usuario> getUsersByRol(String rol) {
