@@ -15,10 +15,10 @@ export class SidenavAdminComponent implements OnInit {
   mobileQuery: MediaQueryList;
 
   fillerNav = [
-    { name: "Mostrar médicos", route: "MostrarMedico", icon: "list" },
+    { name: "Lista de médicos", route: "MostrarMedico", icon: "list" },
+    { name: "Lista de pacientes", route: "ModificarPaciente", icon: "edit" },
     { name: "Registrar médicos", route: "RegistrarMedico", icon: "autorenew" },
-    { name: "Modificar médicos", route: "ModificarMedico", icon: "edit" },
-    { name: "Modificar paciente", route: "ModificarPaciente", icon: "edit" },
+    /*{ name: "Modificar médicos", route: "ModificarMedico", icon: "edit" },*/
     { name: "Salir", route: "/", icon: "logout" }
 
   ]
@@ -49,11 +49,11 @@ export class SidenavAdminComponent implements OnInit {
 
   shouldRun = true;
   ngOnInit() {
-    
+
   }
   ngOnSubmit() {
   }
-  
+
   alertDni() {
     //this.alertService.error("Formato de DNI incorrecto. El DNI debe de tener 8 números y sin letra", false);
   }

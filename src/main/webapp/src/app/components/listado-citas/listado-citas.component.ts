@@ -15,11 +15,6 @@ export interface PeriodicElement {
 	hora: string;
 	médico: string;
 }
-const ELEMENT_DATA: PeriodicElement[] = [
-  { tipo: 'Enfermería', centro: 'Ciudad Real III', fecha: '22/11/2019', hora: '11:54' },
-  { tipo: 'Pediatría', centro: 'Ciudad Real III', fecha: '23/11/2019', hora: '12:00' }
-
-];
 
 @Component({
 	selector: 'app-listado-citas',
