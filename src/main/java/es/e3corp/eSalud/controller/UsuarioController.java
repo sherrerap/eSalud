@@ -97,7 +97,7 @@ public class UsuarioController {
     @ApiOperation(value = "Find all user", notes = "Return all users" )
     public ResponseEntity<List<Usuario>> allMedicos(){
       log.info("Get allUsers");
-      return ResponseEntity.ok(usersService.getUsersByRol("medico"));
+      return ResponseEntity.ok(usersService.getUsersByRol("médico"));
     }
      
     @RequestMapping(value = "/{userId}", method = RequestMethod.DELETE)
