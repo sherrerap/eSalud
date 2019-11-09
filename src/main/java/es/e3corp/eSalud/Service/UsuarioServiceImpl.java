@@ -93,6 +93,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	public List<Usuario> getUsersByRol(String rol){
 		//Faltaria implementar un desencriptado despues
 		List<Usuario> usersRol =userRepository.findByRol(rol);
+		List<Usuario> usuariosRolDesencriptados = Utilidades.desencriptarUsuarios(usersRol);
 		return usersRol;
 	}
 

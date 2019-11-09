@@ -90,14 +90,14 @@ public class UsuarioController {
     @ApiOperation(value = "Find all user", notes = "Return all users" )
     public ResponseEntity<List<Usuario>> allPacientes(){
       log.info("Get allUsers");
-      return ResponseEntity.ok(usersService.getUsersByRol("paciente"));
+      return ResponseEntity.ok(usersService.getUsersByRol(Utilidades.encriptar("paciente")));
     }
     
     @RequestMapping(value = "/medicos",method = RequestMethod.GET)
     @ApiOperation(value = "Find all user", notes = "Return all users" )
     public ResponseEntity<List<Usuario>> allMedicos(){
       log.info("Get allUsers");
-      return ResponseEntity.ok(usersService.getUsersByRol("médico"));
+      return ResponseEntity.ok(usersService.getUsersByRol(Utilidades.encriptar("médico")));
     }
      
     @RequestMapping(value = "/{userId}", method = RequestMethod.DELETE)

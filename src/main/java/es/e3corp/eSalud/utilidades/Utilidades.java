@@ -148,6 +148,32 @@ public class Utilidades {
 		
 		return usersDesencriptado;
 	}
+	
+	public static List<Usuario> desencriptarUsuarios(List<Usuario> users) {
+
+		List <Usuario> usersDesencriptado =  new ArrayList<Usuario>();
+		System.out.println("Tamaño de la lista normal: "+users.size());
+		
+		for(int i=0; i < users.size();i++) {
+			Usuario usuario = users.get(i);
+			System.out.println(usuario.toString());
+			//aun no desencripta porque no coinciden los valores que hay en la BBDD
+			usersDesencriptado.add(desencriptarUsuario(usuario));
+			
+			
+			//usersDesencriptado.add(usuario);
+		}
+		
+//		System.out.println("Tamaño de la lista desencriptada: "+usersDesencriptado.size());
+//		for(int i=0; i < usersDesencriptado.size();i++) {
+//			Usuario usuario = usersDesencriptado.get(i);
+//			System.out.println(usuario.toString());
+//			
+//		}
+		
+		return usersDesencriptado;
+	}
+
 
 	public static Cita desencriptarCita(Cita cita) {
 		try {
