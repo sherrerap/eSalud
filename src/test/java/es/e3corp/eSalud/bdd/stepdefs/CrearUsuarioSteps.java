@@ -57,7 +57,7 @@ public class CrearUsuarioSteps {
 
     @Then("el resultado de guardar el usuario es correcto")
     public void el_resultado_de_guardar_el_usuario_es_correcto() {
-        assertEquals(u.getDni(), this.usuarioRepository.findByDniAndContraseña(u.getDni(), u.getcontrasena()).getDni());
+        assertEquals(u.getDni(), this.usuarioRepository.findByDniAndContrasena(u.getDni(), u.getcontrasena()).getDni());
         this.usuarioRepository.deleteUsuario(u.getId());
     }
 

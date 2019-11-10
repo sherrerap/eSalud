@@ -15,49 +15,70 @@ import es.e3corp.eSalud.repository.CitasRepository;
 import es.e3corp.eSalud.utilidades.Utilidades;
 
 @Service("CitaService")
-
+/**
+* @author e3corp
+*/
 @Transactional
 public class CitaServiceImpl implements CitaService {
-
-  private static final Log log = LogFactory.getLog(CitaServiceImpl.class);
+  /**
+  * @author e3corp
+  */
+  private static final Log LOG = LogFactory.getLog(CitaServiceImpl.class);
+  /**
+  * @author e3corp
+  */
   private CitasRepository citaRepository;
-
+  /**
+  * @author e3corp
+  */
   @Autowired
   public CitaServiceImpl(CitasRepository citaRepository) {
     this.citaRepository = citaRepository;
   }
-
+  /**
+  * @author e3corp
+  */
   public List<Cita> findAll() {
     Optional<List<Cita>> cita = citaRepository.findAll();
     return cita.get();
   }
-
+  /**
+  * @author e3corp
+  */
   public Cita findByCitaId(String citaId) {
     Optional<Cita> cita = citaRepository.findOne(citaId);
     if (cita.isPresent()) {
-      log.debug(String.format("Read citaId '{}'", citaId));
+      LOG.debug(String.format("Read citaId '{}'", citaId));
       return cita.get();
     } else
       throw new CitaNotFoundException(citaId);
   }
-
+  /**
+  * @author e3corp
+  */
   public void saveCita(Cita cita) {
     citaRepository.saveCita(cita);
   }
-
+  /**
+  * @author e3corp
+  */
   public void updateCita(Cita cita) {
     citaRepository.updateCita(cita);
   }
-
+  /**
+  * @author e3corp
+  */
   public void deleteCita(String citaId) {
     citaRepository.deleteCita(citaId);
   }
-
+  /**
+  * @author e3corp
+  */
   public Cita findCitaByPacienteMedicoFechaHora(String idPaciente, String idMedico, String fecha, String hora) {
-    System.out.println("[SERVER] Id paciente recibido: " + idPaciente);
-    System.out.println("[SERVER] Id medico recibido: " + idMedico);
-    System.out.println("[SERVER] Fecha recibida: " + fecha);
-    System.out.println("[SERVER] Hora recibida: " + hora);
+    LOG.info("[SERVER] Id paciente recibido: " + idPaciente);
+    LOG.info("[SERVER] Id medico recibido: " + idMedico);
+    LOG.info("[SERVER] Fecha recibida: " + fecha);
+    LOG.info("[SERVER] Hora recibida: " + hora);
     Cita cita = citaRepository.findByPacienteMedicoFechaHora(idPaciente, idMedico, fecha, hora);
     return cita;
   }

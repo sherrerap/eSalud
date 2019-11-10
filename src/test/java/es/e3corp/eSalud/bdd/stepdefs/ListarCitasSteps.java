@@ -57,23 +57,23 @@ public class ListarCitasSteps {
     public void se_muestra_la_lista_de_citas_del_paciente(String string) {
         switch (a.get(0).get("testCase")) {
         case "SIN DNI INTRODUCIDO":
-            assertEquals(usuarioRepository.findByDniAndContraseña(a.get(0).get("paciente"), a.get(0).get("contraseña")),
+            assertEquals(usuarioRepository.findByDniAndContrasena(a.get(0).get("paciente"), a.get(0).get("contraseña")),
                     null);
             break;
         case "SIN CONTRASEÑA INTRODUCIDA":
-            assertEquals(usuarioRepository.findByDniAndContraseña(a.get(0).get("paciente"), a.get(0).get("contraseña")),
+            assertEquals(usuarioRepository.findByDniAndContrasena(a.get(0).get("paciente"), a.get(0).get("contraseña")),
                     null);
             break;
         case "CON CONTRASEÑA ERRÓNEA":
-            assertEquals(usuarioRepository.findByDniAndContraseña(a.get(0).get("paciente"), a.get(0).get("contraseña")),
+            assertEquals(usuarioRepository.findByDniAndContrasena(a.get(0).get("paciente"), a.get(0).get("contraseña")),
                     null);
             break;
         case "CON PACIENTE INEXISTENTE":
-            assertEquals(usuarioRepository.findByDniAndContraseña(a.get(0).get("paciente"), a.get(0).get("contraseña")),
+            assertEquals(usuarioRepository.findByDniAndContrasena(a.get(0).get("paciente"), a.get(0).get("contraseña")),
                     null);
             break;
         case "EN OTRO CASO":
-            assertTrue(usuarioRepository.findByDniAndContraseña(a.get(0).get("paciente"),
+            assertTrue(usuarioRepository.findByDniAndContrasena(a.get(0).get("paciente"),
                     a.get(0).get("contraseña")) != null);
             // Permite pasar y se listan las citas
             break;
