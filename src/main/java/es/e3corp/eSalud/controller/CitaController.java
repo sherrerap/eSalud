@@ -101,11 +101,11 @@ public class CitaController {
         try {
           Usuario usuarioPaciente = usuarioService.findByUserDni(pacienteEncriptado);
           Usuario usuarioMedico = usuarioService.findByUserDni(médicoEncriptado);
-          if (!usuarioPaciente.getRol().equals("paciente")) {
+          if (!usuarioPaciente.getRol().equals(Utilidades.encriptar("paciente"))) {
             log.error("[SERVER] El usuario paciente no es válido.");
             return ResponseEntity.badRequest().build();
           }
-          if (!usuarioMedico.getRol().equals("médico")) {
+          if (!usuarioMedico.getRol().equals(Utilidades.encriptar("médico"))) {
             log.error("[SERVER] El usuario médico no es válido.");
             return ResponseEntity.badRequest().build();
           }
@@ -194,8 +194,8 @@ public class CitaController {
       String tipo = null, centro = null, tipoEncriptado=null, centroEncriptado=null; 
 
       try {
-        Usuario usuarioPaciente = usuarioService.findByUserDni(paciente);
-        Usuario usuarioMedico = usuarioService.findByUserDni(médico);
+        Usuario usuarioPaciente = usuarioService.findByUserDni(pacienteEncriptado);
+        Usuario usuarioMedico = usuarioService.findByUserDni(médicoEncriptado);
         if (!usuarioPaciente.getRol().equals("paciente")) {
           log.error("[SERVER] El usuario paciente no es válido.");
           return ResponseEntity.badRequest().build();

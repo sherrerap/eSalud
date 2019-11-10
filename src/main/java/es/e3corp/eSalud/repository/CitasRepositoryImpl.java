@@ -50,13 +50,10 @@ public class CitasRepositoryImpl implements CitasRepository {
   }
 
   public Cita findByPacienteMedicoFechaHora(String idPaciente, String idMedico, String fecha, String hora) {
-	  String pacienteEncriptado = Utilidades.encriptar(idPaciente);
-      String médicoEncriptado = Utilidades.encriptar(idMedico);
-      String fechaEncriptado = Utilidades.encriptar(fecha);
-      String horaEncriptado = Utilidades.encriptar(hora);  
 	  
-	    Cita cita = this.mongoOperations.findOne(new Query(Criteria.where("paciente").is(pacienteEncriptado).and("médico")
-	        .is(médicoEncriptado).and("fecha").is(fechaEncriptado).and("hora").is(horaEncriptado)), Cita.class);
+	  
+	    Cita cita = this.mongoOperations.findOne(new Query(Criteria.where("paciente").is(idPaciente).and("médico")
+	        .is(idMedico).and("fecha").is(fecha).and("hora").is(hora)), Cita.class);
 	    
 	    Cita citaDesencriptada = Utilidades.desencriptarCita(cita);
 	    return cita;
