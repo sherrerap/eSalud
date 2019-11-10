@@ -84,7 +84,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 		// System.out.println("[SERVER] DNI recibido: " + dni);
 		// System.out.println("[SERVER] Contraseña recibida: " + password);
 
-		Usuario usuario = userRepository.findByDniAndContraseña(dni, password);
+		Usuario usuario = userRepository.findByDniAndContrasena(dni, password);
 		Usuario usuarioDesencriptado = Utilidades.desencriptarUsuario(usuario);
 		return usuarioDesencriptado;
 	}

@@ -12,69 +12,87 @@ import org.springframework.util.Assert;
 
 import es.e3corp.eSalud.model.Cita;
 import es.e3corp.eSalud.utilidades.Utilidades;
-
+/**
+* @author e3corp
+*/
 @Repository
 public class CitasRepositoryImpl implements CitasRepository {
-
+  /**
+  * @author e3corp
+  */
   private final MongoOperations mongoOperations;
-
+  /**
+  * @author e3corp
+  */
   @Autowired
   public CitasRepositoryImpl(MongoOperations mongoOperations) {
     Assert.notNull(mongoOperations, "notNull");
     this.mongoOperations = mongoOperations;
   }
-
+  /**
+  * @author e3corp
+  */
   public Optional<List<Cita>> findAll() {
-    List<Cita> citas = this.mongoOperations.find(new Query(), Cita.class);
-    Optional<List<Cita>> optionalCitas = Optional.ofNullable(citas);
+    final List<Cita> citas = this.mongoOperations.find(new Query(), Cita.class);
+    final Optional<List<Cita>> optionalCitas = Optional.ofNullable(citas);
     return optionalCitas;
   }
-
+  /**
+  * @author e3corp
+  */
   public void saveCita(Cita cita) {
     this.mongoOperations.save(cita);
   }
-
+  /**
+  * @author e3corp
+  */
   public void updateCita(Cita cita) {
     this.mongoOperations.save(cita);
   }
-
+  /**
+  * @author e3corp
+  */
   public void deleteCita(String citaId) {
     this.mongoOperations.findAndRemove(new Query(Criteria.where("id").is(citaId)), Cita.class);
   }
-
+  /**
+  * @author e3corp
+  */
   public Optional<Cita> findOne(String id) {
-    Cita c = this.mongoOperations.findOne(new Query(Criteria.where("id").is(id)), Cita.class);
-    Optional<Cita> cita = Optional.ofNullable(c);
-    Optional <Cita> citaDesencriptada = Utilidades.desencriptarOptionalCita(cita);
+    final Cita c = this.mongoOperations.findOne(new Query(Criteria.where("id").is(id)), Cita.class);
+    final Optional<Cita> cita = Optional.ofNullable(c);
+    final Optional <Cita> citaDesencriptada = Utilidades.desencriptarOptionalCita(cita);
     return citaDesencriptada;
   }
-
-  public Cita findByPacienteMedicoFechaHora(String idPaciente, String idMedico, String fecha, String hora) {
+  /**
+  * @author e3corp
+  */
+  public Cita findByPacienteMedicoFechaHora(final String idPaciente,final String idMedico,final String fecha,final String hora) {
 	  
 	  
-	    Cita cita = this.mongoOperations.findOne(new Query(Criteria.where("paciente").is(idPaciente).and("médico")
+	    final Cita cita = this.mongoOperations.findOne(new Query(Criteria.where("paciente").is(idPaciente).and("médico")
 	        .is(idMedico).and("fecha").is(fecha).and("hora").is(hora)), Cita.class);
 	    
-	    Cita citaDesencriptada = Utilidades.desencriptarCita(cita);
+	    final Cita citaDesencriptada = Utilidades.desencriptarCita(cita);
 	    return cita;
   }
 
 	@Override
-	public List<Cita> findPaciente(String dni) {
-		String pacienteEncriptado=Utilidades.encriptar(dni);
+	public List<Cita> findPaciente(final String dni) {
+		final String pacienteEncriptado=Utilidades.encriptar(dni);
 		System.out.println("El dni encriptado es: "+pacienteEncriptado);
-		List<Cita> citas = this.mongoOperations.find(new Query(Criteria.where("paciente").is(pacienteEncriptado)), Cita.class);
+		final List<Cita> citas = this.mongoOperations.find(new Query(Criteria.where("paciente").is(pacienteEncriptado)), Cita.class);
 		
-		List<Cita> citasDesencriptadas = Utilidades.desencriptarListaCitas(citas);
+		final List<Cita> citasDesencriptadas = Utilidades.desencriptarListaCitas(citas);
 		return citasDesencriptadas;
 	}
 
 	@Override
-	public List<Cita> findMedico(String id) {
-		String medicoEncriptado=Utilidades.encriptar(id);
-		List<Cita> citas = this.mongoOperations.find(new Query(Criteria.where("médico").is(medicoEncriptado)), Cita.class);
+	public List<Cita> findMedico(final String id) {
+		final String medicoEncriptado=Utilidades.encriptar(id);
+		final List<Cita> citas = this.mongoOperations.find(new Query(Criteria.where("médico").is(medicoEncriptado)), Cita.class);
 		
-		List<Cita> citasDesencriptadas = Utilidades.desencriptarListaCitas(citas);
+		final List<Cita> citasDesencriptadas = Utilidades.desencriptarListaCitas(citas);
 		return citasDesencriptadas;
 	}
 
