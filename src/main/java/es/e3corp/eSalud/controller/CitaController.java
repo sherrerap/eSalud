@@ -112,30 +112,30 @@ public class CitaController {
         LOG.info("[SERVER] Actualizando cita...");
 
         // Depende de los campos que queramos que puedan actualizarse
-        String paciente = jso.getString("paciente");
-        String médico = jso.getString("médico");
+        final String paciente = jso.getString("paciente");
+        final String medico = jso.getString("médico");
         
-        String fecha = jso.getString("fecha");
-        String hora = jso.getString("hora");
-        String tipo = jso.getString("tipo");
-        String centro = jso.getString("centro");
+        final String fecha = jso.getString("fecha");
+        final String hora = jso.getString("hora");
+        final String tipo = jso.getString("tipo");
+        final String centro = jso.getString("centro");
         
-        String pacienteEncriptado = Utilidades.encriptar(paciente);
-        String médicoEncriptado = Utilidades.encriptar(médico);
-        String fechaEncriptado = Utilidades.encriptar(fecha);
-        String horaEncriptado = Utilidades.encriptar(hora);
-        String centroEncriptado = Utilidades.encriptar(centro);
-        String tipoEncriptado = Utilidades.encriptar(tipo);
+        final String pacienteEncriptado = Utilidades.encriptar(paciente);
+        final String medicoEncriptado = Utilidades.encriptar(medico);
+        final String fechaEncriptado = Utilidades.encriptar(fecha);
+        final String horaEncriptado = Utilidades.encriptar(hora);
+        final String centroEncriptado = Utilidades.encriptar(centro);
+        final String tipoEncriptado = Utilidades.encriptar(tipo);
 
         try {
-          Usuario usuarioPaciente = usuarioService.findByUserDni(pacienteEncriptado);
-          Usuario usuarioMedico = usuarioService.findByUserDni(médicoEncriptado);
+          final Usuario usuarioPaciente = usuarioService.findByUserDni(pacienteEncriptado);
+          final Usuario usuarioMedico = usuarioService.findByUserDni(medicoEncriptado);
           if (!usuarioPaciente.getRol().equals(Utilidades.encriptar("paciente"))) {
-            log.error("[SERVER] El usuario paciente no es válido.");
+            LOG.error("[SERVER] El usuario paciente no es válido.");
             return ResponseEntity.badRequest().build();
           }
           if (!usuarioMedico.getRol().equals(Utilidades.encriptar("médico"))) {
-            log.error("[SERVER] El usuario médico no es válido.");
+            LOG.error("[SERVER] El usuario médico no es válido.");
             return ResponseEntity.badRequest().build();
           }
 
@@ -145,7 +145,7 @@ public class CitaController {
         }
 
         cita.setPaciente(pacienteEncriptado);
-        cita.setMédico(médicoEncriptado);
+        cita.setMédico(medicoEncriptado);
         cita.setFecha(fechaEncriptado);
         cita.setHora(horaEncriptado);
         cita.setTipo(tipoEncriptado);
@@ -194,46 +194,49 @@ public class CitaController {
   * @author e3corp
   */
   @RequestMapping(method = RequestMethod.POST)
-  public ResponseEntity<Cita> registrarCita(@RequestBody String p) {
-    JSONObject jso = new JSONObject(p);
-    String paciente = jso.getString("paciente");
-    String médico = jso.getString("médico");
-    String fecha = jso.getString("fecha");
-    String hora = jso.getString("hora");
-    System.out.println("el paciente que se recibe es:"+paciente);
+  public ResponseEntity<Cita> registrarCita(@RequestBody String cita) {
+    final JSONObject jso = new JSONObject(cita);
+    final String paciente = jso.getString("paciente");
+    final String medico = jso.getString("médico");
+    final String fecha = jso.getString("fecha");
+    final String hora = jso.getString("hora");
+    LOG.info("el paciente que se recibe es:"+paciente);
     
-    String pacienteEncriptado = Utilidades.encriptar(paciente);
+    final String pacienteEncriptado = Utilidades.encriptar(paciente);
     
-    System.out.println("el paciente escriptado es:"+pacienteEncriptado);
-    String médicoEncriptado = Utilidades.encriptar(médico);
+    LOG.info("el paciente escriptado es:"+pacienteEncriptado);
+    String medicoEncriptado = Utilidades.encriptar(medico);
     String fechaEncriptado = Utilidades.encriptar(fecha);
     String horaEncriptado = Utilidades.encriptar(hora);
-    Cita cita1 = citasService.findCitaByPacienteMedicoFechaHora(pacienteEncriptado, médicoEncriptado, fechaEncriptado, horaEncriptado);
+    Cita cita1 = citasService.findCitaByPacienteMedicoFechaHora(pacienteEncriptado, medicoEncriptado, fechaEncriptado, horaEncriptado);
     try {
-      Usuario usuarioPaciente = usuarioService.findByUserDni(pacienteEncriptado);
-      Usuario usuarioMedico = usuarioService.findByUserDni(médicoEncriptado);
+      final Usuario usuarioPaciente = usuarioService.findByUserDni(pacienteEncriptado);
+      final Usuario usuarioMedico = usuarioService.findByUserDni(medicoEncriptado);
       if (!usuarioPaciente.getRol().equals("paciente")) {
-        log.error("[SERVER] El usuario paciente no es válido.");
+        LOG.error("[SERVER] El usuario paciente no es válido.");
         return ResponseEntity.badRequest().build();
       }
       if (!usuarioMedico.getRol().equals("médico")) {
-        log.error("[SERVER] El usuario médico no es válido.");
+        LOG.error("[SERVER] El usuario médico no es válido.");
         return ResponseEntity.badRequest().build();
       }
 
     } catch (UserNotFoundException u) {
-      log.error("[SERVER] El usuario paciente o médico no se ha encontrado.");
+      LOG.error("[SERVER] El usuario paciente o médico no se ha encontrado.");
       return ResponseEntity.badRequest().build();
     }
 
     //Cita cita1 = citasService.findCitaByPacienteMedicoFechaHora(paciente, médico, fecha, hora);
 
     if (cita1 == null) {
-      String tipo = null, centro = null, tipoEncriptado=null, centroEncriptado=null; 
+      String tipo = null; 
+      String centro = null; 
+      String tipoEncriptado=null; 
+      String centroEncriptado=null; 
 
       try {
         Usuario usuarioPaciente = usuarioService.findByUserDni(pacienteEncriptado);
-        Usuario usuarioMedico = usuarioService.findByUserDni(médicoEncriptado);
+        Usuario usuarioMedico = usuarioService.findByUserDni(medicoEncriptado);
         if (!usuarioPaciente.getRol().equals("paciente")) {
           LOG.error("[SERVER] El usuario paciente no es válido.");
           return ResponseEntity.badRequest().build();
