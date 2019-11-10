@@ -5,65 +5,69 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
-import javax.validation.constraints.NotNull;
 
 import org.apache.commons.codec.binary.Base64;
 
 import es.e3corp.eSalud.model.Cita;
 import es.e3corp.eSalud.model.Usuario;
-
+/**
+* @author e3corp
+*/
 public class Utilidades {
 
 	
 	
 	
+  /**
+  * @author e3corp
+  */
+	public static String encriptar(final String texto) {
 
-	public static String encriptar(String texto) {
-
-        String secretKey = "esalud"; //llave para encriptar datos
+        final String secretKey = "esalud"; //llave para encriptar datos
         String base64EncryptedString = "";
 
         try {
 
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] digestOfPassword = md.digest(secretKey.getBytes("utf-8"));
-            byte[] keyBytes = Arrays.copyOf(digestOfPassword, 24);
+           final  MessageDigest md = MessageDigest.getInstance("MD5");
+            final byte[] digestOfPassword = md.digest(secretKey.getBytes("utf-8"));
+            final byte[] keyBytes = Arrays.copyOf(digestOfPassword, 24);
 
-            SecretKey key = new SecretKeySpec(keyBytes, "DESede");
-            Cipher cipher = Cipher.getInstance("DESede");
+            final SecretKey key = new SecretKeySpec(keyBytes, "DESede");
+            final Cipher cipher = Cipher.getInstance("DESede");
             cipher.init(Cipher.ENCRYPT_MODE, key);
 
-            byte[] plainTextBytes = texto.getBytes("utf-8");
-            byte[] buf = cipher.doFinal(plainTextBytes);
-            byte[] base64Bytes = Base64.encodeBase64(buf);
+            final byte[] plainTextBytes = texto.getBytes("utf-8");
+            final byte[] buf = cipher.doFinal(plainTextBytes);
+            final byte[] base64Bytes = Base64.encodeBase64(buf);
             base64EncryptedString = new String(base64Bytes);
 
         } catch (Exception ex) {
         }
         return base64EncryptedString;
     }
-	
-	public static String desencriptar(String textoEncriptado) throws Exception {
+  /**
+  * @author e3corp
+  */
+	public static String desencriptar(final String textoEncriptado) throws Exception {
 
-        String secretKey = "esalud"; //llave para desencriptar datos
+        final String secretKey = "esalud"; //llave para desencriptar datos
         String base64EncryptedString = "";
 
         try {
-            byte[] message = Base64.decodeBase64(textoEncriptado.getBytes("utf-8"));
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] digestOfPassword = md.digest(secretKey.getBytes("utf-8"));
-            byte[] keyBytes = Arrays.copyOf(digestOfPassword, 24);
-            SecretKey key = new SecretKeySpec(keyBytes, "DESede");
+            final byte[] message = Base64.decodeBase64(textoEncriptado.getBytes("utf-8"));
+            final MessageDigest md = MessageDigest.getInstance("MD5");
+            final byte[] digestOfPassword = md.digest(secretKey.getBytes("utf-8"));
+            final byte[] keyBytes = Arrays.copyOf(digestOfPassword, 24);
+            final SecretKey key = new SecretKeySpec(keyBytes, "DESede");
 
-            Cipher decipher = Cipher.getInstance("DESede");
+            final Cipher decipher = Cipher.getInstance("DESede");
             decipher.init(Cipher.DECRYPT_MODE, key);
 
-            byte[] plainText = decipher.doFinal(message);
+           final byte[] plainText = decipher.doFinal(message);
 
             base64EncryptedString = new String(plainText, "UTF-8");
 
@@ -71,8 +75,10 @@ public class Utilidades {
         }
         return base64EncryptedString;
     }
-
-	public static Optional<Usuario> desencriptarOptionalUsuario(Optional<Usuario> user) {
+  /**
+  * @author e3corp
+  */
+	public static Optional<Usuario> desencriptarOptionalUsuario(final Optional<Usuario> user) {
 		
 		try {
 			
@@ -97,8 +103,10 @@ public class Utilidades {
 		
 		
 	}
-	
-	public static Usuario desencriptarUsuario(Usuario user) {
+  /**
+  * @author e3corp
+  */
+	public static Usuario desencriptarUsuario(final Usuario user) {
 		
 		try {
 			
@@ -123,14 +131,16 @@ public class Utilidades {
 		
 		
 	}
+  /**
+  * @author e3corp
+  */
+	public static List<Usuario> desencriptarListaUsuarios(final Optional<List<Usuario>> users) {
 
-	public static List<Usuario> desencriptarListaUsuarios(Optional<List<Usuario>> users) {
-
-		List <Usuario> usersDesencriptado =  new ArrayList<Usuario>();
+		final List <Usuario> usersDesencriptado =  new ArrayList<Usuario>();
 		System.out.println("Tamaño de la lista normal: "+users.get().size());
 		
 		for(int i=0; i < users.get().size();i++) {
-			Usuario usuario = users.get().get(i);
+			final Usuario usuario = users.get().get(i);
 			System.out.println(usuario.toString());
 			//aun no desencripta porque no coinciden los valores que hay en la BBDD
 			usersDesencriptado.add(desencriptarUsuario(usuario));
@@ -148,14 +158,16 @@ public class Utilidades {
 		
 		return usersDesencriptado;
 	}
-	
-	public static List<Usuario> desencriptarUsuarios(List<Usuario> users) {
+  /**
+  * @author e3corp
+  */
+	public static List<Usuario> desencriptarUsuarios(final List<Usuario> users) {
 
-		List <Usuario> usersDesencriptado =  new ArrayList<Usuario>();
+		final List <Usuario> usersDesencriptado =  new ArrayList<Usuario>();
 		System.out.println("Tamaño de la lista normal: "+users.size());
 		
 		for(int i=0; i < users.size();i++) {
-			Usuario usuario = users.get(i);
+			final Usuario usuario = users.get(i);
 			System.out.println(usuario.toString());
 			//aun no desencripta porque no coinciden los valores que hay en la BBDD
 			usersDesencriptado.add(desencriptarUsuario(usuario));
@@ -174,8 +186,10 @@ public class Utilidades {
 		return usersDesencriptado;
 	}
 
-
-	public static Cita desencriptarCita(Cita cita) {
+  /**
+  * @author e3corp
+  */
+	public static Cita desencriptarCita(final Cita cita) {
 		try {
 			
 			cita.setPaciente(desencriptar(cita.getPaciente()));
@@ -203,13 +217,15 @@ public class Utilidades {
 			return null;
 	    }
 	}
-
-	public static List<Cita> desencriptarListaCitas(List<Cita> citas) {
-		List <Cita> citasDesencriptado =  new ArrayList<Cita>();
+  /**
+  * @author e3corp
+  */
+	public static List<Cita> desencriptarListaCitas(final List<Cita> citas) {
+		final List <Cita> citasDesencriptado =  new ArrayList<Cita>();
 		System.out.println("Tamaño de la lista normal: "+citas.size());
 		
 		for(int i=0; i < citas.size();i++) {
-			Cita cita = citas.get(i);
+			final Cita cita = citas.get(i);
 			System.out.println(cita.toString());
 			//aun no desencripta porque no coinciden los valores que hay en la BBDD
 			citasDesencriptado.add(desencriptarCita(cita));
@@ -220,8 +236,10 @@ public class Utilidades {
 		
 		return citasDesencriptado;
 	}
-
-	public static Optional<Cita> desencriptarOptionalCita(Optional<Cita> cita) {
+  /**
+  * @author e3corp
+  */
+	public static Optional<Cita> desencriptarOptionalCita(final Optional<Cita> cita) {
 		try {
 			
 			cita.get().setPaciente(desencriptar(cita.get().getPaciente()));
