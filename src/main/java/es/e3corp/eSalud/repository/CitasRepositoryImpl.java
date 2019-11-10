@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
 
 import es.e3corp.eSalud.model.Cita;
+import es.e3corp.eSalud.utilidades.Utilidades;
 
 @Repository
 public class CitasRepositoryImpl implements CitasRepository {
@@ -44,25 +45,37 @@ public class CitasRepositoryImpl implements CitasRepository {
   public Optional<Cita> findOne(String id) {
     Cita c = this.mongoOperations.findOne(new Query(Criteria.where("id").is(id)), Cita.class);
     Optional<Cita> cita = Optional.ofNullable(c);
-    return cita;
+    Optional <Cita> citaDesencriptada = Utilidades.desencriptarOptionalCita(cita);
+    return citaDesencriptada;
   }
 
   public Cita findByPacienteMedicoFechaHora(String idPaciente, String idMedico, String fecha, String hora) {
-    Cita cita = this.mongoOperations.findOne(new Query(Criteria.where("paciente").is(idPaciente).and("médico")
-        .is(idMedico).and("fecha").is(fecha).and("hora").is(hora)), Cita.class);
-    return cita;
+	  
+	  
+	    Cita cita = this.mongoOperations.findOne(new Query(Criteria.where("paciente").is(idPaciente).and("médico")
+	        .is(idMedico).and("fecha").is(fecha).and("hora").is(hora)), Cita.class);
+	    
+	    Cita citaDesencriptada = Utilidades.desencriptarCita(cita);
+	    return cita;
   }
 
 	@Override
 	public List<Cita> findPaciente(String dni) {
-		List<Cita> citas = this.mongoOperations.find(new Query(Criteria.where("paciente").is(dni)), Cita.class);
-		return citas;
+		String pacienteEncriptado=Utilidades.encriptar(dni);
+		System.out.println("El dni encriptado es: "+pacienteEncriptado);
+		List<Cita> citas = this.mongoOperations.find(new Query(Criteria.where("paciente").is(pacienteEncriptado)), Cita.class);
+		
+		List<Cita> citasDesencriptadas = Utilidades.desencriptarListaCitas(citas);
+		return citasDesencriptadas;
 	}
 
 	@Override
 	public List<Cita> findMedico(String id) {
-		List<Cita> citas = this.mongoOperations.find(new Query(Criteria.where("médico").is(id)), Cita.class);
-		return citas;
+		String medicoEncriptado=Utilidades.encriptar(id);
+		List<Cita> citas = this.mongoOperations.find(new Query(Criteria.where("médico").is(medicoEncriptado)), Cita.class);
+		
+		List<Cita> citasDesencriptadas = Utilidades.desencriptarListaCitas(citas);
+		return citasDesencriptadas;
 	}
 
 }

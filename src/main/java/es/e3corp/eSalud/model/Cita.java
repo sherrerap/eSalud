@@ -1,10 +1,20 @@
 package es.e3corp.eSalud.model;
 
+import java.security.MessageDigest;
+import java.util.Arrays;
 import java.util.UUID;
 
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 import javax.validation.constraints.NotNull;
+
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import es.e3corp.eSalud.utilidades.Utilidades;
+
 
 @Document(collection = "citas")
 
@@ -24,13 +34,14 @@ public class Cita {
 			String hora) {
 		super();
 		this.id = UUID.randomUUID().toString();
-		this.paciente = paciente;
-		this.tipo = tipo;
-		this.fecha = fecha;
-		this.centro = centro;
-		this.médico = médico;
-		this.hora = hora;
+		this.paciente = Utilidades.encriptar(paciente);
+		this.tipo = Utilidades.encriptar(tipo);
+		this.fecha = Utilidades.encriptar(fecha);
+		this.centro = Utilidades.encriptar(centro);
+		this.médico = Utilidades.encriptar(médico);
+		this.hora = Utilidades.encriptar(hora);
 	}
+
 
 	public String getId() {
 		return id;
