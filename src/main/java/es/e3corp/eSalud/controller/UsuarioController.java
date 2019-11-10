@@ -27,40 +27,35 @@ import es.e3corp.eSalud.utilidades.Utilidades;
 @RestController
 @RequestMapping("/usuarios")
 /**
-*  @author e3corp
-*/
+ * @author e3corp
+ */
 @CrossOrigin(origins = { "http://localhost:4200", "https://esalud.herokuapp.com" }, allowedHeaders = "*")
 public class UsuarioController {
-  /**
-  *  @author e3corp
-  */
-	private static final Log LOG = LogFactory.getLog(UsuarioController.class);
-	/**
-	*  @author e3corp
-	*/
-	private final UsuarioService usersService;
-	
 
-	@Autowired
+  private static final Log LOG = LogFactory.getLog(UsuarioController.class);
+ 
+  private final UsuarioService usersService;
+
+  @Autowired
   /**
-  *  @author e3corp
-  */
-	public UsuarioController(final UsuarioService usersService) {
-		this.usersService = usersService;
-	}
-  /**
-  *  @author e3corp
-  */
+   * @author e3corp
+   */
+  public UsuarioController(final UsuarioService usersService) {
+    this.usersService = usersService;
+  }
+
+  /** 
+   * Obtiene la contraseña del usuario mediante su dni.
+   * @author e3corp
+   */
   @RequestMapping(method = RequestMethod.GET)
-  /**
-  *  @author e3corp
-  */
+ 
   public ResponseEntity<Usuario> getUserPassword(@RequestParam("dni") final String dni,
       @RequestParam("password") final String password) {
-	  
-	final String dniEncriptado = Utilidades.encriptar(dni);
+
+    final String dniEncriptado = Utilidades.encriptar(dni);
     final String contrasenaEncrip = Utilidades.encriptar(password);
-      
+
     final Usuario usuario = usersService.getUserByDniAndPassword(dniEncriptado, contrasenaEncrip);
     if (usuario != null) {
       LOG.info("[SERVER] Usuario encontrado: " + usuario.getNombre());
@@ -71,18 +66,21 @@ public class UsuarioController {
     }
   }
 
+  /**
+   * Obtiene un usuario mediante su dni.
+   * @author e3corp
+   */
   @RequestMapping(value = "/{userDni}", method = RequestMethod.GET)
   @ApiOperation(value = "Find an user", notes = "Return a user by DNI")
-  /**
-  *  @author e3corp
-  */
-  public ResponseEntity<Usuario> userByDni(@PathVariable final String userDni) throws UserNotFoundException {
+ 
+  public ResponseEntity<Usuario> userByDni(@PathVariable final String userDni)
+      throws UserNotFoundException {
     LOG.info("[SERVER] Buscando usuario: " + userDni);
     Usuario user;
     try {
-      //System.out.println("Se recibe el dni: " +userDni);
+      // System.out.println("Se recibe el dni: " +userDni);
       final String dniEncriptado = Utilidades.encriptar(userDni);
-      //System.out.println("Se recibe el dni encriptado: " +dniEncriptado);
+      // System.out.println("Se recibe el dni encriptado: " +dniEncriptado);
       user = usersService.findByUserDni(dniEncriptado);
       LOG.info("[SERVER] Usuario encontrado.");
     } catch (UserNotFoundException e) {
@@ -92,112 +90,123 @@ public class UsuarioController {
     return ResponseEntity.ok(user);
   }
 
-//    @RequestMapping(method = RequestMethod.GET)
-//    public ResponseEntity<List<Usuario>> usuarioById() {
-//        log.info("Get allUsers");
-//        return ResponseEntity.ok(usersService.findAll());
-//    }
+  /*
+   * @RequestMapping(method = RequestMethod.GET) public
+   * ResponseEntity<List<Usuario>> usuarioById() { log.info("Get allUsers");
+   * return ResponseEntity.ok(usersService.findAll()); }
+   */
+  @RequestMapping(value = "/all", method = RequestMethod.GET)
+  @ApiOperation(value = "Find all user", notes = "Return all users")
+  
+  public ResponseEntity<List<Usuario>> allUsers() {
+    LOG.info("Get allUsers");
+    return ResponseEntity.ok(usersService.findAll());
+  }
 
-    
-    @RequestMapping(value = "/all",method = RequestMethod.GET)
-    @ApiOperation(value = "Find all user", notes = "Return all users" )
-    /**
-     *  @author e3corp
-     */
-    public ResponseEntity<List<Usuario>> allUsers(){
-      LOG.info("Get allUsers");
-      return ResponseEntity.ok(usersService.findAll());
-    }
-    
-    @RequestMapping(value = "/pacientes",method = RequestMethod.GET)
-    @ApiOperation(value = "Find all user", notes = "Return all users" )
-    /**
-     *  @author e3corp
-     */
-    public ResponseEntity<List<Usuario>> allPacientes(){
-      LOG.info("Get allUsers");
-      return ResponseEntity.ok(usersService.getUsersByRol(Utilidades.encriptar("paciente")));
-    }
-    
-    @RequestMapping(value = "/medicos",method = RequestMethod.GET)
-    @ApiOperation(value = "Find all user", notes = "Return all users" )
-    /**
-     *  @author e3corp
-     */
-    public ResponseEntity<List<Usuario>> allMedicos(){
-      LOG.info("Get allUsers");
-      return ResponseEntity.ok(usersService.getUsersByRol(Utilidades.encriptar("médico")));
-    }
-     
-    @RequestMapping(value = "/{userId}", method = RequestMethod.DELETE)
-    @ApiOperation(value = "Delete an user", notes = "Delete a user by Id")
-    /**
-     *  @author e3corp
-     */
-    public ResponseEntity<Void> deleteUser(@PathVariable final String userId) {
-      LOG.info("Delete user " + userId);
-        usersService.deleteUsuario(userId);
-        return ResponseEntity.noContent().build();
-    }
+  @RequestMapping(value = "/pacientes", method = RequestMethod.GET)
+  @ApiOperation(value = "Find all user", notes = "Return all users")
+ 
+  public ResponseEntity<List<Usuario>> allPacientes() {
+    LOG.info("Get allUsers");
+    return ResponseEntity.ok(usersService.getUsersByRol(Utilidades.encriptar("paciente")));
+  }
 
-    @RequestMapping(method = RequestMethod.POST)
-    /**
-     *  @author e3corp
-     */
-    public ResponseEntity<Usuario> registrarUsuario(@RequestBody final  String usuario) {
-    	final JSONObject jso = new JSONObject(usuario);
-        final String dni = jso.getString("dni");
-        final String contrasena = jso.getString("password");
-        
-        //System.out.println("Se recibe el dni: " +dni);
-        final String dniEncriptado = Utilidades.encriptar(dni);
-        //System.out.println("Se recibe el dni encriptado: " +dniEncriptado);
-       
-        final String contrasenaEncrip = Utilidades.encriptar(contrasena);
-        
-        Usuario usuario1 = usersService.getUserByDniAndPassword(dniEncriptado, contrasenaEncrip);
-        if (usuario1 == null) {
-          String nombre = null; 
-          String apellidos = null;
-          String email = null;
-          String localidad = null;
-          String centro = null;
-          String medico = null;
-          String rol = null;
-          String especialidad = null;
-          String numTelefono = null;
-          try {
-            LOG.info("[SERVER] Registrando usuario...");
-            nombre = jso.getString("nombre");
-            apellidos = jso.getString("apellidos");
-            numTelefono = jso.getString("tel");
-            email = jso.getString("correo");
-            if (jso.getString("rol").equals("paciente")) {
-              localidad = jso.getString("localidad");
-              rol = jso.getString("rol");
-            } else {
-              rol = jso.getString("rol");
-              centro = jso.getString("centro");
-              medico = jso.getString("medico");
-              especialidad = jso.getString("especialidad");
-            }
-          } catch (JSONException j) {
-            LOG.info("[SERVER] Error en la lectura del JSON.");
-            LOG.info(j.getMessage());
-            return ResponseEntity.badRequest().build();
-          }
+  
+  /**
+   * Obtiene todos los médicos.
+   * @author e3corp
+   */
+  @RequestMapping(value = "/medicos", method = RequestMethod.GET)
+  @ApiOperation(value = "Find all user", notes = "Return all users")
+  
+  public ResponseEntity<List<Usuario>> allMedicos() {
+    LOG.info("Get allUsers");
+    return ResponseEntity.ok(usersService.getUsersByRol(Utilidades.encriptar("médico")));
+  }
 
-          usuario1 = new Usuario(dni, nombre, apellidos, contrasena, rol, especialidad, medico, numTelefono, localidad,
-              centro, email);
-          usersService.saveUsuario(usuario1);
-          LOG.info("[SERVER] Usuario registrado.");
-          LOG.info("[SERVER] " + usuario1.toString());
-          return ResponseEntity.ok().build();
+  
+  /**
+   * Borra un usuario en funcion de su id.
+   * @author e3corp
+   */
+  @RequestMapping(value = "/{userId}", method = RequestMethod.DELETE)
+  @ApiOperation(value = "Delete an user", notes = "Delete a user by Id")
+
+  public ResponseEntity<Void> deleteUser(@PathVariable final String userId) {
+    LOG.info("Delete user " + userId);
+    usersService.deleteUsuario(userId);
+    return ResponseEntity.noContent().build();
+  }
+
+  
+  /**
+   * Registramos un usuario y guardamos ese usuario en la base de datos.
+   * @author e3corp.
+   */
+  @RequestMapping(method = RequestMethod.POST)
+ 
+  public ResponseEntity<Usuario> registrarUsuario(@RequestBody final String usuario) {
+    final JSONObject jso = new JSONObject(usuario);
+    final String dni = jso.getString("dni");
+    final String contrasena = jso.getString("password");
+
+    // System.out.println("Se recibe el dni: " +dni);
+    final String dniEncriptado = Utilidades.encriptar(dni);
+    // System.out.println("Se recibe el dni encriptado: " +dniEncriptado);
+
+    final String contrasenaEncrip = Utilidades.encriptar(contrasena);
+
+    Usuario usuario1 = usersService.getUserByDniAndPassword(dniEncriptado, contrasenaEncrip);
+    if (usuario1 == null) {
+      String nombre = null;
+      String apellidos = null;
+      String email = null;
+      String localidad = null;
+      String centro = null;
+      String medico = null;
+      String rol = null;
+      String especialidad = null;
+      String numTelefono = null;
+      try {
+        LOG.info("[SERVER] Registrando usuario...");
+        nombre = jso.getString("nombre");
+        apellidos = jso.getString("apellidos");
+        numTelefono = jso.getString("tel");
+        email = jso.getString("correo");
+        if (jso.getString("rol").equals("paciente")) {
+          localidad = jso.getString("localidad");
+          rol = jso.getString("rol");
         } else {
-          LOG.info("[SERVER] Error: el usuario ya está registrado.");
-          LOG.info("[SERVER] " + usuario1.toString());
-          return ResponseEntity.badRequest().build();
+          rol = jso.getString("rol");
+          centro = jso.getString("centro");
+          medico = jso.getString("medico");
+          especialidad = jso.getString("especialidad");
         }
-    }
- }
+      } catch (JSONException j) {
+        LOG.info("[SERVER] Error en la lectura del JSON.");
+        LOG.info(j.getMessage());
+        return ResponseEntity.badRequest().build();
+      }
 
+      usuario1 = new Usuario(
+          dni, 
+          nombre, 
+          apellidos, 
+          contrasena, rol, 
+          especialidad, 
+          medico, 
+          numTelefono, 
+          localidad,
+          centro, 
+          email);
+      usersService.saveUsuario(usuario1);
+      LOG.info("[SERVER] Usuario registrado.");
+      LOG.info("[SERVER] " + usuario1.toString());
+      return ResponseEntity.ok().build();
+    } else {
+      LOG.info("[SERVER] Error: el usuario ya está registrado.");
+      LOG.info("[SERVER] " + usuario1.toString());
+      return ResponseEntity.badRequest().build();
+    }
+  }
+}

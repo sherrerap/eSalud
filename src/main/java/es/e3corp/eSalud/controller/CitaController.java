@@ -35,19 +35,24 @@ import es.e3corp.eSalud.utilidades.Utilidades;
 */
 public class CitaController {
   /**
+   * Comentario de prueba.
   * @author e3corp
   */
   private static final Log LOG = LogFactory.getLog(CitaController.class);
   /**
+   * Interfaz CitasService.
   * @author e3corp
   */
   private final CitaService citasService;
   /**
+   * Interfaz UsuarioService.
   * @author e3corp
   */
   private final UsuarioService usuarioService;
+  
   @Autowired
   /**
+   * Contructor CitaController.
   * @author e3corp
   */
   public CitaController(final CitaService citasService, final UsuarioService usuarioService) {
@@ -55,9 +60,13 @@ public class CitaController {
     this.citasService = citasService;
   }
 
+  /**
+   * Obtiene cita por fecha.
+   * @return
+   */
   @RequestMapping(method = RequestMethod.GET)
   public ResponseEntity<Cita> getCitaFecha(@RequestParam(required = false) final String paciente,
-      @RequestParam(required = false) final String medico, @RequestParam(required = false) final String fecha,
+      @RequestParam(required = false)final String medico,@RequestParam(required = false) final String fecha,
       @RequestParam(required = false) final String hora) {
     final Cita cita = citasService.findCitaByPacienteMedicoFechaHora(paciente, medico, fecha, hora);
     if (cita != null) {
@@ -89,15 +98,20 @@ public class CitaController {
     final List<Cita> citas = citasService.getCitasByMedico(idmedico);
     return ResponseEntity.ok(citas);
   }
+  
   /**
+   * RequestMapping de citas.
   * @author e3corp
   */
   @RequestMapping(value = "/{citaId}", method = RequestMethod.PUT)
+  
   /**
+   * ApiOperation update cita.
   * @author e3corp
   */
   @ApiOperation(value = "Update cita", notes = "Finds a cita ID and updates its fields")
   /**
+   * Actualiza cita mediante su id y una nueva cita.
   * @author e3corp
   */
   public ResponseEntity<Cita> updateCita(@RequestBody final String mensajerecibido, @PathVariable final String citaId) {
@@ -162,10 +176,15 @@ public class CitaController {
       return ResponseEntity.ok().build();
     }
   }
-
+  
+  /**
+   * RequestMapping /{citaid}.
+   * ApiOperation find cita.
+   */
   @RequestMapping(value = "/{citaId}", method = RequestMethod.GET)
   @ApiOperation(value = "Find cita", notes = "Return a cita by Id")
   /**
+   * Obtiene una cita mediante su id.
   * @author e3corp
   */
   public ResponseEntity<Cita> citaById(@PathVariable final String citaId) throws CitaNotFoundException {
@@ -180,9 +199,14 @@ public class CitaController {
     return ResponseEntity.ok(cita);
   }
 
+  /**
+   * RequestMapping {citaid}.
+   * ApiOperation delete cita.
+   */
   @RequestMapping(value = "{citaId}", method = RequestMethod.DELETE)
   @ApiOperation(value = "Delete cita", notes = "Delete cita")
   /**
+   * Borra una cita mediante su id.
   * @author e3corp
   */
   public ResponseEntity<Void> deleteCita(@PathVariable final String citaId) {
@@ -190,7 +214,9 @@ public class CitaController {
     citasService.deleteCita(citaId);
     return ResponseEntity.ok().build();
   }
+  
   /**
+   * Registra o guarda una cita en la base de datos.
   * @author e3corp
   */
   @RequestMapping(method = RequestMethod.POST)
@@ -200,11 +226,11 @@ public class CitaController {
     final String medico = jso.getString("médico");
     final String fecha = jso.getString("fecha");
     final String hora = jso.getString("hora");
-    LOG.info("el paciente que se recibe es:"+paciente);
+    LOG.info("el paciente que se recibe es:" + paciente);
     
     final String pacienteEncriptado = Utilidades.encriptar(paciente);
     
-    LOG.info("el paciente escriptado es:"+pacienteEncriptado);
+    LOG.info("el paciente escriptado es:" + pacienteEncriptado);
     String medicoEncriptado = Utilidades.encriptar(medico);
     String fechaEncriptado = Utilidades.encriptar(fecha);
     String horaEncriptado = Utilidades.encriptar(hora);
@@ -231,8 +257,8 @@ public class CitaController {
     if (cita1 == null) {
       String tipo = null; 
       String centro = null; 
-      String tipoEncriptado=null; 
-      String centroEncriptado=null; 
+      String tipoEncriptado = null; 
+      String centroEncriptado = null; 
 
       try {
         Usuario usuarioPaciente = usuarioService.findByUserDni(pacienteEncriptado);
