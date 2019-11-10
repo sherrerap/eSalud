@@ -1,8 +1,5 @@
 package es.e3corp.eSalud.repository;
 
-import es.e3corp.eSalud.model.Usuario;
-import es.e3corp.eSalud.repository.UsuarioRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.mongodb.core.MongoOperations;
@@ -10,6 +7,9 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.util.Assert;
+
+import es.e3corp.eSalud.model.Usuario;
+import es.e3corp.eSalud.repository.UsuarioRepository;
 
 import java.util.List;
 

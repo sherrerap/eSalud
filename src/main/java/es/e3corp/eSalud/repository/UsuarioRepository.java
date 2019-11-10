@@ -1,11 +1,11 @@
 package es.e3corp.eSalud.repository;
 
-import es.e3corp.eSalud.model.Usuario;
-
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
+
+import es.e3corp.eSalud.model.Usuario;
 
 @Repository
 public interface UsuarioRepository {

@@ -4,8 +4,6 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import es.e3corp.eSalud.model.Usuario;
-import es.e3corp.eSalud.repository.UsuarioRepository;
 
 import static org.junit.Assert.assertEquals;
 
@@ -16,6 +14,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import es.e3corp.eSalud.model.Usuario;
+import es.e3corp.eSalud.repository.UsuarioRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)

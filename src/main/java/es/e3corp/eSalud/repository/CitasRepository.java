@@ -1,11 +1,11 @@
 package es.e3corp.eSalud.repository;
 
-import es.e3corp.eSalud.model.Cita;
-
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
+
+import es.e3corp.eSalud.model.Cita;
 
 @Repository
 public interface CitasRepository {

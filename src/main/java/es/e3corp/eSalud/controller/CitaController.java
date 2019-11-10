@@ -29,112 +29,145 @@ import es.e3corp.eSalud.model.Usuario;
 @RestController
 @RequestMapping("/citas")
 @CrossOrigin(origins = { "http://localhost:4200", "https://esalud.herokuapp.com" }, allowedHeaders = "*")
+/**
+* @author e3corp
+*/
 public class CitaController {
-
-  private static final Log log = LogFactory.getLog(CitaController.class);
+  /**
+  * @author e3corp
+  */
+  private static final Log LOG = LogFactory.getLog(CitaController.class);
+  /**
+  * @author e3corp
+  */
   private final CitaService citasService;
+  /**
+  * @author e3corp
+  */
   private final UsuarioService usuarioService;
-  private Cita cita;
-
   @Autowired
-  public CitaController(CitaService citasService, UsuarioService usuarioService) {
+  /**
+  * @author e3corp
+  */
+  public CitaController(final CitaService citasService, final UsuarioService usuarioService) {
     this.usuarioService = usuarioService;
     this.citasService = citasService;
   }
 
   @RequestMapping(method = RequestMethod.GET)
-  public ResponseEntity<Cita> getCitaFecha(@RequestParam(required = false) String paciente,
-      @RequestParam(required = false) String médico, @RequestParam(required = false) String fecha,
-      @RequestParam(required = false) String hora) {
-    Cita cita = citasService.findCitaByPacienteMedicoFechaHora(paciente, médico, fecha, hora);
+  public ResponseEntity<Cita> getCitaFecha(@RequestParam(required = false) final String paciente,
+      @RequestParam(required = false) final String medico, @RequestParam(required = false) final String fecha,
+      @RequestParam(required = false) final String hora) {
+    final Cita cita = citasService.findCitaByPacienteMedicoFechaHora(paciente, medico, fecha, hora);
     if (cita != null) {
-      System.out.println("[SERVER] Cita encontrada: " + cita.getId());
+      LOG.info("[SERVER] Cita encontrada: " + cita.getId());
+      /**
+      * @author e3corp
+      */
       return ResponseEntity.ok(cita);
     } else {
-      System.out.println("[SERVER] No se ha encontrado ninguna cita.");
+      LOG.info("[SERVER] No se ha encontrado ninguna cita.");
       return ResponseEntity.badRequest().build();
     }
   }
 
   @RequestMapping(value = "paciente/{dni}", method = RequestMethod.GET)
-  public ResponseEntity<List<Cita>> getListadoCitasByPaciente(@PathVariable(required = true) String dni) {
-    List<Cita> citas = citasService.getCitasByPaciente(dni);
+  /**
+  * @author e3corp
+  */
+  public ResponseEntity<List<Cita>> getListadoCitasByPaciente(@PathVariable(required = true) final String dni) {
+    final List<Cita> citas = citasService.getCitasByPaciente(dni);
     return ResponseEntity.ok(citas);
   }
 
   @RequestMapping(value = "medico/{id}", method = RequestMethod.GET)
-  public ResponseEntity<List<Cita>> getListadoCitasByMedico(@PathVariable(required = true) String id) {
-    List<Cita> citas = citasService.getCitasByMedico(id);
+  /**
+  * @author e3corp
+  */
+  public ResponseEntity<List<Cita>> getListadoCitasByMedico(@PathVariable(required = true) final String idmedico) {
+    final List<Cita> citas = citasService.getCitasByMedico(idmedico);
     return ResponseEntity.ok(citas);
   }
-
+  /**
+  * @author e3corp
+  */
   @RequestMapping(value = "/{citaId}", method = RequestMethod.PUT)
+  /**
+  * @author e3corp
+  */
   @ApiOperation(value = "Update cita", notes = "Finds a cita ID and updates its fields")
-  public ResponseEntity<Cita> updateCita(@RequestBody String p, @PathVariable String citaId) {
-    log.info("[SERVER] Actualizando cita...");
-    JSONObject jso = new JSONObject(p);
-    Cita cita = citasService.findByCitaId(citaId);
+  /**
+  * @author e3corp
+  */
+  public ResponseEntity<Cita> updateCita(@RequestBody final String mensajerecibido, @PathVariable final String citaId) {
+    LOG.info("[SERVER] Actualizando cita...");
+    final JSONObject jso = new JSONObject(mensajerecibido);
+    final Cita cita = citasService.findByCitaId(citaId);
     if (cita == null) {
-      System.out.println("[SERVER] Error: la cita no existe.");
+      LOG.info("[SERVER] Error: la cita no existe.");
       return ResponseEntity.badRequest().build();
     } else {
       try {
-        System.out.println("[SERVER] Actualizando cita...");
+        LOG.info("[SERVER] Actualizando cita...");
 
         // Depende de los campos que queramos que puedan actualizarse
-        String paciente = jso.getString("paciente");
+        final String paciente = jso.getString("paciente");
         
         
-        String fecha = jso.getString("fecha");
-        String hora = jso.getString("hora");
-        String tipo = jso.getString("tipo");
-        String centro = jso.getString("centro");
-        System.out.println(paciente+" "+fecha+" "+hora+" "+tipo+" "+centro);
-        String médico = jso.getString("médico");
+        final String fecha = jso.getString("fecha");
+        final String hora = jso.getString("hora");
+        final String tipo = jso.getString("tipo");
+        final String centro = jso.getString("centro");
+        LOG.info(paciente+" "+fecha+" "+hora+" "+tipo+" "+centro);
+        final String medico = jso.getString("médico");
 
         try {
-          Usuario usuarioPaciente = usuarioService.findByUserDni(paciente);
-          Usuario usuarioMedico = usuarioService.findByUserDni(médico);
+          final Usuario usuarioPaciente = usuarioService.findByUserDni(paciente);
+          final Usuario usuarioMedico = usuarioService.findByUserDni(medico);
           if (!usuarioPaciente.getRol().equals("paciente")) {
-            log.error("[SERVER] El usuario paciente no es válido.");
+            LOG.error("[SERVER] El usuario paciente no es válido.");
             return ResponseEntity.badRequest().build();
           }
           if (!usuarioMedico.getRol().equals("medico")) {
-            log.error("[SERVER] El usuario médico no es válido.");
+            LOG.error("[SERVER] El usuario médico no es válido.");
             return ResponseEntity.badRequest().build();
           }
 
         } catch (UserNotFoundException u) {
-          log.error("[SERVER] El usuario paciente o médico no se ha encontrado.");
+          LOG.error("[SERVER] El usuario paciente o médico no se ha encontrado.");
           return ResponseEntity.badRequest().build();
         }
 
         cita.setPaciente(paciente);
-        cita.setMédico(médico);
+        cita.setMédico(medico);
         cita.setFecha(fecha);
         cita.setHora(hora);
         cita.setTipo(tipo);
         cita.setCentro(centro);
       } catch (JSONException j) {
-        System.out.println("[SERVER] Error en la lectura del JSON.");
-        System.out.println(j.getMessage());
+        LOG.error("[SERVER] Error en la lectura del JSON.");
+        LOG.info(j.getMessage());
         return ResponseEntity.badRequest().build();
       }
 
       citasService.updateCita(cita);
-      System.out.println("[SERVER] Cita actualizada.");
-      System.out.println("[SERVER] " + cita.toString());
+      LOG.info("[SERVER] Cita actualizada.");
+      LOG.info("[SERVER] " + cita.toString());
       return ResponseEntity.ok().build();
     }
   }
 
   @RequestMapping(value = "/{citaId}", method = RequestMethod.GET)
   @ApiOperation(value = "Find cita", notes = "Return a cita by Id")
-  public ResponseEntity<Cita> citaById(@PathVariable String citaId) throws CitaNotFoundException {
-    log.info("[SERVER] Buscando cita...");
+  /**
+  * @author e3corp
+  */
+  public ResponseEntity<Cita> citaById(@PathVariable final String citaId) throws CitaNotFoundException {
+    LOG.info("[SERVER] Buscando cita...");
+    Cita cita;
     try {
       cita = citasService.findByCitaId(citaId);
-      log.info("[SERVER] " + cita.toString());
+      LOG.info("[SERVER] " + cita.toString());
     } catch (CitaNotFoundException e) {
       cita = null;
     }
@@ -143,68 +176,77 @@ public class CitaController {
 
   @RequestMapping(value = "{citaId}", method = RequestMethod.DELETE)
   @ApiOperation(value = "Delete cita", notes = "Delete cita")
-  public ResponseEntity<Void> deleteCita(@PathVariable String citaId) {
-    log.info("[SERVER] Borrando cita:  " + citaId);
+  /**
+  * @author e3corp
+  */
+  public ResponseEntity<Void> deleteCita(@PathVariable final String citaId) {
+    LOG.info("[SERVER] Borrando cita:  " + citaId);
     citasService.deleteCita(citaId);
     return ResponseEntity.ok().build();
   }
-
+  /**
+  * @author e3corp
+  */
   @RequestMapping(method = RequestMethod.POST)
-  public ResponseEntity<Cita> registrarCita(@RequestBody String p) {
-    JSONObject jso = new JSONObject(p);
-    String paciente = null, médico = null, fecha = null, hora = null;
+  public ResponseEntity<Cita> registrarCita(@RequestBody final String mensajerecibido) {
+    final JSONObject jso = new JSONObject(mensajerecibido);
+    String paciente = null; 
+    String medico = null; 
+    String fecha = null; 
+    String hora = null;
     try {
       paciente = jso.getString("paciente");
-      médico = jso.getString("medico");
+      medico = jso.getString("medico");
       fecha = jso.getString("fecha");
       hora = jso.getString("hora");
     } catch (JSONException j) {
-      log.error("[SERVER] Error en la lectura del JSON.");
-      System.out.println(j.getMessage());
+      LOG.error("[SERVER] Error en la lectura del JSON.");
+      LOG.info(j.getMessage());
       return ResponseEntity.badRequest().build();
     }
 
-    Cita cita1 = citasService.findCitaByPacienteMedicoFechaHora(paciente, médico, fecha, hora);
+    Cita cita1 = citasService.findCitaByPacienteMedicoFechaHora(paciente, medico, fecha, hora);
 
     if (cita1 == null) {
-      String tipo = null, centro = null;
+      String tipo = null;
+      String centro = null;
 
       try {
-        Usuario usuarioPaciente = usuarioService.findByUserDni(paciente);
-        Usuario usuarioMedico = usuarioService.findByUserDni(médico);
+        final Usuario usuarioPaciente = usuarioService.findByUserDni(paciente);
+        final Usuario usuarioMedico = usuarioService.findByUserDni(medico);
         if (!usuarioPaciente.getRol().equals("paciente")) {
-          log.error("[SERVER] El usuario paciente no es válido.");
+          LOG.error("[SERVER] El usuario paciente no es válido.");
           return ResponseEntity.badRequest().build();
         }
         if (!usuarioMedico.getRol().equals("medico")) {
-          log.error("[SERVER] El usuario médico no es válido.");
+          LOG.error("[SERVER] El usuario médico no es válido.");
           return ResponseEntity.badRequest().build();
         }
 
       } catch (UserNotFoundException u) {
-        log.error("[SERVER] El usuario paciente o médico no se ha encontrado.");
-        return ResponseEntity.badRequest().build();
+        LOG.error("[SERVER] El usuario paciente o médico no se ha encontrado.");
+        return ResponseEntity.badRequest().build(); 
       }
 
       try {
-        System.out.println("[SERVER] Registrando cita...");
+        LOG.info("[SERVER] Registrando cita...");
 
         tipo = jso.getString("tipo");
         centro = jso.getString("centro");
 
       } catch (JSONException j) {
-        System.out.println("[SERVER] Error en la lectura del JSON.");
-        System.out.println(j.getMessage());
+        LOG.info("[SERVER] Error en la lectura del JSON.");
+        LOG.info(j.getMessage());
         return ResponseEntity.badRequest().build();
       }
 
-      cita1 = new Cita(paciente, tipo, fecha, centro, médico, hora);
+      cita1 = new Cita(paciente, tipo, fecha, centro, medico, hora);
       citasService.saveCita(cita1);
-      System.out.println("[SERVER] Cita registrada.");
-      System.out.println("[SERVER] " + cita1.toString());
+      LOG.info("[SERVER] Cita registrada.");
+      LOG.info("[SERVER] " + cita1.toString());
       return ResponseEntity.ok().build();
     } else {
-      System.out.println("[SERVER] Error: la cita ya está registrada.");
+      LOG.info("[SERVER] Error: la cita ya está registrada.");
       return ResponseEntity.badRequest().build();
     }
   }
