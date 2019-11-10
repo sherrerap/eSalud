@@ -181,8 +181,8 @@ public class Utilidades {
 			cita.setPaciente(desencriptar(cita.getPaciente()));
 			cita.setPaciente(desencriptar(cita.getPaciente()));
 			
-			cita.setMédico(desencriptar(cita.getMédico()));
-			cita.setMédico(desencriptar(cita.getMédico()));
+			cita.setMedico(desencriptar(cita.getMedico()));
+			cita.setMedico(desencriptar(cita.getMedico()));
 			
 			cita.setFecha(desencriptar(cita.getFecha()));
 			cita.setFecha(desencriptar(cita.getFecha()));
@@ -227,8 +227,8 @@ public class Utilidades {
 			cita.get().setPaciente(desencriptar(cita.get().getPaciente()));
 			cita.get().setPaciente(desencriptar(cita.get().getPaciente()));
 			
-			cita.get().setMédico(desencriptar(cita.get().getMédico()));
-			cita.get().setMédico(desencriptar(cita.get().getMédico()));
+			cita.get().setMedico(desencriptar(cita.get().getMedico()));
+			cita.get().setMedico(desencriptar(cita.get().getMedico()));
 			
 			cita.get().setFecha(desencriptar(cita.get().getFecha()));
 			cita.get().setFecha(desencriptar(cita.get().getFecha()));

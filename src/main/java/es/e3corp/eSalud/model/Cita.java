@@ -1,15 +1,8 @@
 package es.e3corp.eSalud.model;
 
-import java.security.MessageDigest;
-import java.util.Arrays;
+
 import java.util.UUID;
-
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
 import javax.validation.constraints.NotNull;
-
-import org.apache.commons.codec.binary.Base64;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -17,28 +10,54 @@ import es.e3corp.eSalud.utilidades.Utilidades;
 
 
 @Document(collection = "citas")
-
+/**
+* author: e3corp
+*/
 public class Cita {
 
 	@Id
+	/**
+	* author: e3corp
+	*/
     private String id;
+	  /**
+	  * author: e3corp
+	  */
     @NotNull
     private String paciente;
+    /**
+    * author: e3corp
+    */
     private String tipo;
+    /**
+    * author: e3corp
+    */
     private String fecha;
+    /**
+    * author: e3corp
+    */
     private String centro;
-    private String médico;
+    /**
+    * author: e3corp
+    */
+    private String medico;
+    /**
+    * author: e3corp
+    */
     private String hora;
-    
-	public Cita(@NotNull String paciente, String tipo, String fecha, String centro, String médico,
-			String hora) {
+  
+    /**
+    * author: e3corp
+    */
+	public Cita(@NotNull final String paciente,final  String tipo, final String fecha, final String centro,final String medico,
+			final String hora) {
 		super();
 		this.id = UUID.randomUUID().toString();
 		this.paciente = Utilidades.encriptar(paciente);
 		this.tipo = Utilidades.encriptar(tipo);
 		this.fecha = Utilidades.encriptar(fecha);
 		this.centro = Utilidades.encriptar(centro);
-		this.médico = Utilidades.encriptar(médico);
+		this.medico = Utilidades.encriptar(medico);
 		this.hora = Utilidades.encriptar(hora);
 	}
 
@@ -63,7 +82,7 @@ public class Cita {
 		return tipo;
 	}
 
-	public void setTipo(String tipo) {
+	public void setTipo(final String tipo) {
 		this.tipo = tipo;
 	}
 
@@ -71,7 +90,7 @@ public class Cita {
 		return fecha;
 	}
 
-	public void setFecha(String fecha) {
+	public void setFecha(final String fecha) {
 		this.fecha = fecha;
 	}
 
@@ -83,19 +102,19 @@ public class Cita {
 		this.centro = centro;
 	}
 
-	public String getMédico() {
-		return médico;
+	public String getMedico() {
+		return medico;
 	}
 
-	public void setMédico(String médico) {
-		this.médico = médico;
+	public void setMedico(String medico) {
+		this.medico = medico;
 	}
 
 	public String getHora() {
 		return hora;
 	}
 
-	public void setHora(String hora) {
+	public void setHora(final String hora) {
 		this.hora = hora;
 	}
 
@@ -107,7 +126,7 @@ public class Cita {
 		result = prime * result + ((fecha == null) ? 0 : fecha.hashCode());
 		result = prime * result + ((hora == null) ? 0 : hora.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((médico == null) ? 0 : médico.hashCode());
+		result = prime * result + ((medico == null) ? 0 : medico.hashCode());
 		result = prime * result + ((paciente == null) ? 0 : paciente.hashCode());
 		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
 		return result;
@@ -115,55 +134,72 @@ public class Cita {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
-		Cita other = (Cita) obj;
+		}
+		final Cita other = (Cita) obj;
 		if (centro == null) {
-			if (other.centro != null)
+			if (other.centro != null) {
 				return false;
-		} else if (!centro.equals(other.centro))
+			}
+		} else if (!centro.equals(other.centro)) {
 			return false;
+		}
 		if (fecha == null) {
-			if (other.fecha != null)
+			if (other.fecha != null) {
 				return false;
-		} else if (!fecha.equals(other.fecha))
+			}
+		} else if (!fecha.equals(other.fecha)) {
 			return false;
+		}
 		if (hora == null) {
-			if (other.hora != null)
+			if (other.hora != null) {
 				return false;
-		} else if (!hora.equals(other.hora))
+			}
+		} else if (!hora.equals(other.hora)) {
 			return false;
+		}
 		if (id == null) {
-			if (other.id != null)
+			if (other.id != null) {
 				return false;
-		} else if (!id.equals(other.id))
+			}
+		} else if (!id.equals(other.id)) {
 			return false;
-		if (médico == null) {
-			if (other.médico != null)
+		}
+		if (medico == null) {
+			if (other.medico != null) {
 				return false;
-		} else if (!médico.equals(other.médico))
+			}
+		} else if (!medico.equals(other.medico)) {
 			return false;
+		}
 		if (paciente == null) {
-			if (other.paciente != null)
+			if (other.paciente != null) {
 				return false;
-		} else if (!paciente.equals(other.paciente))
+			}
+		} else if (!paciente.equals(other.paciente)) {
 			return false;
+		}
 		if (tipo == null) {
-			if (other.tipo != null)
+			if (other.tipo != null) {
 				return false;
-		} else if (!tipo.equals(other.tipo))
+			}
+		} else if (!tipo.equals(other.tipo)) {
 			return false;
+		}
 		return true;
 	}
 
 	@Override
 	public String toString() {
 		return "Cita [id=" + id + ", paciente=" + paciente + ", tipo=" + tipo + ", fecha=" + fecha + ", centro="
-				+ centro + ", médico=" + médico + ", hora=" + hora + "]";
+				+ centro + ", médico=" + medico + ", hora=" + hora + "]";
 	}
 	
 	
