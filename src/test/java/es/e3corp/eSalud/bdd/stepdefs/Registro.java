@@ -64,7 +64,7 @@ public class Registro {
     @Then("nos registramos en la aplicacion")
     public void nos_registramos_en_la_aplicacion() {
 
-        // REMIRARLO
+        // En caso de caso de erro comprobar si el mensaje que se muestra es el correcto
 
         driver.findElement(By.xpath("//input[@value='Registrarse']")).click();
 
