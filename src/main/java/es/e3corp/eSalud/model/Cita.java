@@ -66,7 +66,7 @@ public class Cita {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(final String id) {
 		this.id = id;
 	}
 
@@ -74,7 +74,7 @@ public class Cita {
 		return paciente;
 	}
 
-	public void setPaciente(String paciente) {
+	public void setPaciente(final String paciente) {
 		this.paciente = paciente;
 	}
 
@@ -98,7 +98,7 @@ public class Cita {
 		return centro;
 	}
 
-	public void setCentro(String centro) {
+	public void setCentro(final String centro) {
 		this.centro = centro;
 	}
 
@@ -106,7 +106,7 @@ public class Cita {
 		return medico;
 	}
 
-	public void setMedico(String medico) {
+	public void setMedico(final String medico) {
 		this.medico = medico;
 	}
 
@@ -133,7 +133,7 @@ public class Cita {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(final Object obj) {
 		if (this == obj) {
 			return true;
 		}
