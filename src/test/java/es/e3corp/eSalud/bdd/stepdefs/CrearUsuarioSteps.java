@@ -38,7 +38,7 @@ public class CrearUsuarioSteps {
         u.setDni(a.get(0).get("dni"));
         u.setNombre(a.get(0).get("nombre"));
         u.setApellidos(a.get(0).get("apellidos"));
-        u.setContraseña(a.get(0).get("contraseña"));
+        u.setcontrasena(a.get(0).get("contraseña"));
         u.setRol(a.get(0).get("rol"));
         u.setNumTelefono(a.get(0).get("numTelefono"));
         u.setEmail(a.get(0).get("email"));
@@ -57,7 +57,7 @@ public class CrearUsuarioSteps {
 
     @Then("el resultado de guardar el usuario es correcto")
     public void el_resultado_de_guardar_el_usuario_es_correcto() {
-        assertEquals(u.getDni(), this.usuarioRepository.findByDniAndContraseña(u.getDni(), u.getContraseña()).getDni());
+        assertEquals(u.getDni(), this.usuarioRepository.findByDniAndContraseña(u.getDni(), u.getcontrasena()).getDni());
         this.usuarioRepository.deleteUsuario(u.getId());
     }
 

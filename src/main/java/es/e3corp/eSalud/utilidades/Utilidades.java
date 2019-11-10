@@ -79,7 +79,7 @@ public class Utilidades {
 			user.get().setDni(desencriptar(user.get().getDni()));
 			user.get().setNombre(desencriptar(user.get().getNombre()));
 			user.get().setApellidos(desencriptar(user.get().getApellidos()));
-			user.get().setContraseña(desencriptar(user.get().getContraseña()));
+			user.get().setcontrasena(desencriptar(user.get().getcontrasena()));
 			user.get().setRol(desencriptar(user.get().getRol()));
 			user.get().setEspecialidad(desencriptar(user.get().getEspecialidad()));
 			user.get().setMedico(desencriptar(user.get().getMedico()));
@@ -105,7 +105,7 @@ public class Utilidades {
 			user.setDni(desencriptar(user.getDni()));
 			user.setNombre(desencriptar(user.getNombre()));
 			user.setApellidos(desencriptar(user.getApellidos()));
-			user.setContraseña(desencriptar(user.getContraseña()));
+			user.setcontrasena(desencriptar(user.getcontrasena()));
 			user.setRol(desencriptar(user.getRol()));
 			user.setEspecialidad(desencriptar(user.getEspecialidad()));
 			user.setMedico(desencriptar(user.getMedico()));

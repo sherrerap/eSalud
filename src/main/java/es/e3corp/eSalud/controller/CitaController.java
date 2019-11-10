@@ -145,7 +145,7 @@ public class CitaController {
         }
 
         cita.setPaciente(pacienteEncriptado);
-        cita.setMédico(medicoEncriptado);
+        cita.setMedico(medicoEncriptado);
         cita.setFecha(fechaEncriptado);
         cita.setHora(horaEncriptado);
         cita.setTipo(tipoEncriptado);

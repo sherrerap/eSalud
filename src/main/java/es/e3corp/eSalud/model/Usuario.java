@@ -1,49 +1,78 @@
 package es.e3corp.eSalud.model;
 
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
 import java.util.UUID;
-
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
 import javax.validation.constraints.NotNull;
-
-import org.apache.commons.codec.binary.Base64;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import es.e3corp.eSalud.utilidades.Utilidades;
-
+/**
+* @author e3corp
+*/
 @Document(collection = "usuarios")
 public class Usuario {
-
+    /**
+    * @author e3corp
+    */
     @Id
     private String id;
+    /**
+    * @author e3corp
+    */
     @NotNull
     private String dni;
+    /**
+    * @author e3corp
+    */
     private String nombre;
+    /**
+    * @author e3corp
+    */
     private String apellidos;
+    /**
+    * @author e3corp
+    */
     @NotNull
-    private String contraseña;
+    private String contrasena;
+    /**
+    * @author e3corp
+    */
     private String rol;
+    /**
+    * @author e3corp
+    */
     private String especialidad;
+    /**
+    * @author e3corp
+    */
     private String medico;
+    /**
+    * @author e3corp
+    */
     private String numTelefono;
+    /**
+    * @author e3corp
+    */
     private String localidad;
+    /**
+    * @author e3corp
+    */
     private String centro;
+    /**
+    * @author e3corp
+    */ 
     private String email;
-
-    public Usuario(@NotNull String dni, String nombre, String apellidos, @NotNull String contraseña, String rol,
-            String especialidad, String medico, String numTelefono, String localidad, String centro, String email) {
+    /**
+    * @author e3corp
+    */
+    public Usuario(@NotNull final String dni,final String nombre,final String apellidos, @NotNull final String contrasena,final String rol,
+           final String especialidad,final String medico,final String numTelefono,final String localidad, final String centro, final String email) {
         super();
         this.id = UUID.randomUUID().toString();
         this.dni = Utilidades.encriptar(dni);
         this.nombre = Utilidades.encriptar(nombre);
         this.apellidos = Utilidades.encriptar(apellidos);
-        this.contraseña = Utilidades.encriptar(contraseña);
+        this.contrasena = Utilidades.encriptar(contrasena);
         this.rol = Utilidades.encriptar(rol);
         this.especialidad = Utilidades.encriptar(especialidad);
         this.medico = Utilidades.encriptar(medico);
@@ -52,7 +81,9 @@ public class Usuario {
         this.centro = Utilidades.encriptar(centro);
         this.email = Utilidades.encriptar(email);
     }
-    
+    /**
+    * @author e3corp
+    */
     public Usuario() {
 
     }
@@ -61,7 +92,7 @@ public class Usuario {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(final String id) {
         this.id = id;
     }
 
@@ -69,7 +100,7 @@ public class Usuario {
         return dni;
     }
 
-    public void setDni(String dni) {
+    public void setDni(final String dni) {
         this.dni = dni;
     }
 
@@ -77,7 +108,7 @@ public class Usuario {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    public void setNombre(final String nombre) {
         this.nombre = nombre;
     }
 
@@ -85,23 +116,27 @@ public class Usuario {
         return apellidos;
     }
 
-    public void setApellidos(String apellidos) {
+    public void setApellidos(final String apellidos) {
         this.apellidos = apellidos;
     }
-
-    public String getContraseña() {
-        return contraseña;
+    /**
+    * @author e3corp
+    */
+    public String getcontrasena() {
+        return contrasena;
     }
-
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    /**
+    * @author e3corp
+    */
+    public void setcontrasena(final String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public String getRol() {
         return rol;
     }
 
-    public void setRol(String rol) {
+    public void setRol(final String rol) {
         this.rol = rol;
     }
 
@@ -109,7 +144,7 @@ public class Usuario {
         return especialidad;
     }
 
-    public void setEspecialidad(String especialidad) {
+    public void setEspecialidad(final String especialidad) {
         this.especialidad = especialidad;
     }
 
@@ -117,7 +152,7 @@ public class Usuario {
         return medico;
     }
 
-    public void setMedico(String medico) {
+    public void setMedico(final String medico) {
         this.medico = medico;
     }
 
@@ -125,7 +160,7 @@ public class Usuario {
         return numTelefono;
     }
 
-    public void setNumTelefono(String numTelefono) {
+    public void setNumTelefono(final String numTelefono) {
         this.numTelefono = numTelefono;
     }
 
@@ -133,7 +168,7 @@ public class Usuario {
         return localidad;
     }
 
-    public void setLocalidad(String localidad) {
+    public void setLocalidad(final String localidad) {
         this.localidad = localidad;
     }
 
@@ -141,7 +176,7 @@ public class Usuario {
         return centro;
     }
 
-    public void setCentro(String centro) {
+    public void setCentro(final String centro) {
         this.centro = centro;
     }
 
@@ -149,7 +184,7 @@ public class Usuario {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(final String email) {
         this.email = email;
     }
 
@@ -159,7 +194,7 @@ public class Usuario {
         int result = 1;
         result = prime * result + ((apellidos == null) ? 0 : apellidos.hashCode());
         result = prime * result + ((centro == null) ? 0 : centro.hashCode());
-        result = prime * result + ((contraseña == null) ? 0 : contraseña.hashCode());
+        result = prime * result + ((contrasena == null) ? 0 : contrasena.hashCode());
         result = prime * result + ((dni == null) ? 0 : dni.hashCode());
         result = prime * result + ((email == null) ? 0 : email.hashCode());
         result = prime * result + ((especialidad == null) ? 0 : especialidad.hashCode());
@@ -173,7 +208,7 @@ public class Usuario {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj)
             return true;
         if (obj == null)
@@ -191,10 +226,10 @@ public class Usuario {
                 return false;
         } else if (!centro.equals(other.centro))
             return false;
-        if (contraseña == null) {
-            if (other.contraseña != null)
+        if (contrasena == null) {
+            if (other.contrasena != null)
                 return false;
-        } else if (!contraseña.equals(other.contraseña))
+        } else if (!contrasena.equals(other.contrasena))
             return false;
         if (dni == null) {
             if (other.dni != null)
@@ -244,7 +279,7 @@ public class Usuario {
     @Override
     public String toString() {
         return "Usuario [id=" + id + ", dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos
-                + ", contraseña=" + contraseña + ", rol=" + rol + ", especialidad=" + especialidad + ", medico="
+                + ", contrasena=" + contrasena + ", rol=" + rol + ", especialidad=" + especialidad + ", medico="
                 + medico + ", numTelefono=" + numTelefono + ", localidad=" + localidad + ", centro=" + centro
                 + ", email=" + email + "]";
     }
