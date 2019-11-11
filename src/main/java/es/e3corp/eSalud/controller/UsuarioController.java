@@ -29,6 +29,7 @@ import es.e3corp.eSalud.utilidades.Utilidades;
 @CrossOrigin(origins = { "http://localhost:4200", "https://esalud.herokuapp.com" }, allowedHeaders = "*")
 public class UsuarioController {
 
+	//Se controla que el rol sea medico sin acento
 	private static final Log log = LogFactory.getLog(UsuarioController.class);
 	private final UsuarioService usersService;
 	private Usuario user;
