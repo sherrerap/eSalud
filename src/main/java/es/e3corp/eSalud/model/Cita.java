@@ -27,10 +27,10 @@ public class Cita {
     private String tipo;
     private String fecha;
     private String centro;
-    private String médico;
+    private String medico;
     private String hora;
     
-	public Cita(@NotNull String paciente, String tipo, String fecha, String centro, String médico,
+	public Cita(@NotNull String paciente, String tipo, String fecha, String centro, String medico,
 			String hora) {
 		super();
 		this.id = UUID.randomUUID().toString();
@@ -38,7 +38,7 @@ public class Cita {
 		this.tipo = Utilidades.encriptar(tipo);
 		this.fecha = Utilidades.encriptar(fecha);
 		this.centro = Utilidades.encriptar(centro);
-		this.médico = Utilidades.encriptar(médico);
+		this.medico = Utilidades.encriptar(medico);
 		this.hora = Utilidades.encriptar(hora);
 	}
 
@@ -83,12 +83,12 @@ public class Cita {
 		this.centro = centro;
 	}
 
-	public String getMédico() {
-		return médico;
+	public String getMedico() {
+		return medico;
 	}
 
-	public void setMédico(String médico) {
-		this.médico = médico;
+	public void setMédico(String medico) {
+		this.medico = medico;
 	}
 
 	public String getHora() {
@@ -107,7 +107,7 @@ public class Cita {
 		result = prime * result + ((fecha == null) ? 0 : fecha.hashCode());
 		result = prime * result + ((hora == null) ? 0 : hora.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((médico == null) ? 0 : médico.hashCode());
+		result = prime * result + ((medico == null) ? 0 : medico.hashCode());
 		result = prime * result + ((paciente == null) ? 0 : paciente.hashCode());
 		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
 		return result;
@@ -142,10 +142,10 @@ public class Cita {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (médico == null) {
-			if (other.médico != null)
+		if (medico == null) {
+			if (other.medico != null)
 				return false;
-		} else if (!médico.equals(other.médico))
+		} else if (!medico.equals(other.medico))
 			return false;
 		if (paciente == null) {
 			if (other.paciente != null)
@@ -163,7 +163,7 @@ public class Cita {
 	@Override
 	public String toString() {
 		return "Cita [id=" + id + ", paciente=" + paciente + ", tipo=" + tipo + ", fecha=" + fecha + ", centro="
-				+ centro + ", médico=" + médico + ", hora=" + hora + "]";
+				+ centro + ", medico=" + medico + ", hora=" + hora + "]";
 	}
 	
 	
