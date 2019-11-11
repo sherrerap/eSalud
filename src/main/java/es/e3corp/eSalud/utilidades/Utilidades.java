@@ -14,14 +14,16 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.commons.codec.binary.Base64;
 
-
-
-/**Clase Utilidades.
+/**
+ * Clase Utilidades.
+ * 
  * @author e3corp
  */
 public class Utilidades {
 
-  /**Método para encriptar texto.
+  /**
+   * Método para encriptar texto.
+   * 
    * @author e3corp
    */
   public static String encriptar(final String texto) {
@@ -49,10 +51,12 @@ public class Utilidades {
     return base64EncryptedString;
   }
 
-  /**Método para desencriptar texto.
+  /**
+   * Método para desencriptar texto.
+   * 
    * @author e3corp
    */
-  
+
   public static String desencriptar(final String textoEncriptado) throws Exception {
 
     final String secretKey = "esalud"; // llave para desencriptar datos
@@ -77,10 +81,12 @@ public class Utilidades {
     return base64EncryptedString;
   }
 
-  /**Método para desencriptar usuario.
+  /**
+   * Método para desencriptar usuario.
+   * 
    * @author e3corp
    */
-  
+
   public static Optional<Usuario> desencriptarOptionalUsuario(final Optional<Usuario> user) {
 
     try {
@@ -104,7 +110,9 @@ public class Utilidades {
 
   }
 
-  /**Método para desencriptar usuario.
+  /**
+   * Método para desencriptar usuario.
+   * 
    * @author e3corp
    */
   public static Usuario desencriptarUsuario(final Usuario user) {
@@ -130,7 +138,9 @@ public class Utilidades {
 
   }
 
-  /**Método para desencriptar una lista de usuarios.
+  /**
+   * Método para desencriptar una lista de usuarios.
+   * 
    * @author e3corp
    */
   public static List<Usuario> desencriptarListaUsuarios(final Optional<List<Usuario>> users) {
@@ -147,11 +157,12 @@ public class Utilidades {
       // usersDesencriptado.add(usuario);
     }
 
-
     return usersDesencriptado;
   }
 
-  /**Método para desencriptar usuarios.
+  /**
+   * Método para desencriptar usuarios.
+   * 
    * @author e3corp
    */
   public static List<Usuario> desencriptarUsuarios(final List<Usuario> users) {
@@ -168,14 +179,15 @@ public class Utilidades {
       // usersDesencriptado.add(usuario);
     }
 
-
     return usersDesencriptado;
   }
 
-  /**Método para desenciptar citas.
+  /**
+   * Método para desenciptar citas.
+   * 
    * @author e3corp
    */
-  
+
   public static Cita desencriptarCita(final Cita cita) {
     try {
 
@@ -205,7 +217,9 @@ public class Utilidades {
     }
   }
 
-  /**Método para desencriptar lista de citas.
+  /**
+   * Método para desencriptar lista de citas.
+   * 
    * @author e3corp
    */
   public static List<Cita> desencriptarListaCitas(final List<Cita> citas) {
@@ -225,10 +239,12 @@ public class Utilidades {
     return citasDesencriptado;
   }
 
-  /**desenciptarCita.
+  /**
+   * desenciptarCita.
+   * 
    * @author e3corp
    */
-  
+
   public static Optional<Cita> desencriptarOptionalCita(final Optional<Cita> cita) {
     try {
 
@@ -250,8 +266,7 @@ public class Utilidades {
       cita.get().setCentro(desencriptar(cita.get().getCentro()));
       cita.get().setCentro(desencriptar(cita.get().getCentro()));
       return cita;
-    }
-    catch (Exception ex) {
+    } catch (Exception ex) {
 
       return null;
     }
