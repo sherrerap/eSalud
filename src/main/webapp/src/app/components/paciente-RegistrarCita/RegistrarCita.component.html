@@ -52,8 +52,11 @@
                 <div class="col-75">
                     <select input="text" class="form-control" formControlName="medico" [ngClass]="{ 'is-invalid': submitted && f.medico.errors }">
                                     <option value="">Selecciona un médico</option>
-                                    <option value="05123456">Médico 1</option>
-                                    <option value="11223344">11223344</option>				      
+                                    <option value="11111112">Manuel Sarabia</option>
+                                    <option value="11111113">Sara Rodriguez</option>
+									<option value="11111114">Manuel Ortega</option>	
+									<option value="11111115">Ernesto Valverde</option>	
+									<option value="11111116">Lucia Sanz</option>					      
                                     </select>
                     <div *ngIf="submitted && f.medico.errors" class="invalid-feedback">
                         <div *ngIf="f.medico.errors.required">Selecciona un médico</div>
