@@ -144,15 +144,15 @@ public class CitaController {
         final String horaEncriptado = Utilidades.encriptar(hora);
         final String centroEncriptado = Utilidades.encriptar(centro);
         final String tipoEncriptado = Utilidades.encriptar(tipo);
-
+        
         try {
           final Usuario usuarioPaciente = usuarioService.findByUserDni(pacienteEncriptado);
           final Usuario usuarioMedico = usuarioService.findByUserDni(medicoEncriptado);
-          if (!usuarioPaciente.getRol().equals(Utilidades.encriptar("paciente"))) {
+          if (!usuarioPaciente.getRol().equals("paciente")) {
             LOG.error("[SERVER] El usuario paciente no es válido.");
             return ResponseEntity.badRequest().build();
           }
-          if (!usuarioMedico.getRol().equals(Utilidades.encriptar("medico"))) {
+          if (!usuarioMedico.getRol().equals("medico")) {
             LOG.error("[SERVER] El usuario medico no es válido.");
             return ResponseEntity.badRequest().build();
           }
