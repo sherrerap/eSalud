@@ -64,22 +64,6 @@ public class CitaController {
    * Obtiene cita por fecha.
    * @return
    */
-  /*@RequestMapping(method = RequestMethod.GET)
-  public ResponseEntity<Cita> getCitaFecha(@RequestParam(required = false) final String paciente,
-      @RequestParam(required = false)final String medico,@RequestParam(required = false) final String fecha,
-      @RequestParam(required = false) final String hora) {
-    final Cita cita = citasService.findCitaByPacienteMedicoFechaHora(paciente, medico, fecha, hora);
-    if (cita != null) {
-      LOG.info("[SERVER] Cita encontrada: " + cita.getId());
-      /**
-      * @author e3corp
-      *
-      return ResponseEntity.ok(cita);
-    } else {
-      LOG.info("[SERVER] No se ha encontrado ninguna cita.");
-      return ResponseEntity.badRequest().build();
-    }
-  }*/
   
   @RequestMapping(method = RequestMethod.GET)
   public ResponseEntity<Cita> getCitaFecha(@RequestParam(required = false) String paciente,
