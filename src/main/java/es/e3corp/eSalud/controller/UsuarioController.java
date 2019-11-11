@@ -48,12 +48,16 @@ public class UsuarioController {
    * Obtiene la contraseña del usuario mediante su dni.
    * @author e3corp
    */
+  
+  
   @RequestMapping(method = RequestMethod.GET)
  
   public ResponseEntity<Usuario> getUserPassword(@RequestParam("dni") final String dni,
       @RequestParam("password") final String password) {
 
     final String dniEncriptado = Utilidades.encriptar(dni);
+    System.out.println(Utilidades.encriptar("admin"));
+    System.out.println(Utilidades.encriptar("root"));
     final String contrasenaEncrip = Utilidades.encriptar(password);
 
     final Usuario usuario = usersService.getUserByDniAndPassword(dniEncriptado, contrasenaEncrip);

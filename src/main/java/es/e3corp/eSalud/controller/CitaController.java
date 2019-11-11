@@ -64,7 +64,7 @@ public class CitaController {
    * Obtiene cita por fecha.
    * @return
    */
-  @RequestMapping(method = RequestMethod.GET)
+  /*@RequestMapping(method = RequestMethod.GET)
   public ResponseEntity<Cita> getCitaFecha(@RequestParam(required = false) final String paciente,
       @RequestParam(required = false)final String medico,@RequestParam(required = false) final String fecha,
       @RequestParam(required = false) final String hora) {
@@ -73,10 +73,30 @@ public class CitaController {
       LOG.info("[SERVER] Cita encontrada: " + cita.getId());
       /**
       * @author e3corp
-      */
+      *
       return ResponseEntity.ok(cita);
     } else {
       LOG.info("[SERVER] No se ha encontrado ninguna cita.");
+      return ResponseEntity.badRequest().build();
+    }
+  }*/
+  
+  @RequestMapping(method = RequestMethod.GET)
+  public ResponseEntity<Cita> getCitaFecha(@RequestParam(required = false) String paciente,
+      @RequestParam(required = false) String medico, @RequestParam(required = false) String fecha,
+      @RequestParam(required = false) String hora) {
+    
+  String pacienteEncriptado = Utilidades.encriptar(paciente);
+  String medicoEncriptado = Utilidades.encriptar(medico);
+  String fechaEncriptado = Utilidades.encriptar(fecha);
+  String horaEncriptado = Utilidades.encriptar(hora);
+  
+    Cita cita = citasService.findCitaByPacienteMedicoFechaHora(pacienteEncriptado, medicoEncriptado, fechaEncriptado, horaEncriptado);
+    if (cita != null) {
+      System.out.println("[SERVER] Cita encontrada: " + cita.getId());
+      return ResponseEntity.ok(cita);
+    } else {
+      System.out.println("[SERVER] No se ha encontrado ninguna cita.");
       return ResponseEntity.badRequest().build();
     }
   }

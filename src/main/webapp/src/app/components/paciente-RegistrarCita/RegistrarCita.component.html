@@ -2,6 +2,7 @@
 <div *ngIf="success" class="alert alert-success">{{success}}</div>
 <div class="register">
     <h2 class="register-header">Registra tu cita</h2>
+	<div *ngIf="error" class="alert alert-danger">{{error}}</div>
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-container">
         <div class="form-group">
             <div class="row">
@@ -51,8 +52,8 @@
                 <div class="col-75">
                     <select input="text" class="form-control" formControlName="medico" [ngClass]="{ 'is-invalid': submitted && f.medico.errors }">
                                     <option value="">Selecciona un médico</option>
-                                    <option value="Medico1">Médico 1</option>
-                                    <option value="Medico2">Médico 2</option>				      
+                                    <option value="05123456">Médico 1</option>
+                                    <option value="11111111">Médico 2</option>				      
                                     </select>
                     <div *ngIf="submitted && f.medico.errors" class="invalid-feedback">
                         <div *ngIf="f.medico.errors.required">Selecciona un médico</div>
@@ -64,9 +65,9 @@
                     <label for="fname">Fecha:</label>
                 </div>
                 <div class="col-75">
-                    <input type="date" formControlName="fecha" min="2019-11-02" max="2021-11-26" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fechacita.errors }" />
-                    <div *ngIf="submitted && f.fechacita.errors" class="invalid-feedback">
-                        <div *ngIf="f.fechacita.errors.required">Selecciona una fecha valida</div>
+                    <input type="date" formControlName="fecha" min="2019-11-02" max="2021-11-26" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fecha.errors }" />
+                    <div *ngIf="submitted && f.fecha.errors" class="invalid-feedback">
+                        <div *ngIf="f.fecha.errors.required">Selecciona una fecha valida</div>
                     </div>
                 </div>
             </div>
