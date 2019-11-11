@@ -123,7 +123,7 @@ public class UsuarioController {
   
   public ResponseEntity<List<Usuario>> allMedicos() {
     LOG.info("Get allUsers");
-    return ResponseEntity.ok(usersService.getUsersByRol(Utilidades.encriptar("médico")));
+    return ResponseEntity.ok(usersService.getUsersByRol(Utilidades.encriptar("medico")));
   }
 
   

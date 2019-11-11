@@ -11,7 +11,7 @@ export class UserService {
         return this.http.get<any[]>(`${environment.apiUrl}/usuarios`);
     }
     getUsersByRole(rol) {
-        return this.http.get<any[]>(`${environment.apiUrl}/usuarios/rol/${rol}`);
+        return this.http.get<any[]>(`${environment.apiUrl}/usuarios/${rol}`);
     }
 
     register(user) {
