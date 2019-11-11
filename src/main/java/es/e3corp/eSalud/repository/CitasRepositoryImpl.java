@@ -72,7 +72,7 @@ public class CitasRepositoryImpl implements CitasRepository {
 	@Override
 	public List<Cita> findMedico(String id) {
 		String medicoEncriptado=Utilidades.encriptar(id);
-		List<Cita> citas = this.mongoOperations.find(new Query(Criteria.where("médico").is(medicoEncriptado)), Cita.class);
+		List<Cita> citas = this.mongoOperations.find(new Query(Criteria.where("medico").is(medicoEncriptado)), Cita.class);
 		
 		List<Cita> citasDesencriptadas = Utilidades.desencriptarListaCitas(citas);
 		return citasDesencriptadas;
