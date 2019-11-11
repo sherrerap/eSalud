@@ -7,22 +7,60 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
+
+
+/**
+ * Interfaz de CitasRepository.
+ * @author e3corp
+ */
 @Repository
 public interface CitasRepository {
-    Optional<List<Cita>> findAll();
+  /**
+   * Devolver todas las citas.
+   * @author e3corp
+   */
+  Optional<List<Cita>> findAll();
 
-    public void saveCita(Cita cita);
+  /**
+   * Guardar cita.
+   * @author e3corp
+   */
+  void saveCita(Cita cita);
 
-    public void updateCita(Cita cita);
+  /**
+   * Actualizar cita.
+   * @author e3corp
+   */
+  void updateCita(Cita cita);
 
-    public void deleteCita(String citaId);
+  /**
+   * Borrar cita.
+   * @author e3corp
+   */
+  void deleteCita(String citaId);
 
-    Optional<Cita> findOne(String citaId);
+  /**
+   * Obtener una cita en funcion de su id.
+   * @author e3corp
+   */
+  Optional<Cita> findOne(String citaId);
 
-    Cita findByPacienteMedicoFechaHora(String idPaciente, String idMedico, String fecha, String hora);
+  /**
+   * Obtener cita en función del paciente, medico, fecha y hora.
+   * @author e3corp
+   */
+  Cita findByPacienteMedicoFechaHora(String idPaciente, String idMedico, String fecha, String hora);
 
-	List<Cita> findPaciente(String dni);
+  /**
+   * Obtener un paciente en función de su dni.
+   * @author e3corp
+   */
+  List<Cita> findPaciente(String dni);
 
-	List<Cita> findMedico(String id);
+  /**
+   * Obtener un medico en función de su id.
+   * @author e3corp
+   */
+  List<Cita> findMedico(String id);
 
 }

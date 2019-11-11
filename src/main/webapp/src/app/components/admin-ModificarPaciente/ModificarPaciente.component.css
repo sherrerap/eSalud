@@ -1,14 +1,9 @@
-table{
-	width:100%
-	
-}
-
-.mat-button{
-	margin:3px;	
-}
-
-.mat-raised-button{
-	margin:3px;
-	background-color:rgb(34, 189, 131);
-	color:white;
-}
+.mat-elevation-z8 {
+	height: 100vh;
+	overflow: auto;
+  }
+  
+  table {
+	width: 100%;
+  }
+  

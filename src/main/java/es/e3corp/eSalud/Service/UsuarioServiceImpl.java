@@ -16,104 +16,113 @@ import es.e3corp.eSalud.repository.UsuarioRepository;
 import es.e3corp.eSalud.utilidades.Utilidades;
 
 @Service("UsuarioService")
-
+/**
+ * @author e3corp
+ */
 @Transactional
 
 public class UsuarioServiceImpl implements UsuarioService {
+  /**
+   * @author e3corp
+   */
+  private static final Log log = LogFactory.getLog(UsuarioServiceImpl.class);
+  /**
+   * @author e3corp
+   */
+  private UsuarioRepository userRepository;
 
-	private static final Log log = LogFactory.getLog(UsuarioServiceImpl.class);
+  /**
+   * @author e3corp
+   */
+  @Autowired
 
-	private UsuarioRepository userRepository;
+  public UsuarioServiceImpl(final UsuarioRepository userRepository) {
 
-	@Autowired
+    this.userRepository = userRepository;
 
-	public UsuarioServiceImpl(UsuarioRepository userRepository) {
+  }
 
-		this.userRepository = userRepository;
+  /**
+   * @author e3corp
+   */
+  public Usuario findByUserDni(final String userDni) {
 
-	}
+    final Optional<Usuario> user = userRepository.findOne(userDni);
 
-	public Usuario findByUserDni(String userDni) {
+    if (user.isPresent()) {
 
-		Optional<Usuario> user = userRepository.findOne(userDni);
+      log.debug(String.format("Read userId '{}'", userDni));
 
-		if (user.isPresent()) {
+      final Optional<Usuario> userDesencriptado = Utilidades.desencriptarOptionalUsuario(user);
 
-			log.debug(String.format("Read userId '{}'", userDni));
+      return userDesencriptado.get();
 
-			Optional<Usuario> userDesencriptado = Utilidades.desencriptarOptionalUsuario(user);
+    } else {
 
-			return userDesencriptado.get();
+      throw new UserNotFoundException(userDni);
+      
+    }
 
-		} else
+  }
 
-			throw new UserNotFoundException(userDni);
+  /**
+   * @author e3corp
+   */
+  public List<Usuario> findAll() {
 
-	}
+    final Optional<List<Usuario>> users = userRepository.findAll();
 
-	public List<Usuario> findAll() {
+    final List<Usuario> usersDesencrip = Utilidades.desencriptarListaUsuarios(users);
 
-		Optional<List<Usuario>> users = userRepository.findAll();
+    return usersDesencrip;
 
-		List<Usuario> usersDesencriptado = Utilidades.desencriptarListaUsuarios(users);
+  }
 
-		return usersDesencriptado;
+  /**
+   * @author e3corp
+   */
+  public void saveUsuario(final Usuario usuario) {
 
-	}
+    userRepository.saveUsuario(usuario);
 
-	public void saveUsuario(Usuario usuario) {
+  }
 
-		userRepository.saveUsuario(usuario);
+  /**
+   * @author e3corp
+   */
+  public void updateUsuario(final Usuario user) {
 
-	}
+    userRepository.updateUsuario(user);
 
-	public void updateUsuario(Usuario user) {
+  }
 
-		userRepository.updateUsuario(user);
+  /**
+   * @author e3corp
+   */
+  public void deleteUsuario(final String userId) {
 
-	}
+    userRepository.deleteUsuario(userId);
 
-	public void deleteUsuario(String userId) {
+  }
 
-		userRepository.deleteUsuario(userId);
+  @Override
+  public Usuario getUserByDniAndPassword(final String dni, final String password) {
+    // System.out.println("[SERVER] DNI recibido: " + dni);
+    // System.out.println("[SERVER] Contraseña recibida: " + password);
 
-	}
+    final Usuario usuario = userRepository.findByDniAndContrasena(dni, password);
+    final Usuario usuarioDesencriptado = Utilidades.desencriptarUsuario(usuario);
+    return usuarioDesencriptado;
+  }
 
-	@Override
-	public Usuario getUserByDniAndPassword(String dni, String password) {
-		// System.out.println("[SERVER] DNI recibido: " + dni);
-		// System.out.println("[SERVER] Contraseña recibida: " + password);
+  @Override
+  public List<Usuario> getUsersByRol(final String rol) {
+    // Faltaria implementar un desencriptado despues
+    final List<Usuario> usersRol = userRepository.findByRol(rol);
+    final List<Usuario> usuariosRolDesenc = Utilidades.desencriptarUsuarios(usersRol);
+    return usersRol;
+  }
 
-		Usuario usuario = userRepository.findByDniAndContraseña(dni, password);
-		Usuario usuarioDesencriptado = Utilidades.desencriptarUsuario(usuario);
-		return usuarioDesencriptado;
-	}
-	
-	@Override
-	public List<Usuario> getUsersByRol(String rol){
-		//Faltaria implementar un desencriptado despues
-		List<Usuario> usersRol =userRepository.findByRol(rol);
-		List<Usuario> usuariosRolDesencriptados = Utilidades.desencriptarUsuarios(usersRol);
-		return usersRol;
-	}
 
-//  @Override
-//  public List<Usuario> getUsersByRol(String rol) {
-//    List<Usuario> usuarios = userRepository.findByRol(rol);
-//    List<Usuario> listado = new ArrayList<>();
-//    if (rol.equals("medico")) {
-//      for (Usuario u : usuarios) {
-//        Usuario temp = new Usuario();
-//        temp.setNombre(u.getNombre());
-//        temp.setApellidos(u.getApellidos());
-//        temp.setEspecialidad(u.getEspecialidad());
-//        temp.setCentro(u.getCentro());
-//        listado.add(temp);
-//      }
-//    } else {
-//      listado = usuarios;
-//    }
-//    return listado;
-//  }
 
 }

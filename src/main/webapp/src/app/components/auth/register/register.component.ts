@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
             nombre: ['', Validators.required],
             apellidos: ['', Validators.required],
             tel: ['', Validators.required],
-            centro: '',
+            centro: 'Hospital General Ciudad Real',
             rol: 'paciente'
         });
     }
