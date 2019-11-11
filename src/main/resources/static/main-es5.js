@@ -61,7 +61,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"mat-elevation-z8\">\r\n  <table mat-table [dataSource]=\"dataSource\">\r\n\r\n     <ng-container matColumnDef=\"id\">\r\n      <th mat-header-cell *matHeaderCellDef> ID </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.id}} </td>\r\n    </ng-container>\r\n \r\n    \r\n    <ng-container matColumnDef=\"dni\">\r\n      <th mat-header-cell *matHeaderCellDef> DNI </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.dni}} </td>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"nombre\">\r\n      <th mat-header-cell *matHeaderCellDef> Nombre </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.nombre}} </td>\r\n    </ng-container>\r\n\r\n\t <ng-container matColumnDef=\"apellidos\">\r\n      <th mat-header-cell *matHeaderCellDef> Apellidos </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.apellidos}} </td>\r\n    </ng-container>\r\n\r\n\t <ng-container matColumnDef=\"centro\">\r\n      <th mat-header-cell *matHeaderCellDef> Centro </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.centro}} </td>\r\n    </ng-container>\r\n\r\n\t <ng-container matColumnDef=\"correo\">\r\n      <th mat-header-cell *matHeaderCellDef> Correo electrónico </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.correo}} </td>\r\n    </ng-container>\r\n\r\n\t <ng-container matColumnDef=\"localidad\">\r\n      <th mat-header-cell *matHeaderCellDef> Localidad </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.localidad}} </td>\r\n    </ng-container>\r\n \r\n    <!-- Action Column -->\r\n    <ng-container matColumnDef=\"action\">\r\n      <th mat-header-cell *matHeaderCellDef> Action </th>\r\n      <td mat-cell *matCellDef=\"let element\" class=\"action-link\"> \r\n          <button mat-raised-button (click)=\"openDialog('Update',element)\" mat-flat-button color= \"green\" class= \"button1\">Editar</button>\r\n          <button mat-button (click)=\"openDialog('Delete',element)\" mat-flat-button color=\"warn\" class= \"button2\">Eliminar</button>\r\n              \r\n      </td>\r\n    </ng-container>\r\n \r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table>\r\n  \r\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"mat-elevation-z8\">\r\n  <table mat-table [dataSource]=\"dataSource\">\r\n\r\n\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"dni\">\r\n      <th mat-header-cell *matHeaderCellDef> Dni </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.dni}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Weight Column -->\r\n    <ng-container matColumnDef=\"nombre\">\r\n      <th mat-header-cell *matHeaderCellDef> Nombre </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.nombre}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Symbol Column -->\r\n    <ng-container matColumnDef=\"apellidos\">\r\n      <th mat-header-cell *matHeaderCellDef> Apellidos </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.apellidos}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Symbol Column -->\r\n    <ng-container matColumnDef=\"numTelefono\">\r\n      <th mat-header-cell *matHeaderCellDef> Telefono </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.numTelefono}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Symbol Column -->\r\n    <ng-container matColumnDef=\"localidad\">\r\n      <th mat-header-cell *matHeaderCellDef> Localidad </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.localidad}} </td>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"centro\">\r\n      <th mat-header-cell *matHeaderCellDef> Centro </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.centro}} </td>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"email\">\r\n      <th mat-header-cell *matHeaderCellDef> Email </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.email}} </td>\r\n    </ng-container>\r\n\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table> <mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons [pageSize]=\"10\"></mat-paginator>\r\n  \r\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/admin-MostrarMedico/MostrarMedico.component.html": 
@@ -149,7 +149,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"error\" class=\"alert alert-danger\">{{error}}</div>\r\n<div *ngIf=\"success\" class=\"alert alert-success\">{{success}}</div>\r\n<div class=\"register\">\r\n    <h2 class=\"register-header\">Registra tu cita</h2>\r\n    <form [formGroup]=\"registerForm\" (ngSubmit)=\"onSubmit()\" class=\"register-container\">\r\n        <div class=\"form-group\">\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Tipo de Cita:</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <select input=\"text\" class=\"form-control\" formControlName=\"tipo\" [ngClass]=\"{ 'is-invalid': submitted && f.especialidad.errors }\">\r\n          \t\t\t\t\t      <option value=\"\">Selecciona el tipo de cita</option>\r\n          \t\t\t\t\t      <option value=\"Cabecera\">Cabecera</option>\r\n          \t\t\t\t\t\t  <option value=\"Especialidad\">Especialidad</option>\r\n          \t\t\t\t\t      <option value=\"Enfermeria\">Enfermería</option>\r\n          \t\t\t\t\t\t  <option value=\"Reabilitación\">Reabilitación</option>\t\t\t\t      \r\n          \t\t\t\t\t      \r\n          \t\t\t\t\t    </select>\r\n                    <div *ngIf=\"submitted && f.tipo.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.tipo.errors.required\">Seleccione un tipo de cita</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Especialidad:</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <select input=\"text\" class=\"form-control\" formControlName=\"especialidad\" [ngClass]=\"{ 'is-invalid': submitted && f.especialidad.errors }\">\r\n          \t\t\t\t\t      <option value=\"\">Selecciona la especialidad</option>\r\n          \t\t\t\t\t      <option value=\"Cabecera\">Dermatologia</option>\r\n          \t\t\t\t\t\t  <option value=\"Enfermero\">Traumatología</option>\r\n          \t\t\t\t\t      <option value=\"Pediatría\">Oftalmologia</option>\r\n          \t\t\t\t\t\t  <option value=\"Traumatología\">Cardiología</option>\t\t\t\t      \r\n          \t\t\t\t\t      <option value=\"\">Otorrinolaringología</option>\r\n          \t\t\t\t\t      <option value=\"Cabecera\">Urología</option>\r\n          \t\t\t\t\t\t  <option value=\"Enfermero\">Psiquiatría</option>\r\n          \t\t\t\t\t      <option value=\"Pediatría\">Alergología</option>\r\n          \t\t\t\t\t\t  <option value=\"Traumatología\">Endocrinología</option>\r\n          \t\t\t\t\t    </select>\r\n                    <div *ngIf=\"submitted && f.especialidad.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.especialidad.errors.required\">Seleccione una especialidad</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Médico:</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <select input=\"text\" class=\"form-control\" formControlName=\"medico\" [ngClass]=\"{ 'is-invalid': submitted && f.medico.errors }\">\r\n                                    <option value=\"\">Selecciona un médico</option>\r\n                                    <option value=\"05123456\">Médico 1</option>\r\n                                    <option value=\"Medico2\">Médico 2</option>\t\t\t\t      \r\n                                    </select>\r\n                    <div *ngIf=\"submitted && f.medico.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.medico.errors.required\">Selecciona un médico</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Fecha:</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <input type=\"date\" formControlName=\"fecha\" min=\"2019-11-02\" max=\"2021-11-26\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.fechacita.errors }\" />\r\n                    <div *ngIf=\"submitted && f.fechacita.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.fechacita.errors.required\">Selecciona una fecha valida</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Hora:</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <input type=\"time\" placeholder=\"Hora\" formControlName=\"hora\" min=\"08:00\" max=\"14:30\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.hora.errors }\" />\r\n                    <div *ngIf=\"submitted && f.hora.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.hora.errors.required\">Selecciona una fecha valida</div>\r\n                    </div>\r\n\t\t\t\t\t\r\n                </div>\r\n            </div>\r\n            <div class=\"row justify-content-center\">\r\n                <p><input type=\"submit\" value=\"Registrar cita \" class=\"button2\"></p>\r\n                <p><input type=\"submit\" value=\"Cancelar  \" class=\"button1\"></p>\r\n            </div>\r\n        </div>\r\n    </form>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"error\" class=\"alert alert-danger\">{{error}}</div>\r\n<div *ngIf=\"success\" class=\"alert alert-success\">{{success}}</div>\r\n<div class=\"register\">\r\n    <h2 class=\"register-header\">Registra tu cita</h2>\r\n\t<div *ngIf=\"error\" class=\"alert alert-danger\">{{error}}</div>\r\n    <form [formGroup]=\"registerForm\" (ngSubmit)=\"onSubmit()\" class=\"register-container\">\r\n        <div class=\"form-group\">\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Tipo de Cita:</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <select input=\"text\" class=\"form-control\" formControlName=\"tipo\" [ngClass]=\"{ 'is-invalid': submitted && f.especialidad.errors }\">\r\n          \t\t\t\t\t      <option value=\"\">Selecciona el tipo de cita</option>\r\n          \t\t\t\t\t      <option value=\"Cabecera\">Cabecera</option>\r\n          \t\t\t\t\t\t  <option value=\"Especialidad\">Especialidad</option>\r\n          \t\t\t\t\t      <option value=\"Enfermeria\">Enfermería</option>\r\n          \t\t\t\t\t\t  <option value=\"Reabilitación\">Reabilitación</option>\t\t\t\t      \r\n          \t\t\t\t\t      \r\n          \t\t\t\t\t    </select>\r\n                    <div *ngIf=\"submitted && f.tipo.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.tipo.errors.required\">Seleccione un tipo de cita</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Especialidad:</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <select input=\"text\" class=\"form-control\" formControlName=\"especialidad\" [ngClass]=\"{ 'is-invalid': submitted && f.especialidad.errors }\">\r\n          \t\t\t\t\t      <option value=\"\">Selecciona la especialidad</option>\r\n          \t\t\t\t\t      <option value=\"Cabecera\">Dermatologia</option>\r\n          \t\t\t\t\t\t  <option value=\"Enfermero\">Traumatología</option>\r\n          \t\t\t\t\t      <option value=\"Pediatría\">Oftalmologia</option>\r\n          \t\t\t\t\t\t  <option value=\"Traumatología\">Cardiología</option>\t\t\t\t      \r\n          \t\t\t\t\t      <option value=\"\">Otorrinolaringología</option>\r\n          \t\t\t\t\t      <option value=\"Cabecera\">Urología</option>\r\n          \t\t\t\t\t\t  <option value=\"Enfermero\">Psiquiatría</option>\r\n          \t\t\t\t\t      <option value=\"Pediatría\">Alergología</option>\r\n          \t\t\t\t\t\t  <option value=\"Traumatología\">Endocrinología</option>\r\n          \t\t\t\t\t    </select>\r\n                    <div *ngIf=\"submitted && f.especialidad.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.especialidad.errors.required\">Seleccione una especialidad</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Médico:</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <select input=\"text\" class=\"form-control\" formControlName=\"medico\" [ngClass]=\"{ 'is-invalid': submitted && f.medico.errors }\">\r\n                                    <option value=\"\">Selecciona un médico</option>\r\n                                    <option value=\"11111112\">Manuel Sarabia</option>\r\n                                    <option value=\"11111113\">Sara Rodriguez</option>\r\n\t\t\t\t\t\t\t\t\t<option value=\"11111114\">Manuel Ortega</option>\t\r\n\t\t\t\t\t\t\t\t\t<option value=\"11111115\">Ernesto Valverde</option>\t\r\n\t\t\t\t\t\t\t\t\t<option value=\"11111116\">Lucia Sanz</option>\t\t\t\t\t      \r\n                                    </select>\r\n                    <div *ngIf=\"submitted && f.medico.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.medico.errors.required\">Selecciona un médico</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Fecha:</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <input type=\"date\" formControlName=\"fecha\" min=\"2019-11-02\" max=\"2021-11-26\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.fecha.errors }\" />\r\n                    <div *ngIf=\"submitted && f.fecha.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.fecha.errors.required\">Selecciona una fecha valida</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-25\">\r\n                    <label for=\"fname\">Hora:</label>\r\n                </div>\r\n                <div class=\"col-75\">\r\n                    <input type=\"time\" placeholder=\"Hora\" formControlName=\"hora\" min=\"08:00\" max=\"14:30\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.hora.errors }\" />\r\n                    <div *ngIf=\"submitted && f.hora.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.hora.errors.required\">Selecciona una fecha valida</div>\r\n                    </div>\r\n\t\t\t\t\t\r\n                </div>\r\n            </div>\r\n            <div class=\"row justify-content-center\">\r\n                <p><input type=\"submit\" value=\"Registrar cita \" class=\"button2\"></p>\r\n                <p><input type=\"submit\" value=\"Cancelar  \" class=\"button1\"></p>\r\n            </div>\r\n        </div>\r\n    </form>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/sidenav/sidenav.component.html": 
@@ -824,7 +824,7 @@
                     return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl + "/usuarios");
                 };
                 UserService.prototype.getUsersByRole = function (rol) {
-                    return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl + "/usuarios/rol/" + rol);
+                    return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl + "/usuarios/" + rol);
                 };
                 UserService.prototype.register = function (user) {
                     return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl + "/usuarios", user);
@@ -1195,7 +1195,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("table{\r\n\twidth:100%\r\n\t\r\n}\r\n\r\n.mat-button{\r\n\tmargin:3px;\t\r\n}\r\n\r\n.mat-raised-button{\r\n\tmargin:3px;\r\n\tbackground-color:rgb(34, 189, 131);\r\n\tcolor:white;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9hZG1pbi1Nb2RpZmljYXJQYWNpZW50ZS9Nb2RpZmljYXJQYWNpZW50ZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0NBQ0M7O0FBRUQ7O0FBRUE7Q0FDQyxVQUFVO0FBQ1g7O0FBRUE7Q0FDQyxVQUFVO0NBQ1Ysa0NBQWtDO0NBQ2xDLFdBQVc7QUFDWiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvYWRtaW4tTW9kaWZpY2FyUGFjaWVudGUvTW9kaWZpY2FyUGFjaWVudGUuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbInRhYmxle1xyXG5cdHdpZHRoOjEwMCVcclxuXHRcclxufVxyXG5cclxuLm1hdC1idXR0b257XHJcblx0bWFyZ2luOjNweDtcdFxyXG59XHJcblxyXG4ubWF0LXJhaXNlZC1idXR0b257XHJcblx0bWFyZ2luOjNweDtcclxuXHRiYWNrZ3JvdW5kLWNvbG9yOnJnYigzNCwgMTg5LCAxMzEpO1xyXG5cdGNvbG9yOndoaXRlO1xyXG59Il19 */");
+            /* harmony default export */ __webpack_exports__["default"] = (".mat-elevation-z8 {\r\n\theight: 100vh;\r\n\toverflow: auto;\r\n  }\r\n  \r\n  table {\r\n\twidth: 100%;\r\n  }\r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9hZG1pbi1Nb2RpZmljYXJQYWNpZW50ZS9Nb2RpZmljYXJQYWNpZW50ZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0NBQ0MsYUFBYTtDQUNiLGNBQWM7RUFDYjs7RUFFQTtDQUNELFdBQVc7RUFDViIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvYWRtaW4tTW9kaWZpY2FyUGFjaWVudGUvTW9kaWZpY2FyUGFjaWVudGUuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tYXQtZWxldmF0aW9uLXo4IHtcclxuXHRoZWlnaHQ6IDEwMHZoO1xyXG5cdG92ZXJmbG93OiBhdXRvO1xyXG4gIH1cclxuICBcclxuICB0YWJsZSB7XHJcblx0d2lkdGg6IDEwMCU7XHJcbiAgfVxyXG4gICJdfQ== */");
             /***/ 
         }),
         /***/ "./src/app/components/admin-ModificarPaciente/ModificarPaciente.component.ts": 
@@ -1210,82 +1210,35 @@
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
-            /* harmony import */ var _dialog_box_paciente_dialog_box_paciente_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../dialog-box-paciente/dialog-box-paciente.component */ "./src/app/components/dialog-box-paciente/dialog-box-paciente.component.ts");
-            var ELEMENT_DATA = [
-                { id: 1, dni: '05345275T', nombre: 'Lucia', apellidos: 'Garcia Garcia', centro: 'Hospital General Ciudad Real', correo: 'abc@xyz.com', localidad: 'Ciudad Real' },
-                { id: 2, dni: '04369275G', nombre: 'Maria', apellidos: 'Ruiz Garcia', centro: 'Hospital General Ciudad Real', correo: 'abc@xyz.com', localidad: 'Ciudad Real' },
-                { id: 3, dni: '09345275T', nombre: 'Jose', apellidos: 'López Garcia', centro: 'Hospital Puertollano', correo: 'abc@xyz.com', localidad: 'Ciudad Real' },
-                { id: 4, dni: '05347799H', nombre: 'Angel', apellidos: 'Garcia Ruíz', centro: 'Hospital General Ciudad Real', correo: 'abc@xyz.com', localidad: 'Ciudad Real' },
-                { id: 5, dni: '05345275T', nombre: 'Lucia', apellidos: 'Garcia Garcia', centro: 'Hospital General Ciudad Real', correo: 'abc@xyz.com', localidad: 'Ciudad Real' },
-                { id: 6, dni: '04369275G', nombre: 'Maria', apellidos: 'Ruiz Garcia', centro: 'Hospital General Ciudad Real', correo: 'abc@xyz.com', localidad: 'Ciudad Real' },
-                { id: 7, dni: '09345275T', nombre: 'Jose', apellidos: 'López Garcia', centro: 'Hospital Puertollano', correo: 'abc@xyz.com', localidad: 'Ciudad Real' },
-                { id: 8, dni: '05347799H', nombre: 'Angel', apellidos: 'Garcia Ruíz', centro: 'Hospital General Ciudad Real', correo: 'abc@xyz.com', localidad: 'Ciudad Real' },
-                { id: 9, dni: '05345275T', nombre: 'Lucia', apellidos: 'Garcia Garcia', centro: 'Hospital General Ciudad Real', correo: 'abc@xyz.com', localidad: 'Ciudad Real' },
-                { id: 10, dni: '04369275G', nombre: 'Maria', apellidos: 'Ruiz Garcia', centro: 'Hospital General Ciudad Real', correo: 'abc@xyz.com', localidad: 'Ciudad Real' },
-                { id: 11, dni: '09345275T', nombre: 'Jose', apellidos: 'López Garcia', centro: 'Hospital Puertollano', correo: 'abc@xyz.com', localidad: 'Ciudad Real' },
-                { id: 12, dni: '05347799H', nombre: 'Angel', apellidos: 'Garcia Ruíz', centro: 'Hospital General Ciudad Real', correo: 'abc@xyz.com', localidad: 'Ciudad Real' }
-            ];
+            /* harmony import */ var src_app_services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/_services */ "./src/app/_services/index.ts");
+            var ELEMENT_DATA = [];
             var ModificarPacienteComponent = /** @class */ (function () {
-                function ModificarPacienteComponent(dialog) {
-                    this.dialog = dialog;
-                    this.displayedColumns = ['id', 'dni', 'nombre', 'apellidos', 'centro', 'correo', 'localidad', 'action'];
-                    this.dataSource = ELEMENT_DATA;
+                function ModificarPacienteComponent(citasService, authService, usuariosService) {
+                    this.citasService = citasService;
+                    this.authService = authService;
+                    this.usuariosService = usuariosService;
+                    this.displayedColumns = ['dni', 'nombre', 'apellidos', 'numTelefono', 'localidad', 'centro', 'email'];
+                    this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"]();
                 }
-                ModificarPacienteComponent.prototype.openDialog = function (action, obj) {
+                ModificarPacienteComponent.prototype.ngOnInit = function () {
                     var _this = this;
-                    obj.action = action;
-                    var dialogRef = this.dialog.open(_dialog_box_paciente_dialog_box_paciente_component__WEBPACK_IMPORTED_MODULE_3__["DialogBoxPacienteComponent"], {
-                        width: '400px',
-                        data: obj
-                    });
-                    dialogRef.afterClosed().subscribe(function (result) {
-                        if (result.event == 'Update') {
-                            _this.updateRowData(result.data);
-                        }
-                        else if (result.event == 'Delete') {
-                            _this.deleteRowData(result.data);
-                        }
-                    });
-                };
-                ModificarPacienteComponent.prototype.addRowData = function (row_obj) {
-                    var d = new Date();
-                    this.dataSource.push({
-                        id: d.getTime(),
-                        dni: row_obj.dni,
-                        nombre: row_obj.nombre,
-                        apellidos: row_obj.apellidos,
-                        centro: row_obj.centro,
-                        correo: row_obj.correo,
-                        localidad: row_obj.localidad,
-                    });
-                    this.table.renderRows();
-                };
-                ModificarPacienteComponent.prototype.updateRowData = function (row_obj) {
-                    this.dataSource = this.dataSource.filter(function (value, key) {
-                        if (value.id == row_obj.id) {
-                            value.dni = row_obj.dni;
-                            value.apellidos = row_obj.apellidos;
-                            value.nombre = row_obj.nombre;
-                            value.centro = row_obj.centro;
-                            value.correo = row_obj.correo;
-                            value.localidad = row_obj.localidad;
-                        }
-                        return true;
-                    });
-                };
-                ModificarPacienteComponent.prototype.deleteRowData = function (row_obj) {
-                    this.dataSource = this.dataSource.filter(function (value, key) {
-                        return value.id != row_obj.id;
+                    this.dataSource.paginator = this.paginator;
+                    this.usuariosService.getUsersByRole('pacientes')
+                        .subscribe(function (data) {
+                        _this.data = data;
+                        _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](data);
                     });
                 };
                 return ModificarPacienteComponent;
             }());
             ModificarPacienteComponent.ctorParameters = function () { return [
-                { type: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialog"] }
+                { type: src_app_services__WEBPACK_IMPORTED_MODULE_3__["CitasService"] },
+                { type: src_app_services__WEBPACK_IMPORTED_MODULE_3__["AuthService"] },
+                { type: src_app_services__WEBPACK_IMPORTED_MODULE_3__["UserService"] }
             ]; };
             tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTable"], { static: true })
-            ], ModificarPacienteComponent.prototype, "table", void 0);
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginator"], { static: true })
+            ], ModificarPacienteComponent.prototype, "paginator", void 0);
             ModificarPacienteComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
                     selector: 'app-ModificarPaciente',
@@ -1336,7 +1289,7 @@
                 MostrarMedicoComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     this.dataSource.paginator = this.paginator;
-                    this.usuariosService.getUsersByRole('médico')
+                    this.usuariosService.getUsersByRole('medicos')
                         .subscribe(function (data) {
                         _this.data = data;
                         _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](data);

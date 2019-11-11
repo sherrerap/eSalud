@@ -38,7 +38,7 @@ export class MostrarMedicoComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
-    this.usuariosService.getUsersByRole('médico')
+    this.usuariosService.getUsersByRole('medicos')
       .subscribe((data: PeriodicElement[]) => {
         this.data = data;
         this.dataSource = new MatTableDataSource(data);
