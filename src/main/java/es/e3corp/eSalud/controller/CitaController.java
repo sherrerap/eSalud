@@ -84,7 +84,7 @@ public class CitaController {
 
         // Depende de los campos que queramos que puedan actualizarse
         String paciente = jso.getString("paciente");
-        String médico = jso.getString("médico");
+        String medico = jso.getString("medico");
         
         String fecha = jso.getString("fecha");
         String hora = jso.getString("hora");
@@ -92,7 +92,7 @@ public class CitaController {
         String centro = jso.getString("centro");
         
         String pacienteEncriptado = Utilidades.encriptar(paciente);
-        String médicoEncriptado = Utilidades.encriptar(médico);
+        String medicoEncriptado = Utilidades.encriptar(medico);
         String fechaEncriptado = Utilidades.encriptar(fecha);
         String horaEncriptado = Utilidades.encriptar(hora);
         String centroEncriptado = Utilidades.encriptar(centro);
@@ -100,7 +100,7 @@ public class CitaController {
 
         try {
           Usuario usuarioPaciente = usuarioService.findByUserDni(pacienteEncriptado);
-          Usuario usuarioMedico = usuarioService.findByUserDni(médicoEncriptado);
+          Usuario usuarioMedico = usuarioService.findByUserDni(medicoEncriptado);
           if (!usuarioPaciente.getRol().equals(Utilidades.encriptar("paciente"))) {
             log.error("[SERVER] El usuario paciente no es válido.");
             return ResponseEntity.badRequest().build();
@@ -116,7 +116,7 @@ public class CitaController {
         }
 
         cita.setPaciente(pacienteEncriptado);
-        cita.setMédico(médicoEncriptado);
+        cita.setMédico(medicoEncriptado);
         cita.setFecha(fechaEncriptado);
         cita.setHora(horaEncriptado);
         cita.setTipo(tipoEncriptado);
@@ -178,7 +178,7 @@ public class CitaController {
         log.error("[SERVER] El usuario paciente no es válido.");
         return ResponseEntity.badRequest().build();
       }
-      if (!usuarioMedico.getRol().equals("médico")) {
+      if (!usuarioMedico.getRol().equals("medico")) {
         log.error("[SERVER] El usuario médico no es válido.");
         return ResponseEntity.badRequest().build();
       }
@@ -200,7 +200,7 @@ public class CitaController {
           log.error("[SERVER] El usuario paciente no es válido.");
           return ResponseEntity.badRequest().build();
         }
-        if (!usuarioMedico.getRol().equals("médico")) {
+        if (!usuarioMedico.getRol().equals("medico")) {
           log.error("[SERVER] El usuario médico no es válido.");
           return ResponseEntity.badRequest().build();
         }
