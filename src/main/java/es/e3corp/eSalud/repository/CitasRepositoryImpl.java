@@ -90,7 +90,7 @@ public class CitasRepositoryImpl implements CitasRepository {
       final String fecha,
       final String hora) {
 
-    final Cita cita = this.mongoOperations.findOne(new Query(Criteria.where("paciente").is(idPaciente).and("médico")
+    final Cita cita = this.mongoOperations.findOne(new Query(Criteria.where("paciente").is(idPaciente).and("medico")
         .is(idMedico).and("fecha").is(fecha).and("hora").is(hora)), Cita.class);
 
     final Cita citaDesencriptada = Utilidades.desencriptarCita(cita);
@@ -111,7 +111,7 @@ public class CitasRepositoryImpl implements CitasRepository {
   @Override
   public List<Cita> findMedico(final String id) {
     final String medicoEncriptado = Utilidades.encriptar(id);
-    final List<Cita> citas = this.mongoOperations.find(new Query(Criteria.where("médico").is(medicoEncriptado)),
+    final List<Cita> citas = this.mongoOperations.find(new Query(Criteria.where("medico").is(medicoEncriptado)),
         Cita.class);
 
     final List<Cita> citasDesencriptadas = Utilidades.desencriptarListaCitas(citas);
