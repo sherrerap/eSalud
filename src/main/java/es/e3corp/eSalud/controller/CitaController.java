@@ -45,16 +45,22 @@ public class CitaController {
 
   @RequestMapping(method = RequestMethod.GET)
   public ResponseEntity<Cita> getCitaFecha(@RequestParam(required = false) String paciente,
-      @RequestParam(required = false) String médico, @RequestParam(required = false) String fecha,
+      @RequestParam(required = false) String medico, @RequestParam(required = false) String fecha,
       @RequestParam(required = false) String hora) {
-    Cita cita = citasService.findCitaByPacienteMedicoFechaHora(paciente, médico, fecha, hora);
-    if (cita != null) {
-      System.out.println("[SERVER] Cita encontrada: " + cita.getId());
-      return ResponseEntity.ok(cita);
-    } else {
-      System.out.println("[SERVER] No se ha encontrado ninguna cita.");
-      return ResponseEntity.badRequest().build();
-    }
+	    
+	  String pacienteEncriptado = Utilidades.encriptar(paciente);
+	  String medicoEncriptado = Utilidades.encriptar(medico);
+	  String fechaEncriptado = Utilidades.encriptar(fecha);
+	  String horaEncriptado = Utilidades.encriptar(hora);
+	  
+	    Cita cita = citasService.findCitaByPacienteMedicoFechaHora(pacienteEncriptado, medicoEncriptado, fechaEncriptado, horaEncriptado);
+	    if (cita != null) {
+	      System.out.println("[SERVER] Cita encontrada: " + cita.getId());
+	      return ResponseEntity.ok(cita);
+	    } else {
+	      System.out.println("[SERVER] No se ha encontrado ninguna cita.");
+	      return ResponseEntity.badRequest().build();
+	    }
   }
 
   @RequestMapping(value = "paciente/{dni}", method = RequestMethod.GET)

@@ -30,7 +30,7 @@ public class Cita {
     private String médico;
     private String hora;
     
-	public Cita(@NotNull String paciente, String tipo, String fecha, String centro, String medico,
+	public Cita(@NotNull String paciente, String tipo, String fecha, String centro, String médico,
 			String hora) {
 		super();
 		this.id = UUID.randomUUID().toString();
@@ -87,8 +87,8 @@ public class Cita {
 		return médico;
 	}
 
-	public void setMédico(String medico) {
-		this.médico = medico;
+	public void setMédico(String médico) {
+		this.médico = médico;
 	}
 
 	public String getHora() {
