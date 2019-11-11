@@ -103,7 +103,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
   @Override
   public Usuario findByDniAndContrasena(final String dni, final String contrasena) {
     Usuario usuario = this.mongoOperations
-        .findOne(new Query(Criteria.where("dni").is(dni).and("contraseña").is(contrasena)), Usuario.class);
+        .findOne(new Query(Criteria.where("dni").is(dni).and("contrasena").is(contrasena)), Usuario.class);
     return usuario;
   }
 

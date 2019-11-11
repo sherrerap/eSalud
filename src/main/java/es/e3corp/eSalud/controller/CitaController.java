@@ -127,7 +127,7 @@ public class CitaController {
 
         // Depende de los campos que queramos que puedan actualizarse
         final String paciente = jso.getString("paciente");
-        final String medico = jso.getString("médico");
+        final String medico = jso.getString("medico");
         
         final String fecha = jso.getString("fecha");
         final String hora = jso.getString("hora");
@@ -148,13 +148,13 @@ public class CitaController {
             LOG.error("[SERVER] El usuario paciente no es válido.");
             return ResponseEntity.badRequest().build();
           }
-          if (!usuarioMedico.getRol().equals(Utilidades.encriptar("médico"))) {
-            LOG.error("[SERVER] El usuario médico no es válido.");
+          if (!usuarioMedico.getRol().equals(Utilidades.encriptar("medico"))) {
+            LOG.error("[SERVER] El usuario medico no es válido.");
             return ResponseEntity.badRequest().build();
           }
 
         } catch (UserNotFoundException u) {
-          LOG.error("[SERVER] El usuario paciente o médico no se ha encontrado.");
+          LOG.error("[SERVER] El usuario paciente o medico no se ha encontrado.");
           return ResponseEntity.badRequest().build();
         }
 
@@ -223,7 +223,7 @@ public class CitaController {
   public ResponseEntity<Cita> registrarCita(@RequestBody String cita) {
     final JSONObject jso = new JSONObject(cita);
     final String paciente = jso.getString("paciente");
-    final String medico = jso.getString("médico");
+    final String medico = jso.getString("medico");
     final String fecha = jso.getString("fecha");
     final String hora = jso.getString("hora");
     LOG.info("el paciente que se recibe es:" + paciente);
@@ -242,17 +242,15 @@ public class CitaController {
         LOG.error("[SERVER] El usuario paciente no es válido.");
         return ResponseEntity.badRequest().build();
       }
-      if (!usuarioMedico.getRol().equals("médico")) {
-        LOG.error("[SERVER] El usuario médico no es válido.");
+      if (!usuarioMedico.getRol().equals("medico")) {
+        LOG.error("[SERVER] El usuario medico no es válido.");
         return ResponseEntity.badRequest().build();
       }
 
     } catch (UserNotFoundException u) {
-      LOG.error("[SERVER] El usuario paciente o médico no se ha encontrado.");
+      LOG.error("[SERVER] El usuario paciente o medico no se ha encontrado.");
       return ResponseEntity.badRequest().build();
     }
-
-    //Cita cita1 = citasService.findCitaByPacienteMedicoFechaHora(paciente, médico, fecha, hora);
 
     if (cita1 == null) {
       String tipo = null; 
@@ -268,12 +266,12 @@ public class CitaController {
           return ResponseEntity.badRequest().build();
         }
         if (!usuarioMedico.getRol().equals("medico")) {
-          LOG.error("[SERVER] El usuario médico no es válido.");
+          LOG.error("[SERVER] El usuario medico no es válido.");
           return ResponseEntity.badRequest().build();
         }
 
       } catch (UserNotFoundException u) {
-        LOG.error("[SERVER] El usuario paciente o médico no se ha encontrado.");
+        LOG.error("[SERVER] El usuario paciente o medico no se ha encontrado.");
         return ResponseEntity.badRequest().build(); 
       }
 
