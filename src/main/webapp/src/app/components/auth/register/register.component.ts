@@ -108,7 +108,7 @@ export class RegisterComponent implements OnInit {
                     this.router.navigate(['/auth/login'], { queryParams: { registered: true } });
                 },
                 error => {
-                    this.alertService.error(error);
+                    this.alertService.error("Error: El usuario ya está registrado.");
                     this.loading = false;
                 });
 

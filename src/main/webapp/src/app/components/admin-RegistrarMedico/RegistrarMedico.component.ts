@@ -98,7 +98,7 @@ export class RegistrarMedicoComponent implements OnInit {
                     console.log("[CLIENTE] Médico registrado.");
                     },
                 error => {
-                    this.alertService.error(error);
+                    this.alertService.error('Error: El médico ya está registrado.');
                     this.loading = false;
                 });
 

@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit {
                     }
                 },
                 error => {
-                    this.error = error;
+                    this.error = "Error: No se ha encontrado ningún usuario con esos datos.";
                     this.loading = false;
                 });
     }

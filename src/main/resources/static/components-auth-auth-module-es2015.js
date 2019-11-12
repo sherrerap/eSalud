@@ -196,7 +196,7 @@ let LoginComponent = class LoginComponent {
                 }
             }
         }, error => {
-            this.error = error;
+            this.error = "Error: No se ha encontrado ningún usuario con esos datos.";
             this.loading = false;
         });
     }
@@ -359,7 +359,7 @@ let RegisterComponent = class RegisterComponent {
             this.alertService.success('Registration successful', true);
             this.router.navigate(['/auth/login'], { queryParams: { registered: true } });
         }, error => {
-            this.alertService.error(error);
+            this.alertService.error("Error: El usuario ya está registrado.");
             this.loading = false;
         });
         function allLetter(inputtxt) {

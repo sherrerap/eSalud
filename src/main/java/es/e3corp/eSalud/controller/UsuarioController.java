@@ -33,7 +33,7 @@ import es.e3corp.eSalud.utilidades.Utilidades;
 public class UsuarioController {
 
   private static final Log LOG = LogFactory.getLog(UsuarioController.class);
- 
+
   private final UsuarioService usersService;
 
   @Autowired
@@ -44,14 +44,14 @@ public class UsuarioController {
     this.usersService = usersService;
   }
 
-  /** 
+  /**
    * Obtiene la contraseña del usuario mediante su dni.
+   * 
    * @author e3corp
    */
-  
-  
+
   @RequestMapping(method = RequestMethod.GET)
- 
+
   public ResponseEntity<Usuario> getUserPassword(@RequestParam("dni") final String dni,
       @RequestParam("password") final String password) {
 
@@ -63,20 +63,20 @@ public class UsuarioController {
       LOG.info("[SERVER] Usuario encontrado: " + usuario.getNombre());
       return ResponseEntity.ok(usuario);
     } else {
-      LOG.info("[SERVER] No se ha encontrado ningún usuario.");
+      LOG.info("[SERVER] No se ha encontrado ningún usuario con esos datos.");
       return ResponseEntity.badRequest().build();
     }
   }
 
   /**
    * Obtiene un usuario mediante su dni.
+   * 
    * @author e3corp
    */
   @RequestMapping(value = "/{userDni}", method = RequestMethod.GET)
   @ApiOperation(value = "Find an user", notes = "Return a user by DNI")
- 
-  public ResponseEntity<Usuario> userByDni(@PathVariable final String userDni)
-      throws UserNotFoundException {
+
+  public ResponseEntity<Usuario> userByDni(@PathVariable final String userDni) throws UserNotFoundException {
     LOG.info("[SERVER] Buscando usuario: " + userDni);
     Usuario user;
     try {
@@ -99,7 +99,7 @@ public class UsuarioController {
    */
   @RequestMapping(value = "/all", method = RequestMethod.GET)
   @ApiOperation(value = "Find all user", notes = "Return all users")
-  
+
   public ResponseEntity<List<Usuario>> allUsers() {
     LOG.info("Get allUsers");
     return ResponseEntity.ok(usersService.findAll());
@@ -107,28 +107,28 @@ public class UsuarioController {
 
   @RequestMapping(value = "/pacientes", method = RequestMethod.GET)
   @ApiOperation(value = "Find all user", notes = "Return all users")
- 
+
   public ResponseEntity<List<Usuario>> allPacientes() {
     LOG.info("Get allUsers");
     return ResponseEntity.ok(usersService.getUsersByRol(Utilidades.encriptar("paciente")));
   }
 
-  
   /**
    * Obtiene todos los médicos.
+   * 
    * @author e3corp
    */
   @RequestMapping(value = "/medicos", method = RequestMethod.GET)
   @ApiOperation(value = "Find all user", notes = "Return all users")
-  
+
   public ResponseEntity<List<Usuario>> allMedicos() {
     LOG.info("Get allUsers");
     return ResponseEntity.ok(usersService.getUsersByRol(Utilidades.encriptar("medico")));
   }
 
-  
   /**
    * Borra un usuario en funcion de su id.
+   * 
    * @author e3corp
    */
   @RequestMapping(value = "/{userId}", method = RequestMethod.DELETE)
@@ -140,13 +140,13 @@ public class UsuarioController {
     return ResponseEntity.noContent().build();
   }
 
-  
   /**
    * Registramos un usuario y guardamos ese usuario en la base de datos.
+   * 
    * @author e3corp.
    */
   @RequestMapping(method = RequestMethod.POST)
- 
+
   public ResponseEntity<Usuario> registrarUsuario(@RequestBody final String usuario) {
     final JSONObject jso = new JSONObject(usuario);
     final String dni = jso.getString("dni");
@@ -191,23 +191,14 @@ public class UsuarioController {
         return ResponseEntity.badRequest().build();
       }
 
-      usuario1 = new Usuario(
-          dni, 
-          nombre, 
-          apellidos, 
-          contrasena, rol, 
-          especialidad, 
-          medico, 
-          numTelefono, 
-          localidad,
-          centro, 
-          email);
+      usuario1 = new Usuario(dni, nombre, apellidos, contrasena, rol, especialidad, medico, numTelefono, localidad,
+          centro, email);
       usersService.saveUsuario(usuario1);
       LOG.info("[SERVER] Usuario registrado.");
       LOG.info("[SERVER] " + usuario1.toString());
       return ResponseEntity.ok().build();
     } else {
-      LOG.info("[SERVER] Error: el usuario ya está registrado.");
+      LOG.info("[SERVER] Error: El usuario ya está registrado.");
       LOG.info("[SERVER] " + usuario1.toString());
       return ResponseEntity.badRequest().build();
     }

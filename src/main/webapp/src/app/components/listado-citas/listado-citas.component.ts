@@ -126,7 +126,7 @@ export class ListadoCitasComponent implements OnInit {
 						});
 				},
 				error => {
-					this.error = error;
+					this.error = 'Ha ocurrido un error al eliminar la cita.';
 					this.loading = false;
 				});
 	}

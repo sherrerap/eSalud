@@ -52,7 +52,7 @@ export class RegistrarCitaComponent implements OnInit {
                     this.success = "Cita registrada correctamente."
                 },
                 error => {
-                    this.error = error;
+                    this.error = "Error: Ya existe una cita con esos datos.";
                     this.loading = false;
                 });
     }

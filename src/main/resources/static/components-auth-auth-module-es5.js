@@ -173,7 +173,7 @@
                             }
                         }
                     }, function (error) {
-                        _this.error = error;
+                        _this.error = "Error: No se ha encontrado ningún usuario con esos datos.";
                         _this.loading = false;
                     });
                 };
@@ -329,7 +329,7 @@
                         _this.alertService.success('Registration successful', true);
                         _this.router.navigate(['/auth/login'], { queryParams: { registered: true } });
                     }, function (error) {
-                        _this.alertService.error(error);
+                        _this.alertService.error("Error: El usuario ya está registrado.");
                         _this.loading = false;
                     });
                     function allLetter(inputtxt) {

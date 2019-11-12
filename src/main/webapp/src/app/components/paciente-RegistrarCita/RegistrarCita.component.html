@@ -2,7 +2,7 @@
 <div *ngIf="success" class="alert alert-success">{{success}}</div>
 <div class="register">
     <h2 class="register-header">Registra tu cita</h2>
-	<div *ngIf="error" class="alert alert-danger">{{error}}</div>
+    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-container">
         <div class="form-group">
             <div class="row">
@@ -15,7 +15,7 @@
           					      <option value="Cabecera">Cabecera</option>
           						  <option value="Especialidad">Especialidad</option>
           					      <option value="Enfermeria">Enfermería</option>
-          						  <option value="Reabilitación">Reabilitación</option>				      
+          						  <option value="Rehabilitación">Rehabilitación</option>				      
           					      
           					    </select>
                     <div *ngIf="submitted && f.tipo.errors" class="invalid-feedback">
@@ -83,7 +83,7 @@
                     <div *ngIf="submitted && f.hora.errors" class="invalid-feedback">
                         <div *ngIf="f.hora.errors.required">Selecciona una fecha valida</div>
                     </div>
-					
+
                 </div>
             </div>
             <div class="row justify-content-center">
