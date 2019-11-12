@@ -1,9 +1,5 @@
 package es.e3corp.eSalud.bdd.stepdefs;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
 import java.util.List;
 import java.util.Map;
 
@@ -11,7 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import es.e3corp.eSalud.repository.UsuarioRepository;
 import io.cucumber.java.en.Given;
@@ -36,7 +31,7 @@ public class PedirCitaSteps {
     // Double, Byte, Short, Long, BigInteger or BigDecimal.
     //
     // For other transformations you can register a DataTableType.
-    System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
+    System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
 
     driver = new ChromeDriver();
     driver.manage().window().maximize();
