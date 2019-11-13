@@ -1,6 +1,7 @@
 language: java
 before_install:
 - sudo apt-get update
+- chmod +x src/test/resources/drivers/geckodriver
     
 addons:
   firefox: "latest"
