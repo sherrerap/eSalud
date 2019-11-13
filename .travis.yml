@@ -1,7 +1,6 @@
 language: java
 before_install:
 - sudo apt-get update
-- sudo apt-get install firefox
 - sudo apt-get upgrade
 - chmod +x src/test/resources/drivers/geckodriver
     
