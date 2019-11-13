@@ -1,14 +1,8 @@
 language: java
 before_install:
 - sudo apt-get update
-- chmod +x src/test/resources/drivers/chromedriver
+- chmod +x src/test/resources/drivers/geckodriver
 
-addons:
-  apt:
-    sources:
-      - google-chrome
-    packages:
-      - google-chrome-stable
 deploy:
   provider: heroku
   api_key: 
