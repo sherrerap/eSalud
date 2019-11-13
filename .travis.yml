@@ -3,6 +3,10 @@ before_install:
 - sudo apt-get update
 - chmod +x src/test/resources/drivers/geckodriver
 
+addons:
+  apt:
+    - sudo apt-get install firefox
+    - sudo apt-get upgrade
 deploy:
   provider: heroku
   api_key: 
