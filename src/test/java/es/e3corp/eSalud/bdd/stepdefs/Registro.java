@@ -3,12 +3,14 @@ package es.e3corp.eSalud.bdd.stepdefs;
 import static org.junit.Assert.assertEquals;
 
 import java.net.MalformedURLException;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import es.e3corp.eSalud.repository.UsuarioRepository;
 import io.cucumber.java.en.Given;
@@ -32,9 +34,9 @@ public class Registro {
 //        chromeOptions.addArguments("--no-sandbox", "--verbose", "--headless", "--disable-web-security",
 //                "--ignore-certificate-errors", "--allow-running-insecure-content", "--allow-insecure-localhost",
 //                "--disable-gpu");
-    System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
-
-    driver = new ChromeDriver(/* service, chromeOptions */);
+    Path path = FileSystems.getDefault().getPath("src/test/resources/drivers/geckodriver");
+    System.setProperty("webdriver.gecko.driver", path.toString());
+    WebDriver driver = new FirefoxDriver();
     driver.manage().window().maximize();
     driver.get("localhost:8080/auth/register");
 
@@ -59,7 +61,7 @@ public class Registro {
   @Then("nos registramos en la aplicacion")
   public void nos_registramos_en_la_aplicacion() {
 
-        // En caso de caso de erro comprobar si el mensaje que se muestra es el correcto
+    // En caso de caso de erro comprobar si el mensaje que se muestra es el correcto
 
     driver.findElement(By.xpath("//input[@value='Registrarse']")).click();
 
