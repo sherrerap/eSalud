@@ -1,9 +1,11 @@
 language: java
 before_install:
 - sudo apt-get update
-- sudo apt-get upgrade
 - chmod +x src/test/resources/drivers/geckodriver
     
+addons:
+  firefox: "latest"
+
 deploy:
   provider: heroku
   api_key: 
