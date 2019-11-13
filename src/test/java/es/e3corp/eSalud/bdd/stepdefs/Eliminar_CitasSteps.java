@@ -37,6 +37,7 @@ public class Eliminar_CitasSteps {
     FirefoxOptions fo = new FirefoxOptions();
     fo.addArguments("--headless");
     WebDriver driver = new FirefoxDriver(fo);
+    driver.get("http://localhost:8080/auth/login");
 
     a = dataTable.asMaps(String.class, String.class);
 
