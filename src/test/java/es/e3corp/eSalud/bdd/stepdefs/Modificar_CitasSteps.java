@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 import es.e3corp.eSalud.repository.UsuarioRepository;
 import io.cucumber.java.en.Given;
@@ -31,8 +32,9 @@ public class Modificar_CitasSteps {
 
     Path path = FileSystems.getDefault().getPath("src/test/resources/drivers/geckodriver");
     System.setProperty("webdriver.gecko.driver", path.toString());
-    WebDriver driver = new FirefoxDriver();
-    driver.manage().window().maximize();
+    FirefoxOptions fo = new FirefoxOptions();
+    fo.addArguments("--headless");
+    WebDriver driver = new FirefoxDriver(fo);
     driver.get("http://localhost:8080/auth/login");
 
     a = dataTable.asMaps(String.class, String.class);

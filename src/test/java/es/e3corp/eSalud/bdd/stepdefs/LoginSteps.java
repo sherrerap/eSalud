@@ -11,6 +11,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 import es.e3corp.eSalud.repository.UsuarioRepository;
 import io.cucumber.java.en.Given;
@@ -28,9 +29,10 @@ public class LoginSteps {
 
     Path path = FileSystems.getDefault().getPath("src/test/resources/drivers/geckodriver");
     System.setProperty("webdriver.gecko.driver", path.toString());
-    WebDriver driver = new FirefoxDriver();
+    FirefoxOptions fo = new FirefoxOptions();
+    fo.addArguments("--headless");
+    WebDriver driver = new FirefoxDriver(fo);
 
-    driver.manage().window().maximize();
     driver.get("http://localhost:8080/auth/login");
   }
 
