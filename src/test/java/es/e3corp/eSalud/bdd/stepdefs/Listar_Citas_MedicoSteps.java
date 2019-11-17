@@ -42,7 +42,7 @@ public class Listar_Citas_MedicoSteps {
     driver.findElement(By.xpath("//input[@value='Acceder']")).click();
   }
 
-  @When("el usuario pulsa en lista de citas")
+  @When("el medico pulsa en lista de citas")
   public void el_usuario_pulsa_en_lista_de_citas() {
     driver.findElement(By.xpath("//input[@value='Lista de citas']")).click();
   }

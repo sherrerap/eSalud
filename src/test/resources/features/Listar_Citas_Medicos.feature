@@ -7,7 +7,7 @@ Feature: Listar cita médicos
 		| medico		|	contraseña		|
 		| <medico>	| <contraseña>	|
 		
-		When el usuario pulsa en lista de citas
+		When el medico pulsa en lista de citas
 		
 		
 		Then se muestra la lista de citas del medico '<expectedResult>'
