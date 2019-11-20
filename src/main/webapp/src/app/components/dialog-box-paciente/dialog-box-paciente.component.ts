@@ -7,8 +7,9 @@ export interface UsersData {
   nombre: string;
   apellidos: string;
   centro: string;
-  correo: string;
+  email: string;
   localidad: string;
+  rol:string;
 }
 
 
