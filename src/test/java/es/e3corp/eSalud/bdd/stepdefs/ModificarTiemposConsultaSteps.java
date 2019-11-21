@@ -19,9 +19,9 @@ public class ModificarTiemposConsultaSteps {
 
   WebDriver driver;
   List<Map<String, String>> a;
-  Especialidad e = new Especialidad();
-  @Autowired
-  EspecialidadController ec;
+  // Especialidad e = new Especialidad();
+  // @Autowired
+  // EspecialidadController ec;
 
   @Given("un usuario logueado como gestor")
   public void un_usuario_logueado_como_gestor(io.cucumber.datatable.DataTable dataTable) {
@@ -45,8 +45,8 @@ public class ModificarTiemposConsultaSteps {
   @When("el usuario seleccione una especialidad")
   public void el_usuario_seleccione_una_especialidad(io.cucumber.datatable.DataTable dataTable) {
     a = dataTable.asMaps(String.class, String.class);
-    e.setEspecialidad(a.get(0).get("especialidad"));
-    e.setTiempo(a.get(0).get("tiempo"));
+    // e.setEspecialidad(a.get(0).get("especialidad"));
+    // e.setTiempo(a.get(0).get("tiempo"));
     driver.findElement(By.xpath("//input[@placeholder='Especialidad']")).sendKeys(a.get(0).get("especialidad")); // ?
     driver.findElement(By.xpath("//input[@placeholder='Tiempo']")).sendKeys(a.get(0).get("tiempo"));
   }
@@ -54,7 +54,7 @@ public class ModificarTiemposConsultaSteps {
   @Then("se mostrarán sus características y se podrá editar su tiempo de consulta {string}")
   public void se_mostrarán_sus_características_y_se_podrá_editar_su_tiempo_de_consulta(String string) {
     driver.findElement(By.xpath("//input[@value='Modificar']")).click();
-    ec.updateEspecialidad(e);
+    // ec.updateEspecialidad(e);
     driver.close();
   }
 }
