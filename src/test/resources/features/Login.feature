@@ -10,9 +10,9 @@ Scenario Outline: <testCase> <resultadoEsperado>
   
   Examples: 
   	|testCase	| resultadoEsperado 	|	dni 	  				| contraseña |
-    |CASO 1		|	LOGIN CORRECTO		| admin						|  root  		 |
-    |CASO 2		|	LOGIN CORRECTO		| pruebasPaciente	|  123  		 |
-    |CASO 3		|	LOGIN CORRECTO		| pruebasMedico		|  123  		 |
+    |CASO 1		|	LOGIN CORRECTO			| admin						|  root  		 |
+    |CASO 2		|	LOGIN CORRECTO			| pruebasPaciente	|  123  		 |
+    |CASO 3		|	LOGIN CORRECTO			| pruebasMedico		|  123  		 |
     |CASO 4		|	DNI INCORRECTO		  | pruebasPacienteE|  123       |
     |CASO 5		|	SIN DNI			 			  | 								|  123       |
     |CASO 6		|	SIN CONTRASEÑA		  | pruebasPaciente	|   				 |
