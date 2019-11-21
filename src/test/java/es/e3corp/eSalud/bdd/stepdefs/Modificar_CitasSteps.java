@@ -1,11 +1,15 @@
 package es.e3corp.eSalud.bdd.stepdefs;
 
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 import es.e3corp.eSalud.repository.UsuarioRepository;
 import io.cucumber.java.en.Given;
@@ -26,10 +30,11 @@ public class Modificar_CitasSteps {
   public void el_usuario_se_ha_logueado_y_quiere_cambiar_los_valores_de_los_campos_de_la_cita_para_actualizarlos(
       io.cucumber.datatable.DataTable dataTable) {
 
-    System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
-
-    driver = new ChromeDriver();
-    driver.manage().window().maximize();
+    Path path = FileSystems.getDefault().getPath("src/test/resources/drivers/geckodriver");
+    System.setProperty("webdriver.gecko.driver", path.toString());
+    FirefoxOptions fo = new FirefoxOptions();
+    fo.addArguments("--headless");
+    WebDriver driver = new FirefoxDriver(fo);
     driver.get("http://localhost:8080/auth/login");
 
     a = dataTable.asMaps(String.class, String.class);
