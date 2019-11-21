@@ -25,7 +25,7 @@ public class Registrar_medico {
   @Given("iniciamos la aplicación y nos dirigimos a registrar medico")
   public void iniciamos_la_aplicación_y_nos_dirigimos_a_registrar_medico() {
 
-    Path path = FileSystems.getDefault().getPath("src/test/resources/drivers/geckodriver");
+    Path path = FileSystems.getDefault().getPath("src/test/resources/drivers/geckodriver.exe");
     System.setProperty("webdriver.gecko.driver", path.toString());
     FirefoxOptions fo = new FirefoxOptions();
     fo.addArguments("--headless");

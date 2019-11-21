@@ -30,7 +30,7 @@ public class Modificar_CitasSteps {
   public void el_usuario_se_ha_logueado_y_quiere_cambiar_los_valores_de_los_campos_de_la_cita_para_actualizarlos(
       io.cucumber.datatable.DataTable dataTable) {
 
-    Path path = FileSystems.getDefault().getPath("src/test/resources/drivers/geckodriver");
+    Path path = FileSystems.getDefault().getPath("src/test/resources/drivers/geckodriver.exe");
     System.setProperty("webdriver.gecko.driver", path.toString());
     FirefoxOptions fo = new FirefoxOptions();
     fo.addArguments("--headless");

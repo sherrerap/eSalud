@@ -27,7 +27,7 @@ public class LoginSteps {
   @Given("abrimos el navegador e iniciamos la aplicacion")
   public void abrimos_el_navegador_e_iniciamos_la_aplicacion() {
 
-    Path path = FileSystems.getDefault().getPath("src/test/resources/drivers/geckodriver");
+    Path path = FileSystems.getDefault().getPath("src/test/resources/drivers/geckodriver.exe");
     System.setProperty("webdriver.gecko.driver", path.toString());
     FirefoxOptions fo = new FirefoxOptions();
     fo.addArguments("--headless");

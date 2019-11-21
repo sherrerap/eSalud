@@ -34,7 +34,7 @@ public class PedirCitaSteps {
     // Double, Byte, Short, Long, BigInteger or BigDecimal.
     //
     // For other transformations you can register a DataTableType.
-    Path path = FileSystems.getDefault().getPath("src/test/resources/drivers/geckodriver");
+    Path path = FileSystems.getDefault().getPath("src/test/resources/drivers/geckodriver.exe");
     System.setProperty("webdriver.gecko.driver", path.toString());
     FirefoxOptions fo = new FirefoxOptions();
     fo.addArguments("--headless");

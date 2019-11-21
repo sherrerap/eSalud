@@ -32,7 +32,7 @@ public class Eliminar_CitasSteps {
 
     /* GUARDAR CITA FICTICIA EN LA BASE DE DATOS */
 
-    Path path = FileSystems.getDefault().getPath("src/test/resources/drivers/geckodriver");
+    Path path = FileSystems.getDefault().getPath("src/test/resources/drivers/geckodriver.exe");
     System.setProperty("webdriver.gecko.driver", path.toString());
     FirefoxOptions fo = new FirefoxOptions();
     fo.addArguments("--headless");
