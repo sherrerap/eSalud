@@ -2,12 +2,15 @@ package es.e3corp.eSalud.bdd.stepdefs;
 
 import static org.junit.Assert.assertEquals;
 
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 import es.e3corp.eSalud.repository.UsuarioRepository;
 import io.cucumber.java.en.Given;
@@ -22,10 +25,11 @@ public class Registrar_medico {
   @Given("iniciamos la aplicación y nos dirigimos a registrar medico")
   public void iniciamos_la_aplicación_y_nos_dirigimos_a_registrar_medico() {
 
-    System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
-
-    driver = new ChromeDriver();
-    driver.manage().window().maximize();
+    Path path = FileSystems.getDefault().getPath("src/test/resources/drivers/geckodriver.exe");
+    System.setProperty("webdriver.gecko.driver", path.toString());
+    FirefoxOptions fo = new FirefoxOptions();
+    fo.addArguments("--headless");
+    WebDriver driver = new FirefoxDriver(fo);
     driver.get("http://localhost:8080/auth/login");
 
     driver.findElement(By.xpath("//input[@placeholder='DNI']")).sendKeys("admin");

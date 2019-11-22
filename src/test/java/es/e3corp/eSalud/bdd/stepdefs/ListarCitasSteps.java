@@ -3,12 +3,15 @@ package es.e3corp.eSalud.bdd.stepdefs;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import es.e3corp.eSalud.model.Usuario;
@@ -36,10 +39,11 @@ public class ListarCitasSteps {
     // Double, Byte, Short, Long, BigInteger or BigDecimal.
     //
     // For other transformations you can register a DataTableType.
-    System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
-
-    driver = new ChromeDriver();
-    driver.manage().window().maximize();
+    Path path = FileSystems.getDefault().getPath("src/test/resources/drivers/geckodriver.exe");
+    System.setProperty("webdriver.gecko.driver", path.toString());
+    FirefoxOptions fo = new FirefoxOptions();
+    fo.addArguments("--headless");
+    WebDriver driver = new FirefoxDriver(fo);
     driver.get("http://localhost:8080/auth/login");
 
     a = dataTable.asMaps(String.class, String.class);

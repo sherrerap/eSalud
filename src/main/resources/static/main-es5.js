@@ -2033,7 +2033,7 @@
             // The list of file replacements can be found in `angular.json`.
             var environment = {
                 production: false,
-                apiUrl: 'https://esalud.herokuapp.com',
+                apiUrl: 'http://localhost:8080',
             };
             /*
              * For easier debugging in development mode, you can import the following file
