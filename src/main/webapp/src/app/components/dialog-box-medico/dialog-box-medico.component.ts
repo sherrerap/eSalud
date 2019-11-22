@@ -23,6 +23,8 @@ export class DialogBoxMedicoComponent {
 
   action: string;
   local_data: any;
+  especialidad: string;
+  public modeselect;
 
   constructor(
     public dialogRef: MatDialogRef<DialogBoxMedicoComponent>,
@@ -31,6 +33,9 @@ export class DialogBoxMedicoComponent {
     console.log(data);
     this.local_data = { ...data };
     this.action = this.local_data.action;
+    this.especialidad = this.local_data.especialidad;
+	console.log(this.especialidad)
+    this.modeselect=this.especialidad;
   }
 
   doAction() {

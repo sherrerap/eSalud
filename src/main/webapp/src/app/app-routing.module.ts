@@ -38,7 +38,7 @@ const routes: Routes = [
   {
     path: 'admin', component: SidenavAdminComponent, canActivate: [AuthGuard],
     children: [
-      { path: '', component: MostrarMedicoComponent }
+      { path: '', component: ModificarMedicoComponent }
     ]
   },
   /********************************************************************************** */

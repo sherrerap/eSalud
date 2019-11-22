@@ -19,6 +19,14 @@
     <mat-form-field *ngIf="action != 'Delete'">
         <input placeholder="Teléfono" matInput [(ngModel)]="local_data.numTelefono">
     </mat-form-field>
+        <mat-form-field *ngIf="action != 'Delete'">
+    <mat-select [(ngModel)]="modeselect" matInput [(ngModel)]="local_data.especialidad">
+      <mat-option value="Enfermero">Enfermero</mat-option>
+      <mat-option value="Cabecera">Cabecera</mat-option>
+      <mat-option value="Pediatría">Pediatría</mat-option>
+      <mat-option value="Traumatología">Traumatología</mat-option>	
+    </mat-select>
+  </mat-form-field>
     <mat-form-field *ngIf="action != 'Delete'">
     <mat-select placeholder="Rol" matInput [(ngModel)]="local_data.rol">
       <mat-option value="paciente">Paciente</mat-option>
