@@ -16,7 +16,7 @@ export interface UsersData {
   email: string;
   rol:string;
   contrasena:string;
-  
+  especialidad:string;
 }
  
 const ELEMENT_DATA: UsersData[] = [];
@@ -27,7 +27,7 @@ const ELEMENT_DATA: UsersData[] = [];
   styleUrls: ['./ModificarPaciente.component.css']
 })
 export class ModificarPacienteComponent{
-displayedColumns: string[] = ['nombre','apellidos','numTelefono','localidad','centro','email','rol','action'];
+displayedColumns: string[] = ['nombre','apellidos','numTelefono','localidad','centro','email','action'];
    dataSource = new MatTableDataSource<UsersData>();
   data: UsersData[];
   submitted = false;
@@ -79,8 +79,9 @@ displayedColumns: string[] = ['nombre','apellidos','numTelefono','localidad','ce
 				value.localidad = row_obj.localidad;
 				value.centro = row_obj.centro;
 				value.email=row_obj.email;
-				value.rol=row_obj.rol
-				value.contrasena=row_obj.contrasena
+				value.rol=row_obj.rol;
+				value.contrasena=row_obj.contrasena;
+				value.especialidad=row_obj.especialidad;
 			}
 			return true;
 		});
@@ -96,7 +97,8 @@ displayedColumns: string[] = ['nombre','apellidos','numTelefono','localidad','ce
 			centro: row_obj.centro,
 			email: row_obj.email,
 			rol:row_obj.rol,
-			contrasena: row_obj.contrasena
+			contrasena: row_obj.contrasena,
+			especialidad: row_obj.especialidad,
 		});
 		this.usuariosService.update(this.usuarioForm.value,this.usuarioForm.controls.dni.value)
 			.pipe(first())
@@ -104,6 +106,12 @@ displayedColumns: string[] = ['nombre','apellidos','numTelefono','localidad','ce
 				data => {
 					console.log("[CLIENTE] Cliente actualizada.")
 					this.success = "Cliente actualizado correctamente."
+					this.dataSource.paginator = this.paginator;
+    				this.usuariosService.getUsersByRole('pacientes')
+      				.subscribe((data: UsersData[]) => {
+        			this.data = data;
+        			this.dataSource = new MatTableDataSource(data);
+      });
 				},
 				error => {
 					this.error = error;
@@ -124,7 +132,8 @@ displayedColumns: string[] = ['nombre','apellidos','numTelefono','localidad','ce
 			centro: row_obj.centro,
 			email: row_obj.email,
 			rol:row_obj.rol,
-			contrasena: row_obj.contrasena
+			contrasena: row_obj.contrasena,
+			especialidad: row_obj.especialidad,
 		});
 		this.usuariosService.delete(this.usuarioForm.controls.id.value)
 			.pipe(first())

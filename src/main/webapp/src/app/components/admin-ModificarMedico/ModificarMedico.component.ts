@@ -16,6 +16,7 @@ export interface UsersData {
   especialidad: string;
   rol:string;
   contrasena: string;
+  localidad: string;
 }
 const ELEMENT_DATA: UsersData[] = [];
 
@@ -77,8 +78,9 @@ displayedColumns: string[] = ['dni','nombre','apellidos','centro', 'email','numT
 				value.centro = row_obj.centro;
 				value.email = row_obj.email;
 				value.especialidad=row_obj.especialidad;
-				value.rol=row_obj.rol
-				value.contrasena=row_obj.contrasena
+				value.rol=row_obj.rol;
+				value.contrasena=row_obj.contrasena;
+				value.localidad=row_obj.localidad;
 			}
 			return true;
 		});
@@ -94,7 +96,8 @@ displayedColumns: string[] = ['dni','nombre','apellidos','centro', 'email','numT
 			email: row_obj.email,
 			especialidad: row_obj.especialidad,
 			rol:row_obj.rol,
-			contrasena: row_obj.contrasena
+			contrasena: row_obj.contrasena,
+			localidad: row_obj.localidad
 		});
 		this.usuariosService.update(this.usuarioForm.value,this.usuarioForm.controls.dni.value)
 			.pipe(first())
@@ -102,6 +105,12 @@ displayedColumns: string[] = ['dni','nombre','apellidos','centro', 'email','numT
 				data => {
 					console.log("[CLIENTE] Medico actualizado.")
 					this.success = "Medico actualizado correctamente."
+					this.dataSource.paginator = this.paginator;
+    				this.usuariosService.getUsersByRole('medicos')
+      				.subscribe((data: UsersData[]) => {
+        			this.data = data;
+        			this.dataSource = new MatTableDataSource(data);
+});
 				},
 				error => {
 					this.error = error;
@@ -122,7 +131,8 @@ displayedColumns: string[] = ['dni','nombre','apellidos','centro', 'email','numT
 			email: row_obj.email,
 			especialidad: row_obj.especialidad,
 			rol:row_obj.rol,
-			contrasena: row_obj.contrasena
+			contrasena: row_obj.contrasena,
+			localidad: row_obj.localidad
 		});
 		this.usuariosService.delete(this.usuarioForm.controls.id.value)
 			.pipe(first())
