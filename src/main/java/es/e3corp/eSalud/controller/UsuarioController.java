@@ -21,6 +21,7 @@ import com.wordnik.swagger.annotations.ApiOperation;
 
 import es.e3corp.eSalud.Service.UsuarioService;
 import es.e3corp.eSalud.exception.UserNotFoundException;
+import es.e3corp.eSalud.model.Cita;
 import es.e3corp.eSalud.model.Usuario;
 import es.e3corp.eSalud.utilidades.Utilidades;
 
@@ -29,7 +30,7 @@ import es.e3corp.eSalud.utilidades.Utilidades;
 /**
  * @author e3corp
  */
-@CrossOrigin(origins = { "http://localhost:4200"}, allowedHeaders = "*")
+@CrossOrigin(origins = { "http://localhost:4200","https://esalud.herokuapp.com"}, allowedHeaders = "*")
 public class UsuarioController {
 
   private static final Log LOG = LogFactory.getLog(UsuarioController.class);
@@ -206,11 +207,59 @@ public class UsuarioController {
   
   @RequestMapping(value = "/{userId}", method = RequestMethod.PUT)
   @ApiOperation(value = "Update usuario", notes = "Finds a cita ID and updates its fields")
-  public ResponseEntity<Usuario> updateUsuario(@RequestBody final String mensajerecibido, @PathVariable final String usuarioId) {
-  
-      System.out.println("LLegamos");
-     
+  public ResponseEntity<Usuario> updateUsuario(@RequestBody final String mensajerecibido, @PathVariable final String userId) {
+    final JSONObject jso = new JSONObject(mensajerecibido);
+    final String UserIdEncriptado = Utilidades.encriptar(userId);
+    final Usuario usuario = usersService.findByUserDni(UserIdEncriptado);
+    if (usuario == null) {
+      LOG.info("[SERVER] Error: el usuario no existe.");
+      return ResponseEntity.badRequest().build();
+    } else {
+      try {
+        LOG.info("[SERVER] Actualizando usuario...");
+
+        // Depende de los campos que queramos que puedan actualizarse
+        final String dni = jso.getString("dni");
+        final String nombre = jso.getString("nombre");
+        final String localidad =jso.getString("localidad");
+        final String apellidos = jso.getString("apellidos");
+        final String numTelefono = jso.getString("numTelefono");
+        final String centro = jso.getString("centro");
+        final String email = jso.getString("email");
+        final String rol = jso.getString("rol");
+        final String contrasena =  jso.getString("contrasena");
+        
+        final String dniEncriptado = Utilidades.encriptar(dni);
+        final String nombreEncriptado = Utilidades.encriptar(nombre);
+        final String apellidosEncriptado = Utilidades.encriptar(apellidos);
+        final String numTelefonoEncriptado = Utilidades.encriptar(numTelefono);
+        final String centroEncriptado = Utilidades.encriptar(centro);
+        final String emailEncriptado = Utilidades.encriptar(email);
+        final String rolEncriptado = Utilidades.encriptar(rol);
+        final String localidadEncriptado =Utilidades.encriptar(localidad);
+        final String contrasenaEncriptado =Utilidades.encriptar(contrasena);
+        
+        usuario.setDni(dniEncriptado);
+        usuario.setNombre(nombreEncriptado);
+        usuario.setApellidos(apellidosEncriptado);
+        usuario.setNumTelefono(numTelefonoEncriptado);
+        usuario.setCentro(centroEncriptado);
+        usuario.setEmail(emailEncriptado);
+        usuario.setRol(rolEncriptado);
+        usuario.setLocalidad(localidadEncriptado);
+        usuario.setcontrasena(contrasenaEncriptado);
+      } catch (JSONException j) {
+        LOG.error("[SERVER] Error en la lectura del JSON.");
+        LOG.info(j.getMessage());
+        return ResponseEntity.badRequest().build();
+      }
+
+      usersService.updateUsuario(usuario);
+      LOG.info("[SERVER] Usuario actualizada.");
+      LOG.info("[SERVER] " + usuario.toString());
       return ResponseEntity.ok().build();
     }
+    }
+  
   
 }

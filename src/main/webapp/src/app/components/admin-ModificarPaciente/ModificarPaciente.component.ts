@@ -15,6 +15,7 @@ export interface UsersData {
   centro: string;
   email: string;
   rol:string;
+  contrasena:string;
   
 }
  
@@ -79,6 +80,7 @@ displayedColumns: string[] = ['nombre','apellidos','numTelefono','localidad','ce
 				value.centro = row_obj.centro;
 				value.email=row_obj.email;
 				value.rol=row_obj.rol
+				value.contrasena=row_obj.contrasena
 			}
 			return true;
 		});
@@ -93,7 +95,8 @@ displayedColumns: string[] = ['nombre','apellidos','numTelefono','localidad','ce
 			localidad: row_obj.localidad,
 			centro: row_obj.centro,
 			email: row_obj.email,
-			rol:row_obj.rol
+			rol:row_obj.rol,
+			contrasena: row_obj.contrasena
 		});
 		this.usuariosService.update(this.usuarioForm.value,this.usuarioForm.controls.dni.value)
 			.pipe(first())
@@ -120,7 +123,8 @@ displayedColumns: string[] = ['nombre','apellidos','numTelefono','localidad','ce
 			localidad: row_obj.localidad,
 			centro: row_obj.centro,
 			email: row_obj.email,
-			rol:row_obj.rol
+			rol:row_obj.rol,
+			contrasena: row_obj.contrasena
 		});
 		this.usuariosService.delete(this.usuarioForm.controls.id.value)
 			.pipe(first())
@@ -129,7 +133,7 @@ displayedColumns: string[] = ['nombre','apellidos','numTelefono','localidad','ce
 					console.log("[CLIENTE] Usuario borrado.")
 					this.success = "Usuario borrado correctamente."
 					this.dataSource.paginator = this.paginator;
-					this.usuariosService.getUsersByRole('paciente')
+					this.usuariosService.getUsersByRole('pacientes')
 						.subscribe((data: UsersData[]) => {
 							this.data = data;
 							this.dataSource = new MatTableDataSource(data);
@@ -141,6 +145,4 @@ displayedColumns: string[] = ['nombre','apellidos','numTelefono','localidad','ce
 				});
 	}
  
- 
-
 }

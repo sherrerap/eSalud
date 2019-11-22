@@ -13,7 +13,7 @@ export interface PeriodicElement {
 	centro: string;
 	fecha: string;
 	hora: string;
-	médico: string;
+	medico: string;
 }
 
 @Component({
@@ -72,7 +72,7 @@ export class ListadoCitasComponent implements OnInit {
 				value.centro = row_obj.centro;
 				value.fecha = row_obj.fecha;
 				value.hora = row_obj.hora;
-				value.médico = row_obj.médico;
+				value.medico = row_obj.medico;
 			}
 			return true;
 		});
@@ -85,7 +85,7 @@ export class ListadoCitasComponent implements OnInit {
 			fecha: row_obj.fecha,
 			hora: row_obj.hora,
 			paciente: row_obj.paciente,
-			médico: row_obj.médico
+			medico: row_obj.medico
 		});
 		this.citasService.update(this.citaForm.value, this.citaForm.controls.id.value)
 			.pipe(first())
@@ -110,7 +110,7 @@ export class ListadoCitasComponent implements OnInit {
 			fecha: row_obj.fecha,
 			hora: row_obj.hora,
 			paciente: row_obj.paciente,
-			médico: row_obj.médico
+			medico: row_obj.medico
 		});
 		this.citasService.delete(this.citaForm.controls.id.value)
 			.pipe(first())

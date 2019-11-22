@@ -6,6 +6,7 @@ export interface UsersData {
   id: number;
   nombre: string;
   apellidos: string;
+  telefono: string;
   centro: string;
   email: string;
   localidad: string;

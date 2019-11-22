@@ -9,6 +9,9 @@
     <mat-form-field *ngIf="action != 'Delete'">
         <input placeholder="Apellidos" matInput [(ngModel)]="local_data.apellidos">
     </mat-form-field>
+	 <mat-form-field *ngIf="action != 'Delete'">
+        <input placeholder="Telefono" matInput [(ngModel)]="local_data.numTelefono">
+    </mat-form-field>
     <mat-form-field *ngIf="action != 'Delete'">
         <input placeholder="Centro" matInput [(ngModel)]="local_data.centro">
     </mat-form-field>
