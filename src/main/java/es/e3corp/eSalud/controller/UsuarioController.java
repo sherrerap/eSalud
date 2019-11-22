@@ -29,7 +29,7 @@ import es.e3corp.eSalud.utilidades.Utilidades;
 /**
  * @author e3corp
  */
-@CrossOrigin(origins = { "http://localhost:4200", "https://esalud.herokuapp.com" }, allowedHeaders = "*")
+@CrossOrigin(origins = { "http://localhost:4200"}, allowedHeaders = "*")
 public class UsuarioController {
 
   private static final Log LOG = LogFactory.getLog(UsuarioController.class);
@@ -203,4 +203,14 @@ public class UsuarioController {
       return ResponseEntity.badRequest().build();
     }
   }
+  
+  @RequestMapping(value = "/{userId}", method = RequestMethod.PUT)
+  @ApiOperation(value = "Update usuario", notes = "Finds a cita ID and updates its fields")
+  public ResponseEntity<Usuario> updateUsuario(@RequestBody final String mensajerecibido, @PathVariable final String usuarioId) {
+  
+      System.out.println("LLegamos");
+     
+      return ResponseEntity.ok().build();
+    }
+  
 }

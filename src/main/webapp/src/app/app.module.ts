@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule, MatIconModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatToolbarModule, MatTableModule, MatSortModule, MatPaginatorModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
@@ -48,6 +49,7 @@ import { RegistrarCitaComponent } from './components/paciente-RegistrarCita/Regi
     MatToolbarModule,
     FormsModule,
     MatDialogModule,
+	MatSelectModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,

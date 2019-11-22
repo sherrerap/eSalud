@@ -2,10 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable, MatDialog, MatTableDataSource, MatPaginator } from '@angular/material';
 import { DialogBoxPacienteComponent } from '../dialog-box-paciente/dialog-box-paciente.component';
 import { CitasService, AuthService, UserService } from 'src/app/_services';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 export interface UsersData {
+  id:string;  
   dni: string;
   nombre: string;
   apellidos: string;
@@ -34,12 +35,12 @@ displayedColumns: string[] = ['nombre','apellidos','numTelefono','localidad','ce
   loading = false;
   usuarioForm: FormGroup;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-    formBuilder: any;
 
   constructor(
     private authService: AuthService,
     private usuariosService: UserService,
 	public dialog: MatDialog,
+	private formBuilder: FormBuilder,
   ) {
 
   }
@@ -94,7 +95,7 @@ displayedColumns: string[] = ['nombre','apellidos','numTelefono','localidad','ce
 			email: row_obj.email,
 			rol:row_obj.rol
 		});
-		this.usuariosService.update(this.usuarioForm.value)
+		this.usuariosService.update(this.usuarioForm.value,this.usuarioForm.controls.dni.value)
 			.pipe(first())
 			.subscribe(
 				data => {
