@@ -20,8 +20,7 @@ import { DialogBoxMedicoComponent } from './components/dialog-box-medico/dialog-
 import { DialogBoxModificarCita} from './components/dialog-box-modificarCita/dialog-box-modificarCita.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { RegistrarCitaComponent } from './components/paciente-RegistrarCita/RegistrarCita.component';
-
-
+import { MostrarEspecialidadesComponent} from './components/admin-MostrarEspecialidades/MostrarEspecialidades.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +35,9 @@ import { RegistrarCitaComponent } from './components/paciente-RegistrarCita/Regi
     DialogBoxMedicoComponent,
 	DialogBoxModificarCita,
     AlertComponent,
-    RegistrarCitaComponent
+    RegistrarCitaComponent,
+    MostrarEspecialidadesComponent
+
   ],
   imports: [
     BrowserModule,
@@ -60,7 +61,7 @@ import { RegistrarCitaComponent } from './components/paciente-RegistrarCita/Regi
   entryComponents: [
     DialogBoxPacienteComponent,
     DialogBoxMedicoComponent,
-	DialogBoxModificarCita,
+	  DialogBoxModificarCita,
 
   ],
   providers: [
