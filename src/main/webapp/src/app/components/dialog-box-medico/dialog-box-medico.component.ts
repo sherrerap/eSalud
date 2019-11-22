@@ -9,6 +9,8 @@ export interface UsersData {
   centro: string;
   correo: string;
   telefono: string;
+  especialidad: string;
+  rol: string;
 }
 
 

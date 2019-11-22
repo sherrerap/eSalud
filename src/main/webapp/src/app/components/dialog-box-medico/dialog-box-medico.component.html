@@ -14,11 +14,17 @@
         <input placeholder="Centro" matInput [(ngModel)]="local_data.centro">
     </mat-form-field>
     <mat-form-field *ngIf="action != 'Delete'">
-        <input placeholder="Correo" matInput [(ngModel)]="local_data.correo">
+        <input placeholder="Correo" matInput [(ngModel)]="local_data.email">
     </mat-form-field>
     <mat-form-field *ngIf="action != 'Delete'">
-        <input placeholder="Teléfono" matInput [(ngModel)]="local_data.telefono">
+        <input placeholder="Teléfono" matInput [(ngModel)]="local_data.numTelefono">
     </mat-form-field>
+    <mat-form-field *ngIf="action != 'Delete'">
+    <mat-select placeholder="Rol" matInput [(ngModel)]="local_data.rol">
+      <mat-option value="paciente">Paciente</mat-option>
+      <mat-option value="medico">Médico</mat-option>
+    </mat-select>
+  </mat-form-field>
     <ng-template #elseTemplate>
         ¿Confirma que quiere borrarlo<b>{{local_data.name}}</b>?
     </ng-template>

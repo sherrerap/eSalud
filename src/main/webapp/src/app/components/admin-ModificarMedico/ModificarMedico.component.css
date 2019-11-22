@@ -1,13 +1,7 @@
 table{
-	width:100%
+	width:100%;
 }
-
-.mat-button{
-	margin:3px;	
-}
-
-.mat-raised-button{
-	margin:3px;
-	background-color:rgb(34, 189, 131);
-	color:white;
+mat-paginator{
+	width:100%;
+	background-color: rgb(218, 241, 230);
 }

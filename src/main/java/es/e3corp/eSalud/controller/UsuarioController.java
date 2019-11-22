@@ -221,13 +221,25 @@ public class UsuarioController {
         // Depende de los campos que queramos que puedan actualizarse
         final String dni = jso.getString("dni");
         final String nombre = jso.getString("nombre");
-        final String localidad =jso.getString("localidad");
         final String apellidos = jso.getString("apellidos");
         final String numTelefono = jso.getString("numTelefono");
         final String centro = jso.getString("centro");
         final String email = jso.getString("email");
         final String rol = jso.getString("rol");
         final String contrasena =  jso.getString("contrasena");
+        
+        if(rol.equals("medico")) {
+          final String especialidad = jso.getString("especialidad");
+          final String especialidadEncriptado = Utilidades.encriptar(especialidad);
+          usuario.setEspecialidad(especialidadEncriptado);
+        }
+        
+        if(rol.equals("paciente")) {
+          final String localidad = jso.getString("localidad");
+          final String localidadEncriptado = Utilidades.encriptar(localidad);
+          usuario.setLocalidad(localidadEncriptado);
+        }
+        
         
         final String dniEncriptado = Utilidades.encriptar(dni);
         final String nombreEncriptado = Utilidades.encriptar(nombre);
@@ -236,7 +248,6 @@ public class UsuarioController {
         final String centroEncriptado = Utilidades.encriptar(centro);
         final String emailEncriptado = Utilidades.encriptar(email);
         final String rolEncriptado = Utilidades.encriptar(rol);
-        final String localidadEncriptado =Utilidades.encriptar(localidad);
         final String contrasenaEncriptado =Utilidades.encriptar(contrasena);
         
         usuario.setDni(dniEncriptado);
@@ -246,7 +257,6 @@ public class UsuarioController {
         usuario.setCentro(centroEncriptado);
         usuario.setEmail(emailEncriptado);
         usuario.setRol(rolEncriptado);
-        usuario.setLocalidad(localidadEncriptado);
         usuario.setcontrasena(contrasenaEncriptado);
       } catch (JSONException j) {
         LOG.error("[SERVER] Error en la lectura del JSON.");

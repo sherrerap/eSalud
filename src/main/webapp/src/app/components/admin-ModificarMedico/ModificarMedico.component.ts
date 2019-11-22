@@ -1,31 +1,23 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTable, MatDialog } from '@angular/material';
+import { MatTable, MatDialog, MatTableDataSource, MatPaginator } from '@angular/material';
 import { DialogBoxMedicoComponent } from '../dialog-box-medico/dialog-box-medico.component';
+import { AuthService, UserService } from 'src/app/_services';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { first } from 'rxjs/operators';
 
 export interface UsersData {
   dni: string;
-  id: number;
+  id: string;
   nombre: string;
   apellidos: string;
+  numTelefono: string;
   centro: string;
-  correo: string;
-  telefono: string;
+  email: string;
+  especialidad: string;
+  rol:string;
+  contrasena: string;
 }
- 
-const ELEMENT_DATA: UsersData[] = [
-  {id: 1, dni: '05345275T', nombre:'Lucia', apellidos: 'Garcia Garcia', centro:'Hospital General Ciudad Real', correo:'luc@xyz.com', telefono:'956743567'},
-  {id: 2, dni: '04369275G', nombre:'Maria', apellidos: 'Ruiz Garcia',   centro:'Hospital General Ciudad Real', correo:'luc@xyz.com', telefono:'956743567'},
-  {id: 3, dni: '09345275T', nombre:'Jose',  apellidos: 'López Garcia',  centro:'Hospital Puertollano',         correo:'luc@xyz.com', telefono:'956743567'},
-  {id: 4, dni: '05347799H', nombre:'Angel', apellidos: 'Garcia Ruíz',   centro:'Hospital General Ciudad Real', correo:'luc@xyz.com', telefono:'956743567'},
-  {id: 5, dni: '05345275T', nombre:'Lucia', apellidos: 'Garcia Garcia', centro:'Hospital General Ciudad Real', correo:'luc@xyz.com', telefono:'956743567'},
-  {id: 6, dni: '04369275G', nombre:'Maria', apellidos: 'Ruiz Garcia',   centro:'Hospital General Ciudad Real', correo:'luc@xyz.com', telefono:'956743567'},
-  {id: 7, dni: '09345275T', nombre:'Jose',  apellidos: 'López Garcia',  centro:'Hospital Puertollano',         correo:'luc@xyz.com', telefono:'956743567'},
-  {id: 8, dni: '05347799H', nombre:'Angel', apellidos: 'Garcia Ruíz',   centro:'Hospital General Ciudad Real', correo:'luc@xyz.com', telefono:'956743567'},
-  {id: 9, dni: '05345275T', nombre:'Lucia', apellidos: 'Garcia Garcia', centro:'Hospital General Ciudad Real', correo:'luc@xyz.com', telefono:'956743567'},
-  {id: 10, dni: '04369275G', nombre:'Maria', apellidos: 'Ruiz Garcia',   centro:'Hospital General Ciudad Real',correo:'luc@xyz.com', telefono:'956743567'},
-  {id: 11, dni: '09345275T', nombre:'Jose',  apellidos: 'López Garcia',  centro:'Hospital Puertollano',        correo:'luc@xyz.com', telefono:'956743567'},
-  {id: 12, dni: '05347799H', nombre:'Angel', apellidos: 'Garcia Ruíz',   centro:'Hospital General Ciudad Real',correo:'luc@xyz.com', telefono:'956743567'}
-];
+const ELEMENT_DATA: UsersData[] = [];
 
 @Component({
   selector: 'app-ModificarMedico',
@@ -33,62 +25,122 @@ const ELEMENT_DATA: UsersData[] = [
   styleUrls: ['./ModificarMedico.component.css']
 })
 export class ModificarMedicoComponent{
-displayedColumns: string[] = ['id', 'dni','nombre','apellidos','centro', 'correo','telefono','action'];
-  dataSource = ELEMENT_DATA;
- 
-  @ViewChild(MatTable,{static:true}) table: MatTable<any>;
- 
-  constructor(public dialog: MatDialog) {}
- 
-  openDialog(action,obj) {
-    obj.action = action;
-    const dialogRef = this.dialog.open(DialogBoxMedicoComponent, {
-      width: '400px',
-      data:obj
-    });
- 
-    dialogRef.afterClosed().subscribe(result => {
-       if(result.event == 'Update'){
-        this.updateRowData(result.data);
-      }else if(result.event == 'Delete'){
-        this.deleteRowData(result.data);
-      }
-    });
-  }
- 
-  addRowData(row_obj){
-    var d = new Date();
-    this.dataSource.push({
-      id:d.getTime(),
-      dni:row_obj.dni,
-      nombre:row_obj.nombre,
-	  apellidos:row_obj.apellidos,
-      centro:row_obj.centro,
-      correo:row_obj.correo,
-      telefono:row_obj.telefono
-    });
-    this.table.renderRows();
-    
-  }
-  updateRowData(row_obj){
-    this.dataSource = this.dataSource.filter((value,key)=>{
-      if(value.id == row_obj.id){
-        value.dni = row_obj.dni;
-        value.apellidos =row_obj.apellidos;
-		value.nombre =row_obj.nombre;
-		value.centro= row_obj.centro;
-		value.correo= row_obj.correo;
-		value.telefono=row_obj.telefono;
-      }
-      return true;
-    });
-  }
-  deleteRowData(row_obj){
-    this.dataSource = this.dataSource.filter((value,key)=>{
-      return value.id != row_obj.id;
-    });
-  }
- 
- 
+displayedColumns: string[] = ['dni','nombre','apellidos','centro', 'email','numTelefono','especialidad','action'];
+   dataSource = new MatTableDataSource<UsersData>();
+  data: UsersData[];
+  submitted = false;
+  error: string;
+  success: string;
+  loading = false;
+  usuarioForm: FormGroup;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
+  constructor(
+    private authService: AuthService,
+    private usuariosService: UserService,
+	public dialog: MatDialog,
+	private formBuilder: FormBuilder,
+  ) {
+
+  }
+ 
+   ngOnInit() {
+    this.dataSource.paginator = this.paginator;
+    this.usuariosService.getUsersByRole('medicos')
+      .subscribe((data: UsersData[]) => {
+        this.data = data;
+        this.dataSource = new MatTableDataSource(data);
+      });
+
+  }
+	openDialog(action, obj) {
+		obj.action = action;
+		const dialogRef = this.dialog.open(DialogBoxMedicoComponent, {
+			width: '400px',
+			data: obj
+		});
+
+		dialogRef.afterClosed().subscribe(result => {
+			if (result.event == 'Update') {
+				this.updateRowData(result.data);
+			} else if (result.event == 'Delete') {
+				this.deleteRowData(result.data);
+			}
+		});
+	}
+	updateRowData(row_obj) {
+		this.data = this.data.filter((value, key) => {
+			if (value.dni == row_obj.dni) {
+				value.nombre = row_obj.nombre;
+				value.apellidos = row_obj.apellidos;
+				value.numTelefono = row_obj.numTelefono;
+				value.centro = row_obj.centro;
+				value.email = row_obj.email;
+				value.especialidad=row_obj.especialidad;
+				value.rol=row_obj.rol
+				value.contrasena=row_obj.contrasena
+			}
+			return true;
+		});
+		this.submitted = true;
+		this.success = null;
+		this.usuarioForm = this.formBuilder.group({
+			id: row_obj.id,
+			dni: row_obj.dni,
+			nombre: row_obj.nombre,
+			apellidos: row_obj.apellidos,
+			numTelefono: row_obj.numTelefono,
+			centro: row_obj.centro,
+			email: row_obj.email,
+			especialidad: row_obj.especialidad,
+			rol:row_obj.rol,
+			contrasena: row_obj.contrasena
+		});
+		this.usuariosService.update(this.usuarioForm.value,this.usuarioForm.controls.dni.value)
+			.pipe(first())
+			.subscribe(
+				data => {
+					console.log("[CLIENTE] Medico actualizado.")
+					this.success = "Medico actualizado correctamente."
+				},
+				error => {
+					this.error = error;
+					this.loading = false;
+				});
+	}
+	deleteRowData(row_obj) {
+		this.data = this.data.filter((value, key) => {
+			return value.dni != row_obj.dni;
+		});
+		this.usuarioForm = this.formBuilder.group({
+			id: row_obj.id,
+			dni: row_obj.dni,
+			nombre: row_obj.nombre,
+			apellidos: row_obj.apellidos,
+			numTelefono: row_obj.numTelefono,
+			centro: row_obj.centro,
+			email: row_obj.email,
+			especialidad: row_obj.especialidad,
+			rol:row_obj.rol,
+			contrasena: row_obj.contrasena
+		});
+		this.usuariosService.delete(this.usuarioForm.controls.id.value)
+			.pipe(first())
+			.subscribe(
+				data => {
+					console.log("[CLIENTE] Medico borrado.")
+					this.success = "Medico borrado correctamente."
+					this.dataSource.paginator = this.paginator;
+					this.usuariosService.getUsersByRole('medicos')
+						.subscribe((data: UsersData[]) => {
+							this.data = data;
+							this.dataSource = new MatTableDataSource(data);
+						});
+				},
+				error => {
+					this.error = 'Ha ocurrido un error al eliminar el usuario.';
+					this.loading = false;
+				});
+	}
+ 
 }

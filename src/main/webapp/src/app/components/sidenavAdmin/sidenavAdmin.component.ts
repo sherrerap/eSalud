@@ -15,7 +15,7 @@ export class SidenavAdminComponent implements OnInit {
   mobileQuery: MediaQueryList;
 
   fillerNav = [
-    { name: "Lista de médicos", route: "MostrarMedico", icon: "list" },
+    { name: "Lista de médicos", route: "ModificarMedico", icon: "list" },
     { name: "Lista de pacientes", route: "ModificarPaciente", icon: "edit" },
     { name: "Registrar médicos", route: "RegistrarMedico", icon: "autorenew" },
     /*{ name: "Modificar médicos", route: "ModificarMedico", icon: "edit" },*/
