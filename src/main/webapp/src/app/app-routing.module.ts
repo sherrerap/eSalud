@@ -12,6 +12,8 @@ import { RegistrarCitaComponent } from './components/paciente-RegistrarCita/Regi
 
 
 import { AuthGuard } from './_helpers';
+import { SidenavMedicoComponent } from './components/sidenavMedico/sidenavMedico.component';
+import { MostrarCitasComponent } from './components/medico-MostrarCitas/MostrarCitas.component';
 
 
 
@@ -87,6 +89,24 @@ const routes: Routes = [
   { path: 'admin/RegistrarMedico/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
   { path: 'admin/RegistrarMedico/RegistrarMedico', redirectTo: 'admin/RegistrarMedico' },
   /********************************************************************************** */
+  {
+    path: 'medico', component: SidenavMedicoComponent, canActivate: [AuthGuard],
+    children: [
+      { path: '', component: MostrarCitasComponent }
+    ]
+  },
+  {
+    path: 'medico/MostrarCitas', component: SidenavMedicoComponent, canActivate: [AuthGuard],
+    children: [
+      { path: '', component: MostrarCitasComponent }
+    ]
+  },  
+  { path: 'medico/MostrarCitas/MostrarCitas', redirectTo: 'medico/MostrarCitas' },
+
+
+
+
+
 ];
 
 @NgModule({
