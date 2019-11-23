@@ -18,7 +18,7 @@ export class SidenavAdminComponent implements OnInit {
     { name: "Lista de médicos", route: "ModificarMedico", icon: "list" },
     { name: "Lista de pacientes", route: "ModificarPaciente", icon: "edit" },
     { name: "Registrar médicos", route: "RegistrarMedico", icon: "autorenew" },
-    /*{ name: "Modificar médicos", route: "ModificarMedico", icon: "edit" },*/
+    { name: "Filtrar personal médico", route: "MostrarPersonalMedico", icon: "edit" },
     { name: "Salir", route: "/", icon: "logout" }
 
   ]

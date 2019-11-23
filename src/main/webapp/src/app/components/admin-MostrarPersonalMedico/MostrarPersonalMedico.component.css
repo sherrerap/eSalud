@@ -1,0 +1,14 @@
+table{
+	width:100%;
+}
+mat-paginator{
+	width:100%;
+	background-color: rgb(218, 241, 230);
+}
+.col-100 {
+  float: left;
+  width: 60%;
+ padding-top: 1%;
+  padding-left: 40%;
+  margin-top: 2px;
+}

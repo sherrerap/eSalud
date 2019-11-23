@@ -9,7 +9,7 @@ import { ModificarPacienteComponent } from './components/admin-ModificarPaciente
 import { MostrarMedicoComponent } from './components/admin-MostrarMedico/MostrarMedico.component';
 import { RegistrarMedicoComponent } from './components/admin-RegistrarMedico/RegistrarMedico.component';
 import { RegistrarCitaComponent } from './components/paciente-RegistrarCita/RegistrarCita.component';
-
+import { MostrarPersonalMedicoComponent } from './components/admin-MostrarPersonalMedico/MostrarPersonalMedico.component';
 
 import { AuthGuard } from './_helpers';
 
@@ -52,6 +52,7 @@ const routes: Routes = [
   { path: 'admin/ModificarMedico/MostrarMedico', redirectTo: 'admin/MostrarMedico' },
   { path: 'admin/ModificarMedico/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
   { path: 'admin/ModificarMedico/RegistrarMedico', redirectTo: 'admin/RegistrarMedico' },
+  { path: 'admin/ModificarMedico/MostrarPersonalMedico', redirectTo: 'admin/MostrarPersonalMedico' },
 
   /********************************************************************************** */
   {
@@ -64,6 +65,7 @@ const routes: Routes = [
   { path: 'admin/ModificarPaciente/MostrarMedico', redirectTo: 'admin/MostrarMedico' },
   { path: 'admin/ModificarPaciente/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
   { path: 'admin/ModificarPaciente/RegistrarMedico', redirectTo: 'admin/RegistrarMedico' },
+  { path: 'admin/ModificarPaciente/MostrarPersonalMedico', redirectTo: 'admin/MostrarPersonalMedico' },
   /********************************************************************************** */
   {
     path: 'admin/MostrarMedico', component: SidenavAdminComponent, canActivate: [AuthGuard],
@@ -75,6 +77,7 @@ const routes: Routes = [
   { path: 'admin/MostrarMedico/MostrarMedico', redirectTo: 'admin/MostrarMedico' },
   { path: 'admin/MostrarMedico/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
   { path: 'admin/MostrarMedico/RegistrarMedico', redirectTo: 'admin/RegistrarMedico' },
+  { path: 'admin/MostrarMedico/MostrarPersonalMedico', redirectTo: 'admin/MostrarPersonalMedico' },
   /********************************************************************************** */
   {
     path: 'admin/RegistrarMedico', component: SidenavAdminComponent, canActivate: [AuthGuard],
@@ -86,7 +89,19 @@ const routes: Routes = [
   { path: 'admin/RegistrarMedico/MostrarMedico', redirectTo: 'admin/MostrarMedico' },
   { path: 'admin/RegistrarMedico/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
   { path: 'admin/RegistrarMedico/RegistrarMedico', redirectTo: 'admin/RegistrarMedico' },
+  { path: 'admin/RegistrarMedico/MostrarPersonalMedico', redirectTo: 'admin/MostrarPersonalMedico' },
   /********************************************************************************** */
+   {
+    path: 'admin/MostrarPersonalMedico', component: SidenavAdminComponent, canActivate: [AuthGuard],
+    children: [
+      { path: '', component: MostrarPersonalMedicoComponent }
+    ]
+  },
+  { path: 'admin/MostrarPersonalMedico/ModificarMedico', redirectTo: 'admin/ModificarMedico' },
+  { path: 'admin/MostrarPersonalMedico/MostrarMedico', redirectTo: 'admin/MostrarMedico' },
+  { path: 'admin/MostrarPersonalMedico/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
+  { path: 'admin/MostrarPersonalMedico/RegistrarMedico', redirectTo: 'admin/RegistrarMedico' },
+  { path: 'admin/MostrarPersonalMedico/MostrarPersonalMedico', redirectTo: 'admin/MostrarPersonalMedico' },
 ];
 
 @NgModule({
