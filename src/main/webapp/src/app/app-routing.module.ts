@@ -12,6 +12,8 @@ import { RegistrarCitaComponent } from './components/paciente-RegistrarCita/Regi
 
 
 import { AuthGuard } from './_helpers';
+import { CalendarioMedicoComponent } from './components/medico-calendario/calendarioMedico.component';
+import { SidenavMedicoComponent } from './components/sidenavMedico/sidenavMedico.component';
 
 
 
@@ -87,7 +89,16 @@ const routes: Routes = [
   { path: 'admin/RegistrarMedico/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
   { path: 'admin/RegistrarMedico/RegistrarMedico', redirectTo: 'admin/RegistrarMedico' },
   /********************************************************************************** */
+  
+  {
+    path: 'medico/CalendarioMedico', component: SidenavMedicoComponent, canActivate: [AuthGuard],
+    children: [
+      { path: '', component: CalendarioMedicoComponent }
+    ]
+  }, { path: 'medico/CalendarioMedico/CalendarioMedico', redirectTo: 'medico/CalendarioMedico' }
+
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
