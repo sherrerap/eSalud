@@ -50,7 +50,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"mat-elevation-z8\">\r\n  <table mat-table [dataSource]=\"dataSource\">\r\n\r\n     <ng-container matColumnDef=\"id\">\r\n      <th mat-header-cell *matHeaderCellDef> ID </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.id}} </td>\r\n    </ng-container>\r\n \r\n    \r\n    <ng-container matColumnDef=\"dni\">\r\n      <th mat-header-cell *matHeaderCellDef> DNI </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.dni}} </td>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"nombre\">\r\n      <th mat-header-cell *matHeaderCellDef> Nombre </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.nombre}} </td>\r\n    </ng-container>\r\n\r\n\t <ng-container matColumnDef=\"apellidos\">\r\n      <th mat-header-cell *matHeaderCellDef> Apellidos </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.apellidos}} </td>\r\n    </ng-container>\r\n\r\n\t <ng-container matColumnDef=\"centro\">\r\n      <th mat-header-cell *matHeaderCellDef> Centro </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.centro}} </td>\r\n    </ng-container>\r\n\r\n\t <ng-container matColumnDef=\"email\">\r\n      <th mat-header-cell *matHeaderCellDef> Correo </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.email}} </td>\r\n    </ng-container>\r\n\r\n\t <ng-container matColumnDef=\"numTelefono\">\r\n      <th mat-header-cell *matHeaderCellDef> Teléfono </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.numTelefono}} </td>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"especialidad\">\r\n      <th mat-header-cell *matHeaderCellDef> Especialidad </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.especialidad}} </td>\r\n    </ng-container>\r\n \r\n    <!-- Action Column -->\r\n\t\t<ng-container matColumnDef=\"action\">\r\n\t\t\t<th mat-header-cell *matHeaderCellDef> Action </th>\r\n\t\t\t<td mat-cell *matCellDef=\"let element\" class=\"action-link\">\r\n\t\t\t\t<button mat-raised-button (click)=\"openDialog('Update',element)\" mat-flat-button color=\"green\"\r\n\t\t\t\t\tclass=\"button1\">Editar</button>\r\n\t\t\t\t<button mat-button (click)=\"openDialog('Delete',element)\" mat-flat-button color=\"warn\"\r\n\t\t\t\t\tclass=\"button2\">Eliminar</button>\r\n\r\n\t\t\t</td>\r\n\t\t</ng-container>\r\n \r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table> <mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons [pageSize]=\"10\"></mat-paginator>\r\n  \r\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"mat-elevation-z8\">\r\n  <table mat-table [dataSource]=\"dataSource\">\r\n\r\n     <ng-container matColumnDef=\"id\">\r\n      <th mat-header-cell *matHeaderCellDef> ID </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.id}} </td>\r\n    </ng-container>\r\n \r\n    \r\n    <ng-container matColumnDef=\"dni\">\r\n      <th mat-header-cell *matHeaderCellDef> DNI </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.dni}} </td>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"nombre\">\r\n      <th mat-header-cell *matHeaderCellDef> Nombre </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.nombre}} </td>\r\n    </ng-container>\r\n\r\n\t <ng-container matColumnDef=\"apellidos\">\r\n      <th mat-header-cell *matHeaderCellDef> Apellidos </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.apellidos}} </td>\r\n    </ng-container>\r\n\r\n\t <ng-container matColumnDef=\"centro\">\r\n      <th mat-header-cell *matHeaderCellDef> Centro </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.centro}} </td>\r\n    </ng-container>\r\n\r\n\t <ng-container matColumnDef=\"correo\">\r\n      <th mat-header-cell *matHeaderCellDef> Correo </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.correo}} </td>\r\n    </ng-container>\r\n\r\n\t <ng-container matColumnDef=\"telefono\">\r\n      <th mat-header-cell *matHeaderCellDef> Teléfono </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.telefono}} </td>\r\n    </ng-container>\r\n \r\n    <!-- Action Column -->\r\n    <ng-container matColumnDef=\"action\">\r\n      <th mat-header-cell *matHeaderCellDef> Action </th>\r\n      <td mat-cell *matCellDef=\"let element\" class=\"action-link\"> \r\n          <div class=\"row justify-content-center\">  \r\n            <button mat-raised-button (click)=\"openDialog('Update',element)\" mat-flat-button color= \"green\" class= \"button1\">Editar</button>\r\n            <button mat-button (click)=\"openDialog('Delete',element)\" mat-flat-button color=\"warn\" class= \"button2\">Eliminar</button>\r\n               \r\n          </div>\r\n           \r\n        \r\n       \r\n      </td>\r\n    </ng-container>\r\n \r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table>\r\n  \r\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/admin-ModificarPaciente/ModificarPaciente.component.html": 
@@ -61,7 +61,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"mat-elevation-z8\">\r\n  <table mat-table [dataSource]=\"dataSource\">\r\n\r\n\r\n    <!-- Weight Column -->\r\n    <ng-container matColumnDef=\"nombre\">\r\n      <th mat-header-cell *matHeaderCellDef> Nombre </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.nombre}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Symbol Column -->\r\n    <ng-container matColumnDef=\"apellidos\">\r\n      <th mat-header-cell *matHeaderCellDef> Apellidos </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.apellidos}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Symbol Column -->\r\n    <ng-container matColumnDef=\"numTelefono\">\r\n      <th mat-header-cell *matHeaderCellDef> Telefono </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.numTelefono}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Symbol Column -->\r\n    <ng-container matColumnDef=\"localidad\">\r\n      <th mat-header-cell *matHeaderCellDef> Localidad </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.localidad}} </td>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"centro\">\r\n      <th mat-header-cell *matHeaderCellDef> Centro </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.centro}} </td>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"email\">\r\n      <th mat-header-cell *matHeaderCellDef> Email </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.email}} </td>\r\n    </ng-container>\r\n\r\n\t<ng-container matColumnDef=\"rol\">\r\n      <th mat-header-cell *matHeaderCellDef> Rol </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.rol}} </td>\r\n    </ng-container>\r\n\t\t<ng-container matColumnDef=\"action\">\r\n\t\t\t<th mat-header-cell *matHeaderCellDef> Action </th>\r\n\t\t\t<td mat-cell *matCellDef=\"let element\" class=\"action-link\">\r\n\t\t\t\t<button mat-raised-button (click)=\"openDialog('Update',element)\" mat-flat-button color=\"green\"\r\n\t\t\t\t\tclass=\"button1\">Editar</button>\r\n\t\t\t\t<button mat-button (click)=\"openDialog('Delete',element)\" mat-flat-button color=\"warn\"\r\n\t\t\t\t\tclass=\"button2\">Eliminar</button>\r\n\r\n\t\t\t</td>\r\n\t\t</ng-container>\r\n\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table> <mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons [pageSize]=\"10\"></mat-paginator>\r\n  \r\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"mat-elevation-z8\">\r\n  <table mat-table [dataSource]=\"dataSource\">\r\n\r\n\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"dni\">\r\n      <th mat-header-cell *matHeaderCellDef> Dni </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.dni}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Weight Column -->\r\n    <ng-container matColumnDef=\"nombre\">\r\n      <th mat-header-cell *matHeaderCellDef> Nombre </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.nombre}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Symbol Column -->\r\n    <ng-container matColumnDef=\"apellidos\">\r\n      <th mat-header-cell *matHeaderCellDef> Apellidos </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.apellidos}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Symbol Column -->\r\n    <ng-container matColumnDef=\"numTelefono\">\r\n      <th mat-header-cell *matHeaderCellDef> Telefono </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.numTelefono}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Symbol Column -->\r\n    <ng-container matColumnDef=\"localidad\">\r\n      <th mat-header-cell *matHeaderCellDef> Localidad </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.localidad}} </td>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"centro\">\r\n      <th mat-header-cell *matHeaderCellDef> Centro </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.centro}} </td>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"email\">\r\n      <th mat-header-cell *matHeaderCellDef> Email </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.email}} </td>\r\n    </ng-container>\r\n\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table> <mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons [pageSize]=\"10\"></mat-paginator>\r\n  \r\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/admin-MostrarMedico/MostrarMedico.component.html": 
@@ -105,7 +105,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<h1 mat-dialog-title>\r\n    <strong>Actualizar médico</strong></h1>\r\n<div class=\"container\">\r\n    <mat-form-field *ngIf=\"action != 'Delete'; else elseTemplate\">\r\n        <input placeholder=\"Dni\" matInput [(ngModel)]=\"local_data.dni\">\r\n    </mat-form-field>\r\n    <mat-form-field *ngIf=\"action != 'Delete'\">\r\n        <input placeholder=\"Nombre\" matInput [(ngModel)]=\"local_data.nombre\">\r\n    </mat-form-field>\r\n    <mat-form-field *ngIf=\"action != 'Delete'\">\r\n        <input placeholder=\"Apellidos\" matInput [(ngModel)]=\"local_data.apellidos\">\r\n    </mat-form-field>\r\n    <mat-form-field *ngIf=\"action != 'Delete'\">\r\n        <input placeholder=\"Centro\" matInput [(ngModel)]=\"local_data.centro\">\r\n    </mat-form-field>\r\n    <mat-form-field *ngIf=\"action != 'Delete'\">\r\n        <input placeholder=\"Correo\" matInput [(ngModel)]=\"local_data.email\">\r\n    </mat-form-field>\r\n    <mat-form-field *ngIf=\"action != 'Delete'\">\r\n        <input placeholder=\"Teléfono\" matInput [(ngModel)]=\"local_data.numTelefono\">\r\n    </mat-form-field>\r\n        <mat-form-field *ngIf=\"action != 'Delete'\">\r\n    <mat-select [(ngModel)]=\"modeselect\" matInput [(ngModel)]=\"local_data.especialidad\">\r\n      <mat-option value=\"Enfermero\">Enfermero</mat-option>\r\n      <mat-option value=\"Cabecera\">Cabecera</mat-option>\r\n      <mat-option value=\"Pediatría\">Pediatría</mat-option>\r\n      <mat-option value=\"Traumatología\">Traumatología</mat-option>\t\r\n    </mat-select>\r\n  </mat-form-field>\r\n    <mat-form-field *ngIf=\"action != 'Delete'\">\r\n    <mat-select placeholder=\"Rol\" matInput [(ngModel)]=\"local_data.rol\">\r\n      <mat-option value=\"paciente\">Paciente</mat-option>\r\n      <mat-option value=\"medico\">Médico</mat-option>\r\n    </mat-select>\r\n  </mat-form-field>\r\n    <ng-template #elseTemplate>\r\n        ¿Confirma que quiere borrarlo<b>{{local_data.name}}</b>?\r\n    </ng-template>\r\n</div>\r\n<div mat-dialog-actions-center>\r\n    <div class=\"contenedor-botones\">\r\n        <button mat-raised-button (click)=\"doAction()\">{{action}}</button>\r\n        <button mat-button (click)=\"closeDialog()\" mat-flat-button color=\"warn\">Cancel</button>\r\n    </div>\r\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<h1 mat-dialog-title>\r\n    <strong>Actualizar médico</strong></h1>\r\n<div class=\"container\">\r\n    <mat-form-field *ngIf=\"action != 'Delete'; else elseTemplate\">\r\n        <input placeholder=\"Dni\" matInput [(ngModel)]=\"local_data.dni\">\r\n    </mat-form-field>\r\n    <mat-form-field *ngIf=\"action != 'Delete'\">\r\n        <input placeholder=\"Nombre\" matInput [(ngModel)]=\"local_data.nombre\">\r\n    </mat-form-field>\r\n    <mat-form-field *ngIf=\"action != 'Delete'\">\r\n        <input placeholder=\"Apellidos\" matInput [(ngModel)]=\"local_data.apellidos\">\r\n    </mat-form-field>\r\n    <mat-form-field *ngIf=\"action != 'Delete'\">\r\n        <input placeholder=\"Centro\" matInput [(ngModel)]=\"local_data.centro\">\r\n    </mat-form-field>\r\n    <mat-form-field *ngIf=\"action != 'Delete'\">\r\n        <input placeholder=\"Correo\" matInput [(ngModel)]=\"local_data.correo\">\r\n    </mat-form-field>\r\n    <mat-form-field *ngIf=\"action != 'Delete'\">\r\n        <input placeholder=\"Teléfono\" matInput [(ngModel)]=\"local_data.telefono\">\r\n    </mat-form-field>\r\n    <ng-template #elseTemplate>\r\n        ¿Confirma que quiere borrarlo<b>{{local_data.name}}</b>?\r\n    </ng-template>\r\n</div>\r\n<div mat-dialog-actions-center>\r\n    <div class=\"contenedor-botones\">\r\n        <button mat-raised-button (click)=\"doAction()\">{{action}}</button>\r\n        <button mat-button (click)=\"closeDialog()\" mat-flat-button color=\"warn\">Cancel</button>\r\n    </div>\r\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/dialog-box-modificarCita/dialog-box-modificarCita.component.html": 
@@ -127,7 +127,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<h1 mat-dialog-title><strong>Actualizar paciente</strong></h1>\r\n<div class=\"container\">\r\n    <mat-form-field *ngIf=\"action != 'Delete'; else elseTemplate\">\r\n        <input placeholder=\"Dni\" matInput [(ngModel)]=\"local_data.dni\">\r\n    </mat-form-field>\r\n    <mat-form-field *ngIf=\"action != 'Delete'\">\r\n        <input placeholder=\"Nombre\" matInput [(ngModel)]=\"local_data.nombre\">\r\n    </mat-form-field>\r\n    <mat-form-field *ngIf=\"action != 'Delete'\">\r\n        <input placeholder=\"Apellidos\" matInput [(ngModel)]=\"local_data.apellidos\">\r\n    </mat-form-field>\r\n\t <mat-form-field *ngIf=\"action != 'Delete'\">\r\n        <input placeholder=\"Telefono\" matInput [(ngModel)]=\"local_data.numTelefono\">\r\n    </mat-form-field>\r\n    <mat-form-field *ngIf=\"action != 'Delete'\">\r\n        <input placeholder=\"Centro\" matInput [(ngModel)]=\"local_data.centro\">\r\n    </mat-form-field>\r\n    <mat-form-field *ngIf=\"action != 'Delete'\">\r\n        <input placeholder=\"Email\" matInput [(ngModel)]=\"local_data.email\">\r\n    </mat-form-field>\r\n    <mat-form-field *ngIf=\"action != 'Delete'\">\r\n        <input placeholder=\"Localidad\" matInput [(ngModel)]=\"local_data.localidad\">\r\n    </mat-form-field>\r\n\t<mat-form-field *ngIf=\"action != 'Delete'\">\r\n    <mat-select placeholder=\"Rol\" matInput [(ngModel)]=\"local_data.rol\">\r\n      <mat-option value=\"paciente\">Paciente</mat-option>\r\n      <mat-option value=\"medico\">Médico</mat-option>\r\n    </mat-select>\r\n  </mat-form-field>\r\n    <ng-template #elseTemplate>\r\n        ¿Confirma que quiere borrarlo<b>{{local_data.name}}</b>?\r\n    </ng-template>\r\n</div>\r\n<div mat-dialog-actions-center>\r\n    <div class=\"contenedor-botones\">\r\n        <button mat-raised-button (click)=\"doAction()\">{{action}}</button>\r\n        <button mat-button (click)=\"closeDialog()\" mat-flat-button color=\"warn\">Cancel</button>\r\n    </div>\r\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<h1 mat-dialog-title><strong>Actualizar paciente</strong></h1>\r\n<div class=\"container\">\r\n    <mat-form-field *ngIf=\"action != 'Delete'; else elseTemplate\">\r\n        <input placeholder=\"Dni\" matInput [(ngModel)]=\"local_data.dni\">\r\n    </mat-form-field>\r\n    <mat-form-field *ngIf=\"action != 'Delete'\">\r\n        <input placeholder=\"Nombre\" matInput [(ngModel)]=\"local_data.nombre\">\r\n    </mat-form-field>\r\n    <mat-form-field *ngIf=\"action != 'Delete'\">\r\n        <input placeholder=\"Apellidos\" matInput [(ngModel)]=\"local_data.apellidos\">\r\n    </mat-form-field>\r\n    <mat-form-field *ngIf=\"action != 'Delete'\">\r\n        <input placeholder=\"Centro\" matInput [(ngModel)]=\"local_data.centro\">\r\n    </mat-form-field>\r\n    <mat-form-field *ngIf=\"action != 'Delete'\">\r\n        <input placeholder=\"Correo\" matInput [(ngModel)]=\"local_data.correo\">\r\n    </mat-form-field>\r\n    <mat-form-field *ngIf=\"action != 'Delete'\">\r\n        <input placeholder=\"Localidad\" matInput [(ngModel)]=\"local_data.localidad\">\r\n    </mat-form-field>\r\n    <ng-template #elseTemplate>\r\n        ¿Confirma que quiere borrarlo<b>{{local_data.name}}</b>?\r\n    </ng-template>\r\n</div>\r\n<div mat-dialog-actions-center>\r\n    <div class=\"contenedor-botones\">\r\n        <button mat-raised-button (click)=\"doAction()\">{{action}}</button>\r\n        <button mat-button (click)=\"closeDialog()\" mat-flat-button color=\"warn\">Cancel</button>\r\n    </div>\r\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/listado-citas/listado-citas.component.html": 
@@ -139,17 +139,6 @@
             "use strict";
             __webpack_require__.r(__webpack_exports__);
             /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"mat-elevation-z8\">\r\n\t<table mat-table [dataSource]=\"dataSource\">\r\n\r\n\t\t<!-- nombre Column -->\r\n\t\t<ng-container matColumnDef=\"tipo\">\r\n\t\t\t<th mat-header-cell *matHeaderCellDef> Tipo </th>\r\n\t\t\t<td mat-cell *matCellDef=\"let element\"> {{element.tipo}} </td>\r\n\t\t</ng-container>\r\n\r\n\t\t<!-- Weight Column -->\r\n\t\t<ng-container matColumnDef=\"centro\">\r\n\t\t\t<th mat-header-cell *matHeaderCellDef> Centro </th>\r\n\t\t\t<td mat-cell *matCellDef=\"let element\"> {{element.centro}} </td>\r\n\t\t</ng-container>\r\n\r\n\t\t<!-- Symbol Column -->\r\n\t\t<ng-container matColumnDef=\"fecha\">\r\n\t\t\t<th mat-header-cell *matHeaderCellDef> Fecha </th>\r\n\t\t\t<td mat-cell *matCellDef=\"let element\"> {{element.fecha}} </td>\r\n\t\t</ng-container>\r\n\r\n\t\t<ng-container matColumnDef=\"hora\">\r\n\t\t\t<th mat-header-cell *matHeaderCellDef> Hora </th>\r\n\t\t\t<td mat-cell *matCellDef=\"let element\"> {{element.hora}} </td>\r\n\t\t</ng-container>\r\n\r\n\t\t<ng-container matColumnDef=\"action\">\r\n\t\t\t<th mat-header-cell *matHeaderCellDef> Action </th>\r\n\t\t\t<td mat-cell *matCellDef=\"let element\" class=\"action-link\">\r\n\t\t\t\t<button mat-raised-button (click)=\"openDialog('Update',element)\" mat-flat-button color=\"green\"\r\n\t\t\t\t\tclass=\"button1\">Editar</button>\r\n\t\t\t\t<button mat-button (click)=\"openDialog('Delete',element)\" mat-flat-button color=\"warn\"\r\n\t\t\t\t\tclass=\"button2\">Eliminar</button>\r\n\r\n\t\t\t</td>\r\n\t\t</ng-container>\r\n\r\n\t\t<tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n\t\t<tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n\t</table>\r\n\r\n\t<mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons [pageSize]=\"10\"></mat-paginator>\r\n</div>");
-            /***/ 
-        }),
-        /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/medico-calendario/calendarioMedico.component.html": 
-        /*!********************************************************************************************************************!*\
-          !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/medico-calendario/calendarioMedico.component.html ***!
-          \********************************************************************************************************************/
-        /*! exports provided: default */
-        /***/ (function (module, __webpack_exports__, __webpack_require__) {
-            "use strict";
-            __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"example-container mat-elevation-z8\">\r\n  <table mat-table [dataSource]=\"dataSource\">\r\n\r\n    <!-- Position Column -->\r\n    <ng-container matColumnDef=\"nombre\">\r\n      <th mat-header-cell *matHeaderCellDef> Nombre </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.nombre}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"apellidos\">\r\n      <th mat-header-cell *matHeaderCellDef> Apellidos </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.apellidos}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Weight Column -->\r\n    <ng-container matColumnDef=\"especialidad\">\r\n      <th mat-header-cell *matHeaderCellDef> Especialidad </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.especialidad}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Symbol Column -->\r\n    <ng-container matColumnDef=\"centro\">\r\n      <th mat-header-cell *matHeaderCellDef> Centro </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.centro}} </td>\r\n    </ng-container>\r\n\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table> <mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons [pageSize]=\"10\"></mat-paginator>\r\n\r\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/paciente-RegistrarCita/RegistrarCita.component.html": 
@@ -178,17 +167,6 @@
         /*!***********************************************************************************************************!*\
           !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/sidenavAdmin/sidenavAdmin.component.html ***!
           \***********************************************************************************************************/
-        /*! exports provided: default */
-        /***/ (function (module, __webpack_exports__, __webpack_require__) {
-            "use strict";
-            __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"example-container\" [class.example-is-mobile]=\"mobileQuery.matches\" *ngIf=\"shouldRun\">\r\n    <mat-toolbar color=\"primary\" class=\"example-toolbar\">\r\n        <button class=\"but1\" mat-icon-button (click)=\"snav.toggle()\" style=\"border: 0ch\">\r\n        <mat-icon>menu</mat-icon></button>\r\n        <h1 class=\"admin\">Administrador</h1>\r\n\r\n    </mat-toolbar>\r\n\r\n    <mat-sidenav-container class=\"example-sidenav-container\" [style.marginTop.px]=\"mobileQuery.matches ? 56 : 0\">\r\n\r\n        <mat-sidenav #snav [mode]=\"mobileQuery.matches ? 'over' : 'side'\" [fixedInViewport]=\"mobileQuery.matches\" fixedTopGap=\"56\" [opened]=\"true\">\r\n            <mat-nav-list>\r\n\r\n                <a mat-list-item [routerLink]=\"nav.route\" *ngFor=\"let nav of fillerNav\">\r\n                    <mat-icon>{{nav.icon}}</mat-icon>\r\n                    {{nav.name}}</a>\r\n            </mat-nav-list>\r\n        </mat-sidenav>\r\n\r\n        <mat-sidenav-content>\r\n            <router-outlet></router-outlet>\r\n        </mat-sidenav-content>\r\n\r\n    </mat-sidenav-container>\r\n</div>\r\n");
-            /***/ 
-        }),
-        /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/sidenavMedico/sidenavMedico.component.html": 
-        /*!*************************************************************************************************************!*\
-          !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/sidenavMedico/sidenavMedico.component.html ***!
-          \*************************************************************************************************************/
         /*! exports provided: default */
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
@@ -810,7 +788,7 @@
         /*!************************************!*\
           !*** ./src/app/_services/index.ts ***!
           \************************************/
-        /*! exports provided: AuthService, UserService, CitasService, AlertService */
+        /*! exports provided: AlertService, AuthService, UserService, CitasService */
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
@@ -854,9 +832,6 @@
                 UserService.prototype.delete = function (id) {
                     return this.http.delete(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl + "/usuarios/" + id);
                 };
-                UserService.prototype.update = function (user, id) {
-                    return this.http.put(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl + "/usuarios/" + id, user);
-                };
                 return UserService;
             }());
             UserService.ctorParameters = function () { return [
@@ -888,8 +863,6 @@
             /* harmony import */ var _components_admin_RegistrarMedico_RegistrarMedico_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/admin-RegistrarMedico/RegistrarMedico.component */ "./src/app/components/admin-RegistrarMedico/RegistrarMedico.component.ts");
             /* harmony import */ var _components_paciente_RegistrarCita_RegistrarCita_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/paciente-RegistrarCita/RegistrarCita.component */ "./src/app/components/paciente-RegistrarCita/RegistrarCita.component.ts");
             /* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./_helpers */ "./src/app/_helpers/index.ts");
-            /* harmony import */ var _components_medico_calendario_calendarioMedico_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/medico-calendario/calendarioMedico.component */ "./src/app/components/medico-calendario/calendarioMedico.component.ts");
-            /* harmony import */ var _components_sidenavMedico_sidenavMedico_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/sidenavMedico/sidenavMedico.component */ "./src/app/components/sidenavMedico/sidenavMedico.component.ts");
             var routes = [
                 { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
                 { path: 'auth', loadChildren: './components/auth/auth.module#AuthModule' },
@@ -911,7 +884,7 @@
                 {
                     path: 'admin', component: _components_sidenavAdmin_sidenavAdmin_component__WEBPACK_IMPORTED_MODULE_4__["SidenavAdminComponent"], canActivate: [_helpers__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]],
                     children: [
-                        { path: '', component: _components_admin_ModificarMedico_ModificarMedico_component__WEBPACK_IMPORTED_MODULE_6__["ModificarMedicoComponent"] }
+                        { path: '', component: _components_admin_MostrarMedico_MostrarMedico_component__WEBPACK_IMPORTED_MODULE_8__["MostrarMedicoComponent"] }
                     ]
                 },
                 /********************************************************************************** */
@@ -958,13 +931,6 @@
                 { path: 'admin/RegistrarMedico/MostrarMedico', redirectTo: 'admin/MostrarMedico' },
                 { path: 'admin/RegistrarMedico/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
                 { path: 'admin/RegistrarMedico/RegistrarMedico', redirectTo: 'admin/RegistrarMedico' },
-                /********************************************************************************** */
-                {
-                    path: 'medico/CalendarioMedico', component: _components_sidenavMedico_sidenavMedico_component__WEBPACK_IMPORTED_MODULE_13__["SidenavMedicoComponent"], canActivate: [_helpers__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]],
-                    children: [
-                        { path: '', component: _components_medico_calendario_calendarioMedico_component__WEBPACK_IMPORTED_MODULE_12__["CalendarioMedicoComponent"] }
-                    ]
-                }, { path: 'medico/CalendarioMedico/CalendarioMedico', redirectTo: 'medico/CalendarioMedico' }
             ];
             var AppRoutingModule = /** @class */ (function () {
                 function AppRoutingModule() {
@@ -1042,25 +1008,22 @@
             /* harmony import */ var _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material/sidenav */ "./node_modules/@angular/material/esm2015/sidenav.js");
             /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm2015/animations.js");
             /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
-            /* harmony import */ var _angular_material_select__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/select */ "./node_modules/@angular/material/esm2015/select.js");
-            /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
-            /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-            /* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./_helpers */ "./src/app/_helpers/index.ts");
-            /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-            /* harmony import */ var _components_sidenav_sidenav_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/sidenav/sidenav.component */ "./src/app/components/sidenav/sidenav.component.ts");
-            /* harmony import */ var _components_sidenavAdmin_sidenavAdmin_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/sidenavAdmin/sidenavAdmin.component */ "./src/app/components/sidenavAdmin/sidenavAdmin.component.ts");
-            /* harmony import */ var _components_listado_citas_listado_citas_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/listado-citas/listado-citas.component */ "./src/app/components/listado-citas/listado-citas.component.ts");
-            /* harmony import */ var _components_admin_ModificarMedico_ModificarMedico_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/admin-ModificarMedico/ModificarMedico.component */ "./src/app/components/admin-ModificarMedico/ModificarMedico.component.ts");
-            /* harmony import */ var _components_admin_ModificarPaciente_ModificarPaciente_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/admin-ModificarPaciente/ModificarPaciente.component */ "./src/app/components/admin-ModificarPaciente/ModificarPaciente.component.ts");
-            /* harmony import */ var _components_admin_MostrarMedico_MostrarMedico_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/admin-MostrarMedico/MostrarMedico.component */ "./src/app/components/admin-MostrarMedico/MostrarMedico.component.ts");
-            /* harmony import */ var _components_admin_RegistrarMedico_RegistrarMedico_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/admin-RegistrarMedico/RegistrarMedico.component */ "./src/app/components/admin-RegistrarMedico/RegistrarMedico.component.ts");
-            /* harmony import */ var _components_dialog_box_paciente_dialog_box_paciente_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/dialog-box-paciente/dialog-box-paciente.component */ "./src/app/components/dialog-box-paciente/dialog-box-paciente.component.ts");
-            /* harmony import */ var _components_dialog_box_medico_dialog_box_medico_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/dialog-box-medico/dialog-box-medico.component */ "./src/app/components/dialog-box-medico/dialog-box-medico.component.ts");
-            /* harmony import */ var _components_dialog_box_modificarCita_dialog_box_modificarCita_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/dialog-box-modificarCita/dialog-box-modificarCita.component */ "./src/app/components/dialog-box-modificarCita/dialog-box-modificarCita.component.ts");
-            /* harmony import */ var _components_alert_alert_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/alert/alert.component */ "./src/app/components/alert/alert.component.ts");
-            /* harmony import */ var _components_paciente_RegistrarCita_RegistrarCita_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/paciente-RegistrarCita/RegistrarCita.component */ "./src/app/components/paciente-RegistrarCita/RegistrarCita.component.ts");
-            /* harmony import */ var _components_sidenavMedico_sidenavMedico_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/sidenavMedico/sidenavMedico.component */ "./src/app/components/sidenavMedico/sidenavMedico.component.ts");
-            /* harmony import */ var _components_medico_calendario_calendarioMedico_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/medico-calendario/calendarioMedico.component */ "./src/app/components/medico-calendario/calendarioMedico.component.ts");
+            /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+            /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+            /* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./_helpers */ "./src/app/_helpers/index.ts");
+            /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+            /* harmony import */ var _components_sidenav_sidenav_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/sidenav/sidenav.component */ "./src/app/components/sidenav/sidenav.component.ts");
+            /* harmony import */ var _components_sidenavAdmin_sidenavAdmin_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/sidenavAdmin/sidenavAdmin.component */ "./src/app/components/sidenavAdmin/sidenavAdmin.component.ts");
+            /* harmony import */ var _components_listado_citas_listado_citas_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/listado-citas/listado-citas.component */ "./src/app/components/listado-citas/listado-citas.component.ts");
+            /* harmony import */ var _components_admin_ModificarMedico_ModificarMedico_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/admin-ModificarMedico/ModificarMedico.component */ "./src/app/components/admin-ModificarMedico/ModificarMedico.component.ts");
+            /* harmony import */ var _components_admin_ModificarPaciente_ModificarPaciente_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/admin-ModificarPaciente/ModificarPaciente.component */ "./src/app/components/admin-ModificarPaciente/ModificarPaciente.component.ts");
+            /* harmony import */ var _components_admin_MostrarMedico_MostrarMedico_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/admin-MostrarMedico/MostrarMedico.component */ "./src/app/components/admin-MostrarMedico/MostrarMedico.component.ts");
+            /* harmony import */ var _components_admin_RegistrarMedico_RegistrarMedico_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/admin-RegistrarMedico/RegistrarMedico.component */ "./src/app/components/admin-RegistrarMedico/RegistrarMedico.component.ts");
+            /* harmony import */ var _components_dialog_box_paciente_dialog_box_paciente_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/dialog-box-paciente/dialog-box-paciente.component */ "./src/app/components/dialog-box-paciente/dialog-box-paciente.component.ts");
+            /* harmony import */ var _components_dialog_box_medico_dialog_box_medico_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/dialog-box-medico/dialog-box-medico.component */ "./src/app/components/dialog-box-medico/dialog-box-medico.component.ts");
+            /* harmony import */ var _components_dialog_box_modificarCita_dialog_box_modificarCita_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/dialog-box-modificarCita/dialog-box-modificarCita.component */ "./src/app/components/dialog-box-modificarCita/dialog-box-modificarCita.component.ts");
+            /* harmony import */ var _components_alert_alert_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/alert/alert.component */ "./src/app/components/alert/alert.component.ts");
+            /* harmony import */ var _components_paciente_RegistrarCita_RegistrarCita_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/paciente-RegistrarCita/RegistrarCita.component */ "./src/app/components/paciente-RegistrarCita/RegistrarCita.component.ts");
             var AppModule = /** @class */ (function () {
                 function AppModule() {
                 }
@@ -1069,21 +1032,19 @@
             AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
                     declarations: [
-                        _app_component__WEBPACK_IMPORTED_MODULE_11__["AppComponent"],
-                        _components_sidenav_sidenav_component__WEBPACK_IMPORTED_MODULE_12__["SidenavComponent"],
-                        _components_sidenavAdmin_sidenavAdmin_component__WEBPACK_IMPORTED_MODULE_13__["SidenavAdminComponent"],
-                        _components_sidenavMedico_sidenavMedico_component__WEBPACK_IMPORTED_MODULE_24__["SidenavMedicoComponent"],
-                        _components_listado_citas_listado_citas_component__WEBPACK_IMPORTED_MODULE_14__["ListadoCitasComponent"],
-                        _components_admin_ModificarMedico_ModificarMedico_component__WEBPACK_IMPORTED_MODULE_15__["ModificarMedicoComponent"],
-                        _components_admin_ModificarPaciente_ModificarPaciente_component__WEBPACK_IMPORTED_MODULE_16__["ModificarPacienteComponent"],
-                        _components_admin_MostrarMedico_MostrarMedico_component__WEBPACK_IMPORTED_MODULE_17__["MostrarMedicoComponent"],
-                        _components_admin_RegistrarMedico_RegistrarMedico_component__WEBPACK_IMPORTED_MODULE_18__["RegistrarMedicoComponent"],
-                        _components_dialog_box_paciente_dialog_box_paciente_component__WEBPACK_IMPORTED_MODULE_19__["DialogBoxPacienteComponent"],
-                        _components_dialog_box_medico_dialog_box_medico_component__WEBPACK_IMPORTED_MODULE_20__["DialogBoxMedicoComponent"],
-                        _components_dialog_box_modificarCita_dialog_box_modificarCita_component__WEBPACK_IMPORTED_MODULE_21__["DialogBoxModificarCita"],
-                        _components_alert_alert_component__WEBPACK_IMPORTED_MODULE_22__["AlertComponent"],
-                        _components_paciente_RegistrarCita_RegistrarCita_component__WEBPACK_IMPORTED_MODULE_23__["RegistrarCitaComponent"],
-                        _components_medico_calendario_calendarioMedico_component__WEBPACK_IMPORTED_MODULE_25__["CalendarioMedicoComponent"]
+                        _app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"],
+                        _components_sidenav_sidenav_component__WEBPACK_IMPORTED_MODULE_11__["SidenavComponent"],
+                        _components_sidenavAdmin_sidenavAdmin_component__WEBPACK_IMPORTED_MODULE_12__["SidenavAdminComponent"],
+                        _components_listado_citas_listado_citas_component__WEBPACK_IMPORTED_MODULE_13__["ListadoCitasComponent"],
+                        _components_admin_ModificarMedico_ModificarMedico_component__WEBPACK_IMPORTED_MODULE_14__["ModificarMedicoComponent"],
+                        _components_admin_ModificarPaciente_ModificarPaciente_component__WEBPACK_IMPORTED_MODULE_15__["ModificarPacienteComponent"],
+                        _components_admin_MostrarMedico_MostrarMedico_component__WEBPACK_IMPORTED_MODULE_16__["MostrarMedicoComponent"],
+                        _components_admin_RegistrarMedico_RegistrarMedico_component__WEBPACK_IMPORTED_MODULE_17__["RegistrarMedicoComponent"],
+                        _components_dialog_box_paciente_dialog_box_paciente_component__WEBPACK_IMPORTED_MODULE_18__["DialogBoxPacienteComponent"],
+                        _components_dialog_box_medico_dialog_box_medico_component__WEBPACK_IMPORTED_MODULE_19__["DialogBoxMedicoComponent"],
+                        _components_dialog_box_modificarCita_dialog_box_modificarCita_component__WEBPACK_IMPORTED_MODULE_20__["DialogBoxModificarCita"],
+                        _components_alert_alert_component__WEBPACK_IMPORTED_MODULE_21__["AlertComponent"],
+                        _components_paciente_RegistrarCita_RegistrarCita_component__WEBPACK_IMPORTED_MODULE_22__["RegistrarCitaComponent"]
                     ],
                     imports: [
                         _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -1093,28 +1054,27 @@
                         _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatListModule"],
                         _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatIconModule"],
                         _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatToolbarModule"],
-                        _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormsModule"],
+                        _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"],
                         _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatDialogModule"],
-                        _angular_material_select__WEBPACK_IMPORTED_MODULE_7__["MatSelectModule"],
                         _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatFormFieldModule"],
                         _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatInputModule"],
                         _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatButtonModule"],
-                        _angular_forms__WEBPACK_IMPORTED_MODULE_8__["ReactiveFormsModule"],
+                        _angular_forms__WEBPACK_IMPORTED_MODULE_7__["ReactiveFormsModule"],
                         _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatTableModule"],
                         _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatSortModule"],
                         _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatPaginatorModule"],
-                        _angular_common_http__WEBPACK_IMPORTED_MODULE_9__["HttpClientModule"]
+                        _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpClientModule"]
                     ],
                     entryComponents: [
-                        _components_dialog_box_paciente_dialog_box_paciente_component__WEBPACK_IMPORTED_MODULE_19__["DialogBoxPacienteComponent"],
-                        _components_dialog_box_medico_dialog_box_medico_component__WEBPACK_IMPORTED_MODULE_20__["DialogBoxMedicoComponent"],
-                        _components_dialog_box_modificarCita_dialog_box_modificarCita_component__WEBPACK_IMPORTED_MODULE_21__["DialogBoxModificarCita"],
+                        _components_dialog_box_paciente_dialog_box_paciente_component__WEBPACK_IMPORTED_MODULE_18__["DialogBoxPacienteComponent"],
+                        _components_dialog_box_medico_dialog_box_medico_component__WEBPACK_IMPORTED_MODULE_19__["DialogBoxMedicoComponent"],
+                        _components_dialog_box_modificarCita_dialog_box_modificarCita_component__WEBPACK_IMPORTED_MODULE_20__["DialogBoxModificarCita"],
                     ],
                     providers: [
-                        { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_9__["HTTP_INTERCEPTORS"], useClass: _helpers__WEBPACK_IMPORTED_MODULE_10__["JwtInterceptor"], multi: true },
-                        { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_9__["HTTP_INTERCEPTORS"], useClass: _helpers__WEBPACK_IMPORTED_MODULE_10__["ErrorInterceptor"], multi: true }
+                        { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HTTP_INTERCEPTORS"], useClass: _helpers__WEBPACK_IMPORTED_MODULE_9__["JwtInterceptor"], multi: true },
+                        { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HTTP_INTERCEPTORS"], useClass: _helpers__WEBPACK_IMPORTED_MODULE_9__["ErrorInterceptor"], multi: true }
                     ],
-                    bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_11__["AppComponent"]]
+                    bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"]]
                 })
             ], AppModule);
             /***/ 
@@ -1127,7 +1087,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("table{\r\n\twidth:100%;\r\n}\r\nmat-paginator{\r\n\twidth:100%;\r\n\tbackground-color: rgb(218, 241, 230);\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9hZG1pbi1Nb2RpZmljYXJNZWRpY28vTW9kaWZpY2FyTWVkaWNvLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Q0FDQyxVQUFVO0FBQ1g7QUFDQTtDQUNDLFVBQVU7Q0FDVixvQ0FBb0M7QUFDckMiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2FkbWluLU1vZGlmaWNhck1lZGljby9Nb2RpZmljYXJNZWRpY28uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbInRhYmxle1xyXG5cdHdpZHRoOjEwMCU7XHJcbn1cclxubWF0LXBhZ2luYXRvcntcclxuXHR3aWR0aDoxMDAlO1xyXG5cdGJhY2tncm91bmQtY29sb3I6IHJnYigyMTgsIDI0MSwgMjMwKTtcclxufSJdfQ== */");
+            /* harmony default export */ __webpack_exports__["default"] = ("table{\r\n\twidth:100%\r\n}\r\n\r\n.mat-button{\r\n\tmargin:3px;\t\r\n}\r\n\r\n.mat-raised-button{\r\n\tmargin:3px;\r\n\tbackground-color:rgb(34, 189, 131);\r\n\tcolor:white;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9hZG1pbi1Nb2RpZmljYXJNZWRpY28vTW9kaWZpY2FyTWVkaWNvLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Q0FDQztBQUNEOztBQUVBO0NBQ0MsVUFBVTtBQUNYOztBQUVBO0NBQ0MsVUFBVTtDQUNWLGtDQUFrQztDQUNsQyxXQUFXO0FBQ1oiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2FkbWluLU1vZGlmaWNhck1lZGljby9Nb2RpZmljYXJNZWRpY28uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbInRhYmxle1xyXG5cdHdpZHRoOjEwMCVcclxufVxyXG5cclxuLm1hdC1idXR0b257XHJcblx0bWFyZ2luOjNweDtcdFxyXG59XHJcblxyXG4ubWF0LXJhaXNlZC1idXR0b257XHJcblx0bWFyZ2luOjNweDtcclxuXHRiYWNrZ3JvdW5kLWNvbG9yOnJnYigzNCwgMTg5LCAxMzEpO1xyXG5cdGNvbG9yOndoaXRlO1xyXG59Il19 */");
             /***/ 
         }),
         /***/ "./src/app/components/admin-ModificarMedico/ModificarMedico.component.ts": 
@@ -1143,30 +1103,26 @@
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
             /* harmony import */ var _dialog_box_medico_dialog_box_medico_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../dialog-box-medico/dialog-box-medico.component */ "./src/app/components/dialog-box-medico/dialog-box-medico.component.ts");
-            /* harmony import */ var src_app_services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/_services */ "./src/app/_services/index.ts");
-            /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
-            /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
-            var ELEMENT_DATA = [];
+            var ELEMENT_DATA = [
+                { id: 1, dni: '05345275T', nombre: 'Lucia', apellidos: 'Garcia Garcia', centro: 'Hospital General Ciudad Real', correo: 'luc@xyz.com', telefono: '956743567' },
+                { id: 2, dni: '04369275G', nombre: 'Maria', apellidos: 'Ruiz Garcia', centro: 'Hospital General Ciudad Real', correo: 'luc@xyz.com', telefono: '956743567' },
+                { id: 3, dni: '09345275T', nombre: 'Jose', apellidos: 'López Garcia', centro: 'Hospital Puertollano', correo: 'luc@xyz.com', telefono: '956743567' },
+                { id: 4, dni: '05347799H', nombre: 'Angel', apellidos: 'Garcia Ruíz', centro: 'Hospital General Ciudad Real', correo: 'luc@xyz.com', telefono: '956743567' },
+                { id: 5, dni: '05345275T', nombre: 'Lucia', apellidos: 'Garcia Garcia', centro: 'Hospital General Ciudad Real', correo: 'luc@xyz.com', telefono: '956743567' },
+                { id: 6, dni: '04369275G', nombre: 'Maria', apellidos: 'Ruiz Garcia', centro: 'Hospital General Ciudad Real', correo: 'luc@xyz.com', telefono: '956743567' },
+                { id: 7, dni: '09345275T', nombre: 'Jose', apellidos: 'López Garcia', centro: 'Hospital Puertollano', correo: 'luc@xyz.com', telefono: '956743567' },
+                { id: 8, dni: '05347799H', nombre: 'Angel', apellidos: 'Garcia Ruíz', centro: 'Hospital General Ciudad Real', correo: 'luc@xyz.com', telefono: '956743567' },
+                { id: 9, dni: '05345275T', nombre: 'Lucia', apellidos: 'Garcia Garcia', centro: 'Hospital General Ciudad Real', correo: 'luc@xyz.com', telefono: '956743567' },
+                { id: 10, dni: '04369275G', nombre: 'Maria', apellidos: 'Ruiz Garcia', centro: 'Hospital General Ciudad Real', correo: 'luc@xyz.com', telefono: '956743567' },
+                { id: 11, dni: '09345275T', nombre: 'Jose', apellidos: 'López Garcia', centro: 'Hospital Puertollano', correo: 'luc@xyz.com', telefono: '956743567' },
+                { id: 12, dni: '05347799H', nombre: 'Angel', apellidos: 'Garcia Ruíz', centro: 'Hospital General Ciudad Real', correo: 'luc@xyz.com', telefono: '956743567' }
+            ];
             var ModificarMedicoComponent = /** @class */ (function () {
-                function ModificarMedicoComponent(authService, usuariosService, dialog, formBuilder) {
-                    this.authService = authService;
-                    this.usuariosService = usuariosService;
+                function ModificarMedicoComponent(dialog) {
                     this.dialog = dialog;
-                    this.formBuilder = formBuilder;
-                    this.displayedColumns = ['dni', 'nombre', 'apellidos', 'centro', 'email', 'numTelefono', 'especialidad', 'action'];
-                    this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"]();
-                    this.submitted = false;
-                    this.loading = false;
+                    this.displayedColumns = ['id', 'dni', 'nombre', 'apellidos', 'centro', 'correo', 'telefono', 'action'];
+                    this.dataSource = ELEMENT_DATA;
                 }
-                ModificarMedicoComponent.prototype.ngOnInit = function () {
-                    var _this = this;
-                    this.dataSource.paginator = this.paginator;
-                    this.usuariosService.getUsersByRole('medicos')
-                        .subscribe(function (data) {
-                        _this.data = data;
-                        _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](data);
-                    });
-                };
                 ModificarMedicoComponent.prototype.openDialog = function (action, obj) {
                     var _this = this;
                     obj.action = action;
@@ -1183,98 +1139,45 @@
                         }
                     });
                 };
+                ModificarMedicoComponent.prototype.addRowData = function (row_obj) {
+                    var d = new Date();
+                    this.dataSource.push({
+                        id: d.getTime(),
+                        dni: row_obj.dni,
+                        nombre: row_obj.nombre,
+                        apellidos: row_obj.apellidos,
+                        centro: row_obj.centro,
+                        correo: row_obj.correo,
+                        telefono: row_obj.telefono
+                    });
+                    this.table.renderRows();
+                };
                 ModificarMedicoComponent.prototype.updateRowData = function (row_obj) {
-                    var _this = this;
-                    this.data = this.data.filter(function (value, key) {
-                        if (value.dni == row_obj.dni) {
-                            value.nombre = row_obj.nombre;
+                    this.dataSource = this.dataSource.filter(function (value, key) {
+                        if (value.id == row_obj.id) {
+                            value.dni = row_obj.dni;
                             value.apellidos = row_obj.apellidos;
-                            value.numTelefono = row_obj.numTelefono;
+                            value.nombre = row_obj.nombre;
                             value.centro = row_obj.centro;
-                            value.email = row_obj.email;
-                            value.especialidad = row_obj.especialidad;
-                            value.rol = row_obj.rol;
-                            value.contrasena = row_obj.contrasena;
-                            value.localidad = row_obj.localidad;
+                            value.correo = row_obj.correo;
+                            value.telefono = row_obj.telefono;
                         }
                         return true;
                     });
-                    this.submitted = true;
-                    this.success = null;
-                    this.usuarioForm = this.formBuilder.group({
-                        id: row_obj.id,
-                        dni: row_obj.dni,
-                        nombre: row_obj.nombre,
-                        apellidos: row_obj.apellidos,
-                        numTelefono: row_obj.numTelefono,
-                        centro: row_obj.centro,
-                        email: row_obj.email,
-                        especialidad: row_obj.especialidad,
-                        rol: row_obj.rol,
-                        contrasena: row_obj.contrasena,
-                        localidad: row_obj.localidad
-                    });
-                    this.usuariosService.update(this.usuarioForm.value, this.usuarioForm.controls.dni.value)
-                        .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["first"])())
-                        .subscribe(function (data) {
-                        console.log("[CLIENTE] Medico actualizado.");
-                        _this.success = "Medico actualizado correctamente.";
-                        _this.dataSource.paginator = _this.paginator;
-                        _this.usuariosService.getUsersByRole('medicos')
-                            .subscribe(function (data) {
-                            _this.data = data;
-                            _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](data);
-                        });
-                    }, function (error) {
-                        _this.error = error;
-                        _this.loading = false;
-                    });
                 };
                 ModificarMedicoComponent.prototype.deleteRowData = function (row_obj) {
-                    var _this = this;
-                    this.data = this.data.filter(function (value, key) {
-                        return value.dni != row_obj.dni;
-                    });
-                    this.usuarioForm = this.formBuilder.group({
-                        id: row_obj.id,
-                        dni: row_obj.dni,
-                        nombre: row_obj.nombre,
-                        apellidos: row_obj.apellidos,
-                        numTelefono: row_obj.numTelefono,
-                        centro: row_obj.centro,
-                        email: row_obj.email,
-                        especialidad: row_obj.especialidad,
-                        rol: row_obj.rol,
-                        contrasena: row_obj.contrasena,
-                        localidad: row_obj.localidad
-                    });
-                    this.usuariosService.delete(this.usuarioForm.controls.id.value)
-                        .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["first"])())
-                        .subscribe(function (data) {
-                        console.log("[CLIENTE] Medico borrado.");
-                        _this.success = "Medico borrado correctamente.";
-                        _this.dataSource.paginator = _this.paginator;
-                        _this.usuariosService.getUsersByRole('medicos')
-                            .subscribe(function (data) {
-                            _this.data = data;
-                            _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](data);
-                        });
-                    }, function (error) {
-                        _this.error = 'Ha ocurrido un error al eliminar el usuario.';
-                        _this.loading = false;
+                    this.dataSource = this.dataSource.filter(function (value, key) {
+                        return value.id != row_obj.id;
                     });
                 };
                 return ModificarMedicoComponent;
             }());
             ModificarMedicoComponent.ctorParameters = function () { return [
-                { type: src_app_services__WEBPACK_IMPORTED_MODULE_4__["AuthService"] },
-                { type: src_app_services__WEBPACK_IMPORTED_MODULE_4__["UserService"] },
-                { type: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialog"] },
-                { type: _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormBuilder"] }
+                { type: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialog"] }
             ]; };
             tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginator"], { static: true })
-            ], ModificarMedicoComponent.prototype, "paginator", void 0);
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTable"], { static: true })
+            ], ModificarMedicoComponent.prototype, "table", void 0);
             ModificarMedicoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
                     selector: 'app-ModificarMedico',
@@ -1292,7 +1195,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("table{\r\n\twidth:100%;\r\n}\r\nmat-paginator{\r\n\twidth:100%;\r\n\tbackground-color: rgb(218, 241, 230);\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9hZG1pbi1Nb2RpZmljYXJQYWNpZW50ZS9Nb2RpZmljYXJQYWNpZW50ZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0NBQ0MsVUFBVTtBQUNYO0FBQ0E7Q0FDQyxVQUFVO0NBQ1Ysb0NBQW9DO0FBQ3JDIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9hZG1pbi1Nb2RpZmljYXJQYWNpZW50ZS9Nb2RpZmljYXJQYWNpZW50ZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsidGFibGV7XHJcblx0d2lkdGg6MTAwJTtcclxufVxyXG5tYXQtcGFnaW5hdG9ye1xyXG5cdHdpZHRoOjEwMCU7XHJcblx0YmFja2dyb3VuZC1jb2xvcjogcmdiKDIxOCwgMjQxLCAyMzApO1xyXG59Il19 */");
+            /* harmony default export */ __webpack_exports__["default"] = (".mat-elevation-z8 {\r\n\theight: 100vh;\r\n\toverflow: auto;\r\n  }\r\n  \r\n  table {\r\n\twidth: 100%;\r\n  }\r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9hZG1pbi1Nb2RpZmljYXJQYWNpZW50ZS9Nb2RpZmljYXJQYWNpZW50ZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0NBQ0MsYUFBYTtDQUNiLGNBQWM7RUFDYjs7RUFFQTtDQUNELFdBQVc7RUFDViIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvYWRtaW4tTW9kaWZpY2FyUGFjaWVudGUvTW9kaWZpY2FyUGFjaWVudGUuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tYXQtZWxldmF0aW9uLXo4IHtcclxuXHRoZWlnaHQ6IDEwMHZoO1xyXG5cdG92ZXJmbG93OiBhdXRvO1xyXG4gIH1cclxuICBcclxuICB0YWJsZSB7XHJcblx0d2lkdGg6IDEwMCU7XHJcbiAgfVxyXG4gICJdfQ== */");
             /***/ 
         }),
         /***/ "./src/app/components/admin-ModificarPaciente/ModificarPaciente.component.ts": 
@@ -1307,21 +1210,15 @@
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
-            /* harmony import */ var _dialog_box_paciente_dialog_box_paciente_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../dialog-box-paciente/dialog-box-paciente.component */ "./src/app/components/dialog-box-paciente/dialog-box-paciente.component.ts");
-            /* harmony import */ var src_app_services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/_services */ "./src/app/_services/index.ts");
-            /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
-            /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+            /* harmony import */ var src_app_services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/_services */ "./src/app/_services/index.ts");
             var ELEMENT_DATA = [];
             var ModificarPacienteComponent = /** @class */ (function () {
-                function ModificarPacienteComponent(authService, usuariosService, dialog, formBuilder) {
+                function ModificarPacienteComponent(citasService, authService, usuariosService) {
+                    this.citasService = citasService;
                     this.authService = authService;
                     this.usuariosService = usuariosService;
-                    this.dialog = dialog;
-                    this.formBuilder = formBuilder;
-                    this.displayedColumns = ['nombre', 'apellidos', 'numTelefono', 'localidad', 'centro', 'email', 'action'];
+                    this.displayedColumns = ['dni', 'nombre', 'apellidos', 'numTelefono', 'localidad', 'centro', 'email'];
                     this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"]();
-                    this.submitted = false;
-                    this.loading = false;
                 }
                 ModificarPacienteComponent.prototype.ngOnInit = function () {
                     var _this = this;
@@ -1332,110 +1229,12 @@
                         _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](data);
                     });
                 };
-                ModificarPacienteComponent.prototype.openDialog = function (action, obj) {
-                    var _this = this;
-                    obj.action = action;
-                    var dialogRef = this.dialog.open(_dialog_box_paciente_dialog_box_paciente_component__WEBPACK_IMPORTED_MODULE_3__["DialogBoxPacienteComponent"], {
-                        width: '400px',
-                        data: obj
-                    });
-                    dialogRef.afterClosed().subscribe(function (result) {
-                        if (result.event == 'Update') {
-                            _this.updateRowData(result.data);
-                        }
-                        else if (result.event == 'Delete') {
-                            _this.deleteRowData(result.data);
-                        }
-                    });
-                };
-                ModificarPacienteComponent.prototype.updateRowData = function (row_obj) {
-                    var _this = this;
-                    this.data = this.data.filter(function (value, key) {
-                        if (value.dni == row_obj.dni) {
-                            value.nombre = row_obj.nombre;
-                            value.apellidos = row_obj.apellidos;
-                            value.numTelefono = row_obj.numTelefono;
-                            value.localidad = row_obj.localidad;
-                            value.centro = row_obj.centro;
-                            value.email = row_obj.email;
-                            value.rol = row_obj.rol;
-                            value.contrasena = row_obj.contrasena;
-                            value.especialidad = row_obj.especialidad;
-                        }
-                        return true;
-                    });
-                    this.submitted = true;
-                    this.success = null;
-                    this.usuarioForm = this.formBuilder.group({
-                        id: row_obj.id,
-                        dni: row_obj.dni,
-                        nombre: row_obj.nombre,
-                        apellidos: row_obj.apellidos,
-                        numTelefono: row_obj.numTelefono,
-                        localidad: row_obj.localidad,
-                        centro: row_obj.centro,
-                        email: row_obj.email,
-                        rol: row_obj.rol,
-                        contrasena: row_obj.contrasena,
-                        especialidad: row_obj.especialidad,
-                    });
-                    this.usuariosService.update(this.usuarioForm.value, this.usuarioForm.controls.dni.value)
-                        .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["first"])())
-                        .subscribe(function (data) {
-                        console.log("[CLIENTE] Cliente actualizada.");
-                        _this.success = "Cliente actualizado correctamente.";
-                        _this.dataSource.paginator = _this.paginator;
-                        _this.usuariosService.getUsersByRole('pacientes')
-                            .subscribe(function (data) {
-                            _this.data = data;
-                            _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](data);
-                        });
-                    }, function (error) {
-                        _this.error = error;
-                        _this.loading = false;
-                    });
-                };
-                ModificarPacienteComponent.prototype.deleteRowData = function (row_obj) {
-                    var _this = this;
-                    this.data = this.data.filter(function (value, key) {
-                        return value.dni != row_obj.dni;
-                    });
-                    this.usuarioForm = this.formBuilder.group({
-                        id: row_obj.id,
-                        dni: row_obj.dni,
-                        nombre: row_obj.nombre,
-                        apellidos: row_obj.apellidos,
-                        numTelefono: row_obj.numTelefono,
-                        localidad: row_obj.localidad,
-                        centro: row_obj.centro,
-                        email: row_obj.email,
-                        rol: row_obj.rol,
-                        contrasena: row_obj.contrasena,
-                        especialidad: row_obj.especialidad,
-                    });
-                    this.usuariosService.delete(this.usuarioForm.controls.id.value)
-                        .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["first"])())
-                        .subscribe(function (data) {
-                        console.log("[CLIENTE] Usuario borrado.");
-                        _this.success = "Usuario borrado correctamente.";
-                        _this.dataSource.paginator = _this.paginator;
-                        _this.usuariosService.getUsersByRole('pacientes')
-                            .subscribe(function (data) {
-                            _this.data = data;
-                            _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](data);
-                        });
-                    }, function (error) {
-                        _this.error = 'Ha ocurrido un error al eliminar el usuario.';
-                        _this.loading = false;
-                    });
-                };
                 return ModificarPacienteComponent;
             }());
             ModificarPacienteComponent.ctorParameters = function () { return [
-                { type: src_app_services__WEBPACK_IMPORTED_MODULE_4__["AuthService"] },
-                { type: src_app_services__WEBPACK_IMPORTED_MODULE_4__["UserService"] },
-                { type: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialog"] },
-                { type: _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormBuilder"] }
+                { type: src_app_services__WEBPACK_IMPORTED_MODULE_3__["CitasService"] },
+                { type: src_app_services__WEBPACK_IMPORTED_MODULE_3__["AuthService"] },
+                { type: src_app_services__WEBPACK_IMPORTED_MODULE_3__["UserService"] }
             ]; };
             tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginator"], { static: true })
@@ -1558,7 +1357,7 @@
                         tel: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
                         correo: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
                         password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-                        rol: 'medico',
+                        rol: 'médico',
                         medico: '',
                         especialidad: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
                     });
@@ -1722,9 +1521,6 @@
                     console.log(data);
                     this.local_data = Object.assign({}, data);
                     this.action = this.local_data.action;
-                    this.especialidad = this.local_data.especialidad;
-                    console.log(this.especialidad);
-                    this.modeselect = this.especialidad;
                 }
                 DialogBoxMedicoComponent.prototype.doAction = function () {
                     this.dialogRef.close({ event: this.action, data: this.local_data });
@@ -1930,7 +1726,7 @@
                             value.centro = row_obj.centro;
                             value.fecha = row_obj.fecha;
                             value.hora = row_obj.hora;
-                            value.medico = row_obj.medico;
+                            value.médico = row_obj.médico;
                         }
                         return true;
                     });
@@ -1943,7 +1739,7 @@
                         fecha: row_obj.fecha,
                         hora: row_obj.hora,
                         paciente: row_obj.paciente,
-                        medico: row_obj.medico
+                        médico: row_obj.médico
                     });
                     this.citasService.update(this.citaForm.value, this.citaForm.controls.id.value)
                         .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
@@ -1967,7 +1763,7 @@
                         fecha: row_obj.fecha,
                         hora: row_obj.hora,
                         paciente: row_obj.paciente,
-                        medico: row_obj.medico
+                        médico: row_obj.médico
                     });
                     this.citasService.delete(this.citaForm.controls.id.value)
                         .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])())
@@ -2003,72 +1799,6 @@
                     styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./listado-citas.component.css */ "./src/app/components/listado-citas/listado-citas.component.css")).default]
                 })
             ], ListadoCitasComponent);
-            /***/ 
-        }),
-        /***/ "./src/app/components/medico-calendario/calendarioMedico.component.css": 
-        /*!*****************************************************************************!*\
-          !*** ./src/app/components/medico-calendario/calendarioMedico.component.css ***!
-          \*****************************************************************************/
-        /*! exports provided: default */
-        /***/ (function (module, __webpack_exports__, __webpack_require__) {
-            "use strict";
-            __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = (".example-container {\r\n\theight: 100vh;\r\n\toverflow: auto;\r\n  }\r\n  \r\n  table {\r\n\twidth: 100%;\r\n  }\r\n  \r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9tZWRpY28tY2FsZW5kYXJpby9jYWxlbmRhcmlvTWVkaWNvLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Q0FDQyxhQUFhO0NBQ2IsY0FBYztFQUNiOztFQUVBO0NBQ0QsV0FBVztFQUNWIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9tZWRpY28tY2FsZW5kYXJpby9jYWxlbmRhcmlvTWVkaWNvLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhhbXBsZS1jb250YWluZXIge1xyXG5cdGhlaWdodDogMTAwdmg7XHJcblx0b3ZlcmZsb3c6IGF1dG87XHJcbiAgfVxyXG4gIFxyXG4gIHRhYmxlIHtcclxuXHR3aWR0aDogMTAwJTtcclxuICB9XHJcbiAgXHJcbiJdfQ== */");
-            /***/ 
-        }),
-        /***/ "./src/app/components/medico-calendario/calendarioMedico.component.ts": 
-        /*!****************************************************************************!*\
-          !*** ./src/app/components/medico-calendario/calendarioMedico.component.ts ***!
-          \****************************************************************************/
-        /*! exports provided: CalendarioMedicoComponent */
-        /***/ (function (module, __webpack_exports__, __webpack_require__) {
-            "use strict";
-            __webpack_require__.r(__webpack_exports__);
-            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CalendarioMedicoComponent", function () { return CalendarioMedicoComponent; });
-            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-            /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
-            /* harmony import */ var src_app_services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/_services */ "./src/app/_services/index.ts");
-            /* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/_services/auth.service */ "./src/app/_services/auth.service.ts");
-            /* harmony import */ var src_app_services_user_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/_services/user.service */ "./src/app/_services/user.service.ts");
-            var ELEMENT_DATA = [
-                { nombre: 'position', apellidos: 'Ciudad Real III', especialidad: '22/11/2019', centro: '11:54' },
-                { nombre: 'Pediatría', apellidos: 'Ciudad Real III', especialidad: '23/11/2019', centro: '12:00' }
-            ];
-            var CalendarioMedicoComponent = /** @class */ (function () {
-                function CalendarioMedicoComponent(citasService, authService, usuariosService) {
-                    this.citasService = citasService;
-                    this.authService = authService;
-                    this.usuariosService = usuariosService;
-                    this.displayedColumns = ['nombre', 'apellidos', 'especialidad', 'centro'];
-                    this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"]();
-                }
-                CalendarioMedicoComponent.prototype.ngOnInit = function () {
-                    var _this = this;
-                    this.dataSource.paginator = this.paginator;
-                    this.usuariosService.getUsersByRole('medico')
-                        .subscribe(function (data) {
-                        _this.data = data;
-                        _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](data);
-                    });
-                };
-                return CalendarioMedicoComponent;
-            }());
-            CalendarioMedicoComponent.ctorParameters = function () { return [
-                { type: src_app_services__WEBPACK_IMPORTED_MODULE_3__["CitasService"] },
-                { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"] },
-                { type: src_app_services_user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"] }
-            ]; };
-            tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginator"], { static: true })
-            ], CalendarioMedicoComponent.prototype, "paginator", void 0);
-            CalendarioMedicoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-                    selector: 'app-MostrarMedico',
-                    template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./calendarioMedico.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/medico-calendario/calendarioMedico.component.html")).default,
-                    styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./calendarioMedico.component.css */ "./src/app/components/medico-calendario/calendarioMedico.component.css")).default]
-                })
-            ], CalendarioMedicoComponent);
             /***/ 
         }),
         /***/ "./src/app/components/paciente-RegistrarCita/RegistrarCita.component.css": 
@@ -2246,7 +1976,7 @@
                     this.alertService = alertService;
                     this.authService = authService;
                     this.fillerNav = [
-                        { name: "Lista de médicos", route: "ModificarMedico", icon: "list" },
+                        { name: "Lista de médicos", route: "MostrarMedico", icon: "list" },
                         { name: "Lista de pacientes", route: "ModificarPaciente", icon: "edit" },
                         { name: "Registrar médicos", route: "RegistrarMedico", icon: "autorenew" },
                         /*{ name: "Modificar médicos", route: "ModificarMedico", icon: "edit" },*/
@@ -2288,73 +2018,6 @@
             ], SidenavAdminComponent);
             /***/ 
         }),
-        /***/ "./src/app/components/sidenavMedico/sidenavMedico.component.css": 
-        /*!**********************************************************************!*\
-          !*** ./src/app/components/sidenavMedico/sidenavMedico.component.css ***!
-          \**********************************************************************/
-        /*! exports provided: default */
-        /***/ (function (module, __webpack_exports__, __webpack_require__) {
-            "use strict";
-            __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = (".example-container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    position: relative;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    background: #23C185;\r\n  }\r\n .mat-toolbar.mat-primary{\r\n  background: #23C185;\r\n  color: #fff;\r\n }\r\n .example-is-mobile .example-toolbar {\r\n    position: fixed;\r\n    /* Make sure the toolbar will stay on top of the content as it scrolls past. */\r\n    z-index: 2;\r\n    width: 60%;\r\n  }\r\n .mat-icon{\r\n  position: relative;\r\n}\r\n h1.example-app-name {\r\n    margin-left: 8px;\r\n  }\r\n .example-sidenav-container {\r\n    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This\r\n       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */\r\n    flex: 1;\r\n\r\n  }\r\n .mat-sidenav{\r\n\tbackground: rgb(255, 255, 255);\r\n\t\r\n  }\r\n .example-is-mobile .example-sidenav-container {\r\n    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the\r\n       `<body>` to be our scrolling element for mobile layouts. */\r\n    flex: 1 0 auto;\r\n\r\n  }\r\n .mat-nav-list{\r\n    \r\n\tmargin-right: 0.3em;\r\n\tmargin-left: 0.3em;\r\n\tbackground: rgb(255, 255, 255);\r\n\t\r\n\t\r\n  }\r\n .but1 {\r\n\tbackground:linear-gradient(to bottom, rgb(255, 255, 255) 5%, rgb(255, 255, 255) 100%);\r\n\tborder-radius:9px;\r\n\tcolor:rgb(0, 0, 0);\r\n\tfont-family:Arial;\r\n\tfont-size:15px;\r\n\tfont-weight:bold;\r\n\tpadding:6px 16px;\r\n}\r\n .admin{\r\n\tposition: relative;\r\n\tleft: 15px;\r\n\tfont-size:24pt;\r\n\tfont-style: normal;\r\n}\r\n\r\n\r\n \r\n  \r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zaWRlbmF2TWVkaWNvL3NpZGVuYXZNZWRpY28uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGFBQWE7SUFDYixzQkFBc0I7SUFDdEIsa0JBQWtCO0lBQ2xCLE1BQU07SUFDTixTQUFTO0lBQ1QsT0FBTztJQUNQLFFBQVE7SUFDUixtQkFBbUI7RUFDckI7Q0FDRDtFQUNDLG1CQUFtQjtFQUNuQixXQUFXO0NBQ1o7Q0FDQztJQUNFLGVBQWU7SUFDZiw4RUFBOEU7SUFDOUUsVUFBVTtJQUNWLFVBQVU7RUFDWjtDQUNGO0VBQ0Usa0JBQWtCO0FBQ3BCO0NBR0U7SUFDRSxnQkFBZ0I7RUFDbEI7Q0FFQTtJQUNFOzRGQUN3RjtJQUN4RixPQUFPOztFQUVUO0NBQ0E7Q0FDRCw4QkFBOEI7O0VBRTdCO0NBRUE7SUFDRTtpRUFDNkQ7SUFDN0QsY0FBYzs7RUFFaEI7Q0FDQTs7Q0FFRCxtQkFBbUI7Q0FDbkIsa0JBQWtCO0NBQ2xCLDhCQUE4Qjs7O0VBRzdCO0NBQ0Y7Q0FDQyxxRkFBcUY7Q0FDckYsaUJBQWlCO0NBQ2pCLGtCQUFrQjtDQUNsQixpQkFBaUI7Q0FDakIsY0FBYztDQUNkLGdCQUFnQjtDQUNoQixnQkFBZ0I7QUFDakI7Q0FFQTtDQUNDLGtCQUFrQjtDQUNsQixVQUFVO0NBQ1YsY0FBYztDQUNkLGtCQUFrQjtBQUNuQiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvc2lkZW5hdk1lZGljby9zaWRlbmF2TWVkaWNvLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhhbXBsZS1jb250YWluZXIge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICB0b3A6IDA7XHJcbiAgICBib3R0b206IDA7XHJcbiAgICBsZWZ0OiAwO1xyXG4gICAgcmlnaHQ6IDA7XHJcbiAgICBiYWNrZ3JvdW5kOiAjMjNDMTg1O1xyXG4gIH1cclxuIC5tYXQtdG9vbGJhci5tYXQtcHJpbWFyeXtcclxuICBiYWNrZ3JvdW5kOiAjMjNDMTg1O1xyXG4gIGNvbG9yOiAjZmZmO1xyXG4gfVxyXG4gIC5leGFtcGxlLWlzLW1vYmlsZSAuZXhhbXBsZS10b29sYmFyIHtcclxuICAgIHBvc2l0aW9uOiBmaXhlZDtcclxuICAgIC8qIE1ha2Ugc3VyZSB0aGUgdG9vbGJhciB3aWxsIHN0YXkgb24gdG9wIG9mIHRoZSBjb250ZW50IGFzIGl0IHNjcm9sbHMgcGFzdC4gKi9cclxuICAgIHotaW5kZXg6IDI7XHJcbiAgICB3aWR0aDogNjAlO1xyXG4gIH1cclxuLm1hdC1pY29ue1xyXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxufVxyXG5cclxuXHJcbiAgaDEuZXhhbXBsZS1hcHAtbmFtZSB7XHJcbiAgICBtYXJnaW4tbGVmdDogOHB4O1xyXG4gIH1cclxuIFxyXG4gIC5leGFtcGxlLXNpZGVuYXYtY29udGFpbmVyIHtcclxuICAgIC8qIFdoZW4gdGhlIHNpZGVuYXYgaXMgbm90IGZpeGVkLCBzdHJldGNoIHRoZSBzaWRlbmF2IGNvbnRhaW5lciB0byBmaWxsIHRoZSBhdmFpbGFibGUgc3BhY2UuIFRoaXNcclxuICAgICAgIGNhdXNlcyBgPG1hdC1zaWRlbmF2LWNvbnRlbnQ+YCB0byBhY3QgYXMgb3VyIHNjcm9sbGluZyBlbGVtZW50IGZvciBkZXNrdG9wIGxheW91dHMuICovXHJcbiAgICBmbGV4OiAxO1xyXG5cclxuICB9XHJcbiAgLm1hdC1zaWRlbmF2e1xyXG5cdGJhY2tncm91bmQ6IHJnYigyNTUsIDI1NSwgMjU1KTtcclxuXHRcclxuICB9XHJcbiAgXHJcbiAgLmV4YW1wbGUtaXMtbW9iaWxlIC5leGFtcGxlLXNpZGVuYXYtY29udGFpbmVyIHtcclxuICAgIC8qIFdoZW4gdGhlIHNpZGVuYXYgaXMgZml4ZWQsIGRvbid0IGNvbnN0cmFpbiB0aGUgaGVpZ2h0IG9mIHRoZSBzaWRlbmF2IGNvbnRhaW5lci4gVGhpcyBhbGxvd3MgdGhlXHJcbiAgICAgICBgPGJvZHk+YCB0byBiZSBvdXIgc2Nyb2xsaW5nIGVsZW1lbnQgZm9yIG1vYmlsZSBsYXlvdXRzLiAqL1xyXG4gICAgZmxleDogMSAwIGF1dG87XHJcblxyXG4gIH1cclxuICAubWF0LW5hdi1saXN0e1xyXG4gICAgXHJcblx0bWFyZ2luLXJpZ2h0OiAwLjNlbTtcclxuXHRtYXJnaW4tbGVmdDogMC4zZW07XHJcblx0YmFja2dyb3VuZDogcmdiKDI1NSwgMjU1LCAyNTUpO1xyXG5cdFxyXG5cdFxyXG4gIH1cclxuLmJ1dDEge1xyXG5cdGJhY2tncm91bmQ6bGluZWFyLWdyYWRpZW50KHRvIGJvdHRvbSwgcmdiKDI1NSwgMjU1LCAyNTUpIDUlLCByZ2IoMjU1LCAyNTUsIDI1NSkgMTAwJSk7XHJcblx0Ym9yZGVyLXJhZGl1czo5cHg7XHJcblx0Y29sb3I6cmdiKDAsIDAsIDApO1xyXG5cdGZvbnQtZmFtaWx5OkFyaWFsO1xyXG5cdGZvbnQtc2l6ZToxNXB4O1xyXG5cdGZvbnQtd2VpZ2h0OmJvbGQ7XHJcblx0cGFkZGluZzo2cHggMTZweDtcclxufVxyXG5cclxuLmFkbWlue1xyXG5cdHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuXHRsZWZ0OiAxNXB4O1xyXG5cdGZvbnQtc2l6ZToyNHB0O1xyXG5cdGZvbnQtc3R5bGU6IG5vcm1hbDtcclxufVxyXG5cclxuXHJcbiBcclxuICAiXX0= */");
-            /***/ 
-        }),
-        /***/ "./src/app/components/sidenavMedico/sidenavMedico.component.ts": 
-        /*!*********************************************************************!*\
-          !*** ./src/app/components/sidenavMedico/sidenavMedico.component.ts ***!
-          \*********************************************************************/
-        /*! exports provided: SidenavMedicoComponent */
-        /***/ (function (module, __webpack_exports__, __webpack_require__) {
-            "use strict";
-            __webpack_require__.r(__webpack_exports__);
-            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SidenavMedicoComponent", function () { return SidenavMedicoComponent; });
-            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-            /* harmony import */ var _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/cdk/layout */ "./node_modules/@angular/cdk/esm2015/layout.js");
-            /* harmony import */ var src_app_services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/_services */ "./src/app/_services/index.ts");
-            /* harmony import */ var src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/_services/alert.service */ "./src/app/_services/alert.service.ts");
-            var SidenavMedicoComponent = /** @class */ (function () {
-                function SidenavMedicoComponent(alertService, changeDetectorRef, media, authService) {
-                    this.alertService = alertService;
-                    this.authService = authService;
-                    this.fillerNav = [
-                        { name: "Calendario", route: "CalendarioMedico", icon: "list" },
-                        /*{ name: "Modificar médicos", route: "ModificarMedico", icon: "edit" },*/
-                        { name: "Salir", route: "/", icon: "logout" }
-                    ];
-                    this.fillerContent = Array.from({ length: 50 }, function () { return "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco\n       laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in\n       voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat\n       cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."; });
-                    this.shouldRun = true;
-                    if (this.authService.currentUserValue.rol != "medico") {
-                        this.authService.logout();
-                    }
-                    this.mobileQuery = media.matchMedia('(max-width: 600px)');
-                    this._mobileQueryListener = function () { return changeDetectorRef.detectChanges(); };
-                    this.mobileQuery.addListener(this._mobileQueryListener);
-                }
-                SidenavMedicoComponent.prototype.ngOnDestroy = function () {
-                    this.mobileQuery.removeListener(this._mobileQueryListener);
-                };
-                SidenavMedicoComponent.prototype.ngOnInit = function () {
-                };
-                SidenavMedicoComponent.prototype.ngOnSubmit = function () {
-                };
-                return SidenavMedicoComponent;
-            }());
-            SidenavMedicoComponent.ctorParameters = function () { return [
-                { type: src_app_services_alert_service__WEBPACK_IMPORTED_MODULE_4__["AlertService"] },
-                { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"] },
-                { type: _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_2__["MediaMatcher"] },
-                { type: src_app_services__WEBPACK_IMPORTED_MODULE_3__["AuthService"] }
-            ]; };
-            SidenavMedicoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-                    selector: 'app-sidenavMedico',
-                    template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./sidenavMedico.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/sidenavMedico/sidenavMedico.component.html")).default,
-                    styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./sidenavMedico.component.css */ "./src/app/components/sidenavMedico/sidenavMedico.component.css")).default]
-                })
-            ], SidenavMedicoComponent);
-            /***/ 
-        }),
         /***/ "./src/environments/environment.ts": 
         /*!*****************************************!*\
           !*** ./src/environments/environment.ts ***!
@@ -2370,7 +2033,7 @@
             // The list of file replacements can be found in `angular.json`.
             var environment = {
                 production: false,
-                apiUrl: 'locahost:8080',
+                apiUrl: 'http://localhost:8080',
             };
             /*
              * For easier debugging in development mode, you can import the following file
@@ -2410,7 +2073,7 @@
           \***************************/
         /*! no static exports found */
         /***/ (function (module, exports, __webpack_require__) {
-            module.exports = __webpack_require__(/*! C:\Users\luisj\Documents\GitHub\eSalud\src\main\webapp\src\main.ts */ "./src/main.ts");
+            module.exports = __webpack_require__(/*! C:\Users\sergi\OneDrive\Documentos\GitHub\eSalud\src\main\webapp\src\main.ts */ "./src/main.ts");
             /***/ 
         })
     }, [[0, "runtime", "vendor"]]]);

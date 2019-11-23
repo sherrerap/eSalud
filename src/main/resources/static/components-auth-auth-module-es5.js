@@ -162,9 +162,9 @@
                                 _this.router.navigate([_this.returnUrl]);
                                 break;
                             }
-                            case "medico": {
-                                //console.log("[CLIENTE] La vista médico aún no ha sido implementada. Redirigiendo a citas.")
-                                _this.router.navigate(['/medico']);
+                            case "médico": {
+                                console.log("[CLIENTE] La vista médico aún no ha sido implementada. Redirigiendo a citas.");
+                                _this.router.navigate([_this.returnUrl]);
                                 break;
                             }
                             case "admin": {

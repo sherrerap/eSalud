@@ -21,8 +21,6 @@ import { DialogBoxMedicoComponent } from './components/dialog-box-medico/dialog-
 import { DialogBoxModificarCita} from './components/dialog-box-modificarCita/dialog-box-modificarCita.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { RegistrarCitaComponent } from './components/paciente-RegistrarCita/RegistrarCita.component';
-import { SidenavMedicoComponent } from './components/sidenavMedico/sidenavMedico.component';
-import { CalendarioMedicoComponent } from './components/medico-calendario/calendarioMedico.component';
 
 
 @NgModule({
@@ -30,7 +28,6 @@ import { CalendarioMedicoComponent } from './components/medico-calendario/calend
     AppComponent,
     SidenavComponent,
     SidenavAdminComponent,
-    SidenavMedicoComponent,
     ListadoCitasComponent,
     ModificarMedicoComponent,
     ModificarPacienteComponent,
@@ -38,10 +35,9 @@ import { CalendarioMedicoComponent } from './components/medico-calendario/calend
     RegistrarMedicoComponent,
     DialogBoxPacienteComponent,
     DialogBoxMedicoComponent,
-	  DialogBoxModificarCita,
+	DialogBoxModificarCita,
     AlertComponent,
-    RegistrarCitaComponent,
-    CalendarioMedicoComponent
+    RegistrarCitaComponent
   ],
   imports: [
     BrowserModule,
