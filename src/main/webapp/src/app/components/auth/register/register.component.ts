@@ -128,30 +128,13 @@ export class RegisterComponent implements OnInit {
             var mayus = /^[A-Z]+$/;
             var symbols = /^[!,@,#,$,%,^,&,*,?,_,~]+$/;
             var numbers = /^[0-9]+$/;
-            var result = 0;
 
-            if (inputText.value.match(minus)) {
-                result++;
-            }
-
-            if (inputText.value.match(mayus)) {
-                result++;
-            }
-
-            if (inputText.value.match(numbers)) {
-                result++;
-            }
-
-            if (inputText.value.match(symbols)) {
-                result++;
-            }
-
-            if (result == 4) {
+            if (inputText.value.contains(minus) && inputText.value.contains(mayus) && inputText.value.contains(symbols) && inputText.value.contains(numbers)) {
                 return true;
-            }
-            else {
+            } else {
                 return false;
             }
+
         }
 
     }

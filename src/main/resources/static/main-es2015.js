@@ -793,7 +793,7 @@ CitasService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*!************************************!*\
   !*** ./src/app/_services/index.ts ***!
   \************************************/
-/*! exports provided: AlertService, AuthService, UserService, CitasService */
+/*! exports provided: AuthService, UserService, CitasService, AlertService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
