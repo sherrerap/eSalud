@@ -1,39 +1,87 @@
 package es.e3corp.eSalud.Service;
 
 import java.util.List;
+import java.util.Optional;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import es.e3corp.eSalud.exception.EspecialidadNotFoundException;
 import es.e3corp.eSalud.model.Especialidad;
+import es.e3corp.eSalud.repository.EspecialidadRepository;
+import es.e3corp.eSalud.utilidades.Utilidades;
 
+@Service("EspecialidadService")
+/**
+ * @author e3corp
+ */
+@Transactional
 public class EspecialidadServiceImpl implements EspecialidadService {
+  /**
+   * @author e3corp
+   */
+  private static final Log LOG = LogFactory.getLog(EspecialidadServiceImpl.class);
+  /**
+   * @author e3corp
+   */
+  private EspecialidadRepository especialidadRepository;
+
+  /**
+   * @author e3corp
+   */
+  @Autowired
+  public EspecialidadServiceImpl(EspecialidadRepository especialidadRepository) {
+    this.especialidadRepository = especialidadRepository;
+  }
 
   @Override
   public List<Especialidad> findAll() {
-    // TODO Auto-generated method stub
-    return null;
+
+    final Optional<List<Especialidad>> especialidades = especialidadRepository.findAll();
+
+    final List<Especialidad> especialidadesDesencrip = Utilidades.desencriptarListaEspecialidades(especialidades);
+
+    return especialidadesDesencrip;
   }
 
   @Override
   public Especialidad findByName(String name) {
-    // TODO Auto-generated method stub
-    return null;
+    final Optional<Especialidad> especialidad = especialidadRepository.findOne(name);
+
+    if (especialidad.isPresent()) {
+
+      LOG.debug(String.format("Read especialidadName '{}'", name));
+
+      final Optional<Especialidad> especialidadDesencriptado = Utilidades
+          .desencriptarOptionalEspecialidad(especialidad);
+
+      return especialidadDesencriptado.get();
+
+    } else {
+
+      throw new EspecialidadNotFoundException(name);
+
+    }
   }
 
   @Override
   public void saveEspecialidad(Especialidad especialidad) {
-    // TODO Auto-generated method stub
+    especialidadRepository.saveEspecialidad(especialidad);
 
   }
 
   @Override
   public void updateEspecialidad(Especialidad especialidad) {
-    // TODO Auto-generated method stub
+    especialidadRepository.updateEspecialidad(especialidad);
 
   }
 
   @Override
-  public void deleteEspecialidad(Especialidad especialidad) {
-    // TODO Auto-generated method stub
-
+  public void deleteEspecialidad(String nombre) {
+    especialidadRepository.deleteEspecialidad(nombre);
   }
 
 }

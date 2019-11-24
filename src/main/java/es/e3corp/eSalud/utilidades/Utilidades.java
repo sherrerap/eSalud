@@ -1,6 +1,7 @@
 package es.e3corp.eSalud.utilidades;
 
 import es.e3corp.eSalud.model.Cita;
+import es.e3corp.eSalud.model.Especialidad;
 import es.e3corp.eSalud.model.Usuario;
 import java.security.MessageDigest;
 import java.util.ArrayList;
@@ -270,6 +271,49 @@ public class Utilidades {
 
       return null;
     }
+  }
+
+  public static Optional<Especialidad> desencriptarOptionalEspecialidad(final Optional<Especialidad> especialidad) {
+    try {
+
+      especialidad.get().setNombre(desencriptar(especialidad.get().getNombre()));
+      especialidad.get().setHoraInicio(desencriptar(especialidad.get().getHoraInicio()));
+      especialidad.get().setHoraFin(desencriptar(especialidad.get().getHoraFin()));
+      especialidad.get().setTiempoConsulta(desencriptar(especialidad.get().getTiempoConsulta()));
+      return especialidad;
+    } catch (Exception ex) {
+      return null;
+    }
+  }
+
+  public static List<Especialidad> desencriptarListaEspecialidades(Optional<List<Especialidad>> especialidades) {
+    final List<Especialidad> especialidadesDesencriptado = new ArrayList<Especialidad>();
+    System.out.println("Tamaño de la lista normal: " + especialidades.get().size());
+
+    for (int i = 0; i < especialidades.get().size(); i++) {
+      final Especialidad especialidad = especialidades.get().get(i);
+      System.out.println(especialidad.toString());
+      especialidadesDesencriptado.add(desencriptarEspecialidad(especialidad));
+    }
+
+    return especialidadesDesencriptado;
+
+  }
+
+  private static Especialidad desencriptarEspecialidad(Especialidad especialidad) {
+    try {
+
+      especialidad.setNombre(desencriptar(especialidad.getNombre()));
+      especialidad.setHoraInicio(desencriptar(especialidad.getHoraInicio()));
+      especialidad.setHoraFin(desencriptar(especialidad.getHoraFin()));
+      especialidad.setTiempoConsulta(desencriptar(especialidad.getTiempoConsulta()));
+
+      return especialidad;
+    } catch (Exception ex) {
+
+      return null;
+    }
+
   }
 
 }

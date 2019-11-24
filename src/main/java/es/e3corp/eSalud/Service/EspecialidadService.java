@@ -31,6 +31,6 @@ public interface EspecialidadService {
   /**
    * @author e3corp
    */
-  void deleteEspecialidad(Especialidad especialidad);
+  void deleteEspecialidad(String nombre);
 
 }

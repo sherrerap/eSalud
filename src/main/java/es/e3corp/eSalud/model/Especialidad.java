@@ -1,5 +1,7 @@
 package es.e3corp.eSalud.model;
 
+import java.util.UUID;
+
 import javax.validation.constraints.NotNull;
 
 import org.springframework.data.annotation.Id;
@@ -28,9 +30,9 @@ public class Especialidad {
    */
   private String tiempoConsulta;
 
-  public Especialidad(String id, @NotNull String nombre, String horaInicio, String horaFin, String tiempoConsulta) {
+  public Especialidad(@NotNull String nombre, String horaInicio, String horaFin, String tiempoConsulta) {
     super();
-    this.id = id;
+    this.id = UUID.randomUUID().toString();
     this.nombre = nombre;
     this.horaInicio = horaInicio;
     this.horaFin = horaFin;
