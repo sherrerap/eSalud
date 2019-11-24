@@ -1,14 +1,11 @@
 <div class="mat-elevation-z8">
 		<div class="col-100">
-			<mat-form-field>
-				<mat-label>Rol</mat-label>
-				<mat-select placeholder="Rol">
-					<mat-option value="medico">Medico</mat-option>
-					<mat-option value="administrativo">Administrativo</mat-option>
-					<mat-option value="enfermero">Enfermero</mat-option>
-					<mat-option value="celador">Celador</mat-option>
-				</mat-select>
-			</mat-form-field>
+  <mat-form-field>
+    <mat-select class="my-item-text" placeholder="Seleccione un rol">
+      <mat-option (onSelectionChange)="onRolSelectionChanged($event)" *ngFor="let PersonalMedico of PersonalMedicos" [value]="PersonalMedico.value" class="my-item-text">{{ PersonalMedico.display }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 		</div>
   <table mat-table [dataSource]="dataSource">
 

@@ -18,7 +18,13 @@ export interface UsersData {
   contrasena: string;
   localidad: string;
 }
+
+export interface PersonalMedico {
+  value: string;
+  display: string;
+}
 const ELEMENT_DATA: UsersData[] = [];
+
 
 @Component({
   selector: 'app-MostrarPersonalMedico',
@@ -29,11 +35,14 @@ export class MostrarPersonalMedicoComponent{
 displayedColumns: string[] = ['dni','nombre','apellidos','centro', 'email','numTelefono','especialidad'];
    dataSource = new MatTableDataSource<UsersData>();
   data: UsersData[];
-  submitted = false;
-  error: string;
-  success: string;
-  loading = false;
   usuarioForm: FormGroup;
+  selectDay: string ='';
+     countrySelected: string;
+selectedCountry: string; 
+   PersonalMedicos: PersonalMedico[] = [
+      {value: 'medicos', display: 'Médico'},
+      {value: 'pacientes', display: 'Pacientes'},
+   ];
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   constructor(
@@ -46,12 +55,17 @@ displayedColumns: string[] = ['dni','nombre','apellidos','centro', 'email','numT
   }
  
    ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.usuariosService.getUsersByRole('medicos')
+
+  }
+onRolSelectionChanged(changeEvent) {
+    if (changeEvent && changeEvent.isUserInput && this.selectedCountry != changeEvent.source.value) {
+      console.log(changeEvent.source.value)
+      this.dataSource.paginator = this.paginator;
+    this.usuariosService.getUsersByRole(changeEvent.source.value)
       .subscribe((data: UsersData[]) => {
         this.data = data;
         this.dataSource = new MatTableDataSource(data);
       });
-
+    }
   }
 }
