@@ -21,6 +21,7 @@ import { DialogBoxModificarCita} from './components/dialog-box-modificarCita/dia
 import { AlertComponent } from './components/alert/alert.component';
 import { RegistrarCitaComponent } from './components/paciente-RegistrarCita/RegistrarCita.component';
 import { MostrarEspecialidadesComponent} from './components/admin-MostrarEspecialidades/MostrarEspecialidades.component';
+import { DialogBoxModificarEspecialidadComponent } from './dialog-box-modificar-especialidad/dialog-box-modificar-especialidad.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,8 @@ import { MostrarEspecialidadesComponent} from './components/admin-MostrarEspecia
 	DialogBoxModificarCita,
     AlertComponent,
     RegistrarCitaComponent,
-    MostrarEspecialidadesComponent
+    MostrarEspecialidadesComponent,
+    DialogBoxModificarEspecialidadComponent
 
   ],
   imports: [
