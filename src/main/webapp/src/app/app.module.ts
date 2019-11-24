@@ -24,8 +24,8 @@ import { RegistrarCitaComponent } from './components/paciente-RegistrarCita/Regi
 import { MostrarPersonalMedicoComponent } from './components/admin-MostrarPersonalMedico/MostrarPersonalMedico.component';
 import { SidenavMedicoComponent } from './components/sidenavMedico/sidenavMedico.component';
 import { MostrarCitasComponent } from './components/medico-MostrarCitas/MostrarCitas.component';
-
-
+import { MostrarEspecialidadesComponent} from './components/admin-MostrarEspecialidades/MostrarEspecialidades.component';
+import { DialogBoxModificarEspecialidadComponent } from './dialog-box-modificar-especialidad/dialog-box-modificar-especialidad.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +43,10 @@ import { MostrarCitasComponent } from './components/medico-MostrarCitas/MostrarC
     RegistrarCitaComponent,
     MostrarPersonalMedicoComponent,
     SidenavMedicoComponent,
-    MostrarCitasComponent
+    MostrarCitasComponent,
+    MostrarEspecialidadesComponent,
+    DialogBoxModificarEspecialidadComponent
+
   ],
   imports: [
     BrowserModule,
@@ -68,7 +71,7 @@ import { MostrarCitasComponent } from './components/medico-MostrarCitas/MostrarC
   entryComponents: [
     DialogBoxPacienteComponent,
     DialogBoxMedicoComponent,
-	DialogBoxModificarCita,
+	  DialogBoxModificarCita,
 
   ],
   providers: [
