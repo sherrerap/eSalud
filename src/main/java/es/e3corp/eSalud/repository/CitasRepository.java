@@ -2,6 +2,7 @@ package es.e3corp.eSalud.repository;
 
 import es.e3corp.eSalud.model.Cita;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
 
@@ -60,7 +61,8 @@ public interface CitasRepository {
   /**
    * Obtener un medico en función de su id.
    * @author e3corp
+ * @throws ParseException 
    */
-  List<Cita> findMedico(String id);
+  List<Cita> findMedico(String id) throws ParseException;
 
 }

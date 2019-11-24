@@ -3,6 +3,8 @@ package es.e3corp.eSalud.Service;
 import es.e3corp.eSalud.exception.CitaNotFoundException;
 import es.e3corp.eSalud.model.Cita;
 import es.e3corp.eSalud.repository.CitasRepository;
+
+import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
 import org.apache.commons.logging.Log;
@@ -119,7 +121,7 @@ public class CitaServiceImpl implements CitaService {
   }
 
   @Override
-  public List<Cita> getCitasByMedico(String id) {
+  public List<Cita> getCitasByMedico(String id) throws ParseException {
 
     List<Cita> citas = citaRepository.findMedico(id);
     return citas;

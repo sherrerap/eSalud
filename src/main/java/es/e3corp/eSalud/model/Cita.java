@@ -68,7 +68,11 @@ public class Cita {
     this.hora = Utilidades.encriptar(hora);
   }
 
-  public String getId() {
+  public Cita() {
+	// TODO Auto-generated constructor stub
+}
+
+public String getId() {
     return id;
   }
 

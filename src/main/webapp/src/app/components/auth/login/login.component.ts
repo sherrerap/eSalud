@@ -69,9 +69,9 @@ export class LoginComponent implements OnInit {
                             this.router.navigate([this.returnUrl]);
                             break;
                         }
-                        case "médico": {
-                            console.log("[CLIENTE] La vista médico aún no ha sido implementada. Redirigiendo a citas.")
-                            this.router.navigate([this.returnUrl]);
+                        case "medico": {
+                            //console.log("[CLIENTE] La vista médico aún no ha sido implementada. Redirigiendo a citas.")
+                            this.router.navigate(['/medico']);
                             break;
                         }
                         case "admin": {

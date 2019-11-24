@@ -22,6 +22,9 @@ import { DialogBoxModificarCita} from './components/dialog-box-modificarCita/dia
 import { AlertComponent } from './components/alert/alert.component';
 import { RegistrarCitaComponent } from './components/paciente-RegistrarCita/RegistrarCita.component';
 import { MostrarPersonalMedicoComponent } from './components/admin-MostrarPersonalMedico/MostrarPersonalMedico.component';
+import { SidenavMedicoComponent } from './components/sidenavMedico/sidenavMedico.component';
+import { MostrarCitasComponent } from './components/medico-MostrarCitas/MostrarCitas.component';
+
 
 @NgModule({
   declarations: [
@@ -35,10 +38,12 @@ import { MostrarPersonalMedicoComponent } from './components/admin-MostrarPerson
     RegistrarMedicoComponent,
     DialogBoxPacienteComponent,
     DialogBoxMedicoComponent,
-	DialogBoxModificarCita,
+	  DialogBoxModificarCita,
     AlertComponent,
     RegistrarCitaComponent,
-    MostrarPersonalMedicoComponent
+    MostrarPersonalMedicoComponent,
+    SidenavMedicoComponent,
+    MostrarCitasComponent
   ],
   imports: [
     BrowserModule,
