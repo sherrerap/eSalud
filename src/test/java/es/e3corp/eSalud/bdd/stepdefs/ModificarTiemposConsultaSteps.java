@@ -48,7 +48,9 @@ public class ModificarTiemposConsultaSteps {
     // e.setEspecialidad(a.get(0).get("especialidad"));
     // e.setTiempo(a.get(0).get("tiempo"));
     driver.findElement(By.xpath("//input[@placeholder='Especialidad']")).sendKeys(a.get(0).get("especialidad")); // ?
-    driver.findElement(By.xpath("//input[@placeholder='Tiempo']")).sendKeys(a.get(0).get("tiempo"));
+    driver.findElement(By.xpath("//input[@placeholder='Tiempo']")).sendKeys(a.get(0).get("tiempoConsulta"));
+    driver.findElement(By.xpath("//input[@placeholder='Hora inicio']")).sendKeys(a.get(0).get("horaInicio"));
+    driver.findElement(By.xpath("//input[@placeholder='Hora fin']")).sendKeys(a.get(0).get("horaFin"));
   }
 
   @Then("se mostrarán sus características y se podrá editar su tiempo de consulta {string}")
