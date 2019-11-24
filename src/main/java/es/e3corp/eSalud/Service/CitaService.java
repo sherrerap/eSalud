@@ -76,4 +76,6 @@ public interface CitaService {
    */
 
   List<Cita> getCitasByMedico(String id) throws ParseException;
+  
+List<Cita> getCitasDisponibles(String idmedico, String dia);
 }

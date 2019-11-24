@@ -3,6 +3,7 @@ package es.e3corp.eSalud.repository;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
 
 import es.e3corp.eSalud.model.Cita;
+import es.e3corp.eSalud.model.Especialidad;
 import es.e3corp.eSalud.model.Usuario;
 import es.e3corp.eSalud.utilidades.Utilidades;
 
@@ -106,10 +108,9 @@ public class CitasRepositoryImpl implements CitasRepository {
   @Override
   public List<Cita> findPaciente(final String dni) {
     final String pacienteEncriptado = Utilidades.encriptar(dni);
-    System.out.println("El dni encriptado es: " + pacienteEncriptado);
     final List<Cita> citas = this.mongoOperations.find(new Query(Criteria.where("paciente").is(pacienteEncriptado)),
         Cita.class);
-
+ 
     final List<Cita> citasDesencriptadas = Utilidades.desencriptarListaCitas(citas);
     return citasDesencriptadas;
   }
@@ -119,13 +120,17 @@ public class CitasRepositoryImpl implements CitasRepository {
     final String medicoEncriptado = Utilidades.encriptar(id);
     final List<Cita> citas = this.mongoOperations.find(new Query(Criteria.where("medico").is(medicoEncriptado)),
         Cita.class);
+    
+    System.out.println("TAMAÑO DE CITAS ENCONTRADAS " +citas.size());
+    System.out.println("PACIENTE CON LA CITA ENCONTRADA " +citas.get(citas.size()-1).getPaciente());
 
     final List<Cita> citasDesencriptadas = Utilidades.desencriptarListaCitas(citas);
     final List<Cita> citasNombrePaciente = new ArrayList<>();
     for(Cita cita: citasDesencriptadas) {
-    	Usuario u = this.mongoOperations.findOne(new Query(Criteria.where("id").is(cita.getPaciente())), Usuario.class);
-    	cita.setPaciente(u.getNombre() +" " + u.getApellidos());
-    	Date fecha = new SimpleDateFormat("dd/MM/yyyy").parse(cita.getFecha());
+    	Usuario u = this.mongoOperations.findOne(new Query(Criteria.where("dni").is(Utilidades.encriptar(cita.getPaciente()))), Usuario.class);
+    	Usuario usuarioDesencriptado = Utilidades.desencriptarUsuario(u);
+    	cita.setPaciente(usuarioDesencriptado.getNombre() +" " + usuarioDesencriptado.getApellidos());
+    	Date fecha = new SimpleDateFormat("yyyy-MM-dd").parse(cita.getFecha());
     	
     	if(fecha.after(new java.util.Date()) || fecha.equals(new java.util.Date())) {
         	citasNombrePaciente.add(cita);
@@ -134,5 +139,39 @@ public class CitasRepositoryImpl implements CitasRepository {
     
     return citasNombrePaciente;
   }
+
+@Override
+public List<Cita> getCitasDisponibles(String idmedico, String dia) {
+	final Usuario usuario = this.mongoOperations.findOne(new Query(Criteria.where("dni").is(Utilidades.encriptar(idmedico))), Usuario.class);
+	System.out.println("USUARIO ENCRIPTADO: " +usuario);
+	System.out.println("USUARIO DESENCRIPTADO: " +Utilidades.desencriptarUsuario(usuario));
+
+	final Especialidad especialidad = this.mongoOperations.findOne(new Query(Criteria.where("especialidad").is(usuario.getEspecialidad())), Especialidad.class);
+	System.out.println("ESPECIALIDAD ENCRIPTADA: " +especialidad);
+	final List<Cita> citas = this.mongoOperations.find(new Query(Criteria.where("fecha").is(dia)),
+            Cita.class);
+    final Especialidad especialidadDesencriptadas = Utilidades.desencriptarEspecialidad(especialidad);
+    final List<Cita> citasDisponibles = new ArrayList<>();
+    final List<Cita> citasTotalesDia = new ArrayList<>();
+
+    LocalTime tiempoConsultaTime = LocalTime.parse(especialidadDesencriptadas.getTiempoConsulta());
+    long tiempoConsultaMinutes = tiempoConsultaTime.getMinute();
+    LocalTime horaInicio =  LocalTime.parse(especialidadDesencriptadas.getHoraInicio());
+    LocalTime horaFin =  LocalTime.parse(especialidadDesencriptadas.getHoraFin());
+    
+    while(!horaInicio.equals(horaFin) || horaInicio.isAfter(horaFin)) {
+    	citasTotalesDia.add(new Cita("", "", "", horaInicio.toString(), "", ""));
+    	horaInicio.plusMinutes(tiempoConsultaMinutes);
+    }   
+	for(Cita citaRealizada : citas) {
+		for(Cita citaPosible : citasTotalesDia) {
+			if(!citaRealizada.getHora().equals(citaPosible.getHora())) {
+				citasDisponibles.add(citaPosible);
+			}
+		}
+	}
+	
+	return citasDisponibles;
+}
 
 }

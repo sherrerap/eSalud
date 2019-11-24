@@ -795,8 +795,8 @@
                 CitasService.prototype.getCitasPaciente = function (dni) {
                     return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl + "/citas/paciente/" + dni);
                 };
-                CitasService.prototype.getCitasMedico = function (id) {
-                    return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl + "/citas/medico/" + id);
+                CitasService.prototype.getCitasMedico = function (dni) {
+                    return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl + "/citas/medico/" + dni);
                 };
                 CitasService.prototype.register = function (cita) {
                     return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl + "/citas", cita);
@@ -2166,7 +2166,8 @@
                 MostrarCitasComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     this.dataSource.paginator = this.paginator;
-                    this.citasService.getCitasMedico(this.authService.currentUserValue.id)
+                    console.log(this.authService.currentUserValue.dni);
+                    this.citasService.getCitasMedico(this.authService.currentUserValue.dni)
                         .subscribe(function (data) {
                         _this.data = data;
                         _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](data);
@@ -2529,7 +2530,7 @@
           \***************************/
         /*! no static exports found */
         /***/ (function (module, exports, __webpack_require__) {
-            module.exports = __webpack_require__(/*! C:\Users\sergi\OneDrive\Documentos\GitHub\eSalud\src\main\webapp\src\main.ts */ "./src/main.ts");
+            module.exports = __webpack_require__(/*! C:\Users\luisj\Documents\GitHub\eSalud\src\main\webapp\src\main.ts */ "./src/main.ts");
             /***/ 
         })
     }, [[0, "runtime", "vendor"]]]);

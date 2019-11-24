@@ -229,6 +229,13 @@ public class CitaController {
     citasService.deleteCita(citaId);
     return ResponseEntity.ok().build();
   }
+  
+  @RequestMapping(value = "/disponibilidad", method = RequestMethod.GET)
+  public ResponseEntity<List<Cita>> disponibilidadCitasEnUnDia(@RequestParam ("idmedico") String idmedico, @RequestParam("dia") String dia){
+	List<Cita> citas = this.citasService.getCitasDisponibles(idmedico, dia);  
+	return null;
+  }
+  
 
   /**
    * Registra o guarda una cita en la base de datos.
@@ -317,5 +324,6 @@ public class CitaController {
       return ResponseEntity.badRequest().build();
     }
   }
+ 
 
 }

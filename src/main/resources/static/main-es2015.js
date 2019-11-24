@@ -804,8 +804,8 @@ let CitasService = class CitasService {
     getCitasPaciente(dni) {
         return this.http.get(`${_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl}/citas/paciente/${dni}`);
     }
-    getCitasMedico(id) {
-        return this.http.get(`${_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl}/citas/medico/${id}`);
+    getCitasMedico(dni) {
+        return this.http.get(`${_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl}/citas/medico/${dni}`);
     }
     register(cita) {
         return this.http.post(`${_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl}/citas`, cita);
@@ -2334,7 +2334,8 @@ let MostrarCitasComponent = class MostrarCitasComponent {
     }
     ngOnInit() {
         this.dataSource.paginator = this.paginator;
-        this.citasService.getCitasMedico(this.authService.currentUserValue.id)
+        console.log(this.authService.currentUserValue.dni);
+        this.citasService.getCitasMedico(this.authService.currentUserValue.dni)
             .subscribe((data) => {
             this.data = data;
             this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](data);
@@ -2759,7 +2760,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_3__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\sergi\OneDrive\Documentos\GitHub\eSalud\src\main\webapp\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\luisj\Documents\GitHub\eSalud\src\main\webapp\src\main.ts */"./src/main.ts");
 
 
 /***/ })

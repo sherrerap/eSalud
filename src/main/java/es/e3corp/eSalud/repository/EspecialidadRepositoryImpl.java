@@ -43,12 +43,9 @@ public class EspecialidadRepositoryImpl implements EspecialidadRepository {
    * @author e3corp
    */
   @Override
-  public Optional<List<Especialidad>> findAll() {
+  public List<Especialidad> findAll() {
     List<Especialidad> especialidades = this.mongoOperations.find(new Query(), Especialidad.class);
-
-    Optional<List<Especialidad>> optionalEspecialidad = Optional.ofNullable(especialidades);
-
-    return optionalEspecialidad;
+    return especialidades;
   }
 
   /**
