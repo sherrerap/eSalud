@@ -103,10 +103,11 @@ public class CitaController {
 
   @RequestMapping(value = "medico/{id}", method = RequestMethod.GET)
   /**
-  * @author e3corp
-  */
-  public ResponseEntity<List<Cita>> getListadoCitasByMedico(@PathVariable("id") final String idmedico) throws ParseException {
-	final List<Cita> citas = citasService.getCitasByMedico(idmedico);
+   * @author e3corp
+   */
+  public ResponseEntity<List<Cita>> getListadoCitasByMedico(@PathVariable("id") final String idmedico)
+      throws ParseException {
+    final List<Cita> citas = citasService.getCitasByMedico(idmedico);
     return ResponseEntity.ok(citas);
   }
 
@@ -252,12 +253,7 @@ public class CitaController {
     Cita cita1 = citasService.findCitaByPacienteMedicoFechaHora(pacienteEncriptado, medicoEncriptado, fechaEncriptado,
         horaEncriptado);
     try {
-      final Usuario usuarioPaciente = usuarioService.findByUserDni(pacienteEncriptado);
       final Usuario usuarioMedico = usuarioService.findByUserDni(medicoEncriptado);
-      if (!usuarioPaciente.getRol().equals("paciente")) {
-        LOG.error("[SERVER] El usuario paciente no es válido.");
-        return ResponseEntity.badRequest().build();
-      }
       if (!usuarioMedico.getRol().equals("medico")) {
         LOG.error("[SERVER] El usuario medico no es válido.");
         return ResponseEntity.badRequest().build();
@@ -275,12 +271,7 @@ public class CitaController {
       String centroEncriptado = null;
 
       try {
-        Usuario usuarioPaciente = usuarioService.findByUserDni(pacienteEncriptado);
         Usuario usuarioMedico = usuarioService.findByUserDni(medicoEncriptado);
-        if (!usuarioPaciente.getRol().equals("paciente")) {
-          LOG.error("[SERVER] El usuario paciente no es válido.");
-          return ResponseEntity.badRequest().build();
-        }
         if (!usuarioMedico.getRol().equals("medico")) {
           LOG.error("[SERVER] El usuario medico no es válido.");
           return ResponseEntity.badRequest().build();
