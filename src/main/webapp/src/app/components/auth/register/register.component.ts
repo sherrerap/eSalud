@@ -61,7 +61,7 @@ export class RegisterComponent implements OnInit {
             return;
         }
 
-        if ((this.f.password.value.length < 5) || (goodPass(this.f.password) == false)) {
+        if ((this.f.password.value.length < 5) || (checkPass(this.f.password) == false)) {
             this.alertService.error("Formato de contraseña incorrecta. La contraseña debe contener al menos 6 carácteres, mayúsuculas y minúsculas, números y algún símbolo.", false);
             return;
         }
@@ -123,13 +123,10 @@ export class RegisterComponent implements OnInit {
             }
         }
 
-        function goodPass(inputText) {
-            var minus = /^[a-z]+$/;
-            var mayus = /^[A-Z]+$/;
-            var symbols = /^[!,@,#,$,%,^,&,*,?,_,~]+$/;
-            var numbers = /^[0-9]+$/;
+        function checkPass(inputText) {
+            var all = /^[A-Za-z0-9,!,@,#,$,%,^,&,*,?,_,~]+$/;
 
-            if (inputText.value.contains(minus) && inputText.value.contains(mayus) && inputText.value.contains(symbols) && inputText.value.contains(numbers)) {
+            if (inputText.value.match(all)) {
                 return true;
             } else {
                 return false;

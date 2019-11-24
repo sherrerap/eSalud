@@ -320,7 +320,7 @@ let RegisterComponent = class RegisterComponent {
             this.alertService.error("Formato de DNI incorrecto. El DNI debe de tener 8 números y sin letra", false);
             return;
         }
-        if ((this.f.password.value.length < 5) || (goodPass(this.f.password) == false)) {
+        if ((this.f.password.value.length < 5) || (checkPass(this.f.password) == false)) {
             this.alertService.error("Formato de contraseña incorrecta. La contraseña debe contener al menos 6 carácteres, mayúsuculas y minúsculas, números y algún símbolo.", false);
             return;
         }
@@ -372,12 +372,9 @@ let RegisterComponent = class RegisterComponent {
                 return false;
             }
         }
-        function goodPass(inputText) {
-            var minus = /^[a-z]+$/;
-            var mayus = /^[A-Z]+$/;
-            var symbols = /^[!,@,#,$,%,^,&,*,?,_,~]+$/;
-            var numbers = /^[0-9]+$/;
-            if (inputText.value.contains(minus) && inputText.value.contains(mayus) && inputText.value.contains(symbols) && inputText.value.contains(numbers)) {
+        function checkPass(inputText) {
+            var all = /^[A-Za-z0-9,!,@,#,$,%,^,&,*,?,_,~]+$/;
+            if (inputText.value.match(all)) {
                 return true;
             }
             else {
