@@ -64,6 +64,17 @@
             /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"mat-elevation-z8\">\r\n  <table mat-table [dataSource]=\"dataSource\">\r\n\r\n\r\n    <!-- Weight Column -->\r\n    <ng-container matColumnDef=\"nombre\">\r\n      <th mat-header-cell *matHeaderCellDef> Nombre </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.nombre}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Symbol Column -->\r\n    <ng-container matColumnDef=\"apellidos\">\r\n      <th mat-header-cell *matHeaderCellDef> Apellidos </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.apellidos}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Symbol Column -->\r\n    <ng-container matColumnDef=\"numTelefono\">\r\n      <th mat-header-cell *matHeaderCellDef> Telefono </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.numTelefono}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Symbol Column -->\r\n    <ng-container matColumnDef=\"localidad\">\r\n      <th mat-header-cell *matHeaderCellDef> Localidad </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.localidad}} </td>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"centro\">\r\n      <th mat-header-cell *matHeaderCellDef> Centro </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.centro}} </td>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"email\">\r\n      <th mat-header-cell *matHeaderCellDef> Email </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.email}} </td>\r\n    </ng-container>\r\n\r\n\t<ng-container matColumnDef=\"rol\">\r\n      <th mat-header-cell *matHeaderCellDef> Rol </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.rol}} </td>\r\n    </ng-container>\r\n\t\t<ng-container matColumnDef=\"action\">\r\n\t\t\t<th mat-header-cell *matHeaderCellDef> Action </th>\r\n\t\t\t<td mat-cell *matCellDef=\"let element\" class=\"action-link\">\r\n\t\t\t\t<button mat-raised-button (click)=\"openDialog('Update',element)\" mat-flat-button color=\"green\"\r\n\t\t\t\t\tclass=\"button1\">Editar</button>\r\n\t\t\t\t<button mat-button (click)=\"openDialog('Delete',element)\" mat-flat-button color=\"warn\"\r\n\t\t\t\t\tclass=\"button2\">Eliminar</button>\r\n\r\n\t\t\t</td>\r\n\t\t</ng-container>\r\n\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table> <mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons [pageSize]=\"10\"></mat-paginator>\r\n  \r\n</div>");
             /***/ 
         }),
+        /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/admin-MostrarEspecialidades/MostrarEspecialidades.component.html": 
+        /*!***********************************************************************************************************************************!*\
+          !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/admin-MostrarEspecialidades/MostrarEspecialidades.component.html ***!
+          \***********************************************************************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"mat-elevation-z8\">\r\n  <table mat-table [dataSource]=\"dataSource\">\r\n\r\n    <!-- Weight Column -->\r\n    <ng-container matColumnDef=\"Especialidad\">\r\n      <th mat-header-cell *matHeaderCellDef> Especialidad </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.Especialidad}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Symbol Column -->\r\n    <ng-container matColumnDef=\"TiempoConsulta\">\r\n      <th mat-header-cell *matHeaderCellDef> Tiempo Consulta </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.TiempoConsulta}} </td>\r\n    </ng-container>\r\n\r\n    \r\n   \r\n\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table> <mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons [pageSize]=\"10\"></mat-paginator>\r\n\r\n</div>");
+            /***/ 
+        }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/admin-MostrarMedico/MostrarMedico.component.html": 
         /*!*******************************************************************************************************************!*\
           !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/admin-MostrarMedico/MostrarMedico.component.html ***!
@@ -821,7 +832,7 @@
         /*!************************************!*\
           !*** ./src/app/_services/index.ts ***!
           \************************************/
-        /*! exports provided: AlertService, AuthService, UserService, CitasService */
+        /*! exports provided: AuthService, UserService, CitasService, AlertService */
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
@@ -902,6 +913,7 @@
             /* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./_helpers */ "./src/app/_helpers/index.ts");
             /* harmony import */ var _components_sidenavMedico_sidenavMedico_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/sidenavMedico/sidenavMedico.component */ "./src/app/components/sidenavMedico/sidenavMedico.component.ts");
             /* harmony import */ var _components_medico_MostrarCitas_MostrarCitas_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/medico-MostrarCitas/MostrarCitas.component */ "./src/app/components/medico-MostrarCitas/MostrarCitas.component.ts");
+            /* harmony import */ var _components_admin_MostrarEspecialidades_MostrarEspecialidades_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/admin-MostrarEspecialidades/MostrarEspecialidades.component */ "./src/app/components/admin-MostrarEspecialidades/MostrarEspecialidades.component.ts");
             var routes = [
                 { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
                 { path: 'auth', loadChildren: './components/auth/auth.module#AuthModule' },
@@ -938,6 +950,7 @@
                 { path: 'admin/ModificarMedico/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
                 { path: 'admin/ModificarMedico/RegistrarMedico', redirectTo: 'admin/RegistrarMedico' },
                 { path: 'admin/ModificarMedico/MostrarPersonalMedico', redirectTo: 'admin/MostrarPersonalMedico' },
+                { path: 'admin/ModificarMedico/MostrarEspecialidades', redirectTo: 'admin/MostrarEspecialidades' },
                 /********************************************************************************** */
                 {
                     path: 'admin/ModificarPaciente', component: _components_sidenavAdmin_sidenavAdmin_component__WEBPACK_IMPORTED_MODULE_4__["SidenavAdminComponent"], canActivate: [_helpers__WEBPACK_IMPORTED_MODULE_12__["AuthGuard"]],
@@ -950,6 +963,7 @@
                 { path: 'admin/ModificarPaciente/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
                 { path: 'admin/ModificarPaciente/RegistrarMedico', redirectTo: 'admin/RegistrarMedico' },
                 { path: 'admin/ModificarPaciente/MostrarPersonalMedico', redirectTo: 'admin/MostrarPersonalMedico' },
+                { path: 'admin/ModificarPaciente/MostrarEspecialidades', redirectTo: 'admin/MostrarEspecialidades' },
                 /********************************************************************************** */
                 {
                     path: 'admin/MostrarMedico', component: _components_sidenavAdmin_sidenavAdmin_component__WEBPACK_IMPORTED_MODULE_4__["SidenavAdminComponent"], canActivate: [_helpers__WEBPACK_IMPORTED_MODULE_12__["AuthGuard"]],
@@ -962,6 +976,7 @@
                 { path: 'admin/MostrarMedico/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
                 { path: 'admin/MostrarMedico/RegistrarMedico', redirectTo: 'admin/RegistrarMedico' },
                 { path: 'admin/MostrarMedico/MostrarPersonalMedico', redirectTo: 'admin/MostrarPersonalMedico' },
+                { path: 'admin/MostrarMedico/MostrarEspecialidades', redirectTo: 'admin/MostrarEspecialidades' },
                 /********************************************************************************** */
                 {
                     path: 'admin/RegistrarMedico', component: _components_sidenavAdmin_sidenavAdmin_component__WEBPACK_IMPORTED_MODULE_4__["SidenavAdminComponent"], canActivate: [_helpers__WEBPACK_IMPORTED_MODULE_12__["AuthGuard"]],
@@ -974,6 +989,18 @@
                 { path: 'admin/RegistrarMedico/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
                 { path: 'admin/RegistrarMedico/RegistrarMedico', redirectTo: 'admin/RegistrarMedico' },
                 { path: 'admin/RegistrarMedico/MostrarPersonalMedico', redirectTo: 'admin/MostrarPersonalMedico' },
+                { path: 'admin/RegistrarMedico/MostrarEspecialidades', redirectTo: 'admin/MostrarEspecialidades' },
+                /********************************************************************************** */
+                {
+                    path: 'admin/MostrarEspecialidades', component: _components_sidenavAdmin_sidenavAdmin_component__WEBPACK_IMPORTED_MODULE_4__["SidenavAdminComponent"], canActivate: [_helpers__WEBPACK_IMPORTED_MODULE_12__["AuthGuard"]],
+                    children: [
+                        { path: '', component: _components_admin_MostrarEspecialidades_MostrarEspecialidades_component__WEBPACK_IMPORTED_MODULE_15__["MostrarEspecialidadesComponent"] }
+                    ]
+                },
+                { path: 'admin/MostrarEspecialidades/MostrarMedico', redirectTo: 'admin/MostrarMedico' },
+                { path: 'admin/MostrarEspecialidades/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
+                { path: 'admin/MostrarEspecialidades/RegistrarMedico', redirectTo: 'admin/RegistrarMedico' },
+                { path: 'admin/MostrarEspecialidades/MostrarEspecialidades', redirectTo: 'admin/MostrarEspecialidades' },
                 /********************************************************************************** */
                 {
                     path: 'admin/MostrarPersonalMedico', component: _components_sidenavAdmin_sidenavAdmin_component__WEBPACK_IMPORTED_MODULE_4__["SidenavAdminComponent"], canActivate: [_helpers__WEBPACK_IMPORTED_MODULE_12__["AuthGuard"]],
@@ -1099,6 +1126,7 @@
             /* harmony import */ var _components_admin_MostrarPersonalMedico_MostrarPersonalMedico_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/admin-MostrarPersonalMedico/MostrarPersonalMedico.component */ "./src/app/components/admin-MostrarPersonalMedico/MostrarPersonalMedico.component.ts");
             /* harmony import */ var _components_sidenavMedico_sidenavMedico_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/sidenavMedico/sidenavMedico.component */ "./src/app/components/sidenavMedico/sidenavMedico.component.ts");
             /* harmony import */ var _components_medico_MostrarCitas_MostrarCitas_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/medico-MostrarCitas/MostrarCitas.component */ "./src/app/components/medico-MostrarCitas/MostrarCitas.component.ts");
+            /* harmony import */ var _components_admin_MostrarEspecialidades_MostrarEspecialidades_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/admin-MostrarEspecialidades/MostrarEspecialidades.component */ "./src/app/components/admin-MostrarEspecialidades/MostrarEspecialidades.component.ts");
             var AppModule = /** @class */ (function () {
                 function AppModule() {
                 }
@@ -1122,7 +1150,8 @@
                         _components_paciente_RegistrarCita_RegistrarCita_component__WEBPACK_IMPORTED_MODULE_23__["RegistrarCitaComponent"],
                         _components_admin_MostrarPersonalMedico_MostrarPersonalMedico_component__WEBPACK_IMPORTED_MODULE_24__["MostrarPersonalMedicoComponent"],
                         _components_sidenavMedico_sidenavMedico_component__WEBPACK_IMPORTED_MODULE_25__["SidenavMedicoComponent"],
-                        _components_medico_MostrarCitas_MostrarCitas_component__WEBPACK_IMPORTED_MODULE_26__["MostrarCitasComponent"]
+                        _components_medico_MostrarCitas_MostrarCitas_component__WEBPACK_IMPORTED_MODULE_26__["MostrarCitasComponent"],
+                        _components_admin_MostrarEspecialidades_MostrarEspecialidades_component__WEBPACK_IMPORTED_MODULE_27__["MostrarEspecialidadesComponent"],
                     ],
                     imports: [
                         _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -1486,6 +1515,62 @@
                     styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./ModificarPaciente.component.css */ "./src/app/components/admin-ModificarPaciente/ModificarPaciente.component.css")).default]
                 })
             ], ModificarPacienteComponent);
+            /***/ 
+        }),
+        /***/ "./src/app/components/admin-MostrarEspecialidades/MostrarEspecialidades.component.css": 
+        /*!********************************************************************************************!*\
+          !*** ./src/app/components/admin-MostrarEspecialidades/MostrarEspecialidades.component.css ***!
+          \********************************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("table{\r\n\twidth:100%;\r\n}\r\nmat-paginator{\r\n\twidth:100%;\r\n\tbackground-color: rgb(218, 241, 230);\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9hZG1pbi1Nb3N0cmFyRXNwZWNpYWxpZGFkZXMvTW9zdHJhckVzcGVjaWFsaWRhZGVzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Q0FDQyxVQUFVO0FBQ1g7QUFDQTtDQUNDLFVBQVU7Q0FDVixvQ0FBb0M7QUFDckMiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2FkbWluLU1vc3RyYXJFc3BlY2lhbGlkYWRlcy9Nb3N0cmFyRXNwZWNpYWxpZGFkZXMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbInRhYmxle1xyXG5cdHdpZHRoOjEwMCU7XHJcbn1cclxubWF0LXBhZ2luYXRvcntcclxuXHR3aWR0aDoxMDAlO1xyXG5cdGJhY2tncm91bmQtY29sb3I6IHJnYigyMTgsIDI0MSwgMjMwKTtcclxufVxyXG4iXX0= */");
+            /***/ 
+        }),
+        /***/ "./src/app/components/admin-MostrarEspecialidades/MostrarEspecialidades.component.ts": 
+        /*!*******************************************************************************************!*\
+          !*** ./src/app/components/admin-MostrarEspecialidades/MostrarEspecialidades.component.ts ***!
+          \*******************************************************************************************/
+        /*! exports provided: MostrarEspecialidadesComponent */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MostrarEspecialidadesComponent", function () { return MostrarEspecialidadesComponent; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
+            /* harmony import */ var src_app_services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/_services */ "./src/app/_services/index.ts");
+            /* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/_services/auth.service */ "./src/app/_services/auth.service.ts");
+            /* harmony import */ var src_app_services_user_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/_services/user.service */ "./src/app/_services/user.service.ts");
+            var ELEMENT_DATA = [
+                { Especialidad: 'Traumatología', TiempoConsulta: '15' }
+            ];
+            var MostrarEspecialidadesComponent = /** @class */ (function () {
+                function MostrarEspecialidadesComponent(citasService, authService, usuariosService) {
+                    this.citasService = citasService;
+                    this.authService = authService;
+                    this.usuariosService = usuariosService;
+                    this.displayedColumns = ['Especialidad', 'TiempoConsulta'];
+                    this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](ELEMENT_DATA);
+                }
+                return MostrarEspecialidadesComponent;
+            }());
+            MostrarEspecialidadesComponent.ctorParameters = function () { return [
+                { type: src_app_services__WEBPACK_IMPORTED_MODULE_3__["CitasService"] },
+                { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"] },
+                { type: src_app_services_user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"] }
+            ]; };
+            tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginator"], { static: true })
+            ], MostrarEspecialidadesComponent.prototype, "paginator", void 0);
+            MostrarEspecialidadesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+                    selector: 'app-MostrarEspecialidades',
+                    template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./MostrarEspecialidades.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/admin-MostrarEspecialidades/MostrarEspecialidades.component.html")).default,
+                    styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./MostrarEspecialidades.component.css */ "./src/app/components/admin-MostrarEspecialidades/MostrarEspecialidades.component.css")).default]
+                })
+            ], MostrarEspecialidadesComponent);
             /***/ 
         }),
         /***/ "./src/app/components/admin-MostrarMedico/MostrarMedico.component.css": 
@@ -2369,6 +2454,8 @@
                         { name: "Lista de pacientes", route: "ModificarPaciente", icon: "edit" },
                         { name: "Registrar médicos", route: "RegistrarMedico", icon: "autorenew" },
                         { name: "Filtrar personal médico", route: "MostrarPersonalMedico", icon: "edit" },
+                        { name: "Gestión de especialidades", route: "MostrarEspecialidades", icon: "edit" },
+                        /*{ name: "Modificar médicos", route: "ModificarMedico", icon: "edit" },*/
                         { name: "Salir", route: "/", icon: "logout" }
                     ];
                     this.fillerContent = Array.from({ length: 50 }, function () { return "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco\n       laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in\n       voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat\n       cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."; });
@@ -2529,7 +2616,7 @@
           \***************************/
         /*! no static exports found */
         /***/ (function (module, exports, __webpack_require__) {
-            module.exports = __webpack_require__(/*! C:\Users\sergi\OneDrive\Documentos\GitHub\eSalud\src\main\webapp\src\main.ts */ "./src/main.ts");
+            module.exports = __webpack_require__(/*! C:\Users\Hcesp\Documents\GitHub\eSalud\src\main\webapp\src\main.ts */ "./src/main.ts");
             /***/ 
         })
     }, [[0, "runtime", "vendor"]]]);

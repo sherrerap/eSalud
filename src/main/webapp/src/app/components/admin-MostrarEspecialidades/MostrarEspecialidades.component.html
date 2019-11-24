@@ -1,4 +1,4 @@
-<div class="example-container mat-elevation-z8">
+<div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource">
 
     <!-- Weight Column -->
@@ -8,10 +8,33 @@
     </ng-container>
 
     <!-- Symbol Column -->
+    <ng-container matColumnDef="HoraInicio">
+      <th mat-header-cell *matHeaderCellDef> Hora de inicio </th>
+      <td mat-cell *matCellDef="let element"> {{element.HoraInicio}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="HoraFin">
+      <th mat-header-cell *matHeaderCellDef> Hora de fin </th>
+      <td mat-cell *matCellDef="let element"> {{element.HoraFin}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
     <ng-container matColumnDef="TiempoConsulta">
       <th mat-header-cell *matHeaderCellDef> Tiempo Consulta </th>
       <td mat-cell *matCellDef="let element"> {{element.TiempoConsulta}} </td>
     </ng-container>
+
+    <ng-container matColumnDef="action">
+			<th mat-header-cell *matHeaderCellDef> Action </th>
+			<td mat-cell *matCellDef="let element" class="action-link">
+				<button mat-raised-button (click)="openDialog('Update',element)" mat-flat-button color="green"
+					class="button1">Editar</button>
+			
+
+			</td>
+		</ng-container>
+   
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>
+    <strong>Actualizar especialidad</strong></h1>
+<div class="container">
+    <mat-form-field *ngIf="action != 'Delete'">
+        <input placeholder="minutos por consulta" matInput [(ngModel)]="local_data.nombre">
+    </mat-form-field>
+       
+    <ng-template #elseTemplate>
+        ¿Confirma que quiere borrarlo<b>{{local_data.name}}</b>?
+    </ng-template>
+</div>
+<div mat-dialog-actions-center>
+    <div class="contenedor-botones">
+        <button mat-raised-button (click)="doAction()">{{action}}</button>
+        <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+    </div>
+</div>
