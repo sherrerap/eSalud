@@ -972,6 +972,8 @@
                     ]
                 },
                 { path: 'medico/MostrarCitas/MostrarCitas', redirectTo: 'medico/MostrarCitas' },
+                { path: 'medico/Cambio', redirectTo: 'citas' },
+                { path: 'medico/Cambio/Cambio', redirectTo: 'citas' }
             ];
             var AppRoutingModule = /** @class */ (function () {
                 function AppRoutingModule() {
@@ -2323,6 +2325,7 @@
                     this.authService = authService;
                     this.fillerNav = [
                         { name: "Lista de citas", route: "MostrarCitas", icon: "calendar_today" },
+                        { name: "Cambiar a modo paciente", route: "Cambio", icon: "supervisor_account" },
                         { name: "Salir", route: "/", icon: "logout" }
                     ];
                     this.fillerContent = Array.from({ length: 50 }, function () { return "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco\n       laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in\n       voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat\n       cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."; });

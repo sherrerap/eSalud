@@ -1015,6 +1015,8 @@ const routes = [
         ]
     },
     { path: 'medico/MostrarCitas/MostrarCitas', redirectTo: 'medico/MostrarCitas' },
+    { path: 'medico/Cambio', redirectTo: 'citas' },
+    { path: 'medico/Cambio/Cambio', redirectTo: 'citas' }
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
@@ -2520,6 +2522,7 @@ let SidenavMedicoComponent = class SidenavMedicoComponent {
         this.authService = authService;
         this.fillerNav = [
             { name: "Lista de citas", route: "MostrarCitas", icon: "calendar_today" },
+            { name: "Cambiar a modo paciente", route: "Cambio", icon: "supervisor_account" },
             { name: "Salir", route: "/", icon: "logout" }
         ];
         this.fillerContent = Array.from({ length: 50 }, () => `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut

@@ -127,7 +127,7 @@ public class CitasRepositoryImpl implements CitasRepository {
     	cita.setPaciente(u.getNombre() +" " + u.getApellidos());
     	Date fecha = new SimpleDateFormat("dd/MM/yyyy").parse(cita.getFecha());
     	
-    	if(fecha.after(new java.util.Date()) ||fecha.equals(new java.util.Date())) {
+    	if(fecha.after(new java.util.Date()) || fecha.equals(new java.util.Date())) {
         	citasNombrePaciente.add(cita);
     	}
        }

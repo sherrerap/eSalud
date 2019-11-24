@@ -102,11 +102,8 @@ const routes: Routes = [
     ]
   },  
   { path: 'medico/MostrarCitas/MostrarCitas', redirectTo: 'medico/MostrarCitas' },
-
-
-
-
-
+  { path: 'medico/Cambio', redirectTo: 'citas' },
+  { path: 'medico/Cambio/Cambio', redirectTo: 'citas' }
 ];
 
 @NgModule({

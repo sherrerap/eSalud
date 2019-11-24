@@ -16,6 +16,7 @@ export class SidenavMedicoComponent implements OnInit {
 
   fillerNav = [
     { name: "Lista de citas", route: "MostrarCitas", icon: "calendar_today" },
+    { name: "Cambiar a modo paciente", route: "Cambio", icon: "supervisor_account" },
     { name: "Salir", route: "/", icon: "logout" }
 
   ]
