@@ -35,7 +35,7 @@ import es.e3corp.eSalud.utilidades.Utilidades;
  */
 public class CitaController {
   /**
-   * Comentario de prueba.
+   * Campo LOG.
    * 
    * @author e3corp
    */
