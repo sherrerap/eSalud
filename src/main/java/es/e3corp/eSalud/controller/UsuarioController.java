@@ -21,7 +21,6 @@ import com.wordnik.swagger.annotations.ApiOperation;
 
 import es.e3corp.eSalud.Service.UsuarioService;
 import es.e3corp.eSalud.exception.UserNotFoundException;
-import es.e3corp.eSalud.model.Cita;
 import es.e3corp.eSalud.model.Usuario;
 import es.e3corp.eSalud.utilidades.Utilidades;
 
@@ -30,7 +29,7 @@ import es.e3corp.eSalud.utilidades.Utilidades;
 /**
  * @author e3corp
  */
-@CrossOrigin(origins = { "http://localhost:4200","https://esalud.herokuapp.com"}, allowedHeaders = "*")
+@CrossOrigin(origins = { "http://localhost:4200", "https://esalud.herokuapp.com" }, allowedHeaders = "*")
 public class UsuarioController {
 
   private static final Log LOG = LogFactory.getLog(UsuarioController.class);
@@ -204,10 +203,11 @@ public class UsuarioController {
       return ResponseEntity.badRequest().build();
     }
   }
-  
+
   @RequestMapping(value = "/{userId}", method = RequestMethod.PUT)
   @ApiOperation(value = "Update usuario", notes = "Finds a cita ID and updates its fields")
-  public ResponseEntity<Usuario> updateUsuario(@RequestBody final String mensajerecibido, @PathVariable final String userId) {
+  public ResponseEntity<Usuario> updateUsuario(@RequestBody final String mensajerecibido,
+      @PathVariable final String userId) {
     final JSONObject jso = new JSONObject(mensajerecibido);
     final String UserIdEncriptado = Utilidades.encriptar(userId);
     final Usuario usuario = usersService.findByUserDni(UserIdEncriptado);
@@ -226,21 +226,20 @@ public class UsuarioController {
         final String centro = jso.getString("centro");
         final String email = jso.getString("email");
         final String rol = jso.getString("rol");
-        final String contrasena =  jso.getString("contrasena");
-        
-        if(rol.equals("medico")) {
+        final String contrasena = jso.getString("contrasena");
+
+        if (rol.equals("medico")) {
           final String especialidad = jso.getString("especialidad");
           final String especialidadEncriptado = Utilidades.encriptar(especialidad);
           usuario.setEspecialidad(especialidadEncriptado);
         }
-        
-        if(rol.equals("paciente")) {
+
+        if (rol.equals("paciente")) {
           final String localidad = jso.getString("localidad");
           final String localidadEncriptado = Utilidades.encriptar(localidad);
           usuario.setLocalidad(localidadEncriptado);
         }
-        
-        
+
         final String dniEncriptado = Utilidades.encriptar(dni);
         final String nombreEncriptado = Utilidades.encriptar(nombre);
         final String apellidosEncriptado = Utilidades.encriptar(apellidos);
@@ -248,8 +247,8 @@ public class UsuarioController {
         final String centroEncriptado = Utilidades.encriptar(centro);
         final String emailEncriptado = Utilidades.encriptar(email);
         final String rolEncriptado = Utilidades.encriptar(rol);
-        final String contrasenaEncriptado =Utilidades.encriptar(contrasena);
-        
+        final String contrasenaEncriptado = Utilidades.encriptar(contrasena);
+
         usuario.setDni(dniEncriptado);
         usuario.setNombre(nombreEncriptado);
         usuario.setApellidos(apellidosEncriptado);
@@ -269,7 +268,6 @@ public class UsuarioController {
       LOG.info("[SERVER] " + usuario.toString());
       return ResponseEntity.ok().build();
     }
-    }
-  
-  
+  }
+
 }

@@ -9,82 +9,95 @@ import es.e3corp.eSalud.utilidades.Utilidades;
 
 /**
  * Documente usuario en la base de datos.
+ * 
  * @author e3corp
  */
 @Document(collection = "usuarios")
 public class Usuario {
   /**
    * ID.
+   * 
    * @author e3corp
    */
   @Id
   private String id;
   /**
    * DNI.
+   * 
    * @author e3corp
    */
   @NotNull
   private String dni;
   /**
    * Nombre.
+   * 
    * @author e3corp
    */
   private String nombre;
   /**
    * Apellidos.
+   * 
    * @author e3corp
    */
   private String apellidos;
   /**
    * Contraseña.
+   * 
    * @author e3corp
    */
   @NotNull
   private String contrasena;
   /**
    * Rol.
+   * 
    * @author e3corp
    */
   private String rol;
   /**
    * Especialidad.
+   * 
    * @author e3corp
    */
   private String especialidad;
   /**
    * Médico.
+   * 
    * @author e3corp
    */
   private String medico;
   /**
    * NumTeléfono.
+   * 
    * @author e3corp
    */
   private String numTelefono;
   /**
    * Localidad.
+   * 
    * @author e3corp
    */
   private String localidad;
   /**
    * Centro.
+   * 
    * @author e3corp
    */
   private String centro;
   /**
    * Email.
+   * 
    * @author e3corp
    */
   private String email;
 
   /**
    * Constructor de Usuario.
+   * 
    * @author e3corp
    */
   public Usuario(@NotNull final String dni, final String nombre, final String apellidos,
-      @NotNull final String contrasena, final String rol, final String especialidad, 
-      final String medico,final String numTelefono, final String localidad, 
-      final String centro, final String email) {
+      @NotNull final String contrasena, final String rol, final String especialidad, final String medico,
+      final String numTelefono, final String localidad, final String centro, final String email) {
     super();
     this.id = UUID.randomUUID().toString();
     this.dni = Utilidades.encriptar(dni);
@@ -102,6 +115,7 @@ public class Usuario {
 
   /**
    * Constructor vacío de Usuario.
+   * 
    * @author e3corp
    */
   public Usuario() {
@@ -142,6 +156,7 @@ public class Usuario {
 
   /**
    * Método getcontrasena.
+   * 
    * @author e3corp
    */
   public String getcontrasena() {
@@ -150,6 +165,7 @@ public class Usuario {
 
   /**
    * Método setcontrasena.
+   * 
    * @author e3corp
    */
   public void setcontrasena(final String contrasena) {
@@ -328,12 +344,9 @@ public class Usuario {
 
   @Override
   public String toString() {
-    return "Usuario [id=" + id + ", dni=" + dni + ", nombre=" + nombre 
-        + ", apellidos=" + apellidos + ", contrasena="
-        + contrasena + ", rol=" + rol + ", especialidad=" + especialidad 
-        + ", medico=" + medico + ", numTelefono="
-        + numTelefono + ", localidad=" + localidad 
-        + ", centro=" + centro + ", email=" + email + "]";
+    return "Usuario [id=" + id + ", dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", contrasena="
+        + contrasena + ", rol=" + rol + ", especialidad=" + especialidad + ", medico=" + medico + ", numTelefono="
+        + numTelefono + ", localidad=" + localidad + ", centro=" + centro + ", email=" + email + "]";
   }
 
 }
