@@ -1,28 +1,20 @@
 package es.e3corp.eSalud.repository;
 
-import es.e3corp.eSalud.model.Usuario;
-import es.e3corp.eSalud.repository.UsuarioRepository;
-
 import java.util.List;
-
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.data.mongodb.core.MongoOperations;
-
 import org.springframework.data.mongodb.core.query.Criteria;
-
 import org.springframework.data.mongodb.core.query.Query;
-
 import org.springframework.stereotype.Repository;
-
 import org.springframework.util.Assert;
 
-
+import es.e3corp.eSalud.model.Usuario;
 
 /**
  * Clase que implementa la interfaz UsuarioRepository.
+ * 
  * @author e3corp
  */
 @Repository
@@ -30,12 +22,14 @@ import org.springframework.util.Assert;
 public class UsuarioRepositoryImpl implements UsuarioRepository {
   /**
    * Instancia de la interfaz MongoOperations.
+   * 
    * @author e3corp
    */
   private final MongoOperations mongoOperations;
 
   /**
    * Constructor de la clase.
+   * 
    * @author e3corp
    */
   @Autowired
@@ -46,9 +40,9 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
   }
 
- 
   /**
    * Devuelve todos los usuarios.
+   * 
    * @author e3corp
    */
   public Optional<List<Usuario>> findAll() {
@@ -63,6 +57,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
   /**
    * Devuelve un usuario en función de su dni.
+   * 
    * @author e3corp
    */
   public Optional<Usuario> findOne(final String dni) {
@@ -74,6 +69,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
   /**
    * Guarda un usuario en la base de datos.
+   * 
    * @author e3corp
    */
   public void saveUsuario(final Usuario usuario) {
@@ -82,6 +78,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
   /**
    * Actualiza un usuario en la base de datos.
+   * 
    * @author e3corp
    */
   public void updateUsuario(final Usuario usuario) {
@@ -92,6 +89,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
   /**
    * Borra un usuario en la base de datos.
+   * 
    * @author e3corp
    */
   public void deleteUsuario(final String id) {
