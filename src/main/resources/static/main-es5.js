@@ -1657,8 +1657,8 @@
                         this.alertService.error("Formato de apellidos incorrecto.", false);
                         return;
                     }
-                    if (this.f.password.value.length < 5) {
-                        this.alertService.error("Formato de contraseña incorrecta. La contraseña debe tener al menos 6 carácteres", false);
+                    if (this.f.password.value.length < 5 || (checkPass(this.f.password) == false)) {
+                        this.alertService.error("Formato de contraseña incorrecta. La contraseña debe contener al menos 6 carácteres, mayúsuculas y minúsculas, números y algún símbolo.", false);
                         return;
                     }
                     if (!allLetter(this.f.centro)) {
@@ -1692,6 +1692,15 @@
                         var letters = /^[A-Za-z]+$/;
                         var space = ' ';
                         if (inputtxt.value.match(letters) || inputtxt.value.match(space)) {
+                            return true;
+                        }
+                        else {
+                            return false;
+                        }
+                    }
+                    function checkPass(inputText) {
+                        var all = /^[A-Za-z0-9,!,@,#,$,%,^,&,*,?,_,~]+$/;
+                        if (inputText.value.match(all)) {
                             return true;
                         }
                         else {

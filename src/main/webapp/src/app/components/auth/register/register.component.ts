@@ -55,26 +55,26 @@ export class RegisterComponent implements OnInit {
         if (this.registerForm.invalid) {
             return;
         }
-    
+
         if ((this.f.dni.value.length != 8)) {
             this.alertService.error("Formato de DNI incorrecto. El DNI debe de tener 8 números y sin letra", false);
             return;
         }
 
-        if (this.f.password.value.length < 5) {
-            this.alertService.error("Formato de contraseña incorrecta. La contraseña debe tener al menos 6 carácteres", false);
+        if ((this.f.password.value.length < 5) || (checkPass(this.f.password) == false)) {
+            this.alertService.error("Formato de contraseña incorrecta. La contraseña debe contener al menos 6 carácteres, mayúsuculas y minúsculas, números y algún símbolo.", false);
             return;
         }
         if (this.f.password.value != this.f.password2.value) {
             this.alertService.error("Las contraseñas no coinciden.", false);
             return;
         }
-        if(!allLetter(this.f.nombre)){
-            this.alertService.error("Formato de nombre incorrecto.", false);
+        if (!allLetter(this.f.nombre)) {
+            this.alertService.error("Formato de nombre incorrecto. Las tildes no son necesarias.", false);
             return;
         }
-        if(!allLetter(this.f.apellidos)){
-            this.alertService.error("Formato de apellidos incorrecto.", false);
+        if (!allLetter(this.f.apellidos)) {
+            this.alertService.error("Formato de apellidos incorrecto. Las tildes no son necesarias.", false);
             return;
         }
 
@@ -88,17 +88,17 @@ export class RegisterComponent implements OnInit {
             return;
         }
 
-        if(!(
+        if (!(
             (this.f.correo.value.includes('@')) &&
             (this.f.correo.value.includes('.es') || this.f.correo.value.includes('.com')))
-        ){
-              this.alertService.error("Formato incorrecto del correo electrónico. ", false); 
-              return;
-          }
-        if(!allLetter(this.f.localidad)){
+        ) {
+            this.alertService.error("Formato incorrecto del correo electrónico. ", false);
+            return;
+        }
+        if (!allLetter(this.f.localidad)) {
             this.alertService.error("Formato de localidad incorrecto.", false);
         }
-        
+
         this.loading = true;
         this.userService.register(this.registerForm.value)
             .pipe(first())
@@ -114,13 +114,24 @@ export class RegisterComponent implements OnInit {
 
         function allLetter(inputtxt) {
             var letters = /^[A-Za-z]+$/;
-            var space =' ';
-            if (inputtxt.value.match(letters)||inputtxt.value.match(space) ) {
+            var space = ' ';
+            if (inputtxt.value.match(letters) || inputtxt.value.match(space) || inputtxt.value.match("ñ") || inputtxt.value.match("Ñ")) {
                 return true;
             }
             else {
                 return false;
             }
+        }
+
+        function checkPass(inputText) {
+            var all = /^[A-Za-z0-9,!,@,#,$,%,^,&,*,?,_,~]+$/;
+
+            if (inputText.value.match(all)) {
+                return true;
+            } else {
+                return false;
+            }
+
         }
 
     }

@@ -1,6 +1,5 @@
 package es.e3corp.eSalud.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -60,7 +59,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     } else {
 
       throw new UserNotFoundException(userDni);
-      
+
     }
 
   }
@@ -122,7 +121,5 @@ public class UsuarioServiceImpl implements UsuarioService {
     final List<Usuario> usuariosRolDesenc = Utilidades.desencriptarUsuarios(usersRol);
     return usersRol;
   }
-
-
 
 }

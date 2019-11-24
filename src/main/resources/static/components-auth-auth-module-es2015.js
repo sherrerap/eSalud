@@ -320,8 +320,8 @@ let RegisterComponent = class RegisterComponent {
             this.alertService.error("Formato de DNI incorrecto. El DNI debe de tener 8 números y sin letra", false);
             return;
         }
-        if (this.f.password.value.length < 5) {
-            this.alertService.error("Formato de contraseña incorrecta. La contraseña debe tener al menos 6 carácteres", false);
+        if ((this.f.password.value.length < 5) || (checkPass(this.f.password) == false)) {
+            this.alertService.error("Formato de contraseña incorrecta. La contraseña debe contener al menos 6 carácteres, mayúsuculas y minúsculas, números y algún símbolo.", false);
             return;
         }
         if (this.f.password.value != this.f.password2.value) {
@@ -329,11 +329,11 @@ let RegisterComponent = class RegisterComponent {
             return;
         }
         if (!allLetter(this.f.nombre)) {
-            this.alertService.error("Formato de nombre incorrecto.", false);
+            this.alertService.error("Formato de nombre incorrecto. Las tildes no son necesarias.", false);
             return;
         }
         if (!allLetter(this.f.apellidos)) {
-            this.alertService.error("Formato de apellidos incorrecto.", false);
+            this.alertService.error("Formato de apellidos incorrecto. Las tildes no son necesarias.", false);
             return;
         }
         if ((this.f.tel.value.length != 9) && (!isNaN(this.f.tel.value))) {
@@ -365,7 +365,16 @@ let RegisterComponent = class RegisterComponent {
         function allLetter(inputtxt) {
             var letters = /^[A-Za-z]+$/;
             var space = ' ';
-            if (inputtxt.value.match(letters) || inputtxt.value.match(space)) {
+            if (inputtxt.value.match(letters) || inputtxt.value.match(space) || inputtxt.value.match("ñ") || inputtxt.value.match("Ñ")) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        function checkPass(inputText) {
+            var all = /^[A-Za-z0-9,!,@,#,$,%,^,&,*,?,_,~]+$/;
+            if (inputText.value.match(all)) {
                 return true;
             }
             else {

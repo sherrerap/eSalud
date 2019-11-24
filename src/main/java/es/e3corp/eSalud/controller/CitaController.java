@@ -31,30 +31,34 @@ import es.e3corp.eSalud.utilidades.Utilidades;
 @RequestMapping("/citas")
 @CrossOrigin(origins = { "http://localhost:4200", "https://esalud.herokuapp.com" }, allowedHeaders = "*")
 /**
-* @author e3corp
-*/
+ * @author e3corp
+ */
 public class CitaController {
   /**
    * Comentario de prueba.
-  * @author e3corp
-  */
+   * 
+   * @author e3corp
+   */
   private static final Log LOG = LogFactory.getLog(CitaController.class);
   /**
    * Interfaz CitasService.
-  * @author e3corp
-  */
+   * 
+   * @author e3corp
+   */
   private final CitaService citasService;
   /**
    * Interfaz UsuarioService.
-  * @author e3corp
-  */
+   * 
+   * @author e3corp
+   */
   private final UsuarioService usuarioService;
-  
+
   @Autowired
   /**
    * Contructor CitaController.
-  * @author e3corp
-  */
+   * 
+   * @author e3corp
+   */
   public CitaController(final CitaService citasService, final UsuarioService usuarioService) {
     this.usuarioService = usuarioService;
     this.citasService = citasService;
@@ -62,20 +66,22 @@ public class CitaController {
 
   /**
    * Obtiene cita por fecha.
+   * 
    * @return
    */
-  
+
   @RequestMapping(method = RequestMethod.GET)
   public ResponseEntity<Cita> getCitaFecha(@RequestParam(required = false) String paciente,
       @RequestParam(required = false) String medico, @RequestParam(required = false) String fecha,
       @RequestParam(required = false) String hora) {
-	  
-	String pacienteEncriptado = Utilidades.encriptar(paciente);
-	String medicoEncriptado = Utilidades.encriptar(medico);
-	String fechaEncriptado = Utilidades.encriptar(fecha);
-	String horaEncriptado = Utilidades.encriptar(hora);
-	
-    Cita cita = citasService.findCitaByPacienteMedicoFechaHora(pacienteEncriptado, medicoEncriptado, fechaEncriptado, horaEncriptado);
+
+    String pacienteEncriptado = Utilidades.encriptar(paciente);
+    String medicoEncriptado = Utilidades.encriptar(medico);
+    String fechaEncriptado = Utilidades.encriptar(fecha);
+    String horaEncriptado = Utilidades.encriptar(hora);
+
+    Cita cita = citasService.findCitaByPacienteMedicoFechaHora(pacienteEncriptado, medicoEncriptado, fechaEncriptado,
+        horaEncriptado);
     if (cita != null) {
       System.out.println("[SERVER] Cita encontrada: " + cita.getId());
       return ResponseEntity.ok(cita);
@@ -87,8 +93,8 @@ public class CitaController {
 
   @RequestMapping(value = "paciente/{dni}", method = RequestMethod.GET)
   /**
-  * @author e3corp
-  */
+   * @author e3corp
+   */
   public ResponseEntity<List<Cita>> getListadoCitasByPaciente(@PathVariable(required = true) final String dni) {
     final List<Cita> citas = citasService.getCitasByPaciente(dni);
     return ResponseEntity.ok(citas);
@@ -96,28 +102,31 @@ public class CitaController {
 
   @RequestMapping(value = "medico/{id}", method = RequestMethod.GET)
   /**
-  * @author e3corp
-  */
+   * @author e3corp
+   */
   public ResponseEntity<List<Cita>> getListadoCitasByMedico(@PathVariable(required = true) final String idmedico) {
     final List<Cita> citas = citasService.getCitasByMedico(idmedico);
     return ResponseEntity.ok(citas);
   }
-  
+
   /**
    * RequestMapping de citas.
-  * @author e3corp
-  */
+   * 
+   * @author e3corp
+   */
   @RequestMapping(value = "/{citaId}", method = RequestMethod.PUT)
-  
+
   /**
    * ApiOperation update cita.
-  * @author e3corp
-  */
+   * 
+   * @author e3corp
+   */
   @ApiOperation(value = "Update cita", notes = "Finds a cita ID and updates its fields")
   /**
    * Actualiza cita mediante su id y una nueva cita.
-  * @author e3corp
-  */
+   * 
+   * @author e3corp
+   */
   public ResponseEntity<Cita> updateCita(@RequestBody final String mensajerecibido, @PathVariable final String citaId) {
     LOG.info("[SERVER] Actualizando cita...");
     final JSONObject jso = new JSONObject(mensajerecibido);
@@ -132,19 +141,19 @@ public class CitaController {
         // Depende de los campos que queramos que puedan actualizarse
         final String paciente = jso.getString("paciente");
         final String medico = jso.getString("medico");
-        
+
         final String fecha = jso.getString("fecha");
         final String hora = jso.getString("hora");
         final String tipo = jso.getString("tipo");
         final String centro = jso.getString("centro");
-        
+
         final String pacienteEncriptado = Utilidades.encriptar(paciente);
         final String medicoEncriptado = Utilidades.encriptar(medico);
         final String fechaEncriptado = Utilidades.encriptar(fecha);
         final String horaEncriptado = Utilidades.encriptar(hora);
         final String centroEncriptado = Utilidades.encriptar(centro);
         final String tipoEncriptado = Utilidades.encriptar(tipo);
-        
+
         try {
           final Usuario usuarioPaciente = usuarioService.findByUserDni(pacienteEncriptado);
           final Usuario usuarioMedico = usuarioService.findByUserDni(medicoEncriptado);
@@ -180,17 +189,17 @@ public class CitaController {
       return ResponseEntity.ok().build();
     }
   }
-  
+
   /**
-   * RequestMapping /{citaid}.
-   * ApiOperation find cita.
+   * RequestMapping /{citaid}. ApiOperation find cita.
    */
   @RequestMapping(value = "/{citaId}", method = RequestMethod.GET)
   @ApiOperation(value = "Find cita", notes = "Return a cita by Id")
   /**
    * Obtiene una cita mediante su id.
-  * @author e3corp
-  */
+   * 
+   * @author e3corp
+   */
   public ResponseEntity<Cita> citaById(@PathVariable final String citaId) throws CitaNotFoundException {
     LOG.info("[SERVER] Buscando cita...");
     Cita cita;
@@ -204,25 +213,26 @@ public class CitaController {
   }
 
   /**
-   * RequestMapping {citaid}.
-   * ApiOperation delete cita.
+   * RequestMapping {citaid}. ApiOperation delete cita.
    */
   @RequestMapping(value = "{citaId}", method = RequestMethod.DELETE)
   @ApiOperation(value = "Delete cita", notes = "Delete cita")
   /**
    * Borra una cita mediante su id.
-  * @author e3corp
-  */
+   * 
+   * @author e3corp
+   */
   public ResponseEntity<Void> deleteCita(@PathVariable final String citaId) {
     LOG.info("[SERVER] Borrando cita:  " + citaId);
     citasService.deleteCita(citaId);
     return ResponseEntity.ok().build();
   }
-  
+
   /**
    * Registra o guarda una cita en la base de datos.
-  * @author e3corp
-  */
+   * 
+   * @author e3corp
+   */
   @RequestMapping(method = RequestMethod.POST)
   public ResponseEntity<Cita> registrarCita(@RequestBody String cita) {
     final JSONObject jso = new JSONObject(cita);
@@ -231,14 +241,15 @@ public class CitaController {
     final String fecha = jso.getString("fecha");
     final String hora = jso.getString("hora");
     LOG.info("el paciente que se recibe es:" + paciente);
-    
+
     final String pacienteEncriptado = Utilidades.encriptar(paciente);
-    
+
     LOG.info("el paciente escriptado es:" + pacienteEncriptado);
     String medicoEncriptado = Utilidades.encriptar(medico);
     String fechaEncriptado = Utilidades.encriptar(fecha);
     String horaEncriptado = Utilidades.encriptar(hora);
-    Cita cita1 = citasService.findCitaByPacienteMedicoFechaHora(pacienteEncriptado, medicoEncriptado, fechaEncriptado, horaEncriptado);
+    Cita cita1 = citasService.findCitaByPacienteMedicoFechaHora(pacienteEncriptado, medicoEncriptado, fechaEncriptado,
+        horaEncriptado);
     try {
       final Usuario usuarioPaciente = usuarioService.findByUserDni(pacienteEncriptado);
       final Usuario usuarioMedico = usuarioService.findByUserDni(medicoEncriptado);
@@ -257,10 +268,10 @@ public class CitaController {
     }
 
     if (cita1 == null) {
-      String tipo = null; 
-      String centro = null; 
-      String tipoEncriptado = null; 
-      String centroEncriptado = null; 
+      String tipo = null;
+      String centro = null;
+      String tipoEncriptado = null;
+      String centroEncriptado = null;
 
       try {
         Usuario usuarioPaciente = usuarioService.findByUserDni(pacienteEncriptado);
@@ -276,7 +287,7 @@ public class CitaController {
 
       } catch (UserNotFoundException u) {
         LOG.error("[SERVER] El usuario paciente o medico no se ha encontrado.");
-        return ResponseEntity.badRequest().build(); 
+        return ResponseEntity.badRequest().build();
       }
 
       try {
@@ -284,7 +295,7 @@ public class CitaController {
 
         tipo = jso.getString("tipo");
         centro = jso.getString("centro");
-        
+
         tipoEncriptado = Utilidades.encriptar(tipo);
         centroEncriptado = Utilidades.encriptar(centro);
 
