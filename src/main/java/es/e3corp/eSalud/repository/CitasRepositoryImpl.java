@@ -1,5 +1,10 @@
 package es.e3corp.eSalud.repository;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,6 +16,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
 
 import es.e3corp.eSalud.model.Cita;
+import es.e3corp.eSalud.model.Usuario;
 import es.e3corp.eSalud.utilidades.Utilidades;
 
 /**
@@ -109,13 +115,24 @@ public class CitasRepositoryImpl implements CitasRepository {
   }
 
   @Override
-  public List<Cita> findMedico(final String id) {
+  public List<Cita> findMedico(final String id) throws ParseException {
     final String medicoEncriptado = Utilidades.encriptar(id);
     final List<Cita> citas = this.mongoOperations.find(new Query(Criteria.where("medico").is(medicoEncriptado)),
         Cita.class);
 
     final List<Cita> citasDesencriptadas = Utilidades.desencriptarListaCitas(citas);
-    return citasDesencriptadas;
+    final List<Cita> citasNombrePaciente = new ArrayList<>();
+    for(Cita cita: citasDesencriptadas) {
+    	Usuario u = this.mongoOperations.findOne(new Query(Criteria.where("id").is(cita.getPaciente())), Usuario.class);
+    	cita.setPaciente(u.getNombre() +" " + u.getApellidos());
+    	Date fecha = new SimpleDateFormat("dd/MM/yyyy").parse(cita.getFecha());
+    	
+    	if(fecha.after(new java.util.Date()) ||fecha.equals(new java.util.Date())) {
+        	citasNombrePaciente.add(cita);
+    	}
+       }
+    
+    return citasNombrePaciente;
   }
 
 }

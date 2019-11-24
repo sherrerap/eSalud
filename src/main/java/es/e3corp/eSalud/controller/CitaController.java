@@ -1,6 +1,7 @@
 
 package es.e3corp.eSalud.controller;
 
+import java.text.ParseException;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -98,8 +99,8 @@ public class CitaController {
   /**
   * @author e3corp
   */
-  public ResponseEntity<List<Cita>> getListadoCitasByMedico(@PathVariable(required = true) final String idmedico) {
-    final List<Cita> citas = citasService.getCitasByMedico(idmedico);
+  public ResponseEntity<List<Cita>> getListadoCitasByMedico(@PathVariable("id") final String idmedico) throws ParseException {
+	final List<Cita> citas = citasService.getCitasByMedico(idmedico);
     return ResponseEntity.ok(citas);
   }
   

@@ -149,7 +149,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"example-container mat-elevation-z8\">\r\n  <table mat-table [dataSource]=\"dataSource\">\r\n\r\n    <!-- Position Column -->\r\n    <ng-container matColumnDef=\"nombre\">\r\n      <th mat-header-cell *matHeaderCellDef> Nombre </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.nombre}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"apellidos\">\r\n      <th mat-header-cell *matHeaderCellDef> Apellidos </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.apellidos}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Weight Column -->\r\n    <ng-container matColumnDef=\"fecha\">\r\n      <th mat-header-cell *matHeaderCellDef> Fecha </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.fecha}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Symbol Column -->\r\n    <ng-container matColumnDef=\"hora\">\r\n      <th mat-header-cell *matHeaderCellDef> Hora </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.hora}} </td>\r\n    </ng-container>\r\n\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table> <mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons [pageSize]=\"10\"></mat-paginator>\r\n\r\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"example-container mat-elevation-z8\">\r\n  <table mat-table [dataSource]=\"dataSource\">\r\n\r\n    <!-- Position Column -->\r\n    <ng-container matColumnDef=\"paciente\">\r\n      <th mat-header-cell *matHeaderCellDef> Paciente </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.paciente}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"centro\">\r\n      <th mat-header-cell *matHeaderCellDef> Centro </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.centro}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Weight Column -->\r\n    <ng-container matColumnDef=\"fecha\">\r\n      <th mat-header-cell *matHeaderCellDef> Fecha </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.fecha}} </td>\r\n    </ng-container>\r\n\r\n    <!-- Symbol Column -->\r\n    <ng-container matColumnDef=\"hora\">\r\n      <th mat-header-cell *matHeaderCellDef> Hora </th>\r\n      <td mat-cell *matCellDef=\"let element\"> {{element.hora}} </td>\r\n    </ng-container>\r\n\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n  </table> <mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons [pageSize]=\"10\"></mat-paginator>\r\n\r\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/paciente-RegistrarCita/RegistrarCita.component.html": 
@@ -2037,23 +2037,21 @@
             /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
             /* harmony import */ var src_app_services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/_services */ "./src/app/_services/index.ts");
             /* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/_services/auth.service */ "./src/app/_services/auth.service.ts");
-            /* harmony import */ var src_app_services_user_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/_services/user.service */ "./src/app/_services/user.service.ts");
             var ELEMENT_DATA = [
-                { nombre: 'position', apellidos: 'Ciudad Real III', fecha: '22/11/2019', hora: '11:54' },
-                { nombre: 'Pediatría', apellidos: 'Ciudad Real III', fecha: '23/11/2019', hora: '12:00' }
+                { paciente: 'position', centro: 'Ciudad Real III', fecha: '22/11/2019', hora: '11:54' },
+                { paciente: 'Pediatría', centro: 'Ciudad Real III', fecha: '23/11/2019', hora: '12:00' }
             ];
             var MostrarCitasComponent = /** @class */ (function () {
-                function MostrarCitasComponent(citasService, authService, usuariosService) {
+                function MostrarCitasComponent(citasService, authService) {
                     this.citasService = citasService;
                     this.authService = authService;
-                    this.usuariosService = usuariosService;
-                    this.displayedColumns = ['nombre', 'apellidos', 'fecha', 'hora'];
+                    this.displayedColumns = ['paciente', 'centro', 'fecha', 'hora'];
                     this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"]();
                 }
                 MostrarCitasComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     this.dataSource.paginator = this.paginator;
-                    this.usuariosService.getUsersByRole('medicos')
+                    this.citasService.getCitasMedico(this.authService.currentUserValue.id)
                         .subscribe(function (data) {
                         _this.data = data;
                         _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](data);
@@ -2063,8 +2061,7 @@
             }());
             MostrarCitasComponent.ctorParameters = function () { return [
                 { type: src_app_services__WEBPACK_IMPORTED_MODULE_3__["CitasService"] },
-                { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"] },
-                { type: src_app_services_user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"] }
+                { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"] }
             ]; };
             tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginator"], { static: true })

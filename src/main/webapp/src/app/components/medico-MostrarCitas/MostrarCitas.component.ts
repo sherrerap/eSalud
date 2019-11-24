@@ -6,14 +6,14 @@ import { AuthService } from 'src/app/_services/auth.service';
 import {UserService} from 'src/app/_services/user.service';
 
 export interface PeriodicElement {
-  nombre: string;
-  apellidos: string;
+  paciente: string;
+  centro: string
   fecha: string;
   hora: string;
 }
 const ELEMENT_DATA: PeriodicElement[] = [
-  { nombre: 'position', apellidos: 'Ciudad Real III', fecha: '22/11/2019', hora: '11:54' },
-  { nombre: 'Pediatría', apellidos: 'Ciudad Real III', fecha: '23/11/2019', hora: '12:00' }
+  { paciente: 'position', centro: 'Ciudad Real III', fecha: '22/11/2019', hora: '11:54' },
+  { paciente: 'Pediatría', centro: 'Ciudad Real III', fecha: '23/11/2019', hora: '12:00' }
 
 ];
 
@@ -23,22 +23,20 @@ const ELEMENT_DATA: PeriodicElement[] = [
 	styleUrls: ['./MostrarCitas.component.css']
 })
 export class MostrarCitasComponent implements OnInit {
-  displayedColumns: string[] = ['nombre', 'apellidos', 'fecha', 'hora'];
+  displayedColumns: string[] = ['paciente', 'centro', 'fecha', 'hora'];
   dataSource = new MatTableDataSource<PeriodicElement>();
   data: PeriodicElement[];
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   constructor(
     private citasService: CitasService,
-    private authService: AuthService,
-    private usuariosService: UserService
-  ) {
+    private authService: AuthService  ) {
 
   }
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
-    this.usuariosService.getUsersByRole('medicos')
+    this.citasService.getCitasMedico(this.authService.currentUserValue.id)
       .subscribe((data: PeriodicElement[]) => {
         this.data = data;
         this.dataSource = new MatTableDataSource(data);
