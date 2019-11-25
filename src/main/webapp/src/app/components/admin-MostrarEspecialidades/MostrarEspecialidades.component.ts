@@ -81,7 +81,7 @@ export class MostrarEspecialidadesComponent implements OnInit {
 		this.success = null;
 		this.usuarioForm = this.formBuilder.group({
 			id: row_obj.id,
-			especiliadad: row_obj.especialidad,
+			especialidad: row_obj.especialidad,
 			tiempoConsulta: row_obj.tiempoConsulta,
 			horaInicio: row_obj.horaInicio,
 			horaFin: row_obj.horaFin,
@@ -110,16 +110,16 @@ export class MostrarEspecialidadesComponent implements OnInit {
 		});
 		this.usuarioForm = this.formBuilder.group({
 			id: row_obj.id,
-			especiliadad: row_obj.especialidad,
+			especialidad: row_obj.especialidad,
 			tiempoConsulta: row_obj.tiempoConsulta,
 			horaInicio: row_obj.horaInicio,
 			horaFin: row_obj.horaFin,
 		});
-		this.especialidadesService.delete(this.usuarioForm.controls.id.value)
+		this.especialidadesService.delete(this.usuarioForm.controls.especialidad.value)
 			.pipe(first())
 			.subscribe(
 				data => {
-					console.log("[CLIENTE] Especialidad actualizada.")
+					console.log("[CLIENTE] Especialidad borrada.")
 					this.success = "Especialidad borrado correctamente."
 					this.dataSource.paginator = this.paginator;
 					this.especialidadesService.getAll()
@@ -129,7 +129,7 @@ export class MostrarEspecialidadesComponent implements OnInit {
 						});
 				},
 				error => {
-					this.error = 'Ha ocurrido un error al eliminar el usuario.';
+					this.error = 'Ha ocurrido un error al eliminar la especialidad.';
 					this.loading = false;
 				});
 	}

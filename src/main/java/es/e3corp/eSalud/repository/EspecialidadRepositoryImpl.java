@@ -86,7 +86,7 @@ public class EspecialidadRepositoryImpl implements EspecialidadRepository {
    */
   @Override
   public void deleteEspecialidad(String nombre) {
-    this.mongoOperations.findAndRemove(new Query(Criteria.where("nombre").is(nombre)), Especialidad.class);
+    this.mongoOperations.findAndRemove(new Query(Criteria.where("especialidad").is(nombre)), Especialidad.class);
 
   }
 

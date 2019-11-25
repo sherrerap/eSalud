@@ -86,12 +86,12 @@ public class EspecialidadController {
    * 
    * @author e3corp
    */
-  @RequestMapping(value = "/{especialidadNombre}", method = RequestMethod.DELETE)
-  @ApiOperation(value = "Delete an specialty", notes = "Delete a specialty by name")
+  @RequestMapping(value = "/{especialidad}", method = RequestMethod.DELETE)
+  @ApiOperation(value = "Delete an specialty", notes = "Delete a specialty by especialidad")
 
-  public ResponseEntity<Void> deleteEspecialidad(@PathVariable final String nombre) {
-    LOG.info("Delete specialty " + nombre);
-    especialidadService.deleteEspecialidad(nombre);
+  public ResponseEntity<Void> deleteEspecialidad(@PathVariable final String especialidad) {
+    LOG.info("Delete specialty " + especialidad);
+    especialidadService.deleteEspecialidad(Utilidades.encriptar(especialidad));
     return ResponseEntity.noContent().build();
   }
 
