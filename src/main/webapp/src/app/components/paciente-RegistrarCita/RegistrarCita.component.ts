@@ -88,7 +88,7 @@ export class RegistrarCitaComponent implements OnInit {
                 });;
     }
 
-    capturarEspecialidad(){
+    capturarEspecialidad() {
         this.getMedicos(this.especialidadSeleccionada);
     }
 

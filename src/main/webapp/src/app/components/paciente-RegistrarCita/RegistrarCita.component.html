@@ -28,8 +28,8 @@
                     <label for="fname">Especialidad:</label>
                 </div>
                 <div class="col-75">
-                    <select input="text" [ngModel]="especialidadSeleccionada" (ngModelChange)="capturarEspecialidad()" class="form-control" formControlName="especialidad" [ngClass]="{ 'is-invalid': submitted && f.especialidad.errors }">
-                        <option *ngFor="let x of especialidades" [value]="x.Value" >
+                    <select input="text" ng-model="especialidadSeleccionada" (change)="capturarEspecialidad()" ng-options="x as x.especialidad for x in especialidades" class="form-control" formControlName="especialidad" [ngClass]="{ 'is-invalid': submitted && f.especialidad.errors }">
+                        <option *ngFor="let x of especialidades" [value]="x.value" >
                               {{x.especialidad}}
                             </option>          					    
                         </select>
@@ -44,7 +44,7 @@
                 </div>
                 <div class="col-75">
                     <select input="text" class="form-control" formControlName="medico" [ngClass]="{ 'is-invalid': submitted && f.medico.errors }">
-                        <option *ngFor="let x of medicos" [value]="x.Value" >
+                        <option *ngFor="let x of medicos" [value]="x.value" >
                             {{x.nombre}}
                             </option> 				      
                         </select>
