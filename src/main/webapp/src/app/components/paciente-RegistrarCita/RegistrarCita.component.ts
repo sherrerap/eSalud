@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { CitasService, AuthService } from '../../_services';
 import { TooltipComponent } from '@angular/material';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { CitasService, AuthService, UserService } from '../../_services';
 
 export interface Especialidad {
     id: string;
@@ -25,6 +25,8 @@ export interface Cita{
 
 export interface Medico {
     dni: string;
+    nombre: string;
+    apellidos: string;
 }
 
 @Component({
@@ -43,11 +45,12 @@ export class RegistrarCitaComponent implements OnInit {
     horasLibres: Cita[];
     fechaSeleccionada: string='';
     medicoSeleccionado: string='';
+    especialidadSeleccionada: string = '';
 
     constructor(
         private formBuilder: FormBuilder,
         private citasService: CitasService,
-        private authService: AuthService
+        private authService: AuthService,
     ) { }
 
     ngOnInit() {
@@ -66,13 +69,11 @@ export class RegistrarCitaComponent implements OnInit {
         this.medicos = [];
         this.horasLibres = [];
         this.getEspecialidades();
-        this.getMedicos();
     }
 
     get f() { return this.registerForm.controls; }
 
     onSubmit() {
-        console.log(this.registerForm.value.especialidad);
         this.submitted = true;
         this.success = null;
 
@@ -118,7 +119,17 @@ export class RegistrarCitaComponent implements OnInit {
        this.getHorasLibres();
     }
 
-    getMedicos() {
-        //this.medicos.push(this.citasService.getMedicos(this.registerForm.controls.especialidad));
+    capturarEspecialidad(){
+        this.getMedicos(this.especialidadSeleccionada);
+    }
+
+    getMedicos(esp) {
+        this.citasService.getMedicos(esp)
+            .subscribe((data: Medico[]) => {
+                this.medicos = data;
+            },
+                error => {
+                    this.error = "Ha ocurrido un error recogiendo las especialidades disponibles.";
+                });;
     }
 }
