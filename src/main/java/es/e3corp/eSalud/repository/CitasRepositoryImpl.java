@@ -170,7 +170,7 @@ public class CitasRepositoryImpl implements CitasRepository {
 		LocalTime horaInicio = LocalTime.parse(especialidadDesencriptadas.getHoraInicio());
 		LocalTime horaFin = LocalTime.parse(especialidadDesencriptadas.getHoraFin());
 		while (horaInicio.isBefore(horaFin.minusMinutes(tiempoConsultaMinutes))) {
-			citasTotalesDia.add(new Cita("", "", "", "", "", horaInicio.toString()));
+			citasTotalesDia.add(new Cita("","", "", "", "", "", horaInicio.toString()));
 			horaInicio = horaInicio.plusMinutes(tiempoConsultaMinutes);
 		}
 		if (citas.isEmpty()) {
@@ -186,7 +186,7 @@ public class CitasRepositoryImpl implements CitasRepository {
 		}
 		List<Cita>citasFinales = new ArrayList<>();
 		citasFinales.addAll(citasDisponibles);
-		//System.out.println(Utilidades.desencriptarListaCitas(citasFinales));
+		System.out.println(Utilidades.desencriptarListaCitas(citasFinales));
 
 		return citasFinales;
 	}
