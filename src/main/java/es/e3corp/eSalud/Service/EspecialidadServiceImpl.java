@@ -62,7 +62,7 @@ public class EspecialidadServiceImpl implements EspecialidadService {
 
     } else {
 
-      throw new EspecialidadNotFoundException(name);
+      return null;
 
     }
   }

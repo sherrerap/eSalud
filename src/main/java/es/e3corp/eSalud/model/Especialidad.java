@@ -8,6 +8,12 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "horarios")
 public class Especialidad {
+  @Override
+  public String toString() {
+    return "Especialidad [id=" + id + ", especialidad=" + especialidad + ", horaInicio=" + horaInicio + ", horaFin="
+        + horaFin + ", tiempoConsulta=" + tiempoConsulta + "]";
+  }
+
   @Id
   /**
    * ID. author: e3corp

@@ -1,45 +1,57 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
-import { CitasService } from 'src/app/_services';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { AuthService } from 'src/app/_services/auth.service';
-import {UserService} from 'src/app/_services/user.service';
-
-export interface PeriodicElement {
-  nombre: string;
-  apellidos: string;
-  especialidad: string;
-  centro: string;
-}
-const ELEMENT_DATA: PeriodicElement[] = [];
+import { EspecialidadesService } from '../../_services';
 
 @Component({
-	selector: 'app-RegistrarEspecialidad',
-	templateUrl: './RegistrarEspecialidad.component.html',
-	styleUrls: ['./RegistrarEspecialidad.component.css']
+    selector: 'app-RegistrarEspecialidad',
+    templateUrl: './RegistrarEspecialidad.component.html',
+    styleUrls: ['./RegistrarEspecialidad.component.css']
 })
+
 export class RegistrarEspecialidadComponent implements OnInit {
-  displayedColumns: string[] = ['nombre', 'apellidos', 'especialidad', 'centro'];
-  dataSource = new MatTableDataSource<PeriodicElement>();
-  data: PeriodicElement[];
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+    registerForm: FormGroup;
+    loading = false;
+    submitted = false;
+    error: string;
+    success: string;
 
-  constructor(
-    private citasService: CitasService,
-    private authService: AuthService,
-    private usuariosService: UserService
-  ) {
+    constructor(
+        private formBuilder: FormBuilder,
+        private EspecialidadesService: EspecialidadesService,
+    ) { }
 
-  }
+    ngOnInit() {
+        this.registerForm = this.formBuilder.group({
+            especialidad: ['', Validators.required],
+            horaInicio: ['', Validators.required],
+			horaFin: ['', Validators.required],
+			tiempoConsulta: ['', Validators.required],
 
-  ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.usuariosService.getUsersByRole('medicos')
-      .subscribe((data: PeriodicElement[]) => {
-        this.data = data;
-        this.dataSource = new MatTableDataSource(data);
-      });
+        });
+    }
 
-  }
+    get f() { return this.registerForm.controls; }
 
+    onSubmit() {
+        this.submitted = true;
+        this.success = null;
+
+        if (this.registerForm.invalid) {
+            return;
+        }
+
+        this.loading = true;
+        this.EspecialidadesService.register(this.registerForm.value)
+            .pipe(first())
+            .subscribe(
+                data => {
+                    console.log("[CLIENTE] Especialidad registrada.")
+                    this.success = "Especialidad registrada correctamente."
+                },
+                error => {
+                    this.error = "Error: Ya existe una especialidad con esos datos.";
+                    this.loading = false;
+                });
+    }
 }

@@ -105,7 +105,7 @@ public class EspecialidadController {
 
   public ResponseEntity<Usuario> registrarEspecialidad(@RequestBody final String especialidad) {
     final JSONObject jso = new JSONObject(especialidad);
-    final String nombre = jso.getString("nombre");
+    final String nombre = jso.getString("especialidad");
 
     final String nombreEncriptado = Utilidades.encriptar(nombre);
 
@@ -117,16 +117,16 @@ public class EspecialidadController {
     if (especialidad1 == null) {
       try {
         LOG.info("[SERVER] Registrando especialidad...");
-        horaInicio = jso.getString("horaInicio");
-        horaFin = jso.getString("horaFin");
-        tiempoConsulta = jso.getString("tiempoConsulta");
+        horaInicio = Utilidades.encriptar(jso.getString("horaInicio"));
+        horaFin = Utilidades.encriptar(jso.getString("horaFin"));
+        tiempoConsulta = Utilidades.encriptar(jso.getString("tiempoConsulta"));
       } catch (JSONException j) {
         LOG.info("[SERVER] Error en la lectura del JSON.");
         LOG.info(j.getMessage());
         return ResponseEntity.badRequest().build();
       }
 
-      especialidad1 = new Especialidad(nombre, horaInicio, horaFin, tiempoConsulta);
+      especialidad1 = new Especialidad(nombreEncriptado, horaInicio, horaFin, tiempoConsulta);
       especialidadService.saveEspecialidad(especialidad1);
       LOG.info("[SERVER] Especialidad registrada.");
       LOG.info("[SERVER] " + especialidad1.toString());
