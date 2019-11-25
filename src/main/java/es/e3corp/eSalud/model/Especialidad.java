@@ -41,7 +41,11 @@ public class Especialidad {
     this.tiempoConsulta = tiempoConsulta;
   }
 
-  public String getId() {
+  public Especialidad() {
+	// TODO Auto-generated constructor stub
+}
+
+public String getId() {
     return id;
   }
 
