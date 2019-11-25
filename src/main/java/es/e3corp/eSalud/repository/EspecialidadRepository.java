@@ -19,7 +19,7 @@ public interface EspecialidadRepository {
    * 
    * @author e3corp
    */
-  List<Especialidad> findAll();
+  Optional<List<Especialidad>> findAll();
 
   /**
    * Método para guardar una especialidad.

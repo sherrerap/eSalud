@@ -15,7 +15,7 @@ import es.e3corp.eSalud.repository.EspecialidadRepository;
 import es.e3corp.eSalud.utilidades.Utilidades;
 
 @Service("EspecialidadService")
-/** 
+/**
  * @author e3corp
  */
 @Transactional
@@ -39,9 +39,10 @@ public class EspecialidadServiceImpl implements EspecialidadService {
 
   @Override
   public List<Especialidad> findAll() {
+    final Optional<List<Especialidad>> especialidades = especialidadRepository.findAll();
+    final List<Especialidad> especialidadesDesencriptado = Utilidades.desencriptarListaEspecialidades(especialidades);
 
-    final List<Especialidad> especialidades = especialidadRepository.findAll();
-    return especialidades;
+    return especialidadesDesencriptado;
   }
 
   @Override

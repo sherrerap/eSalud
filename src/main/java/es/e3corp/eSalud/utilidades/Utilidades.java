@@ -191,12 +191,13 @@ public class Utilidades {
 
   public static Cita desencriptarCita(Cita cita) {
     try {
-    Cita c = new Cita();
-      
-      c.setId(cita.getId());;
+      Cita c = new Cita();
+
+      c.setId(cita.getId());
+      ;
       c.setPaciente(desencriptar(cita.getPaciente()));
       c.setPaciente(desencriptar(cita.getPaciente()));
-      
+
       c.setMedico(desencriptar(cita.getMedico()));
       c.setMedico(desencriptar(cita.getMedico()));
 
@@ -226,27 +227,26 @@ public class Utilidades {
    * @author e3corp
    */
   public static List<Cita> desencriptarListaCitas(final List<Cita> citas) {
-	  final List<Cita> citasDesencriptado = new ArrayList<Cita>();
-	  for (Cita citasDesencriptadas : citas) {
-		  citasDesencriptado.add(desencriptarCita(citasDesencriptadas));
-	  }
-	  
-    /*final List<Cita> citasDesencriptado = new ArrayList<Cita>();
-    System.out.println("Tamaño de la lista normal: " + citas.size());
-
-    for (int i = 0; i < citas.size(); i++) {
-      final Cita cita = citas.get(i);
-      System.out.println(cita.toString());
-      // aun no desencripta porque no coinciden los valores que hay en la BBDD
-      citasDesencriptado.add(desencriptarCita(cita));
-      System.out.println(citasDesencriptado.get(i).toString());
-
-      // citasDesencriptado.add(usuario);
+    final List<Cita> citasDesencriptado = new ArrayList<Cita>();
+    for (Cita citasDesencriptadas : citas) {
+      citasDesencriptado.add(desencriptarCita(citasDesencriptadas));
     }
 
+    /*
+     * final List<Cita> citasDesencriptado = new ArrayList<Cita>();
+     * System.out.println("Tamaño de la lista normal: " + citas.size());
+     * 
+     * for (int i = 0; i < citas.size(); i++) { final Cita cita = citas.get(i);
+     * System.out.println(cita.toString()); // aun no desencripta porque no
+     * coinciden los valores que hay en la BBDD
+     * citasDesencriptado.add(desencriptarCita(cita));
+     * System.out.println(citasDesencriptado.get(i).toString());
+     * 
+     * // citasDesencriptado.add(usuario); }
+     * 
+     * return citasDesencriptado;
+     */
     return citasDesencriptado;
-    */
-	  return citasDesencriptado;
   }
 
   /**
@@ -295,12 +295,16 @@ public class Utilidades {
     }
   }
 
-  public static List<Especialidad> desencriptarListaEspecialidades(List<Especialidad> especialidades) {
+  public static List<Especialidad> desencriptarListaEspecialidades(Optional<List<Especialidad>> especialidades) {
     final List<Especialidad> especialidadesDesencriptado = new ArrayList<Especialidad>();
-    //System.out.println("Tamaño de la lista normal: " + especialidades.get().size());
-    for(Especialidad e : especialidades) {
-        especialidadesDesencriptado.add(desencriptarEspecialidad(e));
+    System.out.println("Tamaño de la lista normal: " + especialidades.get().size());
+
+    for (int i = 0; i < especialidades.get().size(); i++) {
+      final Especialidad especialidad = especialidades.get().get(i);
+      System.out.println(especialidad.toString());
+      especialidadesDesencriptado.add(desencriptarEspecialidad(especialidad));
     }
+
     return especialidadesDesencriptado;
 
   }

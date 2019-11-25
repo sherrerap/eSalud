@@ -27,7 +27,6 @@ public class EspecialidadRepositoryImpl implements EspecialidadRepository {
    * 
    * @author e3corp
    */
- 
 
   private final MongoOperations mongoOperations;
 
@@ -48,12 +47,9 @@ public class EspecialidadRepositoryImpl implements EspecialidadRepository {
    * @author e3corp
    */
   @Override
-  public List<Especialidad> findAll() {
+  public Optional<List<Especialidad>> findAll() {
     List<Especialidad> especialidades = this.mongoOperations.find(new Query(), Especialidad.class);
-
     Optional<List<Especialidad>> optionalEspecialidad = Optional.ofNullable(especialidades);
-    
-
     return optionalEspecialidad;
   }
 
@@ -97,7 +93,8 @@ public class EspecialidadRepositoryImpl implements EspecialidadRepository {
    */
   @Override
   public Optional<Especialidad> findOne(String nombre) {
-    Especialidad e = this.mongoOperations.findOne(new Query(Criteria.where("especialidad").is(nombre)), Especialidad.class);
+    Especialidad e = this.mongoOperations.findOne(new Query(Criteria.where("especialidad").is(nombre)),
+        Especialidad.class);
     Optional<Especialidad> especialidad = Optional.ofNullable(e);
     return especialidad;
   }
