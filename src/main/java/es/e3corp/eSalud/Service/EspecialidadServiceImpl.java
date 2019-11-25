@@ -41,7 +41,8 @@ public class EspecialidadServiceImpl implements EspecialidadService {
   public List<Especialidad> findAll() {
 
     final List<Especialidad> especialidades = especialidadRepository.findAll();
-    return especialidades;
+    final List<Especialidad> especialidadesDesencriptado = Utilidades.desencriptarListaEspecialidades(especialidades);
+    return especialidadesDesencriptado;
   }
 
   @Override

@@ -30,16 +30,11 @@
                 <div class="col-75">
                     <select input="text" class="form-control" formControlName="especialidad" [ngClass]="{ 'is-invalid': submitted && f.especialidad.errors }">
                                 <option value="">Selecciona la especialidad</option>
-          					      <option value="Cabecera">Dermatologia</option>
-          						  <option value="Enfermero">Traumatología</option>
-          					      <option value="Pediatría">Oftalmologia</option>
-          						  <option value="Traumatología">Cardiología</option>				      
-          					      <option value="">Otorrinolaringología</option>
-          					      <option value="Cabecera">Urología</option>
-          						  <option value="Enfermero">Psiquiatría</option>
-          					      <option value="Pediatría">Alergología</option>
-          						  <option value="Traumatología">Endocrinología</option>
-          					    </select>
+                                <option *ngFor="let x of especialidades" 
+                                [value]="x.Value" >
+                              {{x.especialidad}}
+                            </option>          					    
+                        </select>
                     <div *ngIf="submitted && f.especialidad.errors" class="invalid-feedback">
                         <div *ngIf="f.especialidad.errors.required">Seleccione una especialidad</div>
                     </div>

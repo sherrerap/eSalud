@@ -30,8 +30,6 @@ export class ListadoCitasComponent implements OnInit {
 	success: string;
 	loading = false;
 	citaForm: FormGroup;
-	especialidades: string[];
-	medicos: string[];
 	@ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
 	constructor(
@@ -112,7 +110,7 @@ export class ListadoCitasComponent implements OnInit {
 			fecha: row_obj.fecha,
 			hora: row_obj.hora,
 			paciente: row_obj.paciente,
-			medico: row_obj.medico
+			medico: row_obj.medico,
 		});
 		this.citasService.delete(this.citaForm.controls.id.value)
 			.pipe(first())
@@ -131,14 +129,6 @@ export class ListadoCitasComponent implements OnInit {
 					this.error = 'Ha ocurrido un error al eliminar la cita.';
 					this.loading = false;
 				});
-	}
-
-	getEspecialidades() {
-		
-	}
-
-	getMedicos() {
-
 	}
 
 }
