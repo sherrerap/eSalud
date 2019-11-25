@@ -108,7 +108,7 @@ const routes: Routes = [
   {
     path: 'admin/MostrarEspecialidades', component: SidenavAdminComponent, canActivate: [AuthGuard],
     children: [
-      { path: '', component: MostrarEspecialidadesComponent } 
+      { path: '', component: MostrarEspecialidadesComponent }
     ]
   },
   { path: 'admin/MostrarEspecialidades/RegistrarEspecialidad', redirectTo: 'admin/RegistrarEspecialidad' },
