@@ -84,7 +84,8 @@ public class CitasRepositoryImpl implements CitasRepository {
 	 * @author e3corp
 	 */
 	public void deleteCita(String citaId) {
-		this.mongoOperations.findAndRemove(new Query(Criteria.where("id").is(citaId)), Cita.class);
+		System.out.println("ID DE LA CITA QUE LLEGA");
+		this.mongoOperations.findAndRemove(new Query(Criteria.where("_id").is(citaId)), Cita.class);
 	}
 
 	/**

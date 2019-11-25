@@ -55,7 +55,7 @@ public class Cita {
    * Constructor de cita.
    * author: e3corp
    */
-  public Cita(@NotNull final String paciente, final String tipo, 
+  public Cita(final String id, @NotNull final String paciente, final String tipo, 
       final String fecha, final String centro,
       final String medico, final String hora) {
     super();

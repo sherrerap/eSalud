@@ -254,7 +254,7 @@ public class CitaController {
     final String tipo = jso.getString("tipo");
     final String centro = jso.getString("centro");
     LOG.info("el paciente que se recibe es:" + paciente);
-    Cita citaFinal = new Cita(paciente, tipo, fecha, centro, medico, hora);
+    Cita citaFinal = new Cita("", paciente, tipo, fecha, centro, medico, hora);
     citasService.saveCita(citaFinal);
     System.out.println("CITA CREADA: "+citaFinal);
     return ResponseEntity.ok(citaFinal);

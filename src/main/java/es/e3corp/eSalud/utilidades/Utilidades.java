@@ -192,11 +192,11 @@ public class Utilidades {
   public static Cita desencriptarCita(Cita cita) {
     try {
     Cita c = new Cita();
+      
+      c.setId(cita.getId());;
       c.setPaciente(desencriptar(cita.getPaciente()));
       c.setPaciente(desencriptar(cita.getPaciente()));
       
-      c.setId(c.createId());
-
       c.setMedico(desencriptar(cita.getMedico()));
       c.setMedico(desencriptar(cita.getMedico()));
 
