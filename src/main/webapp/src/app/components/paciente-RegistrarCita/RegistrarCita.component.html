@@ -30,15 +30,12 @@
                 <div class="col-75">
                     <select input="text" class="form-control" formControlName="especialidad" [ngClass]="{ 'is-invalid': submitted && f.especialidad.errors }">
           					      <option value="">Selecciona la especialidad</option>
-          					      <option value="Cabecera">Dermatologia</option>
-          						  <option value="Enfermero">Traumatología</option>
-          					      <option value="Pediatría">Oftalmologia</option>
-          						  <option value="Traumatología">Cardiología</option>				      
-          					      <option value="">Otorrinolaringología</option>
-          					      <option value="Cabecera">Urología</option>
-          						  <option value="Enfermero">Psiquiatría</option>
-          					      <option value="Pediatría">Alergología</option>
-          						  <option value="Traumatología">Endocrinología</option>
+          					      <option value="Pediatría">Pediatría</option>
+          						  <option value="Traumatología">Traumatología</option>
+          					      <option value="Geriatría">Geriatría</option>
+          						  <option value="Oncología">Oncología</option>				      
+          					      <option value="Urología">Urología</option>
+          					      <option value="Psiquiatría">Psiquiatría</option>
           					    </select>
                     <div *ngIf="submitted && f.especialidad.errors" class="invalid-feedback">
                         <div *ngIf="f.especialidad.errors.required">Seleccione una especialidad</div>
@@ -79,7 +76,21 @@
                     <label for="fname">Hora:</label>
                 </div>
                 <div class="col-75">
-                    <input type="time" placeholder="Hora" formControlName="hora" min="08:00" max="14:30" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.hora.errors }" />
+                    <select input type="time" class="form-control" placeholder="Hora" formControlName="hora" [ngClass]="{ 'is-invalid': submitted && f.hora.errors }">
+                        <option value="">Selecciona la hora</option>
+                        <option value="8:30">8:30</option>
+                        <option value="9:00">9:00</option>
+                        <option value="9:15">9:15</option>
+                        <option value="9:30">9:30</option>				      
+                        <option value="10:00">10:00</option>
+                        <option value="11:30">11:30</option>
+                        <option value="11:45">11:45</option>
+                        <option value="12:45">12:45</option>
+                        <option value="13:00">13:00</option>
+                        <option value="13:30">13:30</option>				      
+                        <option value="14:00">14:00</option>
+                        <option value="14:15">14:15</option>
+                      </select>
                     <div *ngIf="submitted && f.hora.errors" class="invalid-feedback">
                         <div *ngIf="f.hora.errors.required">Selecciona una fecha valida</div>
                     </div>
