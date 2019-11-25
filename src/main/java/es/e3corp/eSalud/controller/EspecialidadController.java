@@ -91,6 +91,7 @@ public class EspecialidadController {
 
   public ResponseEntity<List<Usuario>> getMedicosByEspecialidad(
       @RequestParam("especialidad") final String especialidad) {
+	  System.out.println("ESPECIALIDAD QUE LLEGA: "+especialidad);
     final List<Usuario> medico = usuarioService.getUsuarioByEspecialidad(especialidad);
     return ResponseEntity.ok(medico);
 
