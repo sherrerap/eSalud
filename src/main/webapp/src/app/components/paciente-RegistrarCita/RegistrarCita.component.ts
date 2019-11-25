@@ -13,7 +13,7 @@ export interface Especialidad {
     tiempoConsulta: string;
 }
 
-export interface Cita{
+export interface Cita {
     id: string;
     paciente: string;
     tipo: string;
@@ -43,8 +43,8 @@ export class RegistrarCitaComponent implements OnInit {
     especialidades: Especialidad[];
     medicos: Medico[];
     horasLibres: Cita[];
-    fechaSeleccionada: string='';
-    medicoSeleccionado: string='';
+    fechaSeleccionada: string = '';
+    medicoSeleccionado: string = '';
     especialidadSeleccionada: string = '';
 
     constructor(
@@ -95,14 +95,14 @@ export class RegistrarCitaComponent implements OnInit {
                 });
     }
 
-    getHorasLibres(){
+    getHorasLibres() {
         this.citasService.getHorasLibres(this.medicoSeleccionado, this.fechaSeleccionada)
-        .subscribe((data: Cita[]) => {
-            this.horasLibres = data;
-        },
-            error => {
-                this.error = "Ha ocurrido un error recogiendo las especialidades disponibles.";
-            });;
+            .subscribe((data: Cita[]) => {
+                this.horasLibres = data;
+            },
+                error => {
+                    this.error = "Ha ocurrido un error recogiendo las horas disponibles.";
+                });;
     }
 
 
@@ -115,8 +115,8 @@ export class RegistrarCitaComponent implements OnInit {
                     this.error = "Ha ocurrido un error recogiendo las especialidades disponibles.";
                 });;
     }
-    capturarFecha(){
-       this.getHorasLibres();
+    capturarFecha() {
+        this.getHorasLibres();
     }
 
     capturarEspecialidad() {
@@ -129,7 +129,7 @@ export class RegistrarCitaComponent implements OnInit {
                 this.medicos = data;
             },
                 error => {
-                    this.error = "Ha ocurrido un error recogiendo las especialidades disponibles.";
+                    this.error = "Ha ocurrido un error recogiendo los médicos disponibles.";
                 });;
     }
 }
