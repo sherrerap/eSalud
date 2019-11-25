@@ -10,7 +10,7 @@ export interface UsersData {
   centro: string;
   email: string;
   localidad: string;
-  rol:string;
+  rol: string;
 }
 
 

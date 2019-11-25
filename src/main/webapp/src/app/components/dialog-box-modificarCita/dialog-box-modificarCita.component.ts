@@ -1,8 +1,5 @@
-import { Component, Inject, Optional, OnInit } from '@angular/core';
+import { Component, Inject, Optional } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
-import { CitasService } from '../../_services';
 
 export interface CitaData {
   id: string;
@@ -17,7 +14,7 @@ export interface CitaData {
   templateUrl: './dialog-box-modificarCita.component.html',
   styleUrls: ['./dialog-box-modificarCita.component.css']
 })
-export class DialogBoxModificarCita{
+export class DialogBoxModificarCita {
   action: string;
   local_data: any;
 

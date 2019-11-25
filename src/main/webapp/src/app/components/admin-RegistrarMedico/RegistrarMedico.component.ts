@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AlertService } from 'src/app/_services/alert.service';
-import { SidenavAdminComponent } from 'src/app/components/sidenavAdmin/sidenavAdmin.component';
 
 import { UserService } from '../../_services';
 

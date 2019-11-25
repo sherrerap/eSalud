@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTable, MatDialog, MatTableDataSource, MatPaginator } from '@angular/material';
+import { Component, ViewChild } from '@angular/core';
+import { MatDialog, MatTableDataSource, MatPaginator } from '@angular/material';
 import { DialogBoxPacienteComponent } from '../dialog-box-paciente/dialog-box-paciente.component';
-import { CitasService, AuthService, UserService } from 'src/app/_services';
+import { AuthService, UserService } from 'src/app/_services';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { first } from 'rxjs/operators';
 

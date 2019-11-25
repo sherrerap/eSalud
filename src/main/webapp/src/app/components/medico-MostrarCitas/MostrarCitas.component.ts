@@ -1,9 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { CitasService } from 'src/app/_services';
-import { first } from 'rxjs/operators';
 import { AuthService } from 'src/app/_services/auth.service';
-import {UserService} from 'src/app/_services/user.service';
 
 export interface PeriodicElement {
   paciente: string;
@@ -18,9 +16,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
 ];
 
 @Component({
-	selector: 'app-MostrarCitas',
-	templateUrl: './MostrarCitas.component.html',
-	styleUrls: ['./MostrarCitas.component.css']
+  selector: 'app-MostrarCitas',
+  templateUrl: './MostrarCitas.component.html',
+  styleUrls: ['./MostrarCitas.component.css']
 })
 export class MostrarCitasComponent implements OnInit {
   displayedColumns: string[] = ['paciente', 'centro', 'fecha', 'hora'];
@@ -30,7 +28,7 @@ export class MostrarCitasComponent implements OnInit {
 
   constructor(
     private citasService: CitasService,
-    private authService: AuthService  ) {
+    private authService: AuthService) {
 
   }
 

@@ -1,7 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { AuthService } from 'src/app/_services';
-import { Router } from '@angular/router';
 import { AlertService } from 'src/app/_services/alert.service';
 
 

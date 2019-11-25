@@ -1,9 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTable, MatDialog, MatTableDataSource, MatPaginator } from '@angular/material';
-import { DialogBoxMedicoComponent } from '../dialog-box-medico/dialog-box-medico.component';
+import { Component, ViewChild } from '@angular/core';
+import { MatDialog, MatTableDataSource, MatPaginator } from '@angular/material';
 import { AuthService, UserService } from 'src/app/_services';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { first } from 'rxjs/operators';
 
 export interface UsersData {
   dni: string;
