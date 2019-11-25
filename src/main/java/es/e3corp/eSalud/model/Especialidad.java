@@ -5,7 +5,8 @@ import java.util.UUID;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.data.annotation.Id;
-
+import org.springframework.data.mongodb.core.mapping.Document;
+@Document(collection = "horarios")
 public class Especialidad {
   @Id
   /**
@@ -16,7 +17,7 @@ public class Especialidad {
    * Nombre. author: e3corp
    */
   @NotNull
-  private String nombre;
+  private String especialidad;
   /**
    * Hora de inicio. author: e3corp
    */
@@ -30,10 +31,10 @@ public class Especialidad {
    */
   private String tiempoConsulta;
 
-  public Especialidad(@NotNull String nombre, String horaInicio, String horaFin, String tiempoConsulta) {
+  public Especialidad(@NotNull String especialidad, String horaInicio, String horaFin, String tiempoConsulta) {
     super();
     this.id = UUID.randomUUID().toString();
-    this.nombre = nombre;
+    this.especialidad= especialidad;
     this.horaInicio = horaInicio;
     this.horaFin = horaFin;
     this.tiempoConsulta = tiempoConsulta;
@@ -47,12 +48,12 @@ public class Especialidad {
     this.id = id;
   }
 
-  public String getNombre() {
-    return nombre;
+  public String getEspecialidad() {
+    return especialidad;
   }
 
-  public void setNombre(String nombre) {
-    this.nombre = nombre;
+  public void setEspecialidad(String especialidad) {
+    this.especialidad= especialidad;
   }
 
   public String getHoraInicio() {
@@ -86,7 +87,7 @@ public class Especialidad {
     result = prime * result + ((horaFin == null) ? 0 : horaFin.hashCode());
     result = prime * result + ((horaInicio == null) ? 0 : horaInicio.hashCode());
     result = prime * result + ((id == null) ? 0 : id.hashCode());
-    result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+    result = prime * result + ((especialidad== null) ? 0 : especialidad.hashCode());
     result = prime * result + ((tiempoConsulta == null) ? 0 : tiempoConsulta.hashCode());
     return result;
   }
@@ -115,10 +116,10 @@ public class Especialidad {
         return false;
     } else if (!id.equals(other.id))
       return false;
-    if (nombre == null) {
-      if (other.nombre != null)
+    if (especialidad== null) {
+      if (other.especialidad!= null)
         return false;
-    } else if (!nombre.equals(other.nombre))
+    } else if (!especialidad.equals(other.especialidad))
       return false;
     if (tiempoConsulta == null) {
       if (other.tiempoConsulta != null)

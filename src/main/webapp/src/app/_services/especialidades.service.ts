@@ -11,19 +11,19 @@ export class EspecialidadesService {
         return this.http.get<any[]>(`${environment.apiUrl}/especialidades/all`);
     }
 
-    getEspecialidad(dni){
-        return this.http.get<any[]>(`${environment.apiUrl}/citas/paciente/${dni}`);
+    getEspecialidad(nombre){
+        return this.http.get<any[]>(`${environment.apiUrl}/especialidades/paciente/${nombre}`);
     }
     
-    register(cita) {
-        return this.http.post(`${environment.apiUrl}/citas`, cita);
+    register(especialidad) {
+        return this.http.post(`${environment.apiUrl}/especialidades`, especialidad);
     }
 
     update(cita,id) {
-        return this.http.put(`${environment.apiUrl}/citas/${id}`, cita);
+        return this.http.put(`${environment.apiUrl}/especialidades/${id}`, cita);
     }
 
     delete(idCita) {
-        return this.http.delete(`${environment.apiUrl}/citas/${idCita}`);
+        return this.http.delete(`${environment.apiUrl}/especialidades/${idCita}`);
     }
 }

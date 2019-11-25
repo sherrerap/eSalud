@@ -65,7 +65,7 @@ public class EspecialidadController {
 
     final Especialidad especialidad = especialidadService.findByName(nombre);
     if (especialidad != null) {
-      LOG.info("[SERVER] Especialidad encontrada: " + especialidad.getNombre());
+      LOG.info("[SERVER] Especialidad encontrada: " + especialidad.getEspecialidad());
       return ResponseEntity.ok(especialidad);
     } else {
       LOG.info("[SERVER] No se ha encontrado ninguna especialidad con ese nombre.");

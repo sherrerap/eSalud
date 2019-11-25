@@ -2,27 +2,27 @@
   <table mat-table [dataSource]="dataSource">
 
     <!-- Weight Column -->
-    <ng-container matColumnDef="Especialidad">
+    <ng-container matColumnDef="especialidad">
       <th mat-header-cell *matHeaderCellDef> Especialidad </th>
-      <td mat-cell *matCellDef="let element"> {{element.Especialidad}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.especialidad}} </td>
     </ng-container>
 
     <!-- Symbol Column -->
-    <ng-container matColumnDef="HoraInicio">
+    <ng-container matColumnDef="horaInicio">
       <th mat-header-cell *matHeaderCellDef> Hora de inicio </th>
-      <td mat-cell *matCellDef="let element"> {{element.HoraInicio}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.horaInicio}} </td>
     </ng-container>
 
     <!-- Symbol Column -->
-    <ng-container matColumnDef="HoraFin">
+    <ng-container matColumnDef="horaFin">
       <th mat-header-cell *matHeaderCellDef> Hora de fin </th>
-      <td mat-cell *matCellDef="let element"> {{element.HoraFin}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.horaFin}} </td>
     </ng-container>
 
     <!-- Symbol Column -->
-    <ng-container matColumnDef="TiempoConsulta">
+    <ng-container matColumnDef="tiempoConsulta">
       <th mat-header-cell *matHeaderCellDef> Tiempo Consulta </th>
-      <td mat-cell *matCellDef="let element"> {{element.TiempoConsulta}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.tiempoConsulta}} </td>
     </ng-container>
 
     <ng-container matColumnDef="action">
@@ -30,6 +30,8 @@
 			<td mat-cell *matCellDef="let element" class="action-link">
 				<button mat-raised-button (click)="openDialog('Update',element)" mat-flat-button color="green"
 					class="button1">Editar</button>
+					<button mat-button (click)="openDialog('Delete',element)" mat-flat-button color="warn"
+					class="button2">Eliminar</button>
 			
 
 			</td>

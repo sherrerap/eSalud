@@ -10,15 +10,12 @@ import { EspecialidadesService } from 'src/app/_services/especialidades.service'
 
 export interface PeriodicElement {
   
-  Especialidad: string;
-  TiempoConsulta: string;
-  HoraInicio: string;
-  HoraFin: string
+  especialidad: string;
+  tiempoConsulta: string;
+  horaInicio: string;
+  horaFin: string
 }
-const ELEMENT_DATA: PeriodicElement[] = [
-  {Especialidad: 'Traumatología', HoraInicio: '08:45',TiempoConsulta: '15', HoraFin: '10:30' }
-
-];
+const ELEMENT_DATA: PeriodicElement[] = [];
 
 @Component({
 	selector: 'app-MostrarEspecialidades',
@@ -26,8 +23,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
 	styleUrls: ['./MostrarEspecialidades.component.css']
 })
 
-export class MostrarEspecialidadesComponent {
-  displayedColumns: string[] = ['Especialidad', 'HoraInicio', 'HoraFin','TiempoConsulta', 'action'];
+export class MostrarEspecialidadesComponent implements OnInit {
+  displayedColumns: string[] = ['especialidad', 'horaInicio', 'horaFin','tiempoConsulta', 'action'];
   
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   data: PeriodicElement[];
@@ -40,8 +37,8 @@ export class MostrarEspecialidadesComponent {
 
   constructor(
     private especialidadesService: EspecialidadesService,
-    public dialog: MatDialog,
-
+	public dialog: MatDialog,
+	private formBuilder: FormBuilder,
     
   ) {
 

@@ -276,7 +276,7 @@ public class Utilidades {
   public static Optional<Especialidad> desencriptarOptionalEspecialidad(final Optional<Especialidad> especialidad) {
     try {
 
-      especialidad.get().setNombre(desencriptar(especialidad.get().getNombre()));
+      especialidad.get().setEspecialidad(desencriptar(especialidad.get().getEspecialidad()));
       especialidad.get().setHoraInicio(desencriptar(especialidad.get().getHoraInicio()));
       especialidad.get().setHoraFin(desencriptar(especialidad.get().getHoraFin()));
       especialidad.get().setTiempoConsulta(desencriptar(especialidad.get().getTiempoConsulta()));
@@ -303,7 +303,7 @@ public class Utilidades {
   private static Especialidad desencriptarEspecialidad(Especialidad especialidad) {
     try {
 
-      especialidad.setNombre(desencriptar(especialidad.getNombre()));
+      especialidad.setEspecialidad(desencriptar(especialidad.getEspecialidad()));
       especialidad.setHoraInicio(desencriptar(especialidad.getHoraInicio()));
       especialidad.setHoraFin(desencriptar(especialidad.getHoraFin()));
       especialidad.setTiempoConsulta(desencriptar(especialidad.getTiempoConsulta()));
