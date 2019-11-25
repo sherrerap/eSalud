@@ -19,8 +19,8 @@ export class EspecialidadesService {
         return this.http.post(`${environment.apiUrl}/especialidades`, especialidad);
     }
 
-    update(cita,id) {
-        return this.http.put(`${environment.apiUrl}/especialidades/${id}`, cita);
+    update(especialidad,nombre) {
+        return this.http.put(`${environment.apiUrl}/especialidades/${nombre}`, especialidad);
     }
 
     delete(idCita) {

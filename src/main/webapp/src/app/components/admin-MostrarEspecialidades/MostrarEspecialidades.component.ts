@@ -86,7 +86,7 @@ export class MostrarEspecialidadesComponent implements OnInit {
 			horaInicio: row_obj.horaInicio,
 			horaFin: row_obj.horaFin,
 		});
-		this.especialidadesService.update(this.usuarioForm.value,this.usuarioForm.controls.dni.value)
+		this.especialidadesService.update(this.usuarioForm.value,this.usuarioForm.controls.especialidad.value)
 			.pipe(first())
 			.subscribe(
 				data => {

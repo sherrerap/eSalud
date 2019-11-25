@@ -141,9 +141,9 @@ public class EspecialidadController {
   @RequestMapping(value = "/{especialidadNombre}", method = RequestMethod.PUT)
   @ApiOperation(value = "Update especialidad", notes = "Finds a specialty name and updates its fields")
   public ResponseEntity<Usuario> updateEspecialidad(@RequestBody final String mensajerecibido,
-      @PathVariable final String nombre) {
+      @PathVariable final String especialidadNombre) {
     final JSONObject jso = new JSONObject(mensajerecibido);
-    final String nombreEncriptado = Utilidades.encriptar(nombre);
+    final String nombreEncriptado = Utilidades.encriptar(especialidadNombre);
     final Especialidad especialidad = especialidadService.findByName(nombreEncriptado);
     if (especialidad == null) {
       LOG.info("[SERVER] Error: la especialidad no existe.");
@@ -160,7 +160,7 @@ public class EspecialidadController {
         final String horaInicioEncriptada = Utilidades.encriptar(horaInicio);
         final String horaFinEncriptada = Utilidades.encriptar(horaFin);
         final String tiempoConsultaEncriptado = Utilidades.encriptar(tiempoConsulta);
-
+        especialidad.setEspecialidad(nombreEncriptado);
         especialidad.setHoraInicio(horaInicioEncriptada);
         especialidad.setHoraFin(horaFinEncriptada);
         especialidad.setTiempoConsulta(tiempoConsultaEncriptado);

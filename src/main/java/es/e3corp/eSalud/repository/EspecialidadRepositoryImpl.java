@@ -97,7 +97,7 @@ public class EspecialidadRepositoryImpl implements EspecialidadRepository {
    */
   @Override
   public Optional<Especialidad> findOne(String nombre) {
-    Especialidad e = this.mongoOperations.findOne(new Query(Criteria.where("nombre").is(nombre)), Especialidad.class);
+    Especialidad e = this.mongoOperations.findOne(new Query(Criteria.where("especialidad").is(nombre)), Especialidad.class);
     Optional<Especialidad> especialidad = Optional.ofNullable(e);
     return especialidad;
   }

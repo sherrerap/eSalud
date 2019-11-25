@@ -3,7 +3,9 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 export interface UsersData {
   especialidad: string;
-  
+  horaInicio: string;
+  horaFinal: string;
+  tiempoConsulta: string;
 }
 
 
