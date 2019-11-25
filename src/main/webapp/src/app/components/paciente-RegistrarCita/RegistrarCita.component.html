@@ -58,7 +58,7 @@
                     <label for="fname">Fecha:</label>
                 </div>
                 <div class="col-75">
-                    <input type="date" formControlName="fecha" min="2019-11-02" max="2021-11-26" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fecha.errors }" />
+                    <input type="date" [(ngModel)]="fechaSeleccionada" (change)="capturarFecha()" formControlName="fecha" min="2019-11-02" max="2021-11-26" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fecha.errors }" />
                     <div *ngIf="submitted && f.fecha.errors" class="invalid-feedback">
                         <div *ngIf="f.fecha.errors.required">Selecciona una fecha valida</div>
                     </div>
@@ -69,7 +69,16 @@
                     <label for="fname">Hora:</label>
                 </div>
                 <div class="col-75">
-                    <input type="time" placeholder="Hora" formControlName="hora" min="08:00" max="14:30" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.hora.errors }" />
+
+                        <select input="text" class="form-control" formControlName="hora" [ngClass]="{ 'is-invalid': submitted && f.hora.errors }">
+                                <option value="">Selecciona la hora que desea</option>
+                                <option *ngFor="let x of horasLibres" 
+                                [value]="x.Value" >
+                              {{x.hora}}
+                            </option>          					    
+                        </select>
+
+
                     <div *ngIf="submitted && f.hora.errors" class="invalid-feedback">
                         <div *ngIf="f.hora.errors.required">Selecciona una fecha valida</div>
                     </div>

@@ -114,8 +114,12 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
   @Override
   public List<Usuario> findByEspecialidad(String especialidad) {
+	String especialidadEncriptada = Utilidades.encriptar(especialidad);
+	System.out.println("ESPECIALIDAD: "+especialidad);
+	System.out.println("ESPECIALIDAD ENCRIPTADA: "+especialidadEncriptada);
+
     List<Usuario> usuarios = this.mongoOperations
-        .find(new Query(Criteria.where("especialidad").is(Utilidades.encriptar(especialidad))), Usuario.class);
+        .find(new Query(Criteria.where("especialidad").is(especialidadEncriptada)), Usuario.class);
     return usuarios;
   }
 

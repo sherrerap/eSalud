@@ -35,6 +35,10 @@ export class CitasService {
         return this.http.get<any[]>(`${environment.apiUrl}/especialidades/all`);
     }
 
+    getHorasLibres(idmedico, fecha){
+        return this.http.get<any[]>(`${environment.apiUrl}/citas/disponibilidad?idmedico=${idmedico}&dia=${fecha}`);
+    }
+
     getMedicos(especialidad) {
         return this.http.get<any[]>(`${environment.apiUrl}/especialidades/medicos?especialidad=${especialidad}`);
     }
