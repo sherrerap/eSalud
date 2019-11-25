@@ -9,7 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AppComponent } from './app.component';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component'; 
 import { SidenavAdminComponent } from './components/sidenavAdmin/sidenavAdmin.component';
 import { ListadoCitasComponent } from './components/listado-citas/listado-citas.component';
 import { ModificarMedicoComponent } from './components/admin-ModificarMedico/ModificarMedico.component';
