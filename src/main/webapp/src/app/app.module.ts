@@ -14,7 +14,7 @@ import { SidenavAdminComponent } from './components/sidenavAdmin/sidenavAdmin.co
 import { ListadoCitasComponent } from './components/listado-citas/listado-citas.component';
 import { ModificarMedicoComponent } from './components/admin-ModificarMedico/ModificarMedico.component';
 import { ModificarPacienteComponent } from './components/admin-ModificarPaciente/ModificarPaciente.component';
-import { MostrarMedicoComponent } from './components/admin-MostrarMedico/MostrarMedico.component';
+import { RegistrarEspecialidadComponent } from './components/admin-RegistrarEspecialidad/RegistrarEspecialidad.component';
 import { RegistrarMedicoComponent } from './components/admin-RegistrarMedico/RegistrarMedico.component';
 import { DialogBoxPacienteComponent } from './components/dialog-box-paciente/dialog-box-paciente.component';
 import { DialogBoxMedicoComponent } from './components/dialog-box-medico/dialog-box-medico.component';
@@ -35,7 +35,6 @@ import { DialogBoxModificarEspecialidadComponent } from './components/dialog-box
     ListadoCitasComponent,
     ModificarMedicoComponent,
     ModificarPacienteComponent,
-    MostrarMedicoComponent,
     RegistrarMedicoComponent,
     DialogBoxPacienteComponent,
     DialogBoxMedicoComponent,
@@ -47,7 +46,7 @@ import { DialogBoxModificarEspecialidadComponent } from './components/dialog-box
     MostrarCitasComponent,
     MostrarEspecialidadesComponent,
     DialogBoxModificarEspecialidadComponent,
-    
+    RegistrarEspecialidadComponent,
 
   ],
   imports: [

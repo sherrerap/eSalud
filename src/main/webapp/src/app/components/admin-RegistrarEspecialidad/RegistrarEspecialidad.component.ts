@@ -11,18 +11,14 @@ export interface PeriodicElement {
   especialidad: string;
   centro: string;
 }
-const ELEMENT_DATA: PeriodicElement[] = [
-  { nombre: 'position', apellidos: 'Ciudad Real III', especialidad: '22/11/2019', centro: '11:54' },
-  { nombre: 'Pediatría', apellidos: 'Ciudad Real III', especialidad: '23/11/2019', centro: '12:00' }
-
-];
+const ELEMENT_DATA: PeriodicElement[] = [];
 
 @Component({
-	selector: 'app-MostrarMedico',
-	templateUrl: './MostrarMedico.component.html',
-	styleUrls: ['./MostrarMedico.component.css']
+	selector: 'app-RegistrarEspecialidad',
+	templateUrl: './RegistrarEspecialidad.component.html',
+	styleUrls: ['./RegistrarEspecialidad.component.css']
 })
-export class MostrarMedicoComponent implements OnInit {
+export class RegistrarEspecialidadComponent implements OnInit {
   displayedColumns: string[] = ['nombre', 'apellidos', 'especialidad', 'centro'];
   dataSource = new MatTableDataSource<PeriodicElement>();
   data: PeriodicElement[];
