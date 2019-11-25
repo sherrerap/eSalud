@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { CitasService, AuthService } from '../../_services';
+import { CitasService, AuthService, UserService } from '../../_services';
 
 export interface Especialidad {
     id: string;
@@ -13,6 +13,8 @@ export interface Especialidad {
 
 export interface Medico {
     dni: string;
+    nombre: string;
+    apellidos: string;
 }
 
 @Component({
@@ -28,11 +30,12 @@ export class RegistrarCitaComponent implements OnInit {
     success: string;
     especialidades: Especialidad[];
     medicos: Medico[];
+    especialidadSeleccionada: string = '';
 
     constructor(
         private formBuilder: FormBuilder,
         private citasService: CitasService,
-        private authService: AuthService
+        private authService: AuthService,
     ) { }
 
     ngOnInit() {
@@ -48,13 +51,11 @@ export class RegistrarCitaComponent implements OnInit {
         this.especialidades = [];
         this.medicos = [];
         this.getEspecialidades();
-        this.getMedicos();
     }
 
     get f() { return this.registerForm.controls; }
 
     onSubmit() {
-        console.log(this.registerForm.value.especialidad);
         this.submitted = true;
         this.success = null;
 
@@ -87,7 +88,17 @@ export class RegistrarCitaComponent implements OnInit {
                 });;
     }
 
-    getMedicos() {
-        //this.medicos.push(this.citasService.getMedicos(this.registerForm.controls.especialidad));
+    capturarEspecialidad(){
+        this.getMedicos(this.especialidadSeleccionada);
+    }
+
+    getMedicos(esp) {
+        this.citasService.getMedicos(esp)
+            .subscribe((data: Medico[]) => {
+                this.medicos = data;
+            },
+                error => {
+                    this.error = "Ha ocurrido un error recogiendo las especialidades disponibles.";
+                });;
     }
 }

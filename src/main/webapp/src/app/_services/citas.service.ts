@@ -36,6 +36,6 @@ export class CitasService {
     }
 
     getMedicos(especialidad) {
-        return this.http.get<any[]>(`${environment.apiUrl}/especialidades/medicos`);
+        return this.http.get<any[]>(`${environment.apiUrl}/especialidades/medicos?especialidad=${especialidad}`);
     }
 }

@@ -83,7 +83,7 @@ public class EspecialidadController {
   }
 
   /**
-   * Obtiene la especialidad mediante su nombre
+   * Obtiene los médicos de una especialidad
    * 
    * @author e3corp
    */
@@ -91,6 +91,7 @@ public class EspecialidadController {
 
   public ResponseEntity<List<Usuario>> getMedicosByEspecialidad(
       @RequestParam("especialidad") final String especialidad) {
+    LOG.info("[SERVER] Especialidad: " + especialidad);
     final List<Usuario> medico = usuarioService.getUsuarioByEspecialidad(especialidad);
     return ResponseEntity.ok(medico);
 
