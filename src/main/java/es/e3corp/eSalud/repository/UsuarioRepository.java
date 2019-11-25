@@ -55,4 +55,6 @@ public interface UsuarioRepository {
    */
   List<Usuario> findByRol(String rol);
 
+  List<Usuario> findByEspecialidad(String especialidad);
+
 }

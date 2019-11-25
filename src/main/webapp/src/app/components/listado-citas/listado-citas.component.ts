@@ -30,6 +30,8 @@ export class ListadoCitasComponent implements OnInit {
 	success: string;
 	loading = false;
 	citaForm: FormGroup;
+	especialidades: string[];
+	medicos: string[];
 	@ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
 	constructor(
@@ -129,6 +131,14 @@ export class ListadoCitasComponent implements OnInit {
 					this.error = 'Ha ocurrido un error al eliminar la cita.';
 					this.loading = false;
 				});
+	}
+
+	getEspecialidades() {
+		
+	}
+
+	getMedicos() {
+
 	}
 
 }

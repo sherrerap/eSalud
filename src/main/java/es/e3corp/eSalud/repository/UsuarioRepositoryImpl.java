@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
 
 import es.e3corp.eSalud.model.Usuario;
+import es.e3corp.eSalud.utilidades.Utilidades;
 
 /**
  * Clase que implementa la interfaz UsuarioRepository.
@@ -109,6 +110,13 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
   public List<Usuario> findByRol(final String rol) {
     List<Usuario> usuariosRol = this.mongoOperations.find(new Query(Criteria.where("rol").is(rol)), Usuario.class);
     return usuariosRol;
+  }
+
+  @Override
+  public List<Usuario> findByEspecialidad(String especialidad) {
+    List<Usuario> usuarios = this.mongoOperations
+        .find(new Query(Criteria.where("especialidad").is(Utilidades.encriptar(especialidad))), Usuario.class);
+    return usuarios;
   }
 
 }

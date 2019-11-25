@@ -44,4 +44,6 @@ public interface UsuarioService {
    */
   List<Usuario> getUsersByRol(String rol);
 
+  List<Usuario> getUsuarioByEspecialidad(String especialidad);
+
 }

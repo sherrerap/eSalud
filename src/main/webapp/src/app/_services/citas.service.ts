@@ -11,11 +11,11 @@ export class CitasService {
         return this.http.get<any[]>(`${environment.apiUrl}/citas`);
     }
 
-    getCitasPaciente(dni){
+    getCitasPaciente(dni) {
         return this.http.get<any[]>(`${environment.apiUrl}/citas/paciente/${dni}`);
     }
 
-    getCitasMedico(dni){
+    getCitasMedico(dni) {
         return this.http.get<any[]>(`${environment.apiUrl}/citas/medico/${dni}`);
     }
 
@@ -23,11 +23,19 @@ export class CitasService {
         return this.http.post(`${environment.apiUrl}/citas`, cita);
     }
 
-    update(cita,id) {
+    update(cita, id) {
         return this.http.put(`${environment.apiUrl}/citas/${id}`, cita);
     }
 
     delete(idCita) {
         return this.http.delete(`${environment.apiUrl}/citas/${idCita}`);
+    }
+
+    getEspecialidades() {
+        return this.http.get<any[]>(`${environment.apiUrl}/especialidades/all`);
+    }
+
+    getMedicos(especialidad) {
+        return this.http.get<any[]>(`${environment.apiUrl}/especialidades/medicos`);
     }
 }

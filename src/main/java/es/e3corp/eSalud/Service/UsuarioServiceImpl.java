@@ -122,4 +122,10 @@ public class UsuarioServiceImpl implements UsuarioService {
     return usersRol;
   }
 
+  @Override
+  public List<Usuario> getUsuarioByEspecialidad(String especialidad) {
+    List<Usuario> usuarios = userRepository.findByEspecialidad(especialidad);
+    return usuarios;
+  }
+
 }
