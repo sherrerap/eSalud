@@ -36,7 +36,8 @@ export class MostrarCitasComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
-    this.citasService.getCitasMedico(this.authService.currentUserValue.id)
+    console.log(this.authService.currentUserValue.dni)
+    this.citasService.getCitasMedico(this.authService.currentUserValue.dni)
       .subscribe((data: PeriodicElement[]) => {
         this.data = data;
         this.dataSource = new MatTableDataSource(data);

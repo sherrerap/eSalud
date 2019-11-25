@@ -65,4 +65,6 @@ public interface CitasRepository {
    */
   List<Cita> findMedico(String id) throws ParseException;
 
+List<Cita> getCitasDisponibles(String idmedico, String dia);
+
 }

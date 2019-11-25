@@ -115,7 +115,6 @@ public class CitaServiceImpl implements CitaService {
 
   @Override
   public List<Cita> getCitasByPaciente(String dni) {
-
     List<Cita> citas = citaRepository.findPaciente(dni);
     return citas;
   }
@@ -126,5 +125,11 @@ public class CitaServiceImpl implements CitaService {
     List<Cita> citas = citaRepository.findMedico(id);
     return citas;
   }
+
+@Override
+public List<Cita> getCitasDisponibles(String idmedico, String dia) {
+	List<Cita> citas = citaRepository.getCitasDisponibles(idmedico, dia);
+	return citas;
+}
 
 }

@@ -79,6 +79,10 @@ public String getId() {
   public void setId(final String id) {
     this.id = id;
   }
+  
+  public String createId() {
+	  return  UUID.randomUUID().toString();
+  }
 
   public String getPaciente() {
     return paciente;
@@ -128,85 +132,70 @@ public String getId() {
     this.hora = hora;
   }
 
+ 
+  
   @Override
-  public int hashCode() {
-    final int prime = 31;
-    int result = 1;
-    result = prime * result + ((centro == null) ? 0 : centro.hashCode());
-    result = prime * result + ((fecha == null) ? 0 : fecha.hashCode());
-    result = prime * result + ((hora == null) ? 0 : hora.hashCode());
-    result = prime * result + ((id == null) ? 0 : id.hashCode());
-    result = prime * result + ((medico == null) ? 0 : medico.hashCode());
-    result = prime * result + ((paciente == null) ? 0 : paciente.hashCode());
-    result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
-    return result;
-  }
+public int hashCode() {
+	final int prime = 31;
+	int result = 1;
+	result = prime * result + ((centro == null) ? 0 : centro.hashCode());
+	result = prime * result + ((fecha == null) ? 0 : fecha.hashCode());
+	result = prime * result + ((hora == null) ? 0 : hora.hashCode());
+	result = prime * result + ((id == null) ? 0 : id.hashCode());
+	result = prime * result + ((medico == null) ? 0 : medico.hashCode());
+	result = prime * result + ((paciente == null) ? 0 : paciente.hashCode());
+	result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
+	return result;
+}
 
-  @Override
-  public boolean equals(final Object obj) {
-    if (this == obj) {
-      return true;
-    }
-    if (obj == null) {
-      return false;
-    }
-    if (getClass() != obj.getClass()) {
-      return false;
-    }
-    final Cita other = (Cita) obj;
-    if (centro == null) {
-      if (other.centro != null) {
-        return false;
-      }
-    } else if (!centro.equals(other.centro)) {
-      return false;
-    }
-    if (fecha == null) {
-      if (other.fecha != null) {
-        return false;
-      }
-    } else if (!fecha.equals(other.fecha)) {
-      return false;
-    }
-    if (hora == null) {
-      if (other.hora != null) {
-        return false;
-      }
-    } else if (!hora.equals(other.hora)) {
-      return false;
-    }
-    if (id == null) {
-      if (other.id != null) {
-        return false;
-      }
-    } else if (!id.equals(other.id)) {
-      return false;
-    }
-    if (medico == null) {
-      if (other.medico != null) {
-        return false;
-      }
-    } else if (!medico.equals(other.medico)) {
-      return false;
-    }
-    if (paciente == null) {
-      if (other.paciente != null) {
-        return false;
-      }
-    } else if (!paciente.equals(other.paciente)) {
-      return false;
-    }
-    if (tipo == null) {
-      if (other.tipo != null) {
-        return false;
-      }
-    } else if (!tipo.equals(other.tipo)) {
-      return false;
-    }
-    return true;
-  }
+@Override
+public boolean equals(Object obj) {
+	if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (getClass() != obj.getClass())
+		return false;
+	Cita other = (Cita) obj;
+	if (centro == null) {
+		if (other.centro != null)
+			return false;
+	} else if (!centro.equals(other.centro))
+		return false;
+	if (fecha == null) {
+		if (other.fecha != null)
+			return false;
+	} else if (!fecha.equals(other.fecha))
+		return false;
+	if (hora == null) {
+		if (other.hora != null)
+			return false;
+	} else if (!hora.equals(other.hora))
+		return false;
+	if (id == null) {
+		if (other.id != null)
+			return false;
+	} else if (!id.equals(other.id))
+		return false;
+	if (medico == null) {
+		if (other.medico != null)
+			return false;
+	} else if (!medico.equals(other.medico))
+		return false;
+	if (paciente == null) {
+		if (other.paciente != null)
+			return false;
+	} else if (!paciente.equals(other.paciente))
+		return false;
+	if (tipo == null) {
+		if (other.tipo != null)
+			return false;
+	} else if (!tipo.equals(other.tipo))
+		return false;
+	return true;
+}
 
-  @Override
+@Override
   public String toString() {
     return "Cita [id=" + id + ", paciente=" + paciente 
         + ", tipo=" + tipo + ", fecha=" + fecha + ", centro=" + centro

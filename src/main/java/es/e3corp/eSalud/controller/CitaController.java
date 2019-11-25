@@ -4,6 +4,8 @@ package es.e3corp.eSalud.controller;
 import java.text.ParseException;
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.json.JSONException;
@@ -229,6 +231,13 @@ public class CitaController {
     citasService.deleteCita(citaId);
     return ResponseEntity.ok().build();
   }
+  
+  @RequestMapping(value = "/disponibilidad", method = RequestMethod.GET)
+  public ResponseEntity<List<Cita>> disponibilidadCitasEnUnDia(@RequestParam ("idmedico") String idmedico, @RequestParam("dia") String dia){
+	List<Cita> citas = this.citasService.getCitasDisponibles(idmedico, dia);  
+	return ResponseEntity.ok(citas);
+  }
+  
 
   /**
    * Registra o guarda una cita en la base de datos.
@@ -242,16 +251,14 @@ public class CitaController {
     final String medico = jso.getString("medico");
     final String fecha = jso.getString("fecha");
     final String hora = jso.getString("hora");
+    final String tipo = jso.getString("tipo");
+    final String centro = jso.getString("centro");
     LOG.info("el paciente que se recibe es:" + paciente);
-
-    final String pacienteEncriptado = Utilidades.encriptar(paciente);
-
-    LOG.info("el paciente escriptado es:" + pacienteEncriptado);
-    String medicoEncriptado = Utilidades.encriptar(medico);
-    String fechaEncriptado = Utilidades.encriptar(fecha);
-    String horaEncriptado = Utilidades.encriptar(hora);
-    Cita cita1 = citasService.findCitaByPacienteMedicoFechaHora(pacienteEncriptado, medicoEncriptado, fechaEncriptado,
-        horaEncriptado);
+    Cita citaFinal = new Cita(paciente, tipo, fecha, centro, medico, hora);
+    citasService.saveCita(citaFinal);
+    System.out.println("CITA CREADA: "+citaFinal);
+    return ResponseEntity.ok(citaFinal);
+/*
     try {
       final Usuario usuarioPaciente = usuarioService.findByUserDni(pacienteEncriptado);
       final Usuario usuarioMedico = usuarioService.findByUserDni(medicoEncriptado);
@@ -308,7 +315,6 @@ public class CitaController {
       }
 
       cita1 = new Cita(paciente, tipo, fecha, centro, medico, hora);
-      citasService.saveCita(cita1);
       LOG.info("[SERVER] Cita registrada.");
       LOG.info("[SERVER] " + cita1.toString());
       return ResponseEntity.ok().build();
@@ -317,5 +323,7 @@ public class CitaController {
       return ResponseEntity.badRequest().build();
     }
   }
-
+  */
+ 
+  }
 }

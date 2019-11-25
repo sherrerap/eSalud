@@ -30,152 +30,147 @@ import es.e3corp.eSalud.utilidades.Utilidades;
  * @author e3corp
  */
 public class EspecialidadController {
-  /**
-   * Campo LOG.
-   * 
-   * @author e3corp
-   */
-  private static final Log LOG = LogFactory.getLog(EspecialidadController.class);
-  /**
-   * Interfaz EspecialidadService.
-   * 
-   * @author e3corp
-   */
-  private final EspecialidadService especialidadService;
+	/**
+	 * Campo LOG.
+	 * 
+	 * @author e3corp
+	 */
+	private static final Log LOG = LogFactory.getLog(EspecialidadController.class);
+	/**
+	 * Interfaz EspecialidadService.
+	 * 
+	 * @author e3corp
+	 */
+	private final EspecialidadService especialidadService;
 
-  @Autowired
-  /**
-   * Contructor EspecialidadController.
-   * 
-   * @author e3corp
-   */
-  public EspecialidadController(EspecialidadService especialidadService) {
-    this.especialidadService = especialidadService;
-  }
+	@Autowired
+	/**
+	 * Contructor EspecialidadController.
+	 * 
+	 * @author e3corp
+	 */
+	public EspecialidadController(EspecialidadService especialidadService) {
+		this.especialidadService = especialidadService;
+	}
 
-  /**
-   * Obtiene la especialidad mediante su nombre
-   * 
-   * @author e3corp
-   */
+	/**
+	 * Obtiene la especialidad mediante su nombre
+	 * 
+	 * @author e3corp
+	 */
 
-  @RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 
-  public ResponseEntity<Especialidad> getEspecialidad(@RequestParam("nombre") final String nombre) {
+	public ResponseEntity<Especialidad> getEspecialidad(@RequestParam("nombre") final String nombre) {
 
-    final Especialidad especialidad = especialidadService.findByName(nombre);
-    if (especialidad != null) {
-      LOG.info("[SERVER] Especialidad encontrada: " + especialidad.getNombre());
-      return ResponseEntity.ok(especialidad);
-    } else {
-      LOG.info("[SERVER] No se ha encontrado ninguna especialidad con ese nombre.");
-      return ResponseEntity.badRequest().build();
-    }
-  }
+		final Especialidad especialidad = especialidadService.findByName(nombre);
+		if (especialidad != null) {
+			LOG.info("[SERVER] Especialidad encontrada: " + especialidad.getEspecialidad());
+			return ResponseEntity.ok(especialidad);
+		} else {
+			LOG.info("[SERVER] No se ha encontrado ninguna especialidad con ese nombre.");
+			return ResponseEntity.badRequest().build();
+		}
+	}
 
-  @RequestMapping(value = "/all", method = RequestMethod.GET)
-  @ApiOperation(value = "Find all specialties", notes = "Return all specialties")
+	@RequestMapping(value = "/all", method = RequestMethod.GET)
+	@ApiOperation(value = "Find all specialties", notes = "Return all specialties")
+	public ResponseEntity<List<Especialidad>> allSpecialties() {
+		LOG.info("Get allSpecialties");
+		return ResponseEntity.ok(especialidadService.findAll());
+	}
 
-  public ResponseEntity<List<Especialidad>> allSpecialties() {
-    LOG.info("Get allSpecialties");
-    return ResponseEntity.ok(especialidadService.findAll());
-  }
+	/**
+	 * Borra una especialidad en funcion de su nombre.
+	 * 
+	 * @author e3corp
+	 */
+	@RequestMapping(value = "/{especialidadNombre}", method = RequestMethod.DELETE)
+	@ApiOperation(value = "Delete an specialty", notes = "Delete a specialty by name")
+	public ResponseEntity<Void> deleteEspecialidad(@PathVariable final String nombre) {
+		LOG.info("Delete specialty " + nombre);
+		especialidadService.deleteEspecialidad(nombre);
+		return ResponseEntity.noContent().build();
+	}
 
-  /**
-   * Borra una especialidad en funcion de su nombre.
-   * 
-   * @author e3corp
-   */
-  @RequestMapping(value = "/{especialidadNombre}", method = RequestMethod.DELETE)
-  @ApiOperation(value = "Delete an specialty", notes = "Delete a specialty by name")
+	/**
+	 * Registramos una especialidad y guardamos esa especialidad en la base de
+	 * datos.
+	 * 
+	 * @author e3corp.
+	 */
+	@RequestMapping(method = RequestMethod.POST)
 
-  public ResponseEntity<Void> deleteEspecialidad(@PathVariable final String nombre) {
-    LOG.info("Delete specialty " + nombre);
-    especialidadService.deleteEspecialidad(nombre);
-    return ResponseEntity.noContent().build();
-  }
+	public ResponseEntity<Usuario> registrarEspecialidad(@RequestBody final String especialidad) {
+		final JSONObject jso = new JSONObject(especialidad);
 
-  /**
-   * Registramos una especialidad y guardamos esa especialidad en la base de
-   * datos.
-   * 
-   * @author e3corp.
-   */
-  @RequestMapping(method = RequestMethod.POST)
+		if(jso.length()!=4) {
+			ResponseEntity.badRequest().build(); 
+		}
+		final String nombre = jso.getString("especialidad");
 
-  public ResponseEntity<Usuario> registrarEspecialidad(@RequestBody final String especialidad) {
-    final JSONObject jso = new JSONObject(especialidad);
-    final String nombre = jso.getString("nombre");
+		final String nombreEncriptado = Utilidades.encriptar(nombre);
+		String horaInicio = Utilidades.encriptar(jso.getString("horaInicio"));
+		String horaFin = Utilidades.encriptar(jso.getString("horaFin"));
+		String tiempoConsulta = Utilidades.encriptar(jso.getString("tiempoConsulta"));
+		Especialidad especialidad1 = new Especialidad(nombreEncriptado, horaInicio, horaFin, tiempoConsulta);
+		/*
+		 * if (especialidad1 == null) { try {
+		 * LOG.info("[SERVER] Registrando especialidad..."); horaInicio =
+		 * jso.getString("horaInicio"); horaFin = jso.getString("horaFin");
+		 * tiempoConsulta = jso.getString("tiempoConsulta"); } catch (JSONException j) {
+		 * LOG.info("[SERVER] Error en la lectura del JSON."); LOG.info(j.getMessage());
+		 * return ResponseEntity.badRequest().build(); }
+		 */
+		especialidadService.saveEspecialidad(especialidad1);
+		LOG.info("[SERVER] Especialidad registrada.");
+		LOG.info("[SERVER] " + especialidad1.toString());
+		return ResponseEntity.ok().build();
+		/*
+		 * } else { LOG.info("[SERVER] Error: La especialidad ya está registrada.");
+		 * LOG.info("[SERVER] " + especialidad1.toString()); return
+		 * ResponseEntity.badRequest().build(); }
+		 */
+	}
 
-    final String nombreEncriptado = Utilidades.encriptar(nombre);
+	@RequestMapping(value = "/{especialidadNombre}", method = RequestMethod.PUT)
+	@ApiOperation(value = "Update especialidad", notes = "Finds a specialty name and updates its fields")
+	public ResponseEntity<Usuario> updateEspecialidad(@RequestBody final String mensajerecibido,
+			@PathVariable final String nombre) {
+		final JSONObject jso = new JSONObject(mensajerecibido);
+		final String nombreEncriptado = Utilidades.encriptar(nombre);
+		final Especialidad especialidad = especialidadService.findByName(nombreEncriptado);
+		if (especialidad == null) {
+			LOG.info("[SERVER] Error: la especialidad no existe.");
+			return ResponseEntity.badRequest().build();
+		} else {
+			try {
+				LOG.info("[SERVER] Actualizando especialidad...");
 
-    String horaInicio = "";
-    String horaFin = "";
-    String tiempoConsulta = "";
+				// Depende de los campos que queramos que puedan actualizarse
+				final String horaInicio = jso.getString("horaInicio");
+				final String horaFin = jso.getString("horaFin");
+				final String tiempoConsulta = jso.getString("tiempoConsulta");
 
-    Especialidad especialidad1 = especialidadService.findByName(nombreEncriptado);
-    if (especialidad1 == null) {
-      try {
-        LOG.info("[SERVER] Registrando especialidad...");
-        horaInicio = jso.getString("horaInicio");
-        horaFin = jso.getString("horaFin");
-        tiempoConsulta = jso.getString("tiempoConsulta");
-      } catch (JSONException j) {
-        LOG.info("[SERVER] Error en la lectura del JSON.");
-        LOG.info(j.getMessage());
-        return ResponseEntity.badRequest().build();
-      }
+				final String horaInicioEncriptada = Utilidades.encriptar(horaInicio);
+				final String horaFinEncriptada = Utilidades.encriptar(horaFin);
+				final String tiempoConsultaEncriptado = Utilidades.encriptar(tiempoConsulta);
 
-      especialidad1 = new Especialidad(nombre, horaInicio, horaFin, tiempoConsulta);
-      especialidadService.saveEspecialidad(especialidad1);
-      LOG.info("[SERVER] Especialidad registrada.");
-      LOG.info("[SERVER] " + especialidad1.toString());
-      return ResponseEntity.ok().build();
-    } else {
-      LOG.info("[SERVER] Error: La especialidad ya está registrada.");
-      LOG.info("[SERVER] " + especialidad1.toString());
-      return ResponseEntity.badRequest().build();
-    }
-  }
+				especialidad.setHoraInicio(horaInicioEncriptada);
+				especialidad.setHoraFin(horaFinEncriptada);
+				especialidad.setTiempoConsulta(tiempoConsultaEncriptado);
 
-  @RequestMapping(value = "/{especialidadNombre}", method = RequestMethod.PUT)
-  @ApiOperation(value = "Update especialidad", notes = "Finds a specialty name and updates its fields")
-  public ResponseEntity<Usuario> updateEspecialidad(@RequestBody final String mensajerecibido,
-      @PathVariable final String nombre) {
-    final JSONObject jso = new JSONObject(mensajerecibido);
-    final String nombreEncriptado = Utilidades.encriptar(nombre);
-    final Especialidad especialidad = especialidadService.findByName(nombreEncriptado);
-    if (especialidad == null) {
-      LOG.info("[SERVER] Error: la especialidad no existe.");
-      return ResponseEntity.badRequest().build();
-    } else {
-      try {
-        LOG.info("[SERVER] Actualizando especialidad...");
+			} catch (JSONException j) {
+				LOG.error("[SERVER] Error en la lectura del JSON.");
+				LOG.info(j.getMessage());
+				return ResponseEntity.badRequest().build();
+			}
 
-        // Depende de los campos que queramos que puedan actualizarse
-        final String horaInicio = jso.getString("horaInicio");
-        final String horaFin = jso.getString("horaFin");
-        final String tiempoConsulta = jso.getString("tiempoConsulta");
-
-        final String horaInicioEncriptada = Utilidades.encriptar(horaInicio);
-        final String horaFinEncriptada = Utilidades.encriptar(horaFin);
-        final String tiempoConsultaEncriptado = Utilidades.encriptar(tiempoConsulta);
-
-        especialidad.setHoraInicio(horaInicioEncriptada);
-        especialidad.setHoraFin(horaFinEncriptada);
-        especialidad.setTiempoConsulta(tiempoConsultaEncriptado);
-
-      } catch (JSONException j) {
-        LOG.error("[SERVER] Error en la lectura del JSON.");
-        LOG.info(j.getMessage());
-        return ResponseEntity.badRequest().build();
-      }
-
-      especialidadService.updateEspecialidad(especialidad);
-      LOG.info("[SERVER] Especialidad actualizada.");
-      LOG.info("[SERVER] " + especialidad.toString());
-      return ResponseEntity.ok().build();
-    }
-  }
+			especialidadService.updateEspecialidad(especialidad);
+			LOG.info("[SERVER] Especialidad actualizada.");
+			LOG.info("[SERVER] " + especialidad.toString());
+			return ResponseEntity.ok().build();
+		}
+	}
 
 }

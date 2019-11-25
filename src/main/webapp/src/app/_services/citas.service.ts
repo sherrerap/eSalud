@@ -15,8 +15,8 @@ export class CitasService {
         return this.http.get<any[]>(`${environment.apiUrl}/citas/paciente/${dni}`);
     }
 
-    getCitasMedico(id){
-        return this.http.get<any[]>(`${environment.apiUrl}/citas/medico/${id}`);
+    getCitasMedico(dni){
+        return this.http.get<any[]>(`${environment.apiUrl}/citas/medico/${dni}`);
     }
 
     register(cita) {

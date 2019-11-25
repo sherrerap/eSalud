@@ -189,27 +189,29 @@ public class Utilidades {
    * @author e3corp
    */
 
-  public static Cita desencriptarCita(final Cita cita) {
+  public static Cita desencriptarCita(Cita cita) {
     try {
+    Cita c = new Cita();
+      c.setPaciente(desencriptar(cita.getPaciente()));
+      c.setPaciente(desencriptar(cita.getPaciente()));
+      
+      c.setId(c.createId());
 
-      cita.setPaciente(desencriptar(cita.getPaciente()));
-      cita.setPaciente(desencriptar(cita.getPaciente()));
+      c.setMedico(desencriptar(cita.getMedico()));
+      c.setMedico(desencriptar(cita.getMedico()));
 
-      cita.setMedico(desencriptar(cita.getMedico()));
-      cita.setMedico(desencriptar(cita.getMedico()));
+      c.setFecha(desencriptar(cita.getFecha()));
+      c.setFecha(desencriptar(cita.getFecha()));
 
-      cita.setFecha(desencriptar(cita.getFecha()));
-      cita.setFecha(desencriptar(cita.getFecha()));
+      c.setHora(desencriptar(cita.getHora()));
+      c.setHora(desencriptar(cita.getHora()));
 
-      cita.setHora(desencriptar(cita.getHora()));
-      cita.setHora(desencriptar(cita.getHora()));
+      c.setTipo(desencriptar(cita.getTipo()));
+      c.setTipo(desencriptar(cita.getTipo()));
 
-      cita.setTipo(desencriptar(cita.getTipo()));
-      cita.setTipo(desencriptar(cita.getTipo()));
-
-      cita.setCentro(desencriptar(cita.getCentro()));
-      cita.setCentro(desencriptar(cita.getCentro()));
-      return cita;
+      c.setCentro(desencriptar(cita.getCentro()));
+      c.setCentro(desencriptar(cita.getCentro()));
+      return c;
     }
 
     catch (Exception ex) {
@@ -224,7 +226,12 @@ public class Utilidades {
    * @author e3corp
    */
   public static List<Cita> desencriptarListaCitas(final List<Cita> citas) {
-    final List<Cita> citasDesencriptado = new ArrayList<Cita>();
+	  final List<Cita> citasDesencriptado = new ArrayList<Cita>();
+	  for (Cita citasDesencriptadas : citas) {
+		  citasDesencriptado.add(desencriptarCita(citasDesencriptadas));
+	  }
+	  
+    /*final List<Cita> citasDesencriptado = new ArrayList<Cita>();
     System.out.println("Tamaño de la lista normal: " + citas.size());
 
     for (int i = 0; i < citas.size(); i++) {
@@ -238,6 +245,8 @@ public class Utilidades {
     }
 
     return citasDesencriptado;
+    */
+	  return citasDesencriptado;
   }
 
   /**
@@ -276,7 +285,7 @@ public class Utilidades {
   public static Optional<Especialidad> desencriptarOptionalEspecialidad(final Optional<Especialidad> especialidad) {
     try {
 
-      especialidad.get().setNombre(desencriptar(especialidad.get().getNombre()));
+      especialidad.get().setEspecialidad(desencriptar(especialidad.get().getEspecialidad()));
       especialidad.get().setHoraInicio(desencriptar(especialidad.get().getHoraInicio()));
       especialidad.get().setHoraFin(desencriptar(especialidad.get().getHoraFin()));
       especialidad.get().setTiempoConsulta(desencriptar(especialidad.get().getTiempoConsulta()));
@@ -286,24 +295,20 @@ public class Utilidades {
     }
   }
 
-  public static List<Especialidad> desencriptarListaEspecialidades(Optional<List<Especialidad>> especialidades) {
+  public static List<Especialidad> desencriptarListaEspecialidades(List<Especialidad> especialidades) {
     final List<Especialidad> especialidadesDesencriptado = new ArrayList<Especialidad>();
-    System.out.println("Tamaño de la lista normal: " + especialidades.get().size());
-
-    for (int i = 0; i < especialidades.get().size(); i++) {
-      final Especialidad especialidad = especialidades.get().get(i);
-      System.out.println(especialidad.toString());
-      especialidadesDesencriptado.add(desencriptarEspecialidad(especialidad));
+    //System.out.println("Tamaño de la lista normal: " + especialidades.get().size());
+    for(Especialidad e : especialidades) {
+        especialidadesDesencriptado.add(desencriptarEspecialidad(e));
     }
-
     return especialidadesDesencriptado;
 
   }
 
-  private static Especialidad desencriptarEspecialidad(Especialidad especialidad) {
+  public static Especialidad desencriptarEspecialidad(Especialidad especialidad) {
     try {
 
-      especialidad.setNombre(desencriptar(especialidad.getNombre()));
+      especialidad.setEspecialidad(desencriptar(especialidad.getEspecialidad()));
       especialidad.setHoraInicio(desencriptar(especialidad.getHoraInicio()));
       especialidad.setHoraFin(desencriptar(especialidad.getHoraFin()));
       especialidad.setTiempoConsulta(desencriptar(especialidad.getTiempoConsulta()));
