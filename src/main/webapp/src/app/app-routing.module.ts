@@ -6,7 +6,7 @@ import { SidenavAdminComponent } from './components/sidenavAdmin/sidenavAdmin.co
 import { ListadoCitasComponent } from './components/listado-citas/listado-citas.component';
 import { ModificarMedicoComponent } from './components/admin-ModificarMedico/ModificarMedico.component';
 import { ModificarPacienteComponent } from './components/admin-ModificarPaciente/ModificarPaciente.component';
-import { MostrarMedicoComponent } from './components/admin-MostrarMedico/MostrarMedico.component';
+import { RegistrarEspecialidadComponent } from './components/admin-RegistrarEspecialidad/RegistrarEspecialidad.component';
 import { RegistrarMedicoComponent } from './components/admin-RegistrarMedico/RegistrarMedico.component';
 import { RegistrarCitaComponent } from './components/paciente-RegistrarCita/RegistrarCita.component';
 import { MostrarPersonalMedicoComponent } from './components/admin-MostrarPersonalMedico/MostrarPersonalMedico.component';
@@ -55,7 +55,7 @@ const routes: Routes = [
     ]
   },
   { path: 'admin/ModificarMedico/ModificarMedico', redirectTo: 'admin/ModificarMedico' },
-  { path: 'admin/ModificarMedico/MostrarMedico', redirectTo: 'admin/MostrarMedico' },
+  { path: 'admin/ModificarMedico/RegistrarEspecialidad', redirectTo: 'admin/RegistrarEspecialidad' },
   { path: 'admin/ModificarMedico/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
   { path: 'admin/ModificarMedico/RegistrarMedico', redirectTo: 'admin/RegistrarMedico' },
   { path: 'admin/ModificarMedico/MostrarPersonalMedico', redirectTo: 'admin/MostrarPersonalMedico' },
@@ -70,7 +70,7 @@ const routes: Routes = [
     ]
   },
   { path: 'admin/ModificarPaciente/ModificarMedico', redirectTo: 'admin/ModificarMedico' },
-  { path: 'admin/ModificarPaciente/MostrarMedico', redirectTo: 'admin/MostrarMedico' },
+  { path: 'admin/ModificarPaciente/RegistrarEspecialidad', redirectTo: 'admin/RegistrarEspecialidad' },
   { path: 'admin/ModificarPaciente/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
   { path: 'admin/ModificarPaciente/RegistrarMedico', redirectTo: 'admin/RegistrarMedico' },
   { path: 'admin/ModificarPaciente/MostrarPersonalMedico', redirectTo: 'admin/MostrarPersonalMedico' },
@@ -78,17 +78,17 @@ const routes: Routes = [
 
   /********************************************************************************** */
   {
-    path: 'admin/MostrarMedico', component: SidenavAdminComponent, canActivate: [AuthGuard],
+    path: 'admin/RegistrarEspecialidad', component: SidenavAdminComponent, canActivate: [AuthGuard],
     children: [
-      { path: '', component: MostrarMedicoComponent }
+      { path: '', component: RegistrarEspecialidadComponent }
     ]
   },
-  { path: 'admin/MostrarMedico/ModificarMedico', redirectTo: 'admin/ModificarMedico' },
-  { path: 'admin/MostrarMedico/MostrarMedico', redirectTo: 'admin/MostrarMedico' },
-  { path: 'admin/MostrarMedico/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
-  { path: 'admin/MostrarMedico/RegistrarMedico', redirectTo: 'admin/RegistrarMedico' },
-  { path: 'admin/MostrarMedico/MostrarPersonalMedico', redirectTo: 'admin/MostrarPersonalMedico' },
-  { path: 'admin/MostrarMedico/MostrarEspecialidades', redirectTo: 'admin/MostrarEspecialidades' },
+  { path: 'admin/RegistrarEspecialidad/ModificarMedico', redirectTo: 'admin/ModificarMedico' },
+  { path: 'admin/RegistrarEspecialidad/RegistrarEspecialidad', redirectTo: 'admin/RegistrarEspecialidad' },
+  { path: 'admin/RegistrarEspecialidad/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
+  { path: 'admin/RegistrarEspecialidad/RegistrarMedico', redirectTo: 'admin/RegistrarMedico' },
+  { path: 'admin/RegistrarEspecialidad/MostrarPersonalMedico', redirectTo: 'admin/MostrarPersonalMedico' },
+  { path: 'admin/RegistrarEspecialidad/MostrarEspecialidades', redirectTo: 'admin/MostrarEspecialidades' },
 
   /********************************************************************************** */
   {
@@ -98,7 +98,7 @@ const routes: Routes = [
     ]
   },
   { path: 'admin/RegistrarMedico/ModificarMedico', redirectTo: 'admin/ModificarMedico' },
-  { path: 'admin/RegistrarMedico/MostrarMedico', redirectTo: 'admin/MostrarMedico' },
+  { path: 'admin/RegistrarMedico/RegistrarEspecialidad', redirectTo: 'admin/RegistrarEspecialidad' },
   { path: 'admin/RegistrarMedico/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
   { path: 'admin/RegistrarMedico/RegistrarMedico', redirectTo: 'admin/RegistrarMedico' },
   { path: 'admin/RegistrarMedico/MostrarPersonalMedico', redirectTo: 'admin/MostrarPersonalMedico' },
@@ -111,9 +111,10 @@ const routes: Routes = [
       { path: '', component: MostrarEspecialidadesComponent }
     ]
   },
-  { path: 'admin/MostrarEspecialidades/MostrarMedico', redirectTo: 'admin/MostrarMedico' },
+  { path: 'admin/MostrarEspecialidades/RegistrarEspecialidad', redirectTo: 'admin/RegistrarEspecialidad' },
   { path: 'admin/MostrarEspecialidades/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
   { path: 'admin/MostrarEspecialidades/RegistrarMedico', redirectTo: 'admin/RegistrarMedico' },
+  { path: 'admin/MostrarEspecialidades/MostrarPersonalMedico', redirectTo: 'admin/MostrarPersonalMedico' },
   { path: 'admin/MostrarEspecialidades/MostrarEspecialidades', redirectTo: 'admin/MostrarEspecialidades' },
 
   /********************************************************************************** */
@@ -124,9 +125,10 @@ const routes: Routes = [
     ]
   },
   { path: 'admin/MostrarPersonalMedico/ModificarMedico', redirectTo: 'admin/ModificarMedico' },
-  { path: 'admin/MostrarPersonalMedico/MostrarMedico', redirectTo: 'admin/MostrarMedico' },
+  { path: 'admin/MostrarPersonalMedico/RegistrarEspecialidad', redirectTo: 'admin/RegistrarEspecialidad' },
   { path: 'admin/MostrarPersonalMedico/ModificarPaciente', redirectTo: 'admin/ModificarPaciente' },
   { path: 'admin/MostrarPersonalMedico/RegistrarMedico', redirectTo: 'admin/RegistrarMedico' },
+  { path: 'admin/MostrarPersonalMedico/MostrarEspecialidades', redirectTo: 'admin/MostrarEspecialidades' },
   { path: 'admin/MostrarPersonalMedico/MostrarPersonalMedico', redirectTo: 'admin/MostrarPersonalMedico' },
   {
     path: 'medico', component: SidenavMedicoComponent, canActivate: [AuthGuard],

@@ -6,9 +6,14 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
 @Document(collection = "horarios")
 public class Especialidad {
+  @Override
+  public String toString() {
+    return "Especialidad [id=" + id + ", especialidad=" + especialidad + ", horaInicio=" + horaInicio + ", horaFin="
+        + horaFin + ", tiempoConsulta=" + tiempoConsulta + "]";
+  }
+
   @Id
   /**
    * ID. author: e3corp
@@ -35,7 +40,7 @@ public class Especialidad {
   public Especialidad(@NotNull String especialidad, String horaInicio, String horaFin, String tiempoConsulta) {
     super();
     this.id = UUID.randomUUID().toString();
-    this.especialidad = especialidad;
+    this.especialidad= especialidad;
     this.horaInicio = horaInicio;
     this.horaFin = horaFin;
     this.tiempoConsulta = tiempoConsulta;
@@ -58,7 +63,7 @@ public String getId() {
   }
 
   public void setEspecialidad(String especialidad) {
-    this.especialidad = especialidad;
+    this.especialidad= especialidad;
   }
 
   public String getHoraInicio() {
@@ -92,7 +97,7 @@ public String getId() {
     result = prime * result + ((horaFin == null) ? 0 : horaFin.hashCode());
     result = prime * result + ((horaInicio == null) ? 0 : horaInicio.hashCode());
     result = prime * result + ((id == null) ? 0 : id.hashCode());
-    result = prime * result + ((especialidad == null) ? 0 : especialidad.hashCode());
+    result = prime * result + ((especialidad== null) ? 0 : especialidad.hashCode());
     result = prime * result + ((tiempoConsulta == null) ? 0 : tiempoConsulta.hashCode());
     return result;
   }
@@ -121,8 +126,8 @@ public String getId() {
         return false;
     } else if (!id.equals(other.id))
       return false;
-    if (especialidad == null) {
-      if (other.especialidad != null)
+    if (especialidad== null) {
+      if (other.especialidad!= null)
         return false;
     } else if (!especialidad.equals(other.especialidad))
       return false;

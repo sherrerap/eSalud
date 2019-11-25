@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>
+    <strong>Gestión especialidad</strong></h1>
+<div class="container">
+	<mat-form-field *ngIf="action != 'Delete'">
+		<input type="time" placeholder="Hora inicio" min="6:00" max="22:00" class="form-control" matInput
+		[(ngModel)]="local_data.horaInicio" [ngClass]="{ 'is-invalid': submitted && f.horaInicio.errors }" />
+		<div *ngIf="submitted && f.horaInicio.errors" class="invalid-feedback">
+			<div *ngIf="f.horaInicio.errors.required">Selecciona una hora de inicio valida</div>
+		</div>
+	</mat-form-field>
+		<mat-form-field *ngIf="action != 'Delete'">
+		<input type="time" placeholder="Hora final" min="6:00" max="22:00" class="form-control" matInput
+		[(ngModel)]="local_data.horaFin" [ngClass]="{ 'is-invalid': submitted && f.horaFin.errors }" />
+		<div *ngIf="submitted && f.horaFin.errors" class="invalid-feedback">
+			<div *ngIf="f.horaFin.errors.required">Selecciona una hora de final valida</div>
+		</div>
+	</mat-form-field>
+		<mat-form-field *ngIf="action != 'Delete'">
+		<input type="time" placeholder="Intervalo" min="6:00" max="22:00" class="form-control" matInput
+		[(ngModel)]="local_data.tiempoConsulta" [ngClass]="{ 'is-invalid': submitted && f.tiempoConsulta.errors }" />
+		<div *ngIf="submitted && f.tiempoConsulta.errors" class="invalid-feedback">
+			<div *ngIf="f.tiempoConsulta.errors.required">Selecciona un intervalo valido</div>
+		</div>
+	</mat-form-field>
+       
+    <ng-template #elseTemplate>
+        ¿Confirma que quiere borrarlo<b>{{local_data.name}}</b>?
+    </ng-template>
+</div>
+<div mat-dialog-actions-center>
+    <div class="contenedor-botones">
+        <button mat-raised-button (click)="doAction()">{{action}}</button>
+        <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+    </div>
+</div>

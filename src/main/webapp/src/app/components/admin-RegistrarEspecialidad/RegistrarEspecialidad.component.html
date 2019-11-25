@@ -1,0 +1,61 @@
+<div *ngIf="error" class="alert alert-danger">{{error}}</div>
+<div *ngIf="success" class="alert alert-success">{{success}}</div>
+<div class="register">
+    <h2 class="register-header">Registra tu especialidad</h2>
+    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-container">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-25">
+                    <label for="fname">Especialidad:</label>
+                </div>
+				<div class="col-75">
+					<input type="text" placeholder="Especialidad" formControlName="especialidad" class="form-control"
+						[ngClass]="{ 'is-invalid': submitted && f.especialidad.errors }">
+					<div *ngIf="submitted && f.especialidad.errors" class="invalid-feedback">
+						<div *ngIf="f.especialidad.errors.required">Por favor, escriba una especialidad</div>
+					</div>
+				</div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="fname">Hora inicio:</label>
+                </div>
+                <div class="col-75">
+                    <input type="time" placeholder="Hora" formControlName="horaInicio" min="08:00" max="14:30" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.horaInicio.errors }" />
+                    <div *ngIf="submitted && f.horaInicio.errors" class="invalid-feedback">
+                        <div *ngIf="f.horaInicio.errors.required">Selecciona una fecha valida</div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="fname">Hora fin:</label>
+                </div>
+                <div class="col-75">
+                    <input type="time" placeholder="Hora" formControlName="horaFin" min="08:00" max="14:30" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.horaFin.errors }" />
+                    <div *ngIf="submitted && f.horaFin.errors" class="invalid-feedback">
+                        <div *ngIf="f.horaFin.errors.required">Selecciona una fecha valida</div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="fname">Tiempo de consulta:</label>
+                </div>
+                <div class="col-75">
+                    <input type="time" placeholder="Hora" formControlName="tiempoConsulta" min="08:00" max="14:30" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tiempoConsulta.errors }" />
+                    <div *ngIf="submitted && f.tiempoConsulta.errors" class="invalid-feedback">
+                        <div *ngIf="f.tiempoConsulta.errors.required">Selecciona una hora valida</div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <p><input type="submit" value="Registrar especialidad " class="button2"></p>
+                <p><input type="submit" value="Cancelar  " class="button1"></p>
+            </div>
+        </div>
+    </form>

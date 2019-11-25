@@ -3,6 +3,8 @@ package es.e3corp.eSalud.repository;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -10,6 +12,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
 
+import es.e3corp.eSalud.controller.EspecialidadController;
 import es.e3corp.eSalud.model.Especialidad;
 
 /**
@@ -24,6 +27,8 @@ public class EspecialidadRepositoryImpl implements EspecialidadRepository {
    * 
    * @author e3corp
    */
+ 
+
   private final MongoOperations mongoOperations;
 
   /**
@@ -45,7 +50,11 @@ public class EspecialidadRepositoryImpl implements EspecialidadRepository {
   @Override
   public List<Especialidad> findAll() {
     List<Especialidad> especialidades = this.mongoOperations.find(new Query(), Especialidad.class);
-    return especialidades;
+
+    Optional<List<Especialidad>> optionalEspecialidad = Optional.ofNullable(especialidades);
+    
+
+    return optionalEspecialidad;
   }
 
   /**
@@ -77,7 +86,7 @@ public class EspecialidadRepositoryImpl implements EspecialidadRepository {
    */
   @Override
   public void deleteEspecialidad(String nombre) {
-    this.mongoOperations.findAndRemove(new Query(Criteria.where("nombre").is(nombre)), Especialidad.class);
+    this.mongoOperations.findAndRemove(new Query(Criteria.where("especialidad").is(nombre)), Especialidad.class);
 
   }
 
@@ -88,7 +97,7 @@ public class EspecialidadRepositoryImpl implements EspecialidadRepository {
    */
   @Override
   public Optional<Especialidad> findOne(String nombre) {
-    Especialidad e = this.mongoOperations.findOne(new Query(Criteria.where("nombre").is(nombre)), Especialidad.class);
+    Especialidad e = this.mongoOperations.findOne(new Query(Criteria.where("especialidad").is(nombre)), Especialidad.class);
     Optional<Especialidad> especialidad = Optional.ofNullable(e);
     return especialidad;
   }

@@ -14,7 +14,7 @@ import { SidenavAdminComponent } from './components/sidenavAdmin/sidenavAdmin.co
 import { ListadoCitasComponent } from './components/listado-citas/listado-citas.component';
 import { ModificarMedicoComponent } from './components/admin-ModificarMedico/ModificarMedico.component';
 import { ModificarPacienteComponent } from './components/admin-ModificarPaciente/ModificarPaciente.component';
-import { MostrarMedicoComponent } from './components/admin-MostrarMedico/MostrarMedico.component';
+import { RegistrarEspecialidadComponent } from './components/admin-RegistrarEspecialidad/RegistrarEspecialidad.component';
 import { RegistrarMedicoComponent } from './components/admin-RegistrarMedico/RegistrarMedico.component';
 import { DialogBoxPacienteComponent } from './components/dialog-box-paciente/dialog-box-paciente.component';
 import { DialogBoxMedicoComponent } from './components/dialog-box-medico/dialog-box-medico.component';
@@ -25,7 +25,8 @@ import { MostrarPersonalMedicoComponent } from './components/admin-MostrarPerson
 import { SidenavMedicoComponent } from './components/sidenavMedico/sidenavMedico.component';
 import { MostrarCitasComponent } from './components/medico-MostrarCitas/MostrarCitas.component';
 import { MostrarEspecialidadesComponent} from './components/admin-MostrarEspecialidades/MostrarEspecialidades.component';
-import { DialogBoxModificarEspecialidadComponent } from './dialog-box-modificar-especialidad/dialog-box-modificar-especialidad.component';
+import { DialogBoxModificarEspecialidadComponent } from './components/dialog-box-modificarEspecialidad/dialog-box-modificarEspecialidad.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,6 @@ import { DialogBoxModificarEspecialidadComponent } from './dialog-box-modificar-
     ListadoCitasComponent,
     ModificarMedicoComponent,
     ModificarPacienteComponent,
-    MostrarMedicoComponent,
     RegistrarMedicoComponent,
     DialogBoxPacienteComponent,
     DialogBoxMedicoComponent,
@@ -45,7 +45,8 @@ import { DialogBoxModificarEspecialidadComponent } from './dialog-box-modificar-
     SidenavMedicoComponent,
     MostrarCitasComponent,
     MostrarEspecialidadesComponent,
-    DialogBoxModificarEspecialidadComponent
+    DialogBoxModificarEspecialidadComponent,
+    RegistrarEspecialidadComponent,
 
   ],
   imports: [
@@ -71,7 +72,8 @@ import { DialogBoxModificarEspecialidadComponent } from './dialog-box-modificar-
   entryComponents: [
     DialogBoxPacienteComponent,
     DialogBoxMedicoComponent,
-	  DialogBoxModificarCita,
+    DialogBoxModificarCita,
+    DialogBoxModificarEspecialidadComponent,
 
   ],
   providers: [
