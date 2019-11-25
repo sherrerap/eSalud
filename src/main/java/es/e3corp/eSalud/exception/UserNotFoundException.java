@@ -4,7 +4,6 @@ import org.springframework.core.NestedRuntimeException;
 
 public class UserNotFoundException extends NestedRuntimeException {
 
-
   private static final long serialVersionUID = 1L;
 
   /**

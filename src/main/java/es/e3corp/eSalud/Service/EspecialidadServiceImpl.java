@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import es.e3corp.eSalud.exception.EspecialidadNotFoundException;
 import es.e3corp.eSalud.model.Especialidad;
 import es.e3corp.eSalud.repository.EspecialidadRepository;
 import es.e3corp.eSalud.utilidades.Utilidades;

@@ -1,17 +1,18 @@
 package es.e3corp.eSalud.Service;
 
-import es.e3corp.eSalud.exception.CitaNotFoundException;
-import es.e3corp.eSalud.model.Cita;
-import es.e3corp.eSalud.repository.CitasRepository;
-
 import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import es.e3corp.eSalud.exception.CitaNotFoundException;
+import es.e3corp.eSalud.model.Cita;
+import es.e3corp.eSalud.repository.CitasRepository;
 
 @Service("CitaService")
 /**
@@ -126,10 +127,10 @@ public class CitaServiceImpl implements CitaService {
     return citas;
   }
 
-@Override
-public List<Cita> getCitasDisponibles(String idmedico, String dia) {
-	List<Cita> citas = citaRepository.getCitasDisponibles(idmedico, dia);
-	return citas;
-}
+  @Override
+  public List<Cita> getCitasDisponibles(String idmedico, String dia) {
+    List<Cita> citas = citaRepository.getCitasDisponibles(idmedico, dia);
+    return citas;
+  }
 
 }

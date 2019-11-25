@@ -1,8 +1,5 @@
 package es.e3corp.eSalud.utilidades;
 
-import es.e3corp.eSalud.model.Cita;
-import es.e3corp.eSalud.model.Especialidad;
-import es.e3corp.eSalud.model.Usuario;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,6 +11,10 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.commons.codec.binary.Base64;
+
+import es.e3corp.eSalud.model.Cita;
+import es.e3corp.eSalud.model.Especialidad;
+import es.e3corp.eSalud.model.Usuario;
 
 /**
  * Clase Utilidades.
