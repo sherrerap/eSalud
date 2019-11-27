@@ -23,7 +23,7 @@ import es.e3corp.eSalud.utilidades.Utilidades;
 /**
  * Clase que se encarga de implementar los métodos de la interfaz
  * CitasRepository.
- * 
+ *  
  * @author e3corp
  */
 @Repository

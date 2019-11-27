@@ -21,7 +21,7 @@ import es.e3corp.eSalud.model.Especialidad;
 public class EspecialidadRepositoryImpl implements EspecialidadRepository {
   /**
    * Instancia de la interfaz MongoOperations.
-   * 
+   *  
    * @author e3corp
    */
 

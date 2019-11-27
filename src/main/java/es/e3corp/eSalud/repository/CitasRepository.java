@@ -17,7 +17,7 @@ import es.e3corp.eSalud.model.Cita;
 public interface CitasRepository {
   /**
    * Devolver todas las citas.
-   * 
+   *  
    * @author e3corp
    */
   Optional<List<Cita>> findAll();

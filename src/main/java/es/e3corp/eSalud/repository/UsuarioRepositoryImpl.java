@@ -22,7 +22,7 @@ import es.e3corp.eSalud.model.Usuario;
 public class UsuarioRepositoryImpl implements UsuarioRepository {
   /**
    * Instancia de la interfaz MongoOperations.
-   * 
+   *  
    * @author e3corp
    */
   private final MongoOperations mongoOperations;

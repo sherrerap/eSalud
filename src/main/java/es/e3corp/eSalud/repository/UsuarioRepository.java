@@ -16,7 +16,7 @@ import es.e3corp.eSalud.model.Usuario;
 public interface UsuarioRepository {
   /**
    * Método que te devuelve todos los usuarios.
-   * 
+   *  
    * @author e3corp
    */
   Optional<List<Usuario>> findAll();

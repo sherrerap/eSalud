@@ -16,7 +16,7 @@ import es.e3corp.eSalud.model.Especialidad;
 public interface EspecialidadRepository {
   /**
    * Método que te devuelve todas las especialidades.
-   * 
+   *  
    * @author e3corp
    */
   Optional<List<Especialidad>> findAll();
