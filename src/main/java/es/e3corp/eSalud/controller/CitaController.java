@@ -46,13 +46,13 @@ public class CitaController {
    * 
    * @author e3corp
    */
-  private final CitaService citasService;
+  private transient final CitaService citasService;
   /**
    * Interfaz UsuarioService.
    * 
    * @author e3corp
    */
-  private final UsuarioService usuarioService;
+  private transient final UsuarioService usuarioService;
 
   @Autowired
   /**
@@ -72,23 +72,23 @@ public class CitaController {
    */
 
   @RequestMapping(method = RequestMethod.GET)
-  public ResponseEntity<Cita> getCitaFecha(@RequestParam(required = false) String paciente,
-      @RequestParam(required = false) String medico, @RequestParam(required = false) String fecha,
-      @RequestParam(required = false) String hora) {
+  public ResponseEntity<Cita> getCitaFecha(@RequestParam(required = false) final String paciente, // NOPMD by sergi on
+                                                                                                  // 27/11/19 19:01
+      @RequestParam(required = false) final String medico, @RequestParam(required = false) final String fecha,
+      @RequestParam(required = false) final String hora) {
 
-    String pacienteEncriptado = Utilidades.encriptar(paciente);
-    String medicoEncriptado = Utilidades.encriptar(medico);
-    String fechaEncriptado = Utilidades.encriptar(fecha);
-    String horaEncriptado = Utilidades.encriptar(hora);
+    final String pacienteEnc = Utilidades.encriptar(paciente);
+    final String medicoEnc = Utilidades.encriptar(medico);
+    final String fechaEnc = Utilidades.encriptar(fecha);
+    final String horaEnc = Utilidades.encriptar(hora);
 
-    Cita cita = citasService.findCitaByPacienteMedicoFechaHora(pacienteEncriptado, medicoEncriptado, fechaEncriptado,
-        horaEncriptado);
-    if (cita != null) {
-      System.out.println("[SERVER] Cita encontrada: " + cita.getId());
-      return ResponseEntity.ok(cita);
+    final Cita cita = citasService.findCitaByPacienteMedicoFechaHora(pacienteEnc, medicoEnc, fechaEnc, horaEnc);
+    if (cita == null) {
+      LOG.info("[SERVER] No se ha encontrado ninguna cita.");
+      return ResponseEntity.badRequest().build(); // NOPMD by sergi on 27/11/19 19:10
     } else {
-      System.out.println("[SERVER] No se ha encontrado ninguna cita.");
-      return ResponseEntity.badRequest().build();
+      LOG.info("[SERVER] Cita encontrada: " + cita.getId());
+      return ResponseEntity.ok(cita);
     }
   }
 
@@ -135,7 +135,7 @@ public class CitaController {
     final Cita cita = citasService.findByCitaId(citaId);
     if (cita == null) {
       LOG.info("[SERVER] Error: la cita no existe.");
-      return ResponseEntity.badRequest().build();
+      return ResponseEntity.badRequest().build(); // NOPMD by sergi on 27/11/19 19:06
     } else {
       try {
         LOG.info("[SERVER] Actualizando cita...");
@@ -149,16 +149,12 @@ public class CitaController {
         final String tipo = jso.getString("tipo");
         final String centro = jso.getString("centro");
 
-        final String pacienteEncriptado = Utilidades.encriptar(paciente);
-        final String medicoEncriptado = Utilidades.encriptar(medico);
-        final String fechaEncriptado = Utilidades.encriptar(fecha);
-        final String horaEncriptado = Utilidades.encriptar(hora);
-        final String centroEncriptado = Utilidades.encriptar(centro);
-        final String tipoEncriptado = Utilidades.encriptar(tipo);
+        final String pacienteEnc = Utilidades.encriptar(paciente);
+        final String medicoEnc = Utilidades.encriptar(medico);
 
         try {
-          final Usuario usuarioPaciente = usuarioService.findByUserDni(pacienteEncriptado);
-          final Usuario usuarioMedico = usuarioService.findByUserDni(medicoEncriptado);
+          final Usuario usuarioPaciente = usuarioService.findByUserDni(pacienteEnc);
+          final Usuario usuarioMedico = usuarioService.findByUserDni(medicoEnc);
           if (!usuarioPaciente.getRol().equals("paciente")) {
             LOG.error("[SERVER] El usuario paciente no es válido.");
             return ResponseEntity.badRequest().build();
@@ -173,12 +169,17 @@ public class CitaController {
           return ResponseEntity.badRequest().build();
         }
 
-        cita.setPaciente(pacienteEncriptado);
-        cita.setMedico(medicoEncriptado);
-        cita.setFecha(fechaEncriptado);
-        cita.setHora(horaEncriptado);
-        cita.setTipo(tipoEncriptado);
-        cita.setCentro(centroEncriptado);
+        final String fechaEnc = Utilidades.encriptar(fecha);
+        final String horaEnc = Utilidades.encriptar(hora);
+        final String centroEnc = Utilidades.encriptar(centro);
+        final String tipoEnc = Utilidades.encriptar(tipo);
+
+        cita.setPaciente(pacienteEnc);
+        cita.setMedico(medicoEnc);
+        cita.setFecha(fechaEnc);
+        cita.setHora(horaEnc);
+        cita.setTipo(tipoEnc);
+        cita.setCentro(centroEnc);
       } catch (JSONException j) {
         LOG.error("[SERVER] Error en la lectura del JSON.");
         LOG.info(j.getMessage());
@@ -202,14 +203,14 @@ public class CitaController {
    * 
    * @author e3corp
    */
-  public ResponseEntity<Cita> citaById(@PathVariable final String citaId) throws CitaNotFoundException {
+  public ResponseEntity<Cita> citaById(@PathVariable final String citaId) {
     LOG.info("[SERVER] Buscando cita...");
-    Cita cita;
+    Cita cita = null;
     try {
       cita = citasService.findByCitaId(citaId);
       LOG.info("[SERVER] " + cita.toString());
     } catch (CitaNotFoundException e) {
-      cita = null;
+      LOG.error("[SERVER] No se ha encontrado la cita.");
     }
     return ResponseEntity.ok(cita);
   }
@@ -230,10 +231,18 @@ public class CitaController {
     return ResponseEntity.ok().build();
   }
 
+  /**
+   * Este método comprueba la disponibilidad de citas para un día, sabiendo un
+   * médico.
+   * 
+   * @param idmedico dni del médico.
+   * @param dia      día deseado.
+   * @return
+   */
   @RequestMapping(value = "/disponibilidad", method = RequestMethod.GET)
-  public ResponseEntity<List<Cita>> disponibilidadCitasEnUnDia(@RequestParam("idmedico") String idmedico,
-      @RequestParam("dia") String dia) {
-    List<Cita> citas = this.citasService.getCitasDisponibles(idmedico, dia);
+  public ResponseEntity<List<Cita>> disponibilidadCitasEnUnDia(@RequestParam("idmedico") final String idmedico,
+      @RequestParam("dia") final String dia) {
+    final List<Cita> citas = this.citasService.getCitasDisponibles(idmedico, dia);
     return ResponseEntity.ok(citas);
   }
 
@@ -243,7 +252,7 @@ public class CitaController {
    * @author e3corp
    */
   @RequestMapping(method = RequestMethod.POST)
-  public ResponseEntity<Cita> registrarCita(@RequestBody String cita) {
+  public ResponseEntity<Cita> registrarCita(@RequestBody final String cita) {
     final JSONObject jso = new JSONObject(cita);
     final String paciente = jso.getString("paciente");
     final String medico = jso.getString("medico");
@@ -252,61 +261,10 @@ public class CitaController {
     final String tipo = jso.getString("tipo");
     final String centro = jso.getString("centro");
     LOG.info("el paciente que se recibe es:" + paciente);
-    Cita citaFinal = new Cita("", paciente, tipo, fecha, centro, medico, hora);
+    final Cita citaFinal = new Cita("", paciente, tipo, fecha, centro, medico, hora);
     citasService.saveCita(citaFinal);
-    System.out.println("CITA CREADA: " + citaFinal);
+    LOG.info("[SERVER] CITA CREADA: " + citaFinal);
     return ResponseEntity.ok(citaFinal);
-    /*
-     * try { final Usuario usuarioPaciente =
-     * usuarioService.findByUserDni(pacienteEncriptado); final Usuario usuarioMedico
-     * = usuarioService.findByUserDni(medicoEncriptado); if
-     * (!usuarioPaciente.getRol().equals("paciente") &&
-     * !usuarioPaciente.getRol().equals("medico")) {
-     * LOG.error("[SERVER] El usuario paciente no es válido."); return
-     * ResponseEntity.badRequest().build(); } if
-     * (!usuarioMedico.getRol().equals("medico")) {
-     * LOG.error("[SERVER] El usuario medico no es válido."); return
-     * ResponseEntity.badRequest().build(); }
-     * 
-     * } catch (UserNotFoundException u) {
-     * LOG.error("[SERVER] El usuario paciente o medico no se ha encontrado.");
-     * return ResponseEntity.badRequest().build(); }
-     * 
-     * if (cita1 == null) { String tipo = null; String centro = null; String
-     * tipoEncriptado = null; String centroEncriptado = null;
-     * 
-     * try { Usuario usuarioPaciente =
-     * usuarioService.findByUserDni(pacienteEncriptado); Usuario usuarioMedico =
-     * usuarioService.findByUserDni(medicoEncriptado); if
-     * (!usuarioPaciente.getRol().equals("paciente") &&
-     * !usuarioPaciente.getRol().equals("medico")) {
-     * LOG.error("[SERVER] El usuario paciente no es válido."); return
-     * ResponseEntity.badRequest().build(); } if
-     * (!usuarioMedico.getRol().equals("medico")) {
-     * LOG.error("[SERVER] El usuario medico no es válido."); return
-     * ResponseEntity.badRequest().build(); }
-     * 
-     * } catch (UserNotFoundException u) {
-     * LOG.error("[SERVER] El usuario paciente o medico no se ha encontrado.");
-     * return ResponseEntity.badRequest().build(); }
-     * 
-     * try { LOG.info("[SERVER] Registrando cita...");
-     * 
-     * tipo = jso.getString("tipo"); centro = jso.getString("centro");
-     * 
-     * tipoEncriptado = Utilidades.encriptar(tipo); centroEncriptado =
-     * Utilidades.encriptar(centro);
-     * 
-     * } catch (JSONException j) {
-     * LOG.info("[SERVER] Error en la lectura del JSON."); LOG.info(j.getMessage());
-     * return ResponseEntity.badRequest().build(); }
-     * 
-     * cita1 = new Cita(paciente, tipo, fecha, centro, medico, hora);
-     * LOG.info("[SERVER] Cita registrada."); LOG.info("[SERVER] " +
-     * cita1.toString()); return ResponseEntity.ok().build(); } else {
-     * LOG.info("[SERVER] Error: la cita ya está registrada."); return
-     * ResponseEntity.badRequest().build(); } }
-     */
 
   }
 }

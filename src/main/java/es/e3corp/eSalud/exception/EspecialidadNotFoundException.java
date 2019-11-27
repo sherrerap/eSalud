@@ -11,7 +11,7 @@ public class EspecialidadNotFoundException extends NestedRuntimeException {
   /**
    * Este método muestra el mensaje de excepción de especialidad no encontrado.
    */
-  public EspecialidadNotFoundException(String nombre) {
+  public EspecialidadNotFoundException(final String nombre) {
 
     super(String.format("Especialidad with name '%s' not found", nombre));
 

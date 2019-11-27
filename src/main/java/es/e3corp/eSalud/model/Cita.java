@@ -61,6 +61,9 @@ public class Cita {
     this.hora = Utilidades.encriptar(hora);
   }
 
+  /**
+   * Constructor vacío.
+   */
   public Cita() {
     // TODO Auto-generated constructor stub
   }
@@ -69,10 +72,15 @@ public class Cita {
     return id;
   }
 
-  public void setId(final String id) {
-    this.id = id;
+  public void setId(final String citaId) {
+    this.id = citaId;
   }
 
+  /**
+   * Método que crea una Id aleatoria.
+   * 
+   * @return la id creada
+   */
   public String createId() {
     return UUID.randomUUID().toString();
   }
