@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 /**
  * @author e3corp
  */
-public class RequestForwardingController {
-  @RequestMapping(value = "/**/{[path:[^\\.]*}")
+public class RequestForwardingController { // NOPMD by sergi on 27/11/19 19:30
+  @RequestMapping(value = "/**/{[path:[^\\.]*}") // NOPMD by sergi on 27/11/19 19:30
   /**
    * @author e3corp
    */

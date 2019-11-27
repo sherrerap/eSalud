@@ -7,13 +7,14 @@ import javax.validation.constraints.NotNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+/**
+ * Esta clase modelo contiene la especialidad de un médico.
+ * 
+ * @author e3corp
+ *
+ */
 @Document(collection = "horarios")
 public class Especialidad {
-  @Override
-  public String toString() {
-    return "Especialidad [id=" + id + ", especialidad=" + especialidad + ", horaInicio=" + horaInicio + ", horaFin="
-        + horaFin + ", tiempoConsulta=" + tiempoConsulta + "]";
-  }
 
   @Id
   /**
@@ -24,7 +25,7 @@ public class Especialidad {
    * especialidad. author: e3corp
    */
   @NotNull
-  private String especialidad;
+  private String especialidad; // NOPMD by sergi on 27/11/19 19:53
   /**
    * Hora de inicio. author: e3corp
    */
@@ -38,7 +39,8 @@ public class Especialidad {
    */
   private String tiempoConsulta;
 
-  public Especialidad(@NotNull String especialidad, String horaInicio, String horaFin, String tiempoConsulta) {
+  public Especialidad(@NotNull final String especialidad, final String horaInicio, final String horaFin,
+      final String tiempoConsulta) {
     super();
     this.id = UUID.randomUUID().toString();
     this.especialidad = especialidad;
@@ -55,15 +57,15 @@ public class Especialidad {
     return id;
   }
 
-  public void setId(String id) {
-    this.id = id;
+  public void setId(final String espId) {
+    this.id = espId;
   }
 
   public String getEspecialidad() {
     return especialidad;
   }
 
-  public void setEspecialidad(String especialidad) {
+  public void setEspecialidad(final String especialidad) {
     this.especialidad = especialidad;
   }
 
@@ -71,7 +73,7 @@ public class Especialidad {
     return horaInicio;
   }
 
-  public void setHoraInicio(String horaInicio) {
+  public void setHoraInicio(final String horaInicio) {
     this.horaInicio = horaInicio;
   }
 
@@ -79,7 +81,7 @@ public class Especialidad {
     return horaFin;
   }
 
-  public void setHoraFin(String horaFin) {
+  public void setHoraFin(final String horaFin) {
     this.horaFin = horaFin;
   }
 
@@ -87,7 +89,7 @@ public class Especialidad {
     return tiempoConsulta;
   }
 
-  public void setTiempoConsulta(String tiempoConsulta) {
+  public void setTiempoConsulta(final String tiempoConsulta) {
     this.tiempoConsulta = tiempoConsulta;
   }
 
@@ -104,7 +106,7 @@ public class Especialidad {
   }
 
   @Override
-  public boolean equals(Object obj) {
+  public boolean equals(final Object obj) {
     if (this == obj)
       return true;
     if (obj == null)
@@ -138,6 +140,12 @@ public class Especialidad {
     } else if (!tiempoConsulta.equals(other.tiempoConsulta))
       return false;
     return true;
+  }
+
+  @Override
+  public String toString() {
+    return "Especialidad [id=" + id + ", especialidad=" + especialidad + ", horaInicio=" + horaInicio + ", horaFin="
+        + horaFin + ", tiempoConsulta=" + tiempoConsulta + "]";
   }
 
 }

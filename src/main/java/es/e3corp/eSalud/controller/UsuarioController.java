@@ -32,9 +32,11 @@ import es.e3corp.eSalud.utilidades.Utilidades;
 @CrossOrigin(origins = { "http://localhost:4200", "https://esalud.herokuapp.com" }, allowedHeaders = "*")
 public class UsuarioController {
 
+  // Variable estática LOG que nos permitirá obtener logs en todo momento
   private static final Log LOG = LogFactory.getLog(UsuarioController.class);
 
-  private final UsuarioService usersService;
+  // Servicio de usuarios para obtener sus recursos
+  private transient final UsuarioService usersService;
 
   @Autowired
   /**
@@ -59,12 +61,12 @@ public class UsuarioController {
     final String contrasenaEncrip = Utilidades.encriptar(password);
 
     final Usuario usuario = usersService.getUserByDniAndPassword(dniEncriptado, contrasenaEncrip);
-    if (usuario != null) {
-      LOG.info("[SERVER] Usuario encontrado: " + usuario.getNombre());
-      return ResponseEntity.ok(usuario);
-    } else {
+    if (usuario == null) {
       LOG.info("[SERVER] No se ha encontrado ningún usuario con esos datos.");
       return ResponseEntity.badRequest().build();
+    } else {
+      LOG.info("[SERVER] Usuario encontrado: " + usuario.getNombre());
+      return ResponseEntity.ok(usuario);
     }
   }
 
@@ -76,9 +78,9 @@ public class UsuarioController {
   @RequestMapping(value = "/{userDni}", method = RequestMethod.GET)
   @ApiOperation(value = "Find an user", notes = "Return a user by DNI")
 
-  public ResponseEntity<Usuario> userByDni(@PathVariable final String userDni) throws UserNotFoundException {
+  public ResponseEntity<Usuario> userByDni(@PathVariable final String userDni) {
     LOG.info("[SERVER] Buscando usuario: " + userDni);
-    Usuario user;
+    Usuario user = null;
     try {
       // System.out.println("Se recibe el dni: " +userDni);
       final String dniEncriptado = Utilidades.encriptar(userDni);
@@ -86,16 +88,15 @@ public class UsuarioController {
       user = usersService.findByUserDni(dniEncriptado);
       LOG.info("[SERVER] Usuario encontrado.");
     } catch (UserNotFoundException e) {
-      user = null;
       LOG.error("[SERVER] Usuario no encontrado.");
     }
     return ResponseEntity.ok(user);
   }
 
-  /*
-   * @RequestMapping(method = RequestMethod.GET) public
-   * ResponseEntity<List<Usuario>> usuarioById() { log.info("Get allUsers");
-   * return ResponseEntity.ok(usersService.findAll()); }
+  /**
+   * Método para obtener todos los usuarios de la bbdd.
+   * 
+   * @return los usuarios
    */
   @RequestMapping(value = "/all", method = RequestMethod.GET)
   @ApiOperation(value = "Find all user", notes = "Return all users")
@@ -105,6 +106,11 @@ public class UsuarioController {
     return ResponseEntity.ok(usersService.findAll());
   }
 
+  /**
+   * Devuelve todos los pacientes de la bbdd.
+   * 
+   * @return los pacientes
+   */
   @RequestMapping(value = "/pacientes", method = RequestMethod.GET)
   @ApiOperation(value = "Find all user", notes = "Return all users")
 
@@ -204,6 +210,13 @@ public class UsuarioController {
     }
   }
 
+  /**
+   * Método que actualiza un usuario dada su id.
+   * 
+   * @param mensajerecibido el mensaje que contiene a un usuario.
+   * @param userId          el dni del usuario que buscamos.
+   * @return
+   */
   @RequestMapping(value = "/{userId}", method = RequestMethod.PUT)
   @ApiOperation(value = "Update usuario", notes = "Finds a cita ID and updates its fields")
   public ResponseEntity<Usuario> updateUsuario(@RequestBody final String mensajerecibido,
@@ -230,33 +243,33 @@ public class UsuarioController {
 
         if (rol.equals("medico")) {
           final String especialidad = jso.getString("especialidad");
-          final String especialidadEncriptado = Utilidades.encriptar(especialidad);
-          usuario.setEspecialidad(especialidadEncriptado);
+          final String especialidadEnc = Utilidades.encriptar(especialidad);
+          usuario.setEspecialidad(especialidadEnc);
         }
 
         if (rol.equals("paciente")) {
           final String localidad = jso.getString("localidad");
-          final String localidadEncriptado = Utilidades.encriptar(localidad);
-          usuario.setLocalidad(localidadEncriptado);
+          final String localidadEnc = Utilidades.encriptar(localidad);
+          usuario.setLocalidad(localidadEnc);
         }
 
-        final String dniEncriptado = Utilidades.encriptar(dni);
-        final String nombreEncriptado = Utilidades.encriptar(nombre);
-        final String apellidosEncriptado = Utilidades.encriptar(apellidos);
-        final String numTelefonoEncriptado = Utilidades.encriptar(numTelefono);
-        final String centroEncriptado = Utilidades.encriptar(centro);
-        final String emailEncriptado = Utilidades.encriptar(email);
-        final String rolEncriptado = Utilidades.encriptar(rol);
-        final String contrasenaEncriptado = Utilidades.encriptar(contrasena);
+        final String dniEnc = Utilidades.encriptar(dni);
+        final String nombreEnc = Utilidades.encriptar(nombre);
+        final String apellidosEnc = Utilidades.encriptar(apellidos);
+        final String numTelefonoEnc = Utilidades.encriptar(numTelefono);
+        final String centroEnc = Utilidades.encriptar(centro);
+        final String emailEnc = Utilidades.encriptar(email);
+        final String rolEnc = Utilidades.encriptar(rol);
+        final String contrasenaEnc = Utilidades.encriptar(contrasena);
 
-        usuario.setDni(dniEncriptado);
-        usuario.setNombre(nombreEncriptado);
-        usuario.setApellidos(apellidosEncriptado);
-        usuario.setNumTelefono(numTelefonoEncriptado);
-        usuario.setCentro(centroEncriptado);
-        usuario.setEmail(emailEncriptado);
-        usuario.setRol(rolEncriptado);
-        usuario.setcontrasena(contrasenaEncriptado);
+        usuario.setDni(dniEnc);
+        usuario.setNombre(nombreEnc);
+        usuario.setApellidos(apellidosEnc);
+        usuario.setNumTelefono(numTelefonoEnc);
+        usuario.setCentro(centroEnc);
+        usuario.setEmail(emailEnc);
+        usuario.setRol(rolEnc);
+        usuario.setcontrasena(contrasenaEnc);
       } catch (JSONException j) {
         LOG.error("[SERVER] Error en la lectura del JSON.");
         LOG.info(j.getMessage());
