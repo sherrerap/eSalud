@@ -45,9 +45,8 @@ public class EspecialidadRepositoryImpl implements EspecialidadRepository {
    */
   @Override
   public Optional<List<Especialidad>> findAll() {
-    List<Especialidad> especialidades = this.mongoOperations.find(new Query(), Especialidad.class);
-    Optional<List<Especialidad>> optionalEspecialidad = Optional.ofNullable(especialidades);
-    return optionalEspecialidad;
+    final List<Especialidad> especialidades = this.mongoOperations.find(new Query(), Especialidad.class);
+    return Optional.ofNullable(especialidades);
   }
 
   /**
@@ -56,7 +55,7 @@ public class EspecialidadRepositoryImpl implements EspecialidadRepository {
    * @author e3corp
    */
   @Override
-  public void saveEspecialidad(Especialidad especialidad) {
+  public void saveEspecialidad(final Especialidad especialidad) {
     this.mongoOperations.save(especialidad);
 
   }
@@ -67,7 +66,7 @@ public class EspecialidadRepositoryImpl implements EspecialidadRepository {
    * @author e3corp
    */
   @Override
-  public void updateEspecialidad(Especialidad especialidad) {
+  public void updateEspecialidad(final Especialidad especialidad) {
     this.mongoOperations.save(especialidad);
 
   }
@@ -78,7 +77,7 @@ public class EspecialidadRepositoryImpl implements EspecialidadRepository {
    * @author e3corp
    */
   @Override
-  public void deleteEspecialidad(String nombre) {
+  public void deleteEspecialidad(final String nombre) {
     this.mongoOperations.findAndRemove(new Query(Criteria.where("especialidad").is(nombre)), Especialidad.class);
 
   }
@@ -89,11 +88,10 @@ public class EspecialidadRepositoryImpl implements EspecialidadRepository {
    * @author e3corp
    */
   @Override
-  public Optional<Especialidad> findOne(String nombre) {
-    Especialidad e = this.mongoOperations.findOne(new Query(Criteria.where("especialidad").is(nombre)),
+  public Optional<Especialidad> findOne(final String nombre) {
+    final Especialidad especialidad = this.mongoOperations.findOne(new Query(Criteria.where("especialidad").is(nombre)),
         Especialidad.class);
-    Optional<Especialidad> especialidad = Optional.ofNullable(e);
-    return especialidad;
+    return Optional.ofNullable(especialidad);
   }
 
 }

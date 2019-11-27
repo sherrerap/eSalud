@@ -45,13 +45,12 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
    * 
    * @author e3corp
    */
+  @Override
   public Optional<List<Usuario>> findAll() {
 
-    List<Usuario> users = this.mongoOperations.find(new Query(), Usuario.class);
+    final List<Usuario> users = this.mongoOperations.find(new Query(), Usuario.class);
 
-    Optional<List<Usuario>> optionalUsuarios = Optional.ofNullable(users);
-
-    return optionalUsuarios;
+    return Optional.ofNullable(users);
 
   }
 
@@ -60,11 +59,11 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
    * 
    * @author e3corp
    */
+  @Override
   public Optional<Usuario> findOne(final String dni) {
     System.out.println("el usuario buscado encriptado es: " + dni);
-    Usuario d = this.mongoOperations.findOne(new Query(Criteria.where("dni").is(dni)), Usuario.class);
-    Optional<Usuario> usuario = Optional.ofNullable(d);
-    return usuario;
+    final Usuario user = this.mongoOperations.findOne(new Query(Criteria.where("dni").is(dni)), Usuario.class);
+    return Optional.ofNullable(user);
   }
 
   /**
@@ -72,6 +71,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
    * 
    * @author e3corp
    */
+  @Override
   public void saveUsuario(final Usuario usuario) {
     this.mongoOperations.save(usuario);
   }
@@ -81,6 +81,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
    * 
    * @author e3corp
    */
+  @Override
   public void updateUsuario(final Usuario usuario) {
 
     this.mongoOperations.save(usuario);
@@ -92,23 +93,22 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
    * 
    * @author e3corp
    */
-  public void deleteUsuario(final String id) {
+  @Override
+  public void deleteUsuario(final String idusuario) {
 
-    this.mongoOperations.findAndRemove(new Query(Criteria.where("id").is(id)), Usuario.class);
+    this.mongoOperations.findAndRemove(new Query(Criteria.where("id").is(idusuario)), Usuario.class);
 
   }
 
   @Override
   public Usuario findByDniAndContrasena(final String dni, final String contrasena) {
-    Usuario usuario = this.mongoOperations
+    return this.mongoOperations
         .findOne(new Query(Criteria.where("dni").is(dni).and("contrasena").is(contrasena)), Usuario.class);
-    return usuario;
   }
 
   @Override
   public List<Usuario> findByRol(final String rol) {
-    List<Usuario> usuariosRol = this.mongoOperations.find(new Query(Criteria.where("rol").is(rol)), Usuario.class);
-    return usuariosRol;
+    return this.mongoOperations.find(new Query(Criteria.where("rol").is(rol)), Usuario.class);
   }
 
 }
