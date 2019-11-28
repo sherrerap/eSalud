@@ -1,5 +1,8 @@
 package es.e3corp.eSalud.Service;
 
+import es.e3corp.eSalud.exception.CitaNotFoundException;
+import es.e3corp.eSalud.model.Cita;
+import es.e3corp.eSalud.repository.CitasRepository;
 import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
@@ -9,10 +12,6 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import es.e3corp.eSalud.exception.CitaNotFoundException;
-import es.e3corp.eSalud.model.Cita;
-import es.e3corp.eSalud.repository.CitasRepository;
 
 @Service("CitaService")
 /**
@@ -61,7 +60,7 @@ public class CitaServiceImpl implements CitaService {
    */
   @Override
   public Cita findByCitaId(final String citaId) {
-   final  Optional<Cita> cita = citaRepository.findOne(citaId);
+    final Optional<Cita> cita = citaRepository.findOne(citaId);
     if (cita.isPresent()) {
       LOG.debug(String.format("Read citaId '{}'", citaId));
       return cita.get();
@@ -105,8 +104,9 @@ public class CitaServiceImpl implements CitaService {
    * 
    * @author e3corp
    */
- @Override
-  public Cita findCitaByPacienteMedicoFechaHora(final String idPaciente,final  String idMedico,final  String fecha,final  String hora) {
+  @Override
+  public Cita findCitaByPacienteMedicoFechaHora(final String idPaciente, final String idMedico, final String fecha,
+      final String hora) {
     LOG.info("[SERVER] Id paciente recibido: " + idPaciente);
     LOG.info("[SERVER] Id medico recibido: " + idMedico);
     LOG.info("[SERVER] Fecha recibida: " + fecha);
@@ -125,7 +125,7 @@ public class CitaServiceImpl implements CitaService {
   }
 
   @Override
-  public List<Cita> getCitasDisponibles(final String idmedico,final  String dia) {
+  public List<Cita> getCitasDisponibles(final String idmedico, final String dia) {
     return citaRepository.getCitasDisponibles(idmedico, dia);
   }
 

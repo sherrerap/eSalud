@@ -1,9 +1,15 @@
-
 package es.e3corp.eSalud.controller;
 
+import com.wordnik.swagger.annotations.ApiOperation;
+import es.e3corp.eSalud.Service.CitaService;
+import es.e3corp.eSalud.Service.UsuarioService;
+import es.e3corp.eSalud.exception.CitaNotFoundException;
+import es.e3corp.eSalud.exception.UserNotFoundException;
+import es.e3corp.eSalud.model.Cita;
+import es.e3corp.eSalud.model.Usuario;
+import es.e3corp.eSalud.utilidades.Utilidades;
 import java.text.ParseException;
 import java.util.List;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.json.JSONException;
@@ -18,15 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wordnik.swagger.annotations.ApiOperation;
 
-import es.e3corp.eSalud.Service.CitaService;
-import es.e3corp.eSalud.Service.UsuarioService;
-import es.e3corp.eSalud.exception.CitaNotFoundException;
-import es.e3corp.eSalud.exception.UserNotFoundException;
-import es.e3corp.eSalud.model.Cita;
-import es.e3corp.eSalud.model.Usuario;
-import es.e3corp.eSalud.utilidades.Utilidades;
 
 @RestController
 @RequestMapping("/citas")
@@ -46,13 +44,13 @@ public class CitaController {
    * 
    * @author e3corp
    */
-  private transient final CitaService citasService;
+  private final transient CitaService citasService;
   /**
    * Interfaz UsuarioService.
    * 
    * @author e3corp
    */
-  private transient final UsuarioService usuarioService;
+  private final transient UsuarioService usuarioService;
 
   @Autowired
   /**
@@ -72,7 +70,7 @@ public class CitaController {
    */
 
   @RequestMapping(method = RequestMethod.GET)
-  public ResponseEntity<Cita> getCitaFecha(@RequestParam(required = false) final String paciente, // NOPMD by sergi on
+  public ResponseEntity<Cita> getCitaFecha(@RequestParam(required = false) final String paciente, // NOPMD by sergi on//
                                                                                                   // 27/11/19 19:01
       @RequestParam(required = false) final String medico, @RequestParam(required = false) final String fecha,
       @RequestParam(required = false) final String hora) {

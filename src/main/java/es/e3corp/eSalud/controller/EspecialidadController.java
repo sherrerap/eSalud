@@ -41,7 +41,7 @@ public class EspecialidadController {
    * 
    * @author e3corp
    */
-  private transient final EspecialidadService espService;
+  private final transient  EspecialidadService espService;
 
   @Autowired
   /**
@@ -54,7 +54,7 @@ public class EspecialidadController {
   }
 
   /**
-   * Obtiene la especialidad mediante su nombre
+   * Obtiene la especialidad mediante su nombre.
    * 
    * @author e3corp
    */
@@ -146,8 +146,7 @@ public class EspecialidadController {
   /**
    * Este método actualiza la especialidad seleccionada.
    * 
-   * @param mensajerecibido    mensaje recibido que contiene la especialidad
-   * @param especialidadNombre nombre de la especialidad seleccionada
+   * @param mensajerecibido    mensaje recibido que contiene la especialidad.
    * @return la respuesta con OK o error
    */
   @RequestMapping(value = "/{especialidadNombre}", method = RequestMethod.PUT)

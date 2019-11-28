@@ -1,5 +1,8 @@
 package es.e3corp.eSalud.utilidades;
 
+import es.e3corp.eSalud.model.Cita;
+import es.e3corp.eSalud.model.Especialidad;
+import es.e3corp.eSalud.model.Usuario;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,9 +15,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.commons.codec.binary.Base64;
 
-import es.e3corp.eSalud.model.Cita;
-import es.e3corp.eSalud.model.Especialidad;
-import es.e3corp.eSalud.model.Usuario;
+
 
 /**
  * Clase Utilidades.
@@ -267,7 +268,7 @@ public class Utilidades {
       return null;
     }
   }
-  
+
   /**
    * Método para desencriptar especialidad.
    * 
@@ -285,6 +286,7 @@ public class Utilidades {
       return null;
     }
   }
+
   /**
    * Método para desencriptar lista de especialidades.
    * 
@@ -303,13 +305,13 @@ public class Utilidades {
     return especialidadesDesencriptado;
 
   }
-  
+
   /**
    * Método para desencriptar especialidad.
    * 
    * @author e3corp
    */
-  
+
   public static Especialidad desencriptarEspecialidad(final Especialidad especialidad) {
     try {
 

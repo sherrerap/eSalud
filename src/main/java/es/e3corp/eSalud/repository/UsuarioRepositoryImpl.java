@@ -1,5 +1,6 @@
 package es.e3corp.eSalud.repository;
 
+import es.e3corp.eSalud.model.Usuario;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,7 +11,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
 
-import es.e3corp.eSalud.model.Usuario;
+
 
 /**
  * Clase que implementa la interfaz UsuarioRepository.

@@ -1,8 +1,11 @@
-
 package es.e3corp.eSalud.controller;
 
+import com.wordnik.swagger.annotations.ApiOperation;
+import es.e3corp.eSalud.Service.UsuarioService;
+import es.e3corp.eSalud.exception.UserNotFoundException;
+import es.e3corp.eSalud.model.Usuario;
+import es.e3corp.eSalud.utilidades.Utilidades;
 import java.util.List;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.json.JSONException;
@@ -17,12 +20,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wordnik.swagger.annotations.ApiOperation;
-
-import es.e3corp.eSalud.Service.UsuarioService;
-import es.e3corp.eSalud.exception.UserNotFoundException;
-import es.e3corp.eSalud.model.Usuario;
-import es.e3corp.eSalud.utilidades.Utilidades;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -36,7 +33,7 @@ public class UsuarioController {
   private static final Log LOG = LogFactory.getLog(UsuarioController.class);
 
   // Servicio de usuarios para obtener sus recursos
-  private transient final UsuarioService usersService;
+  private final transient  UsuarioService usersService;
 
   @Autowired
   /**

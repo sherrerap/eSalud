@@ -1,5 +1,8 @@
 package es.e3corp.eSalud.Service;
 
+import es.e3corp.eSalud.model.Especialidad;
+import es.e3corp.eSalud.repository.EspecialidadRepository;
+import es.e3corp.eSalud.utilidades.Utilidades;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,9 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import es.e3corp.eSalud.model.Especialidad;
-import es.e3corp.eSalud.repository.EspecialidadRepository;
-import es.e3corp.eSalud.utilidades.Utilidades;
+
 
 @Service("EspecialidadService")
 /**
@@ -20,15 +21,18 @@ import es.e3corp.eSalud.utilidades.Utilidades;
 @Transactional
 public class EspecialidadServiceImpl implements EspecialidadService {
   /**
+   * Variable de LOG.
    * @author e3corp
    */
   private static final Log LOG = LogFactory.getLog(EspecialidadServiceImpl.class);
   /**
+   * Variable de repositorio.
    * @author e3corp
    */
   private EspecialidadRepository especialidadRepository;
 
   /**
+   * Constructor de EspecialidadServiceImpl.
    * @author e3corp
    */
   @Autowired

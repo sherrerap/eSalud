@@ -1,12 +1,13 @@
 package es.e3corp.eSalud.repository;
 
+import es.e3corp.eSalud.model.Cita;
 import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
-import es.e3corp.eSalud.model.Cita;
+
 
 /**
  * Interfaz de CitasRepository.
@@ -68,7 +69,7 @@ public interface CitasRepository {
    * Obtener un medico en función de su id.
    * 
    * @author e3corp
-   * @throws ParseException
+   * @throws ParseException Excepción
    */
   List<Cita> findMedico(String id) throws ParseException;
   

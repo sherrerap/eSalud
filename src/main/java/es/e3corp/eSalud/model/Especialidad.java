@@ -107,38 +107,51 @@ public class Especialidad {
 
   @Override
   public boolean equals(final Object obj) {
-    if (this == obj)
+    if (this == obj) {
       return true;
-    if (obj == null)
+    }
+    if (obj == null) {
       return false;
-    if (getClass() != obj.getClass())
+    }
+    if (getClass() != obj.getClass()) {
       return false;
+    }
     Especialidad other = (Especialidad) obj;
     if (horaFin == null) {
-      if (other.horaFin != null)
+      if (other.horaFin != null) {
         return false;
-    } else if (!horaFin.equals(other.horaFin))
+      }
+    } else if (!horaFin.equals(other.horaFin)) {
       return false;
+    }
     if (horaInicio == null) {
-      if (other.horaInicio != null)
+      if (other.horaInicio != null) {
         return false;
-    } else if (!horaInicio.equals(other.horaInicio))
+      }
+    } else if (!horaInicio.equals(other.horaInicio)) {
       return false;
+    }
     if (id == null) {
-      if (other.id != null)
+      if (other.id != null) {
         return false;
-    } else if (!id.equals(other.id))
+      }
+    } else if (!id.equals(other.id)) {
       return false;
+    }
     if (especialidad == null) {
-      if (other.especialidad != null)
+      if (other.especialidad != null) {
         return false;
-    } else if (!especialidad.equals(other.especialidad))
+      }
+    } else if (!especialidad.equals(other.especialidad)) {
       return false;
+    }
     if (tiempoConsulta == null) {
-      if (other.tiempoConsulta != null)
+      if (other.tiempoConsulta != null) {
         return false;
-    } else if (!tiempoConsulta.equals(other.tiempoConsulta))
+      }
+    } else if (!tiempoConsulta.equals(other.tiempoConsulta)) {
       return false;
+    }
     return true;
   }
 

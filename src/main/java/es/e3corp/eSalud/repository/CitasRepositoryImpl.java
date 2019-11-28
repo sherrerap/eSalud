@@ -1,5 +1,9 @@
 package es.e3corp.eSalud.repository;
 
+import es.e3corp.eSalud.model.Cita;
+import es.e3corp.eSalud.model.Especialidad;
+import es.e3corp.eSalud.model.Usuario;
+import es.e3corp.eSalud.utilidades.Utilidades;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
@@ -15,10 +19,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
 
-import es.e3corp.eSalud.model.Cita;
-import es.e3corp.eSalud.model.Especialidad;
-import es.e3corp.eSalud.model.Usuario;
-import es.e3corp.eSalud.utilidades.Utilidades;
+
 
 /**
  * Clase que se encarga de implementar los métodos de la interfaz

@@ -1,9 +1,10 @@
 package es.e3corp.eSalud.Service;
 
+import es.e3corp.eSalud.model.Cita;
 import java.text.ParseException;
 import java.util.List;
 
-import es.e3corp.eSalud.model.Cita;
+
 
 /**
  * Declaracion de la interfaz.
@@ -71,7 +72,7 @@ public interface CitaService {
    * Método para obtener las citas de un médico en función de su id.
    * 
    * @author e3corp
-   * @throws ParseException
+   * @throws ParseException Excepcion
    */
 
   List<Cita> getCitasByMedico(String id) throws ParseException;
@@ -79,7 +80,7 @@ public interface CitaService {
    * Método para obtener las citas disponible en función de su id y ls fecha.
    * 
    * @author e3corp
-   * @throws ParseException
+   * @throws ParseException Excepcion
    */
   
   List<Cita> getCitasDisponibles(String idmedico, String dia);

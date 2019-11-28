@@ -1,5 +1,9 @@
 package es.e3corp.eSalud.Service;
 
+import es.e3corp.eSalud.exception.UserNotFoundException;
+import es.e3corp.eSalud.model.Usuario;
+import es.e3corp.eSalud.repository.UsuarioRepository;
+import es.e3corp.eSalud.utilidades.Utilidades;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,10 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import es.e3corp.eSalud.exception.UserNotFoundException;
-import es.e3corp.eSalud.model.Usuario;
-import es.e3corp.eSalud.repository.UsuarioRepository;
-import es.e3corp.eSalud.utilidades.Utilidades;
+
 
 @Service("UsuarioService")
 /**
@@ -22,15 +23,18 @@ import es.e3corp.eSalud.utilidades.Utilidades;
 
 public class UsuarioServiceImpl implements UsuarioService {
   /**
+   * Variable de Log.
    * @author e3corp
    */
   private static final Log LOG = LogFactory.getLog(UsuarioServiceImpl.class);
   /**
+   * Variable de repositorio de usuario.
    * @author e3corp
    */
   private UsuarioRepository userRepository;
 
   /**
+   * Constructor.
    * @author e3corp
    */
   @Autowired
@@ -42,6 +46,7 @@ public class UsuarioServiceImpl implements UsuarioService {
   }
 
   /**
+   * Método para encontrar usuarios por dni.
    * @author e3corp
    */
   @Override
@@ -66,6 +71,7 @@ public class UsuarioServiceImpl implements UsuarioService {
   }
 
   /**
+   * Método para encontrar todos los usuarios.
    * @author e3corp
    */
   @Override
@@ -78,6 +84,7 @@ public class UsuarioServiceImpl implements UsuarioService {
   }
 
   /**
+   * Método para guardar usuarios.
    * @author e3corp
    */
   @Override
@@ -88,6 +95,7 @@ public class UsuarioServiceImpl implements UsuarioService {
   }
 
   /**
+   * Método para actualizar usuarios.
    * @author e3corp
    */
   @Override
@@ -98,6 +106,7 @@ public class UsuarioServiceImpl implements UsuarioService {
   }
 
   /**
+   * Método para borrar usuarios.
    * @author e3corp
    */
   @Override
