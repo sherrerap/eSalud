@@ -75,6 +75,12 @@ public interface CitaService {
    */
 
   List<Cita> getCitasByMedico(String id) throws ParseException;
-
+  /**
+   * Método para obtener las citas disponible en función de su id y ls fecha.
+   * 
+   * @author e3corp
+   * @throws ParseException
+   */
+  
   List<Cita> getCitasDisponibles(String idmedico, String dia);
 }

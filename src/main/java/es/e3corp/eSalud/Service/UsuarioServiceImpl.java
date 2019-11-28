@@ -24,7 +24,7 @@ public class UsuarioServiceImpl implements UsuarioService {
   /**
    * @author e3corp
    */
-  private static final Log log = LogFactory.getLog(UsuarioServiceImpl.class);
+  private static final Log LOG = LogFactory.getLog(UsuarioServiceImpl.class);
   /**
    * @author e3corp
    */
@@ -44,13 +44,14 @@ public class UsuarioServiceImpl implements UsuarioService {
   /**
    * @author e3corp
    */
+  @Override
   public Usuario findByUserDni(final String userDni) {
 
     final Optional<Usuario> user = userRepository.findOne(userDni);
 
     if (user.isPresent()) {
 
-      log.debug(String.format("Read userId '{}'", userDni));
+      LOG.debug(String.format("Read userId '{}'", userDni));
 
       final Optional<Usuario> userDesencriptado = Utilidades.desencriptarOptionalUsuario(user);
 
@@ -67,19 +68,19 @@ public class UsuarioServiceImpl implements UsuarioService {
   /**
    * @author e3corp
    */
+  @Override
   public List<Usuario> findAll() {
 
     final Optional<List<Usuario>> users = userRepository.findAll();
 
-    final List<Usuario> usersDesencrip = Utilidades.desencriptarListaUsuarios(users);
-
-    return usersDesencrip;
+    return  Utilidades.desencriptarListaUsuarios(users);
 
   }
 
   /**
    * @author e3corp
    */
+  @Override
   public void saveUsuario(final Usuario usuario) {
 
     userRepository.saveUsuario(usuario);
@@ -89,6 +90,7 @@ public class UsuarioServiceImpl implements UsuarioService {
   /**
    * @author e3corp
    */
+  @Override
   public void updateUsuario(final Usuario user) {
 
     userRepository.updateUsuario(user);
@@ -98,6 +100,7 @@ public class UsuarioServiceImpl implements UsuarioService {
   /**
    * @author e3corp
    */
+  @Override
   public void deleteUsuario(final String userId) {
 
     userRepository.deleteUsuario(userId);
@@ -110,16 +113,12 @@ public class UsuarioServiceImpl implements UsuarioService {
     // System.out.println("[SERVER] Contraseña recibida: " + password);
 
     final Usuario usuario = userRepository.findByDniAndContrasena(dni, password);
-    final Usuario usuarioDesencriptado = Utilidades.desencriptarUsuario(usuario);
-    return usuarioDesencriptado;
+    return Utilidades.desencriptarUsuario(usuario);
   }
 
   @Override
   public List<Usuario> getUsersByRol(final String rol) {
-    // Faltaria implementar un desencriptado despues
-    final List<Usuario> usersRol = userRepository.findByRol(rol);
-    final List<Usuario> usuariosRolDesenc = Utilidades.desencriptarUsuarios(usersRol);
-    return usersRol;
+    return userRepository.findByRol(rol);
   }
 
 }

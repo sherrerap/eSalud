@@ -190,30 +190,29 @@ public class Utilidades {
    * @author e3corp
    */
 
-  public static Cita desencriptarCita(Cita cita) {
+  public static Cita desencriptarCita(final Cita cita1) {
     try {
-      Cita c = new Cita();
+      final Cita cita = new Cita();
 
-      c.setId(cita.getId());
-      ;
-      c.setPaciente(desencriptar(cita.getPaciente()));
-      c.setPaciente(desencriptar(cita.getPaciente()));
+      cita.setId(cita1.getId());
+      cita.setPaciente(desencriptar(cita1.getPaciente()));
+      cita.setPaciente(desencriptar(cita1.getPaciente()));
 
-      c.setMedico(desencriptar(cita.getMedico()));
-      c.setMedico(desencriptar(cita.getMedico()));
+      cita.setMedico(desencriptar(cita1.getMedico()));
+      cita.setMedico(desencriptar(cita1.getMedico()));
 
-      c.setFecha(desencriptar(cita.getFecha()));
-      c.setFecha(desencriptar(cita.getFecha()));
+      cita.setFecha(desencriptar(cita1.getFecha()));
+      cita.setFecha(desencriptar(cita1.getFecha()));
 
-      c.setHora(desencriptar(cita.getHora()));
-      c.setHora(desencriptar(cita.getHora()));
+      cita.setHora(desencriptar(cita1.getHora()));
+      cita.setHora(desencriptar(cita1.getHora()));
 
-      c.setTipo(desencriptar(cita.getTipo()));
-      c.setTipo(desencriptar(cita.getTipo()));
+      cita.setTipo(desencriptar(cita1.getTipo()));
+      cita.setTipo(desencriptar(cita1.getTipo()));
 
-      c.setCentro(desencriptar(cita.getCentro()));
-      c.setCentro(desencriptar(cita.getCentro()));
-      return c;
+      cita.setCentro(desencriptar(cita1.getCentro()));
+      cita.setCentro(desencriptar(cita1.getCentro()));
+      return cita;
     }
 
     catch (Exception ex) {
@@ -229,24 +228,10 @@ public class Utilidades {
    */
   public static List<Cita> desencriptarListaCitas(final List<Cita> citas) {
     final List<Cita> citasDesencriptado = new ArrayList<Cita>();
-    for (Cita citasDesencriptadas : citas) {
+    for (final Cita citasDesencriptadas : citas) {
       citasDesencriptado.add(desencriptarCita(citasDesencriptadas));
     }
 
-    /*
-     * final List<Cita> citasDesencriptado = new ArrayList<Cita>();
-     * System.out.println("Tamaño de la lista normal: " + citas.size());
-     * 
-     * for (int i = 0; i < citas.size(); i++) { final Cita cita = citas.get(i);
-     * System.out.println(cita.toString()); // aun no desencripta porque no
-     * coinciden los valores que hay en la BBDD
-     * citasDesencriptado.add(desencriptarCita(cita));
-     * System.out.println(citasDesencriptado.get(i).toString());
-     * 
-     * // citasDesencriptado.add(usuario); }
-     * 
-     * return citasDesencriptado;
-     */
     return citasDesencriptado;
   }
 
@@ -282,7 +267,12 @@ public class Utilidades {
       return null;
     }
   }
-
+  
+  /**
+   * Método para desencriptar especialidad.
+   * 
+   * @author e3corp
+   */
   public static Optional<Especialidad> desencriptarOptionalEspecialidad(final Optional<Especialidad> especialidad) {
     try {
 
@@ -295,8 +285,12 @@ public class Utilidades {
       return null;
     }
   }
-
-  public static List<Especialidad> desencriptarListaEspecialidades(Optional<List<Especialidad>> especialidades) {
+  /**
+   * Método para desencriptar lista de especialidades.
+   * 
+   * @author e3corp
+   */
+  public static List<Especialidad> desencriptarListaEspecialidades(final Optional<List<Especialidad>> especialidades) {
     final List<Especialidad> especialidadesDesencriptado = new ArrayList<Especialidad>();
     System.out.println("Tamaño de la lista normal: " + especialidades.get().size());
 
@@ -309,8 +303,14 @@ public class Utilidades {
     return especialidadesDesencriptado;
 
   }
-
-  public static Especialidad desencriptarEspecialidad(Especialidad especialidad) {
+  
+  /**
+   * Método para desencriptar especialidad.
+   * 
+   * @author e3corp
+   */
+  
+  public static Especialidad desencriptarEspecialidad(final Especialidad especialidad) {
     try {
 
       especialidad.setEspecialidad(desencriptar(especialidad.getEspecialidad()));

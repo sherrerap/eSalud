@@ -32,20 +32,18 @@ public class EspecialidadServiceImpl implements EspecialidadService {
    * @author e3corp
    */
   @Autowired
-  public EspecialidadServiceImpl(EspecialidadRepository especialidadRepository) {
+  public EspecialidadServiceImpl(final EspecialidadRepository especialidadRepository) {
     this.especialidadRepository = especialidadRepository;
   }
 
   @Override
   public List<Especialidad> findAll() {
     final Optional<List<Especialidad>> especialidades = especialidadRepository.findAll();
-    final List<Especialidad> especialidadesDesencriptado = Utilidades.desencriptarListaEspecialidades(especialidades);
-
-    return especialidadesDesencriptado;
+    return Utilidades.desencriptarListaEspecialidades(especialidades);
   }
 
   @Override
-  public Especialidad findByName(String name) {
+  public Especialidad findByName(final String name) {
     final Optional<Especialidad> especialidad = especialidadRepository.findOne(name);
 
     if (especialidad.isPresent()) {
@@ -65,19 +63,19 @@ public class EspecialidadServiceImpl implements EspecialidadService {
   }
 
   @Override
-  public void saveEspecialidad(Especialidad especialidad) {
+  public void saveEspecialidad(final Especialidad especialidad) {
     especialidadRepository.saveEspecialidad(especialidad);
 
   }
 
   @Override
-  public void updateEspecialidad(Especialidad especialidad) {
+  public void updateEspecialidad(final Especialidad especialidad) {
     especialidadRepository.updateEspecialidad(especialidad);
 
   }
 
   @Override
-  public void deleteEspecialidad(String nombre) {
+  public void deleteEspecialidad(final String nombre) {
     especialidadRepository.deleteEspecialidad(nombre);
   }
 

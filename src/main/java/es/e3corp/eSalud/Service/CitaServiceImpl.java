@@ -39,7 +39,7 @@ public class CitaServiceImpl implements CitaService {
    * @author e3corp
    */
   @Autowired
-  public CitaServiceImpl(CitasRepository citaRepository) {
+  public CitaServiceImpl(final CitasRepository citaRepository) {
     this.citaRepository = citaRepository;
   }
 
@@ -48,8 +48,9 @@ public class CitaServiceImpl implements CitaService {
    * 
    * @author e3corp
    */
+  @Override
   public List<Cita> findAll() {
-    Optional<List<Cita>> cita = citaRepository.findAll();
+    final Optional<List<Cita>> cita = citaRepository.findAll();
     return cita.get();
   }
 
@@ -58,9 +59,9 @@ public class CitaServiceImpl implements CitaService {
    * 
    * @author e3corp
    */
-
-  public Cita findByCitaId(String citaId) {
-    Optional<Cita> cita = citaRepository.findOne(citaId);
+  @Override
+  public Cita findByCitaId(final String citaId) {
+   final  Optional<Cita> cita = citaRepository.findOne(citaId);
     if (cita.isPresent()) {
       LOG.debug(String.format("Read citaId '{}'", citaId));
       return cita.get();
@@ -74,8 +75,8 @@ public class CitaServiceImpl implements CitaService {
    * 
    * @author e3corp
    */
-
-  public void saveCita(Cita cita) {
+  @Override
+  public void saveCita(final Cita cita) {
     citaRepository.saveCita(cita);
   }
 
@@ -84,8 +85,8 @@ public class CitaServiceImpl implements CitaService {
    * 
    * @author e3corp
    */
-
-  public void updateCita(Cita cita) {
+  @Override
+  public void updateCita(final Cita cita) {
     citaRepository.updateCita(cita);
   }
 
@@ -94,8 +95,8 @@ public class CitaServiceImpl implements CitaService {
    * 
    * @author e3corp
    */
-
-  public void deleteCita(String citaId) {
+  @Override
+  public void deleteCita(final String citaId) {
     citaRepository.deleteCita(citaId);
   }
 
@@ -104,33 +105,28 @@ public class CitaServiceImpl implements CitaService {
    * 
    * @author e3corp
    */
-
-  public Cita findCitaByPacienteMedicoFechaHora(String idPaciente, String idMedico, String fecha, String hora) {
+ @Override
+  public Cita findCitaByPacienteMedicoFechaHora(final String idPaciente,final  String idMedico,final  String fecha,final  String hora) {
     LOG.info("[SERVER] Id paciente recibido: " + idPaciente);
     LOG.info("[SERVER] Id medico recibido: " + idMedico);
     LOG.info("[SERVER] Fecha recibida: " + fecha);
     LOG.info("[SERVER] Hora recibida: " + hora);
-    Cita cita = citaRepository.findByPacienteMedicoFechaHora(idPaciente, idMedico, fecha, hora);
-    return cita;
+    return citaRepository.findByPacienteMedicoFechaHora(idPaciente, idMedico, fecha, hora);
   }
 
   @Override
-  public List<Cita> getCitasByPaciente(String dni) {
-    List<Cita> citas = citaRepository.findPaciente(dni);
-    return citas;
+  public List<Cita> getCitasByPaciente(final String dni) {
+    return citaRepository.findPaciente(dni);
   }
 
   @Override
-  public List<Cita> getCitasByMedico(String id) throws ParseException {
-
-    List<Cita> citas = citaRepository.findMedico(id);
-    return citas;
+  public List<Cita> getCitasByMedico(final String idmedico) throws ParseException {
+    return citaRepository.findMedico(idmedico);
   }
 
   @Override
-  public List<Cita> getCitasDisponibles(String idmedico, String dia) {
-    List<Cita> citas = citaRepository.getCitasDisponibles(idmedico, dia);
-    return citas;
+  public List<Cita> getCitasDisponibles(final String idmedico,final  String dia) {
+    return citaRepository.getCitasDisponibles(idmedico, dia);
   }
 
 }
